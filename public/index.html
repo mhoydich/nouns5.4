@@ -10,7 +10,15 @@
     <main class="app-shell">
       <section class="hero">
         <div class="hero-bar">
-          <p class="eyebrow">Industry Next / Nouns Utility Console</p>
+          <div class="hero-copy">
+            <p class="eyebrow">Industry Next / Nouns Publisher</p>
+            <h1>Nouns Utility Console</h1>
+            <p class="hero-summary">
+              Generate from official Nouns art, inspect live assets, and mint to Tezos testnet
+              without leaving the same working surface.
+            </p>
+          </div>
+
           <div class="hero-flags">
             <span class="hero-flag">Original Art</span>
             <span class="hero-flag">Tezos Testnet</span>
@@ -18,16 +26,26 @@
           </div>
         </div>
 
-        <h1>Generate, inspect, and mint collectible Nouns-style outputs in one friendly terminal.</h1>
+        <div class="hero-utility-row">
+          <div class="hero-command">
+            <span class="prompt">$</span>
+            <code>noun-console --mode publish --network tezos-shadownet --seed current</code>
+          </div>
 
-        <p class="lede">
-          Pick traits, review metadata, connect a wallet, and mint without leaving the same utility
-          surface. It is intentionally terminal-coded, but still readable for normal humans.
-        </p>
-
-        <div class="hero-command">
-          <span class="prompt">$</span>
-          <code>noun-console --mode publish --network tezos-shadownet --seed current</code>
+          <div class="hero-stats" aria-label="Console status">
+            <div class="hero-stat">
+              <span>Render</span>
+              <strong>Live SVG</strong>
+            </div>
+            <div class="hero-stat">
+              <span>Metadata</span>
+              <strong>JSON Ready</strong>
+            </div>
+            <div class="hero-stat">
+              <span>Mint</span>
+              <strong>Shadownet</strong>
+            </div>
+          </div>
         </div>
       </section>
 
