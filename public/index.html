@@ -5,91 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Industry Next is the front door for publishing, minting, and experimental onchain media projects."
+      content="Live telemetry for Drum Nouns Jam: room totals, crowd trends, local unlock progress, and the latest Noun-fueled drum activity."
     />
     <meta name="theme-color" content="#10161f" />
-    <title>Industry Next</title>
+    <title>Industry Next | Drum Nouns Jam Stats</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="route-home">
-    <main class="home-shell">
-      <header class="home-topbar">
-        <a class="home-brand" href="/">INDUSTRY NEXT</a>
-        <nav class="home-nav" aria-label="Primary">
-          <a href="/jam/">Drum Jam</a>
+    <main class="stats-shell">
+      <header class="stats-topbar">
+        <a class="stats-brand" href="/">INDUSTRY NEXT</a>
+        <nav class="stats-nav" aria-label="Primary">
+          <a id="enter-room-link" href="/jam/">Enter Jam</a>
+          <button id="refresh-button" class="ghost-button" type="button">Refresh live view</button>
           <a href="https://github.com/mhoydich/nouns5.4" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </nav>
       </header>
 
-      <section class="home-grid">
-        <article class="home-panel home-intro">
-          <p class="eyebrow">Industry Next</p>
-          <h1>Primary front door for the studio, not the clicker.</h1>
-          <p class="home-copy">
-            The main domain now lands on the Industry Next surface. Project modules live on their
-            own routes so the jam, generator, gallery, and marketplace can evolve without taking
-            over the whole domain.
-          </p>
-
-          <div class="home-actions">
-            <a class="primary-button button-link" href="/jam/">Open Drum Nouns Jam</a>
-            <a
-              class="ghost-button button-link"
-              href="https://github.com/mhoydich/nouns5.4"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View repo
-            </a>
+      <section class="stats-hero">
+        <article class="stats-hero-main">
+          <div class="stats-hero-copy">
+            <p class="eyebrow">Live telemetry / Drum Nouns Jam</p>
+            <div class="stats-hero-headline-row">
+              <h1 id="hero-headline">Loading the room weather...</h1>
+              <span id="room-badge" class="stats-room-badge">global-jam</span>
+            </div>
+            <p id="hero-summary" class="stats-copy">
+              Pulling live room totals, crowd behavior, and your local drop progress.
+            </p>
           </div>
 
-          <div class="home-terminal" aria-label="System status">
-            <div class="terminal-row">
-              <span class="terminal-key">$ surface</span>
-              <span class="terminal-value">industrynext.xyz</span>
+          <div class="stats-meter">
+            <div class="stats-meter-head">
+              <span>Signal strength</span>
+              <strong id="stamp-line">Syncing...</strong>
             </div>
-            <div class="terminal-row">
-              <span class="terminal-key">$ live module</span>
-              <span class="terminal-value">/jam/ collaborative DRUM clicker + Tezos mint</span>
-            </div>
-            <div class="terminal-row">
-              <span class="terminal-key">$ next rails</span>
-              <span class="terminal-value">generator, gallery, marketplace</span>
+            <div class="stats-meter-track">
+              <span id="signal-fill"></span>
             </div>
           </div>
         </article>
 
-        <article class="home-panel home-module">
-          <p class="eyebrow">Live Route</p>
-          <h2>Drum Nouns Jam</h2>
-          <p class="home-copy">
-            Collaborative clicker, room sync, noun avatars, and Tezos testnet minting now live on
-            its own route.
-          </p>
-          <a class="secondary-button button-link" href="/jam/">Launch /jam/</a>
+        <div class="stats-card-grid" aria-label="Live room metrics">
+          <article class="telemetry-card">
+            <span>Room total</span>
+            <strong id="room-total">0</strong>
+            <small>all DRUM currently stacked in the tracked room</small>
+          </article>
+          <article class="telemetry-card">
+            <span>Active drummers</span>
+            <strong id="active-count">0</strong>
+            <small>rolling 45-second presence window</small>
+          </article>
+          <article class="telemetry-card">
+            <span>Crew bonus</span>
+            <strong id="crew-multiplier-live">1.00x</strong>
+            <small>current multiplier driven by crowd energy</small>
+          </article>
+          <article class="telemetry-card">
+            <span>Hype index</span>
+            <strong id="hype-index">0</strong>
+            <small>derived from bursts, reactions, and room heat</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stats-panel local-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Your arc</p>
+              <h2>Local drummer profile</h2>
+            </div>
+          </div>
+
+          <div class="local-identity">
+            <div id="local-avatar" class="local-avatar" aria-hidden="true"></div>
+            <div class="local-copy">
+              <strong id="local-name">Rim Rider</strong>
+              <p id="local-tagline" class="stats-copy">
+                No local drum history yet. Jump into the jam and start the graph.
+              </p>
+            </div>
+          </div>
+
+          <div class="local-metrics">
+            <article class="mini-stat">
+              <span>Lifetime DRUM</span>
+              <strong id="local-tokens">0</strong>
+            </article>
+            <article class="mini-stat">
+              <span>Lifetime hits</span>
+              <strong id="local-hits">0</strong>
+            </article>
+            <article class="mini-stat">
+              <span>Minted drops</span>
+              <strong id="local-mints">0</strong>
+            </article>
+            <article class="mini-stat">
+              <span>DRUM / hit</span>
+              <strong id="local-efficiency">0.00</strong>
+            </article>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-head">
+              <span id="local-drop-name">Garage Kick / Starter</span>
+              <strong>Drop frontier</strong>
+            </div>
+            <div class="progress-track">
+              <span id="drop-progress-fill"></span>
+            </div>
+            <p id="local-drop-note" class="stats-copy">Starter crate is online.</p>
+          </div>
         </article>
 
-        <article class="home-panel home-module">
-          <p class="eyebrow">Next Module</p>
-          <h2>Nouns Studio</h2>
-          <p class="home-copy">
-            Generator, curation flow, gallery view, and marketplace surface should land here next.
-          </p>
-          <span class="inline-pill muted-pill">Coming next</span>
+        <article class="stats-panel room-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Crowd render</p>
+              <h2>Noun presence in the room</h2>
+            </div>
+          </div>
+
+          <div id="room-nouns" class="room-nouns"></div>
+
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Leaderboard</p>
+              <h3>Top drummers right now</h3>
+            </div>
+          </div>
+
+          <div id="leaderboard-list" class="leaderboard-list"></div>
         </article>
 
-        <article class="home-panel home-module">
-          <p class="eyebrow">Domain</p>
-          <h2>Routing cleaned up</h2>
-          <p class="home-copy">
-            `industrynext.xyz` is now the base layer. The clicker is reachable directly without
-            hijacking the front page.
-          </p>
-          <a class="ghost-button button-link" href="/jam/">Direct jam route</a>
+        <article class="stats-panel trend-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Time windows</p>
+              <h2>Trends and derived weirdness</h2>
+            </div>
+          </div>
+
+          <div class="trend-grid">
+            <article class="mini-stat">
+              <span>Rolling tape</span>
+              <strong id="trend-tape">0 / 18</strong>
+            </article>
+            <article class="mini-stat">
+              <span>Last spike</span>
+              <strong id="trend-pulse">just now</strong>
+            </article>
+            <article class="mini-stat">
+              <span>Noun spread</span>
+              <strong id="trend-spread">0 heads / 0 drops</strong>
+            </article>
+            <article class="mini-stat">
+              <span>Combo ceiling</span>
+              <strong id="trend-combo">0x</strong>
+            </article>
+          </div>
+
+          <div id="trend-notes" class="trend-notes">
+            <p>Computing room lore...</p>
+          </div>
+        </article>
+
+        <article class="stats-panel feed-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Event tape</p>
+              <h2>Latest room activity</h2>
+            </div>
+          </div>
+
+          <div id="event-feed" class="event-feed"></div>
         </article>
       </section>
     </main>
+
+    <script type="module" src="/home.js"></script>
   </body>
 </html>
