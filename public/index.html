@@ -10,10 +10,11 @@
     <main class="app-shell">
       <section class="hero">
         <p class="eyebrow">Original Nouns Art Prototype</p>
-        <h1>Real Nouns assets, real trait catalog, cleaner publishing surface.</h1>
+        <h1>Real Nouns assets, real trait catalog, now with a Tezos mint path.</h1>
         <p class="lede">
           This prototype uses the official Nouns asset package and the official SVG builder,
-          then wraps them in a local studio so we can explore publishing flows with authentic art.
+          then wraps them in a local studio so we can explore publishing flows with authentic art
+          and testnet-ready NFT minting.
         </p>
       </section>
 
@@ -81,6 +82,89 @@
           </form>
         </article>
 
+        <article class="card mint-card">
+          <div class="panel-heading">
+            <p class="meta-label">Tezos Mint</p>
+            <h2>Connect a wallet and mint this noun</h2>
+          </div>
+
+          <div class="wallet-actions">
+            <button id="wallet-button" class="secondary-button" type="button">Connect Wallet</button>
+            <button id="mint-button" class="primary-button" type="button">Mint on Tezos Testnet</button>
+          </div>
+
+          <p id="wallet-status-line" class="status-line">
+            This prototype uses the official Tezos NFT tutorial contract on Shadownet testnet.
+          </p>
+
+          <div class="mint-summary">
+            <div class="summary-chip">
+              <span>Network</span>
+              <strong id="network-name">Tezos Shadownet</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Wallet</span>
+              <strong id="wallet-address">Not connected</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Balance</span>
+              <strong id="wallet-balance">-</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Contract</span>
+              <strong id="contract-address">-</strong>
+            </div>
+          </div>
+
+          <form id="mint-form" class="mint-form">
+            <label>
+              <span>Token name</span>
+              <input id="token-name-input" name="tokenName" type="text" />
+            </label>
+            <label>
+              <span>Description</span>
+              <textarea id="token-description-input" name="tokenDescription" rows="4"></textarea>
+            </label>
+          </form>
+
+          <div class="link-stack">
+            <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Live SVG asset</a>
+            <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">Token metadata JSON</a>
+            <a
+              href="https://shadownet.tzkt.io/KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Tutorial contract explorer
+            </a>
+            <a
+              href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Official Tezos mint tutorial
+            </a>
+          </div>
+
+          <div class="download-actions">
+            <button id="download-svg-button" class="ghost-button" type="button">Download SVG</button>
+            <button id="download-metadata-button" class="ghost-button" type="button">
+              Download Metadata
+            </button>
+            <button
+              id="disconnect-wallet-button"
+              class="ghost-button"
+              type="button"
+              hidden
+            >
+              Disconnect
+            </button>
+          </div>
+
+          <p id="mint-status-line" class="status-line">Connect a Tezos wallet to mint this noun.</p>
+          <p id="mint-result-line" class="status-line"></p>
+        </article>
+
         <article class="card sources-card">
           <div class="panel-heading">
             <p class="meta-label">Official Sources</p>
@@ -94,4 +178,4 @@
 
     <script type="module" src="./app.js"></script>
   </body>
-  </html>
+</html>

@@ -1,11 +1,13 @@
 # Nouns Web Prototype
 
-Local browser prototype that renders authentic Nouns using the official asset data and SVG builder.
+Local browser prototype that renders authentic Nouns using the official asset data and SVG builder, plus a Tezos testnet minting flow.
 
 ## Sources used
 
 - `@nouns/assets` for original CC0 image data
 - `@nouns/sdk` for `buildSVG`
+- Tezos docs tutorial for wallet + NFT mint flow
+- Taquito wallet toolkit for Tezos dApps
 - Official Nouns monorepo: `https://github.com/nounsDAO/nouns-monorepo`
 - Mainnet `NounsDescriptor` address from the SDK package: `0x33A9c445fb4FB21f2c030A6b2d3e2F12D017BFAC`
 
@@ -16,7 +18,30 @@ npm install
 npm start
 ```
 
-Then open `http://localhost:4173`.
+Then open `http://localhost:8788`.
+
+`npm start` runs the full Cloudflare Pages app locally, including the dynamic routes used for mint metadata and SVG rendering.
+
+If you only want the older static server without Pages Functions:
+
+```sh
+npm run serve:static
+```
+
+## Tezos Minting
+
+The mint panel connects to Tezos wallets through Taquito/Beacon-compatible wallet flows and mints on the Tezos `Shadownet` testnet using the official tutorial contract:
+
+- Contract: `KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ`
+- Explorer: `https://shadownet.tzkt.io/KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ`
+- Tutorial source: `https://docs.tezos.com/tutorials/create-nfts/send-transactions`
+
+The app now exposes two dynamic routes that the mint flow uses:
+
+- `/api/noun` returns the current seed as `image/svg+xml`
+- `/api/token-metadata` returns JSON metadata for the current seed and token copy
+
+This keeps minted NFTs pointing at a stable image URL and metadata URL hosted by the same project instead of stuffing a huge SVG payload directly into the token metadata map.
 
 ## Cloudflare Pages
 

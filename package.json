@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "wrangler pages dev public",
+    "serve:static": "node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
     "cf:dev": "wrangler pages dev public",
     "cf:project": "wrangler pages project create industrynext-nouns --production-branch main",
@@ -13,7 +14,11 @@
   },
   "dependencies": {
     "@nouns/assets": "^0.10.0",
-    "@nouns/sdk": "^1.2.0"
+    "@nouns/sdk": "^1.2.0",
+    "@taquito/beacon-wallet": "^24.2.0",
+    "@taquito/taquito": "^24.2.0",
+    "@taquito/utils": "^24.2.0",
+    "@tezos-x/octez.connect-types": "^4.8.3"
   },
   "engines": {
     "node": ">=20"

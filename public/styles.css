@@ -78,7 +78,7 @@ body {
 }
 
 .preview-card {
-  grid-row: span 2;
+  grid-row: span 3;
   padding: 22px;
 }
 
@@ -102,15 +102,39 @@ body {
   line-height: 1.05;
 }
 
-.primary-button {
-  border: 0;
+.primary-button,
+.secondary-button,
+.ghost-button {
   border-radius: 16px;
   padding: 12px 18px;
-  background: linear-gradient(135deg, var(--ink), #2f5dff);
-  color: white;
   font: inherit;
   font-weight: 800;
   cursor: pointer;
+}
+
+.primary-button {
+  border: 0;
+  background: linear-gradient(135deg, var(--ink), #2f5dff);
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid rgba(26, 23, 51, 0.18);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--ink);
+}
+
+.ghost-button {
+  border: 1px dashed rgba(26, 23, 51, 0.24);
+  background: transparent;
+  color: rgba(26, 23, 51, 0.76);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.ghost-button:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
 }
 
 .status-line {
@@ -139,7 +163,8 @@ body {
   filter: drop-shadow(0 26px 32px rgba(34, 26, 74, 0.16));
 }
 
-.trait-summary {
+.trait-summary,
+.mint-summary {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
@@ -167,22 +192,27 @@ body {
 }
 
 .controls-card,
+.mint-card,
 .sources-card {
   padding: 22px;
 }
 
-.trait-form {
+.trait-form,
+.mint-form {
   display: grid;
   gap: 14px;
 }
 
-.trait-form label {
+.trait-form label,
+.mint-form label {
   display: grid;
   gap: 8px;
   font-weight: 700;
 }
 
-.trait-form select {
+.trait-form select,
+.mint-form input,
+.mint-form textarea {
   width: 100%;
   border: 1px solid rgba(26, 23, 51, 0.12);
   border-radius: 14px;
@@ -192,16 +222,42 @@ body {
   font: inherit;
 }
 
+.mint-form {
+  margin-top: 18px;
+}
+
+.mint-form textarea {
+  resize: vertical;
+}
+
+.wallet-actions,
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mint-summary {
+  margin-top: 18px;
+}
+
+.link-stack {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.link-stack a,
+.sources-list a {
+  color: #2746da;
+}
+
 .sources-list {
   margin: 0;
   padding-left: 18px;
   display: grid;
   gap: 10px;
   line-height: 1.45;
-}
-
-.sources-list a {
-  color: #2746da;
 }
 
 @media (max-width: 920px) {
@@ -219,5 +275,12 @@ body {
 
   .noun-frame {
     min-height: 320px;
+  }
+}
+
+@media (max-width: 560px) {
+  .trait-summary,
+  .mint-summary {
+    grid-template-columns: 1fr;
   }
 }
