@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "sync:assets": "node ./scripts/sync-nouns-data.mjs"
   },
   "dependencies": {
     "@nouns/assets": "^0.10.0",

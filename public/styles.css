@@ -113,6 +113,13 @@ body {
   cursor: pointer;
 }
 
+.status-line {
+  margin: 14px 0 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: rgba(26, 23, 51, 0.7);
+}
+
 .noun-frame {
   display: grid;
   place-items: center;

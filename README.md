@@ -18,13 +18,20 @@ npm start
 
 Then open `http://localhost:4173`.
 
-## Endpoints
+## GitHub Pages
 
-- `/api/catalog` returns trait counts and official filenames
-- `/api/random` returns a random rendered Noun
-- `/api/render` renders a specific seed using query params:
-  - `background`
-  - `body`
-  - `accessory`
-  - `head`
-  - `glasses`
+The repository includes a GitHub Pages workflow that deploys the contents of `public/` using the current official Pages Actions flow.
+
+Expected Pages URL:
+
+`https://mhoydich.github.io/nouns5.4/`
+
+## Asset sync
+
+The static app reads `public/data/image-data.json`, which is generated from the official `@nouns/assets` package.
+
+To refresh that checked-in asset file:
+
+```sh
+npm run sync:assets
+```
