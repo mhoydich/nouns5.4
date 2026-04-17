@@ -9,23 +9,43 @@
   <body>
     <main class="app-shell">
       <section class="hero">
-        <p class="eyebrow">Original Nouns Art Prototype</p>
-        <h1>Real Nouns assets, real trait catalog, now with a Tezos mint path.</h1>
+        <div class="hero-bar">
+          <p class="eyebrow">Industry Next / Nouns Utility Console</p>
+          <div class="hero-flags">
+            <span class="hero-flag">Original Art</span>
+            <span class="hero-flag">Tezos Testnet</span>
+            <span class="hero-flag">Cloudflare Live</span>
+          </div>
+        </div>
+
+        <h1>Generate, inspect, and mint collectible Nouns-style outputs in one friendly terminal.</h1>
+
         <p class="lede">
-          This prototype uses the official Nouns asset package and the official SVG builder,
-          then wraps them in a local studio so we can explore publishing flows with authentic art
-          and testnet-ready NFT minting.
+          Pick traits, review metadata, connect a wallet, and mint without leaving the same utility
+          surface. It is intentionally terminal-coded, but still readable for normal humans.
         </p>
+
+        <div class="hero-command">
+          <span class="prompt">$</span>
+          <code>noun-console --mode publish --network tezos-shadownet --seed current</code>
+        </div>
       </section>
 
       <section class="studio-grid">
         <article class="card preview-card">
+          <div class="window-chrome" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <p>render-preview</p>
+          </div>
+
           <div class="preview-meta">
             <div>
-              <p class="meta-label">Rendered SVG</p>
+              <p class="meta-label">Render Surface</p>
               <h2 id="noun-title">Loading noun…</h2>
             </div>
-            <button id="randomize-button" class="primary-button" type="button">Randomize</button>
+            <button id="randomize-button" class="primary-button" type="button">Randomize Seed</button>
           </div>
 
           <p id="status-line" class="status-line">Loading official asset catalog…</p>
@@ -53,39 +73,63 @@
         </article>
 
         <article class="card controls-card">
+          <div class="window-chrome" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <p>trait-registry</p>
+          </div>
+
           <div class="panel-heading">
             <p class="meta-label">Trait Controls</p>
-            <h2>Pick exact official parts</h2>
+            <h2>Direct component selection</h2>
           </div>
+
+          <p class="panel-copy">
+            Each selector maps directly to the official Nouns asset index. Change a field and the
+            preview, URLs, and mint payload update immediately.
+          </p>
 
           <form id="trait-form" class="trait-form">
             <label>
               <span>Background</span>
+              <small>Scene substrate</small>
               <select id="background-select" name="background"></select>
             </label>
             <label>
               <span>Body</span>
+              <small>Base figure</small>
               <select id="body-select" name="body"></select>
             </label>
             <label>
               <span>Accessory</span>
+              <small>Handheld or add-on</small>
               <select id="accessory-select" name="accessory"></select>
             </label>
             <label>
               <span>Head</span>
+              <small>Primary silhouette</small>
               <select id="head-select" name="head"></select>
             </label>
             <label>
               <span>Glasses</span>
+              <small>Identity layer</small>
               <select id="glasses-select" name="glasses"></select>
             </label>
           </form>
         </article>
 
         <article class="card mint-card">
+          <div class="window-chrome" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <p>tezos-mint</p>
+          </div>
+
           <div class="panel-heading">
             <p class="meta-label">Tezos Mint</p>
-            <h2>Connect a wallet and mint this noun</h2>
+            <h2>Wallet-safe testnet publish flow</h2>
           </div>
 
           <div class="wallet-actions">
@@ -119,30 +163,32 @@
           <form id="mint-form" class="mint-form">
             <label>
               <span>Token name</span>
+              <small>Human-readable label for wallets and explorers</small>
               <input id="token-name-input" name="tokenName" type="text" />
             </label>
             <label>
               <span>Description</span>
+              <small>Plain-language metadata copy</small>
               <textarea id="token-description-input" name="tokenDescription" rows="4"></textarea>
             </label>
           </form>
 
           <div class="link-stack">
-            <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Live SVG asset</a>
-            <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">Token metadata JSON</a>
+            <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Open live SVG asset</a>
+            <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">Open token metadata JSON</a>
             <a
               href="https://shadownet.tzkt.io/KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ"
               target="_blank"
               rel="noreferrer"
             >
-              Tutorial contract explorer
+              Open tutorial contract explorer
             </a>
             <a
               href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
               target="_blank"
               rel="noreferrer"
             >
-              Official Tezos mint tutorial
+              Read official Tezos mint guide
             </a>
           </div>
 
@@ -166,10 +212,22 @@
         </article>
 
         <article class="card sources-card">
-          <div class="panel-heading">
-            <p class="meta-label">Official Sources</p>
-            <h2>What this is using</h2>
+          <div class="window-chrome" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <p>source-log</p>
           </div>
+
+          <div class="panel-heading">
+            <p class="meta-label">References</p>
+            <h2>Verified building blocks</h2>
+          </div>
+
+          <p class="panel-copy">
+            These links are the actual asset, rendering, and Tezos standards this utility console is
+            using under the hood.
+          </p>
 
           <ul id="sources-list" class="sources-list"></ul>
         </article>
