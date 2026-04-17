@@ -39,12 +39,14 @@ const DROP_LIBRARY = [
 
 const elements = {
   roomBadge: document.querySelector("#room-badge"),
+  roomMood: document.querySelector("#room-mood"),
   heroHeadline: document.querySelector("#hero-headline"),
   heroSummary: document.querySelector("#hero-summary"),
   roomTotal: document.querySelector("#room-total"),
   activeCount: document.querySelector("#active-count"),
   crewMultiplier: document.querySelector("#crew-multiplier-live"),
   hypeIndex: document.querySelector("#hype-index"),
+  pulseVelocity: document.querySelector("#pulse-velocity"),
   signalFill: document.querySelector("#signal-fill"),
   enterRoomLink: document.querySelector("#enter-room-link"),
   refreshButton: document.querySelector("#refresh-button"),
@@ -217,6 +219,14 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function titleCase(value) {
+  return String(value)
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 function getDropById(dropId) {
   return DROP_LIBRARY.find((drop) => drop.id === dropId) || DROP_LIBRARY[0];
 }
@@ -315,39 +325,49 @@ function computeRoomStats(room) {
 
 function buildHeroHeadline(room, roomStats) {
   if (roomStats.roomMood === "full-room parade") {
-    return "The room is behaving like a tiny televised drum economy.";
+    return "Full-room parade";
   }
 
   if (roomStats.roomMood === "reaction storm") {
-    return "The crowd is leaning on hype as hard as it leans on rhythm.";
+    return "Reaction storm";
   }
 
   if (roomStats.roomMood === "crew build") {
-    return "More than one Noun is pushing the clicker into something weirder.";
+    return "Crew build";
   }
 
   if (room.totals.tokens >= 500) {
-    return "This clicker has already turned into collectible weather.";
+    return "Collectible weather";
   }
 
-  return "Every tap leaves behind a trail of DRUM, drops, and room lore.";
+  if (room.totals.tokens > 0) {
+    return "Solo grind";
+  }
+
+  return "Fresh tape";
 }
 
 function buildHeroSummary(room, roomStats) {
-  return `Tracking ${room.roomId}. Over the rolling 12-minute tape there are ${room.events.length} notable room events, and in the active 45-second window ${room.metrics.activeCount} drummers are pushing a ${formatMultiplier(room.metrics.crewMultiplier)} crew bonus.`;
+  return `${formatCount(room.events.length)} logged events, ${formatCount(
+    room.metrics.activeCount,
+  )} active drummers, and a ${formatMultiplier(
+    room.metrics.crewMultiplier,
+  )} crew bonus in ${room.roomId}.`;
 }
 
 function renderHero(room, roomStats) {
   elements.roomBadge.textContent = room.roomId;
   elements.heroHeadline.textContent = buildHeroHeadline(room, roomStats);
   elements.heroSummary.textContent = buildHeroSummary(room, roomStats);
+  elements.roomMood.textContent = titleCase(roomStats.roomMood);
   elements.roomTotal.textContent = formatCompact(room.totals.tokens);
   elements.activeCount.textContent = formatCount(room.metrics.activeCount);
   elements.crewMultiplier.textContent = formatMultiplier(room.metrics.crewMultiplier);
   elements.hypeIndex.textContent = formatCount(roomStats.hypeIndex);
+  elements.pulseVelocity.textContent = formatCount(Math.round(roomStats.pulseVelocity));
   elements.signalFill.style.width = `${Math.min(100, Math.max(8, roomStats.hypeIndex / 2.2))}%`;
   elements.enterRoomLink.href = `/jam/?room=${encodeURIComponent(room.roomId)}`;
-  elements.stampLine.textContent = `Last room packet ${formatRelativeTime(room.updatedAt)}.`;
+  elements.stampLine.textContent = formatRelativeTime(room.updatedAt);
 }
 
 function renderLocalProfile(profile) {
@@ -376,7 +396,7 @@ function renderLocalProfile(profile) {
   if (profile.lifetimeHits > 0) {
     localTagline = `${profile.name} is carrying ${formatCount(
       profile.lifetimeTokens,
-    )} DRUM across ${formatCount(profile.lifetimeHits)} lifetime hits with ${mintedCount} minted drops.`;
+    )} DRUM across ${formatCount(profile.lifetimeHits)} lifetime hits with ${mintedCount} minted collectibles.`;
   }
 
   elements.localAvatar.innerHTML = renderAvatar(activeSeed, profile.name.slice(0, 4));

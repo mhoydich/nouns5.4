@@ -24,166 +24,196 @@
         </nav>
       </header>
 
-      <section class="stats-hero">
-        <article class="stats-hero-main">
-          <div class="stats-hero-copy">
-            <p class="eyebrow">Live telemetry / Drum Nouns Jam</p>
-            <div class="stats-hero-headline-row">
-              <h1 id="hero-headline">Loading the room weather...</h1>
-              <span id="room-badge" class="stats-room-badge">global-jam</span>
-            </div>
+      <section class="stats-overview">
+        <div class="overview-copy">
+          <div class="overview-heading">
+            <p class="eyebrow">Drum Nouns Jam / Live board</p>
+            <h1>Clean read on the room, your progress, and what the Nouns are doing.</h1>
             <p id="hero-summary" class="stats-copy">
               Pulling live room totals, crowd behavior, and your local drop progress.
             </p>
           </div>
 
-          <div class="stats-meter">
-            <div class="stats-meter-head">
-              <span>Signal strength</span>
+          <div class="overview-meta" aria-label="Room status">
+            <article class="meta-chip">
+              <span>Room</span>
+              <strong id="room-badge">global-jam</strong>
+            </article>
+            <article class="meta-chip">
+              <span>Mood</span>
+              <strong id="room-mood">Quiet reset</strong>
+            </article>
+            <article class="meta-chip">
+              <span>Synced</span>
               <strong id="stamp-line">Syncing...</strong>
-            </div>
-            <div class="stats-meter-track">
-              <span id="signal-fill"></span>
-            </div>
+            </article>
           </div>
-        </article>
+        </div>
+
+        <div class="stats-meter">
+          <div class="stats-meter-head">
+            <span>Signal strength</span>
+            <strong>Live room telemetry</strong>
+          </div>
+          <div class="stats-meter-track">
+            <span id="signal-fill"></span>
+          </div>
+        </div>
 
         <div class="stats-card-grid" aria-label="Live room metrics">
           <article class="telemetry-card">
             <span>Room total</span>
             <strong id="room-total">0</strong>
-            <small>all DRUM currently stacked in the tracked room</small>
+            <small>DRUM stacked in the tracked room</small>
           </article>
           <article class="telemetry-card">
             <span>Active drummers</span>
             <strong id="active-count">0</strong>
-            <small>rolling 45-second presence window</small>
+            <small>rolling 45-second window</small>
           </article>
           <article class="telemetry-card">
             <span>Crew bonus</span>
             <strong id="crew-multiplier-live">1.00x</strong>
-            <small>current multiplier driven by crowd energy</small>
+            <small>crowd energy multiplier</small>
           </article>
           <article class="telemetry-card">
             <span>Hype index</span>
             <strong id="hype-index">0</strong>
-            <small>derived from bursts, reactions, and room heat</small>
+            <small>bursts, reactions, and room heat</small>
+          </article>
+        </div>
+
+        <div class="brief-grid" aria-label="Quick reads">
+          <article class="brief-card">
+            <span>Room read</span>
+            <strong id="hero-headline">Loading the room weather...</strong>
+            <small>fast interpretation of current activity</small>
+          </article>
+          <article class="brief-card">
+            <span>Pulse velocity</span>
+            <strong id="pulse-velocity">0</strong>
+            <small>DRUM per active drummer</small>
           </article>
         </div>
       </section>
 
       <section class="stats-grid">
-        <article class="stats-panel local-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Your arc</p>
-              <h2>Local drummer profile</h2>
+        <div class="stats-column stats-column-compact">
+          <article class="stats-panel local-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Local</p>
+                <h2>Your profile</h2>
+              </div>
             </div>
-          </div>
 
-          <div class="local-identity">
-            <div id="local-avatar" class="local-avatar" aria-hidden="true"></div>
-            <div class="local-copy">
-              <strong id="local-name">Rim Rider</strong>
-              <p id="local-tagline" class="stats-copy">
-                No local drum history yet. Jump into the jam and start the graph.
-              </p>
+            <div class="local-identity">
+              <div id="local-avatar" class="local-avatar" aria-hidden="true"></div>
+              <div class="local-copy">
+                <strong id="local-name">Rim Rider</strong>
+                <p id="local-tagline" class="stats-copy">
+                  No local drum history yet. Jump into the jam and start the graph.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div class="local-metrics">
-            <article class="mini-stat">
-              <span>Lifetime DRUM</span>
-              <strong id="local-tokens">0</strong>
-            </article>
-            <article class="mini-stat">
-              <span>Lifetime hits</span>
-              <strong id="local-hits">0</strong>
-            </article>
-            <article class="mini-stat">
-              <span>Minted drops</span>
-              <strong id="local-mints">0</strong>
-            </article>
-            <article class="mini-stat">
-              <span>DRUM / hit</span>
-              <strong id="local-efficiency">0.00</strong>
-            </article>
-          </div>
-
-          <div class="progress-card">
-            <div class="progress-head">
-              <span id="local-drop-name">Garage Kick / Starter</span>
-              <strong>Drop frontier</strong>
+            <div class="local-metrics">
+              <article class="mini-stat">
+                <span>Lifetime DRUM</span>
+                <strong id="local-tokens">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Lifetime hits</span>
+                <strong id="local-hits">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Minted collectibles</span>
+                <strong id="local-mints">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>DRUM / hit</span>
+                <strong id="local-efficiency">0.00</strong>
+              </article>
             </div>
-            <div class="progress-track">
-              <span id="drop-progress-fill"></span>
+
+            <div class="progress-card">
+              <div class="progress-head">
+                <span id="local-drop-name">Garage Kick / Starter</span>
+                <strong>Drop frontier</strong>
+              </div>
+              <div class="progress-track">
+                <span id="drop-progress-fill"></span>
+              </div>
+              <p id="local-drop-note" class="stats-copy">Starter crate is online.</p>
             </div>
-            <p id="local-drop-note" class="stats-copy">Starter crate is online.</p>
-          </div>
-        </article>
+          </article>
 
-        <article class="stats-panel room-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Crowd render</p>
-              <h2>Noun presence in the room</h2>
+          <article class="stats-panel trend-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Signals</p>
+                <h2>Trend board</h2>
+              </div>
             </div>
-          </div>
 
-          <div id="room-nouns" class="room-nouns"></div>
-
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Leaderboard</p>
-              <h3>Top drummers right now</h3>
+            <div class="trend-grid">
+              <article class="mini-stat">
+                <span>Rolling tape</span>
+                <strong id="trend-tape">0 / 18</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Last spike</span>
+                <strong id="trend-pulse">just now</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Noun spread</span>
+                <strong id="trend-spread">0 heads / 0 drops</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Combo ceiling</span>
+                <strong id="trend-combo">0x</strong>
+              </article>
             </div>
-          </div>
 
-          <div id="leaderboard-list" class="leaderboard-list"></div>
-        </article>
-
-        <article class="stats-panel trend-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Time windows</p>
-              <h2>Trends and derived weirdness</h2>
+            <div id="trend-notes" class="trend-notes">
+              <p>Computing room lore...</p>
             </div>
-          </div>
+          </article>
+        </div>
 
-          <div class="trend-grid">
-            <article class="mini-stat">
-              <span>Rolling tape</span>
-              <strong id="trend-tape">0 / 18</strong>
-            </article>
-            <article class="mini-stat">
-              <span>Last spike</span>
-              <strong id="trend-pulse">just now</strong>
-            </article>
-            <article class="mini-stat">
-              <span>Noun spread</span>
-              <strong id="trend-spread">0 heads / 0 drops</strong>
-            </article>
-            <article class="mini-stat">
-              <span>Combo ceiling</span>
-              <strong id="trend-combo">0x</strong>
-            </article>
-          </div>
-
-          <div id="trend-notes" class="trend-notes">
-            <p>Computing room lore...</p>
-          </div>
-        </article>
-
-        <article class="stats-panel feed-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Event tape</p>
-              <h2>Latest room activity</h2>
+        <div class="stats-column stats-column-main">
+          <article class="stats-panel room-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Room</p>
+                <h2>Crew and leaderboard</h2>
+              </div>
             </div>
-          </div>
 
-          <div id="event-feed" class="event-feed"></div>
-        </article>
+            <div class="room-panel-grid">
+              <section class="room-panel-section">
+                <p class="panel-kicker">Active noun line</p>
+                <div id="room-nouns" class="room-nouns"></div>
+              </section>
+
+              <section class="room-panel-section">
+                <p class="panel-kicker">Top drummers</p>
+                <div id="leaderboard-list" class="leaderboard-list"></div>
+              </section>
+            </div>
+          </article>
+
+          <article class="stats-panel feed-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Tape</p>
+                <h2>Latest activity</h2>
+              </div>
+            </div>
+
+            <div id="event-feed" class="event-feed"></div>
+          </article>
+        </div>
       </section>
     </main>
 
