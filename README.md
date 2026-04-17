@@ -26,6 +26,15 @@ Expected Pages URL:
 
 `https://mhoydich.github.io/nouns5.4/`
 
+Custom domain configured in the deployed artifact:
+
+`www.industrynext.xyz`
+
+Namecheap DNS needed for that custom domain:
+
+- `CNAME` host `www` -> `mhoydich.github.io`
+- `URL Redirect Record` host `@` -> `https://www.industrynext.xyz/` unmasked
+
 ## Asset sync
 
 The static app reads `public/data/image-data.json`, which is generated from the official `@nouns/assets` package.
