@@ -1,0 +1,303 @@
+const STORE_KEY = "__drum_nouns_jam_rooms__";
+const ROOM_TTL_MS = 6 * 60 * 60 * 1000;
+const PLAYER_TTL_MS = 3 * 60 * 1000;
+const ACTIVE_WINDOW_MS = 45 * 1000;
+const EVENT_WINDOW_MS = 12 * 60 * 1000;
+const EVENT_LIMIT = 18;
+
+function getStore() {
+  const scope = globalThis;
+
+  if (!scope[STORE_KEY]) {
+    scope[STORE_KEY] = new Map();
+  }
+
+  return scope[STORE_KEY];
+}
+
+function sanitizeText(value, fallback, maxLength = 24, pattern = /[^a-zA-Z0-9 _-]/g) {
+  const normalized = String(value ?? "")
+    .replace(/\s+/g, " ")
+    .replace(pattern, "")
+    .trim();
+
+  return (normalized || fallback).slice(0, maxLength);
+}
+
+export function sanitizeRoomId(value) {
+  return sanitizeText(value, "global-jam", 24).toLowerCase().replaceAll(" ", "-");
+}
+
+function sanitizeNumber(value, fallback = 0, max = 9999999) {
+  const numeric = Number.parseInt(value ?? "", 10);
+
+  if (Number.isNaN(numeric) || numeric < 0) {
+    return fallback;
+  }
+
+  return Math.min(numeric, max);
+}
+
+function sanitizeSeed(seed = {}) {
+  return {
+    background: sanitizeNumber(seed.background, 0, 1),
+    body: sanitizeNumber(seed.body, 0, 999),
+    accessory: sanitizeNumber(seed.accessory, 0, 999),
+    head: sanitizeNumber(seed.head, 0, 999),
+    glasses: sanitizeNumber(seed.glasses, 0, 999),
+  };
+}
+
+function createRoom(roomId) {
+  return {
+    roomId,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    sequence: 0,
+    totals: {
+      hits: 0,
+      tokens: 0,
+    },
+    players: new Map(),
+    events: [],
+  };
+}
+
+function cleanupStore() {
+  const now = Date.now();
+  const store = getStore();
+
+  for (const [roomId, room] of store.entries()) {
+    for (const [playerId, player] of room.players.entries()) {
+      if (now - player.lastSeenAt > PLAYER_TTL_MS) {
+        room.players.delete(playerId);
+      }
+    }
+
+    room.events = room.events.filter((event) => now - event.createdAt <= EVENT_WINDOW_MS);
+
+    if (!room.players.size && now - room.updatedAt > ROOM_TTL_MS) {
+      store.delete(roomId);
+    }
+  }
+}
+
+function ensureRoom(roomIdInput) {
+  cleanupStore();
+  const roomId = sanitizeRoomId(roomIdInput);
+  const store = getStore();
+
+  if (!store.has(roomId)) {
+    store.set(roomId, createRoom(roomId));
+  }
+
+  return store.get(roomId);
+}
+
+function ensurePlayer(room, playerInput = {}) {
+  const playerId = sanitizeText(playerInput.id, `guest-${Date.now()}`, 80);
+  const name = sanitizeText(playerInput.name, "Rim Rider", 24);
+  const seed = sanitizeSeed(playerInput.seed);
+  const selectedDrop = sanitizeText(playerInput.selectedDrop, "Garage Kick", 32);
+  const now = Date.now();
+  let player = room.players.get(playerId);
+  let isNew = false;
+
+  if (!player) {
+    player = {
+      id: playerId,
+      name,
+      seed,
+      selectedDrop,
+      totalHits: 0,
+      totalTokens: 0,
+      bestCombo: 0,
+      lastSeenAt: now,
+      lastBeatAt: 0,
+      lastReactionAt: 0,
+    };
+    room.players.set(playerId, player);
+    isNew = true;
+  }
+
+  player.name = name;
+  player.seed = seed;
+  player.selectedDrop = selectedDrop;
+  player.lastSeenAt = now;
+
+  return {
+    player,
+    isNew,
+  };
+}
+
+function pushEvent(room, event) {
+  room.events.unshift({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    createdAt: Date.now(),
+    ...event,
+  });
+
+  if (room.events.length > EVENT_LIMIT) {
+    room.events.length = EVENT_LIMIT;
+  }
+}
+
+function buildMetrics(room) {
+  const now = Date.now();
+  const players = [...room.players.values()];
+  const activePlayers = players.filter(
+    (player) => now - Math.max(player.lastBeatAt || 0, player.lastSeenAt) <= ACTIVE_WINDOW_MS,
+  );
+  const recentReactions = room.events.filter(
+    (event) => event.type === "reaction" && now - event.createdAt <= ACTIVE_WINDOW_MS,
+  ).length;
+  const syncedBursts = room.events.filter(
+    (event) => event.type === "pulse" && now - event.createdAt <= ACTIVE_WINDOW_MS,
+  ).length;
+  const extraPlayers = Math.max(0, activePlayers.length - 1);
+  const crewMultiplier = Number(
+    (
+      1 +
+      Math.min(
+        1.35,
+        extraPlayers > 0
+          ? extraPlayers * 0.18 + recentReactions * 0.04 + syncedBursts * 0.03
+          : 0,
+      )
+    ).toFixed(2),
+  );
+
+  return {
+    activeCount: activePlayers.length,
+    crewMultiplier,
+    recentReactions,
+    syncedBursts,
+  };
+}
+
+function touchRoom(room) {
+  room.updatedAt = Date.now();
+  room.sequence += 1;
+}
+
+function serializeRoom(room) {
+  const now = Date.now();
+
+  return {
+    roomId: room.roomId,
+    updatedAt: room.updatedAt,
+    sequence: room.sequence,
+    totals: room.totals,
+    metrics: buildMetrics(room),
+    players: [...room.players.values()]
+      .map((player) => ({
+        id: player.id,
+        name: player.name,
+        seed: player.seed,
+        selectedDrop: player.selectedDrop,
+        totalHits: player.totalHits,
+        totalTokens: player.totalTokens,
+        bestCombo: player.bestCombo,
+        lastSeenAt: player.lastSeenAt,
+        lastBeatAt: player.lastBeatAt,
+        isActive: now - Math.max(player.lastBeatAt || 0, player.lastSeenAt) <= ACTIVE_WINDOW_MS,
+      }))
+      .sort((left, right) => right.totalTokens - left.totalTokens),
+    events: room.events.slice(0, EVENT_LIMIT),
+  };
+}
+
+export function getRoomSnapshot(roomId) {
+  return serializeRoom(ensureRoom(roomId));
+}
+
+export function joinRoom(roomId, playerInput) {
+  const room = ensureRoom(roomId);
+  const { player, isNew } = ensurePlayer(room, playerInput);
+  touchRoom(room);
+
+  if (isNew) {
+    pushEvent(room, {
+      type: "join",
+      playerId: player.id,
+      playerName: player.name,
+      seed: player.seed,
+      selectedDrop: player.selectedDrop,
+      message: `${player.name} joined ${room.roomId} with ${player.selectedDrop}.`,
+    });
+  }
+
+  return serializeRoom(room);
+}
+
+export function recordPulse(roomId, playerInput, pulseInput = {}) {
+  const room = ensureRoom(roomId);
+  const { player, isNew } = ensurePlayer(room, playerInput);
+  const hits = sanitizeNumber(pulseInput.hits, 0, 999);
+  const tokens = sanitizeNumber(pulseInput.tokens, 0, 99999);
+  const combo = sanitizeNumber(pulseInput.combo, 0, 999);
+  const now = Date.now();
+
+  touchRoom(room);
+  player.lastBeatAt = now;
+  player.bestCombo = Math.max(player.bestCombo, combo);
+  player.totalHits += hits;
+  player.totalTokens += tokens;
+  room.totals.hits += hits;
+  room.totals.tokens += tokens;
+
+  if (isNew) {
+    pushEvent(room, {
+      type: "join",
+      playerId: player.id,
+      playerName: player.name,
+      seed: player.seed,
+      selectedDrop: player.selectedDrop,
+      message: `${player.name} jumped straight into ${room.roomId}.`,
+    });
+  }
+
+  if (hits >= 4 || combo >= 8 || tokens >= 10) {
+    const detail =
+      combo >= 12
+        ? `${player.name} cracked a ${combo}x combo and shook the whole room.`
+        : combo >= 8
+          ? `${player.name} hit a ${combo}x combo burst for +${tokens} DRUM.`
+          : `${player.name} dropped ${hits} hits for +${tokens} DRUM.`;
+
+    pushEvent(room, {
+      type: "pulse",
+      playerId: player.id,
+      playerName: player.name,
+      seed: player.seed,
+      hits,
+      tokens,
+      combo,
+      message: detail,
+    });
+  }
+
+  return serializeRoom(room);
+}
+
+export function recordReaction(roomId, playerInput, reactionInput = {}) {
+  const room = ensureRoom(roomId);
+  const { player } = ensurePlayer(room, playerInput);
+  const reaction = sanitizeText(reactionInput.reaction, "CLAP", 16).toUpperCase();
+  const now = Date.now();
+
+  player.lastReactionAt = now;
+  touchRoom(room);
+
+  pushEvent(room, {
+    type: "reaction",
+    playerId: player.id,
+    playerName: player.name,
+    seed: player.seed,
+    reaction,
+    message: `${player.name} fired ${reaction} into the room.`,
+  });
+
+  return serializeRoom(room);
+}

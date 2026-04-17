@@ -14,3 +14,7 @@
 
 /lib/*
   Cache-Control: public, max-age=3600
+
+/api/og.svg
+  Content-Type: image/svg+xml; charset=utf-8
+  Cache-Control: public, max-age=120, s-maxage=120, stale-while-revalidate=600
