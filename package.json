@@ -1,0 +1,17 @@
+{
+  "name": "nouns-web-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@nouns/assets": "^0.10.0",
+    "@nouns/sdk": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

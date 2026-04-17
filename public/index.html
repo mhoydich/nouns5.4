@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nouns Original Art Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Original Nouns Art Prototype</p>
+        <h1>Real Nouns assets, real trait catalog, cleaner publishing surface.</h1>
+        <p class="lede">
+          This prototype uses the official Nouns asset package and the official SVG builder,
+          then wraps them in a local studio so we can explore publishing flows with authentic art.
+        </p>
+      </section>
+
+      <section class="studio-grid">
+        <article class="card preview-card">
+          <div class="preview-meta">
+            <div>
+              <p class="meta-label">Rendered SVG</p>
+              <h2 id="noun-title">Loading noun…</h2>
+            </div>
+            <button id="randomize-button" class="primary-button" type="button">Randomize</button>
+          </div>
+
+          <div id="noun-frame" class="noun-frame" aria-live="polite"></div>
+
+          <div class="trait-summary">
+            <div class="summary-chip">
+              <span>Body</span>
+              <strong id="body-name">-</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Accessory</span>
+              <strong id="accessory-name">-</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Head</span>
+              <strong id="head-name">-</strong>
+            </div>
+            <div class="summary-chip">
+              <span>Glasses</span>
+              <strong id="glasses-name">-</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="card controls-card">
+          <div class="panel-heading">
+            <p class="meta-label">Trait Controls</p>
+            <h2>Pick exact official parts</h2>
+          </div>
+
+          <form id="trait-form" class="trait-form">
+            <label>
+              <span>Background</span>
+              <select id="background-select" name="background"></select>
+            </label>
+            <label>
+              <span>Body</span>
+              <select id="body-select" name="body"></select>
+            </label>
+            <label>
+              <span>Accessory</span>
+              <select id="accessory-select" name="accessory"></select>
+            </label>
+            <label>
+              <span>Head</span>
+              <select id="head-select" name="head"></select>
+            </label>
+            <label>
+              <span>Glasses</span>
+              <select id="glasses-select" name="glasses"></select>
+            </label>
+          </form>
+        </article>
+
+        <article class="card sources-card">
+          <div class="panel-heading">
+            <p class="meta-label">Official Sources</p>
+            <h2>What this is using</h2>
+          </div>
+
+          <ul id="sources-list" class="sources-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>
