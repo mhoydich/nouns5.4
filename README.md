@@ -54,6 +54,31 @@ Official docs used for this setup:
 - `https://developers.cloudflare.com/pages/configuration/build-configuration/`
 - `https://developers.cloudflare.com/pages/configuration/custom-domains/`
 
+## Wrangler CLI Option
+
+This repo now includes a Wrangler config for Cloudflare Pages:
+
+- Project name: `industrynext-nouns`
+- Build output directory: `public`
+- Compatibility date: `2026-04-16`
+
+If you prefer terminal deploys instead of the dashboard:
+
+```sh
+npm install
+npx wrangler login
+npm run cf:project
+npm run cf:deploy
+```
+
+After deploy, the production site will be available at:
+
+`https://industrynext-nouns.pages.dev`
+
+Then add `www.industrynext.xyz` as a custom domain in Cloudflare Pages and point Namecheap `www` to:
+
+`industrynext-nouns.pages.dev`
+
 ## GitHub Pages Fallback
 
 The repository still includes a GitHub Pages workflow and the deployed artifact still contains the custom-domain file:

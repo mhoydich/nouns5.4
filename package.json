@@ -6,7 +6,10 @@
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
     "start": "node server.mjs",
-    "sync:assets": "node ./scripts/sync-nouns-data.mjs"
+    "sync:assets": "node ./scripts/sync-nouns-data.mjs",
+    "cf:dev": "wrangler pages dev public",
+    "cf:project": "wrangler pages project create industrynext-nouns --production-branch main",
+    "cf:deploy": "wrangler pages deploy public --project-name industrynext-nouns"
   },
   "dependencies": {
     "@nouns/assets": "^0.10.0",
@@ -14,5 +17,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "wrangler": "^4.83.0"
   }
 }
