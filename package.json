@@ -6,6 +6,7 @@
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
     "build": "node ./scripts/build-client.mjs",
+    "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",

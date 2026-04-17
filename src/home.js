@@ -1,8 +1,19 @@
 import { buildSVG } from "../public/lib/nouns-svg.js";
+import {
+  DEFAULT_ROOM_ID,
+  buildRoomHeadline,
+  buildRoomMeta,
+  buildRoomSummary,
+  computeRoomTelemetry,
+  escapeHtml,
+  formatCompact,
+  formatCount,
+  formatMultiplier,
+  titleCase,
+} from "../shared/drum-jam-telemetry.js";
 
 const STORAGE_KEY = "drum-nouns-jam.v1";
 const LAST_ROOM_STORAGE_KEY = "drum-nouns-jam.last-room";
-const DEFAULT_ROOM_ID = "global-jam";
 const POLL_MS = 15000;
 const DROP_LIBRARY = [
   {
@@ -69,6 +80,19 @@ const elements = {
   trendNotes: document.querySelector("#trend-notes"),
   eventFeed: document.querySelector("#event-feed"),
   stampLine: document.querySelector("#stamp-line"),
+};
+
+const headElements = {
+  description: document.querySelector("#meta-description"),
+  ogTitle: document.querySelector("#meta-og-title"),
+  ogDescription: document.querySelector("#meta-og-description"),
+  ogUrl: document.querySelector("#meta-og-url"),
+  ogImage: document.querySelector("#meta-og-image"),
+  ogImageAlt: document.querySelector("#meta-og-image-alt"),
+  twitterTitle: document.querySelector("#meta-twitter-title"),
+  twitterDescription: document.querySelector("#meta-twitter-description"),
+  twitterImage: document.querySelector("#meta-twitter-image"),
+  canonical: document.querySelector("#meta-canonical"),
 };
 
 const state = {
@@ -165,19 +189,6 @@ function readProfile() {
   }
 }
 
-function formatCount(value) {
-  return new Intl.NumberFormat("en-US", {
-    maximumFractionDigits: 0,
-  }).format(value || 0);
-}
-
-function formatCompact(value) {
-  return new Intl.NumberFormat("en-US", {
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(value || 0);
-}
-
 function formatRelativeTime(timestamp) {
   if (!timestamp) {
     return "just now";
@@ -200,31 +211,10 @@ function formatRelativeTime(timestamp) {
   return `${Math.round(delta / 3600000)}h ago`;
 }
 
-function formatMultiplier(value) {
-  return `${Number(value || 1).toFixed(2)}x`;
-}
-
 function humanize(value) {
   return String(value)
     .replace(/^(body|accessory|head|glasses)-/, "")
     .replaceAll("-", " ");
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-function titleCase(value) {
-  return String(value)
-    .split(" ")
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
 }
 
 function getDropById(dropId) {
@@ -279,93 +269,17 @@ function renderAvatar(seed, fallbackLabel = "NOUN") {
   return `<div class="stats-avatar-fallback">${escapeHtml(fallbackLabel)}</div>`;
 }
 
-function computeRoomStats(room) {
-  const activePlayers = room.players.filter((player) => player.isActive);
-  const uniqueHeads = new Set(room.players.map((player) => player.seed?.head)).size;
-  const uniqueDrops = new Set(room.players.map((player) => player.selectedDrop)).size;
-  const latestPulse = room.events.find((event) => event.type === "pulse");
-  const highestCombo = room.players.reduce(
-    (highest, player) => Math.max(highest, player.bestCombo || 0),
-    0,
-  );
-  const hypeIndex = Math.round(
-    room.metrics.activeCount * 14 +
-      room.metrics.recentReactions * 11 +
-      room.metrics.syncedBursts * 13 +
-      room.metrics.crewMultiplier * 20,
-  );
-  const pulseVelocity =
-    room.metrics.activeCount > 0
-      ? room.totals.tokens / Math.max(1, room.metrics.activeCount)
-      : room.totals.tokens;
-
-  let roomMood = "quiet reset";
-
-  if (room.metrics.activeCount >= 4 && room.metrics.syncedBursts >= 3) {
-    roomMood = "full-room parade";
-  } else if (room.metrics.recentReactions >= 3) {
-    roomMood = "reaction storm";
-  } else if (room.metrics.activeCount >= 2) {
-    roomMood = "crew build";
-  } else if (room.totals.tokens > 0) {
-    roomMood = "solo grind";
-  }
-
-  return {
-    activePlayers,
-    uniqueHeads,
-    uniqueDrops,
-    latestPulse,
-    highestCombo,
-    hypeIndex,
-    pulseVelocity,
-    roomMood,
-  };
-}
-
-function buildHeroHeadline(room, roomStats) {
-  if (roomStats.roomMood === "full-room parade") {
-    return "Full-room parade";
-  }
-
-  if (roomStats.roomMood === "reaction storm") {
-    return "Reaction storm";
-  }
-
-  if (roomStats.roomMood === "crew build") {
-    return "Crew build";
-  }
-
-  if (room.totals.tokens >= 500) {
-    return "Collectible weather";
-  }
-
-  if (room.totals.tokens > 0) {
-    return "Solo grind";
-  }
-
-  return "Fresh tape";
-}
-
-function buildHeroSummary(room, roomStats) {
-  return `${formatCount(room.events.length)} logged events, ${formatCount(
-    room.metrics.activeCount,
-  )} active drummers, and a ${formatMultiplier(
-    room.metrics.crewMultiplier,
-  )} crew bonus in ${room.roomId}.`;
-}
-
-function renderHero(room, roomStats) {
+function renderHero(room, roomTelemetry) {
   elements.roomBadge.textContent = room.roomId;
-  elements.heroHeadline.textContent = buildHeroHeadline(room, roomStats);
-  elements.heroSummary.textContent = buildHeroSummary(room, roomStats);
-  elements.roomMood.textContent = titleCase(roomStats.roomMood);
+  elements.heroHeadline.textContent = buildRoomHeadline(room, roomTelemetry);
+  elements.heroSummary.textContent = buildRoomSummary(room, roomTelemetry);
+  elements.roomMood.textContent = titleCase(roomTelemetry.roomMood);
   elements.roomTotal.textContent = formatCompact(room.totals.tokens);
   elements.activeCount.textContent = formatCount(room.metrics.activeCount);
   elements.crewMultiplier.textContent = formatMultiplier(room.metrics.crewMultiplier);
-  elements.hypeIndex.textContent = formatCount(roomStats.hypeIndex);
-  elements.pulseVelocity.textContent = formatCount(Math.round(roomStats.pulseVelocity));
-  elements.signalFill.style.width = `${Math.min(100, Math.max(8, roomStats.hypeIndex / 2.2))}%`;
+  elements.hypeIndex.textContent = formatCount(roomTelemetry.hypeIndex);
+  elements.pulseVelocity.textContent = formatCount(Math.round(roomTelemetry.pulseVelocity));
+  elements.signalFill.style.width = `${Math.min(100, Math.max(8, roomTelemetry.hypeIndex / 2.2))}%`;
   elements.enterRoomLink.href = `/jam/?room=${encodeURIComponent(room.roomId)}`;
   elements.stampLine.textContent = formatRelativeTime(room.updatedAt);
 }
@@ -527,15 +441,50 @@ function renderEventFeed(room) {
     .join("");
 }
 
-function renderAll() {
-  const roomStats = computeRoomStats(state.room);
+function syncRoomUrl(roomId) {
+  const url = new URL(window.location.href);
 
-  renderHero(state.room, roomStats);
+  if (roomId === DEFAULT_ROOM_ID) {
+    url.searchParams.delete("room");
+  } else {
+    url.searchParams.set("room", roomId);
+  }
+
+  const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+  const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+  if (nextUrl !== currentUrl) {
+    window.history.replaceState(null, "", nextUrl);
+  }
+}
+
+function syncDocumentMeta(room) {
+  const meta = buildRoomMeta(room, state.roomId || room.roomId || DEFAULT_ROOM_ID);
+
+  document.title = meta.pageTitle;
+  headElements.description?.setAttribute("content", meta.description);
+  headElements.ogTitle?.setAttribute("content", meta.socialTitle);
+  headElements.ogDescription?.setAttribute("content", meta.socialDescription);
+  headElements.ogUrl?.setAttribute("content", meta.shareUrl);
+  headElements.ogImage?.setAttribute("content", meta.ogImageUrl);
+  headElements.ogImageAlt?.setAttribute("content", meta.ogImageAlt);
+  headElements.twitterTitle?.setAttribute("content", meta.socialTitle);
+  headElements.twitterDescription?.setAttribute("content", meta.socialDescription);
+  headElements.twitterImage?.setAttribute("content", meta.ogImageUrl);
+  headElements.canonical?.setAttribute("href", meta.shareUrl);
+  syncRoomUrl(meta.roomId);
+}
+
+function renderAll() {
+  const roomTelemetry = computeRoomTelemetry(state.room);
+
+  renderHero(state.room, roomTelemetry);
   renderLocalProfile(state.profile);
-  renderRoomNouns(state.room, roomStats);
+  renderRoomNouns(state.room, roomTelemetry);
   renderLeaderboard(state.room);
-  renderTrendBoard(state.room, state.profile, roomStats);
+  renderTrendBoard(state.room, state.profile, roomTelemetry);
   renderEventFeed(state.room);
+  syncDocumentMeta(state.room);
 }
 
 async function loadImageData() {

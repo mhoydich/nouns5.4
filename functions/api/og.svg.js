@@ -1,89 +1,15 @@
 import { getRoomSnapshot, sanitizeRoomId } from "../_lib/jam-store.js";
-
-const SITE_URL = "https://www.industrynext.xyz";
-
-function formatCount(value) {
-  return new Intl.NumberFormat("en-US", {
-    maximumFractionDigits: 0,
-  }).format(value || 0);
-}
-
-function formatCompact(value) {
-  return new Intl.NumberFormat("en-US", {
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(value || 0);
-}
-
-function formatMultiplier(value) {
-  return `${Number(value || 1).toFixed(2)}x`;
-}
-
-function escapeText(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-function titleCase(value) {
-  return String(value)
-    .split(" ")
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function computeMood(snapshot) {
-  if (snapshot.metrics.activeCount >= 4 && snapshot.metrics.syncedBursts >= 3) {
-    return "full-room parade";
-  }
-
-  if (snapshot.metrics.recentReactions >= 3) {
-    return "reaction storm";
-  }
-
-  if (snapshot.metrics.activeCount >= 2) {
-    return "crew build";
-  }
-
-  if (snapshot.totals.tokens > 0) {
-    return "solo grind";
-  }
-
-  return "fresh tape";
-}
-
-function buildPrimaryLine(snapshot, participantCount, mood) {
-  if (snapshot.metrics.activeCount > 0) {
-    return `${formatCount(snapshot.metrics.activeCount)} active drummers right now`;
-  }
-
-  if (participantCount > 0) {
-    return `${formatCount(participantCount)} drummers in the room`;
-  }
-
-  if (mood === "fresh tape") {
-    return "First drummer sets the room weather";
-  }
-
-  return "Room telemetry is live";
-}
-
-function buildSecondaryLine(snapshot, participantCount) {
-  if (!participantCount) {
-    return "Open the room, stack DRUM, wake the crew bonus, and make the tape worth sharing.";
-  }
-
-  const leadPlayer = snapshot.players[0];
-  const leaderLine = leadPlayer
-    ? `${leadPlayer.name} is currently leading the room with ${formatCount(leadPlayer.totalTokens)} DRUM.`
-    : "The room is already in motion.";
-
-  return `${leaderLine} Jump in at ${SITE_URL.replace("https://", "")}/jam to add your hits, unlock drops, and nudge the numbers.`;
-}
+import {
+  buildRoomMeta,
+  buildRoomPrimaryLine,
+  buildRoomSecondaryLine,
+  computeRoomTelemetry,
+  escapeHtml,
+  formatCompact,
+  formatCount,
+  formatMultiplier,
+  titleCase,
+} from "../../shared/drum-jam-telemetry.js";
 
 function renderParticipantDots(count) {
   const visibleCount = Math.max(1, Math.min(10, count || 1));
@@ -113,8 +39,9 @@ function renderBars(players) {
       const width = Math.max(18, Math.round((player.totalTokens / topValue) * 230));
       const y = 430 + index * 38;
       const fill = index === 0 ? "url(#barLead)" : "url(#barOther)";
+
       return `
-        <text x="70" y="${y}" fill="#D2DBE8" font-size="20" font-weight="700">${escapeText(player.name)}</text>
+        <text x="70" y="${y}" fill="#D2DBE8" font-size="20" font-weight="700">${escapeHtml(player.name)}</text>
         <text x="318" y="${y}" fill="#8FA0B6" font-size="18">${formatCount(player.totalTokens)} DRUM</text>
         <rect x="462" y="${y - 18}" width="248" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.08" />
         <rect x="462" y="${y - 18}" width="${width}" height="16" rx="8" fill="${fill}" />
@@ -124,11 +51,11 @@ function renderBars(players) {
 }
 
 function renderSvg(snapshot, roomId) {
-  const participantCount = snapshot.players.length;
-  const mood = computeMood(snapshot);
-  const participantsLabel = participantCount === 1 ? "participant" : "participants";
-  const primaryLine = buildPrimaryLine(snapshot, participantCount, mood);
-  const secondaryLine = buildSecondaryLine(snapshot, participantCount);
+  const telemetry = computeRoomTelemetry(snapshot);
+  const meta = buildRoomMeta(snapshot, roomId);
+  const participantsLabel = telemetry.participantCount === 1 ? "participant" : "participants";
+  const primaryLine = buildRoomPrimaryLine(snapshot, telemetry);
+  const secondaryLine = buildRoomSecondaryLine(snapshot, telemetry);
   const latestEvent = snapshot.events[0]?.message || "No tape yet. The next drummer gets the opener.";
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -167,52 +94,52 @@ function renderSvg(snapshot, roomId) {
 
   <text x="72" y="88" fill="#FFCF72" font-size="18" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="2.4">INDUSTRY NEXT / LIVE ROOM</text>
   <rect x="895" y="58" width="233" height="42" rx="21" fill="#182130" stroke="#FFFFFF" stroke-opacity="0.12" />
-  <text x="918" y="85" fill="#F7F3EC" font-size="18" font-family="'IBM Plex Mono', monospace" font-weight="700">/${escapeText(roomId)}</text>
+  <text x="918" y="85" fill="#F7F3EC" font-size="18" font-family="'IBM Plex Mono', monospace" font-weight="700">/${escapeHtml(roomId)}</text>
 
   <text x="72" y="168" fill="#F7F3EC" font-size="60" font-family="system-ui, sans-serif" font-weight="800">Drum Nouns Jam</text>
-  <text x="72" y="226" fill="#52E4DC" font-size="34" font-family="system-ui, sans-serif" font-weight="760">${escapeText(primaryLine)}</text>
-  <text x="72" y="276" fill="#C9D4E3" font-size="24" font-family="system-ui, sans-serif" font-weight="520">${escapeText(secondaryLine)}</text>
+  <text x="72" y="226" fill="#52E4DC" font-size="34" font-family="system-ui, sans-serif" font-weight="760">${escapeHtml(primaryLine)}</text>
+  <text x="72" y="276" fill="#C9D4E3" font-size="24" font-family="system-ui, sans-serif" font-weight="520">${escapeHtml(secondaryLine)}</text>
 
   <g>
     <rect x="72" y="320" width="286" height="106" rx="20" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.08" />
     <text x="96" y="354" fill="#8FA0B6" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">PARTICIPANTS</text>
-    <text x="96" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatCount(participantCount)} ${participantsLabel}</text>
+    <text x="96" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatCount(telemetry.participantCount)} ${participantsLabel}</text>
     <text x="96" y="426" fill="#8FA0B6" font-size="17" font-family="system-ui, sans-serif">People currently tracked in the room.</text>
   </g>
 
   <g>
     <rect x="376" y="320" width="200" height="106" rx="20" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.08" />
     <text x="400" y="354" fill="#8FA0B6" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">ROOM TOTAL</text>
-    <text x="400" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatCompact(snapshot.totals.tokens)}</text>
+    <text x="400" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatCompact(snapshot.totals?.tokens || 0)}</text>
     <text x="400" y="426" fill="#8FA0B6" font-size="17" font-family="system-ui, sans-serif">DRUM in the current tape.</text>
   </g>
 
   <g>
     <rect x="594" y="320" width="200" height="106" rx="20" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.08" />
     <text x="618" y="354" fill="#8FA0B6" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">CREW BONUS</text>
-    <text x="618" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatMultiplier(snapshot.metrics.crewMultiplier)}</text>
-    <text x="618" y="426" fill="#8FA0B6" font-size="17" font-family="system-ui, sans-serif">${escapeText(titleCase(mood))}</text>
+    <text x="618" y="402" fill="#F7F3EC" font-size="42" font-family="system-ui, sans-serif" font-weight="800">${formatMultiplier(snapshot.metrics?.crewMultiplier || 1)}</text>
+    <text x="618" y="426" fill="#8FA0B6" font-size="17" font-family="system-ui, sans-serif">${escapeHtml(titleCase(telemetry.roomMood))}</text>
   </g>
 
   <g>
     <rect x="812" y="320" width="316" height="106" rx="20" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.08" />
     <text x="836" y="354" fill="#8FA0B6" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">TAP IN</text>
-    <text x="836" y="394" fill="#F7F3EC" font-size="28" font-family="system-ui, sans-serif" font-weight="780">Visit ${SITE_URL.replace("https://", "")}/jam</text>
+    <text x="836" y="394" fill="#F7F3EC" font-size="28" font-family="system-ui, sans-serif" font-weight="780">Visit ${meta.jamUrl.replace("https://", "")}</text>
     <text x="836" y="423" fill="#8FA0B6" font-size="17" font-family="system-ui, sans-serif">Play the room, raise the bonus, mint the drop.</text>
   </g>
 
   <g>
     <text x="72" y="485" fill="#FFCF72" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">LIVE TAPE</text>
-    <text x="72" y="522" fill="#C9D4E3" font-size="24" font-family="system-ui, sans-serif" font-weight="600">${escapeText(latestEvent)}</text>
-    ${renderBars(snapshot.players)}
+    <text x="72" y="522" fill="#C9D4E3" font-size="24" font-family="system-ui, sans-serif" font-weight="600">${escapeHtml(latestEvent)}</text>
+    ${renderBars(snapshot.players || [])}
   </g>
 
   <g>
     <rect x="760" y="114" width="368" height="166" rx="28" fill="url(#panel)" stroke="#FFFFFF" stroke-opacity="0.08" />
     <text x="792" y="154" fill="#8FA0B6" font-size="16" font-family="'IBM Plex Mono', monospace" font-weight="700" letter-spacing="1.4">NOUN CROWD</text>
-    <text x="792" y="190" fill="#F7F3EC" font-size="28" font-family="system-ui, sans-serif" font-weight="760">${formatCount(snapshot.metrics.activeCount)} active now</text>
+    <text x="792" y="190" fill="#F7F3EC" font-size="28" font-family="system-ui, sans-serif" font-weight="760">${formatCount(snapshot.metrics?.activeCount || 0)} active now</text>
     <text x="792" y="220" fill="#8FA0B6" font-size="18" font-family="system-ui, sans-serif">Share the room. Bring more drummers. Change the card.</text>
-    ${renderParticipantDots(snapshot.metrics.activeCount || participantCount)}
+    ${renderParticipantDots(snapshot.metrics?.activeCount || telemetry.participantCount)}
   </g>
 
   <g transform="translate(1016 474)">
