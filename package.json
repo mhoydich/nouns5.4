@@ -5,12 +5,13 @@
   "type": "module",
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
-    "start": "wrangler pages dev public",
-    "serve:static": "node server.mjs",
+    "build": "node ./scripts/build-client.mjs",
+    "start": "npm run build && wrangler pages dev public",
+    "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
-    "cf:dev": "wrangler pages dev public",
+    "cf:dev": "npm run build && wrangler pages dev public",
     "cf:project": "wrangler pages project create industrynext-nouns --production-branch main",
-    "cf:deploy": "wrangler pages deploy public --project-name industrynext-nouns"
+    "cf:deploy": "npm run build && wrangler pages deploy public --project-name industrynext-nouns"
   },
   "dependencies": {
     "@nouns/assets": "^0.10.0",
@@ -18,12 +19,17 @@
     "@taquito/beacon-wallet": "^24.2.0",
     "@taquito/taquito": "^24.2.0",
     "@taquito/utils": "^24.2.0",
-    "@tezos-x/octez.connect-types": "^4.8.3"
+    "@tezos-x/octez.connect-types": "^4.8.3",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "esbuild": "^0.28.0",
     "wrangler": "^4.83.0"
   }
 }

@@ -1,6 +1,6 @@
 # Nouns Web Prototype
 
-Local browser prototype that renders authentic Nouns using the official asset data and SVG builder, plus a Tezos testnet minting flow.
+Local browser prototype that renders authentic Nouns using the official asset data and SVG builder, plus a bundled Tezos testnet minting flow and a local gallery queue for saved drafts.
 
 ## Sources used
 
@@ -20,7 +20,7 @@ npm start
 
 Then open `http://localhost:8788`.
 
-`npm start` runs the full Cloudflare Pages app locally, including the dynamic routes used for mint metadata and SVG rendering.
+`npm start` builds the browser bundle first, then runs the full Cloudflare Pages app locally, including the dynamic routes used for mint metadata and SVG rendering.
 
 If you only want the older static server without Pages Functions:
 
@@ -28,9 +28,15 @@ If you only want the older static server without Pages Functions:
 npm run serve:static
 ```
 
+If you only want to refresh the browser bundle:
+
+```sh
+npm run build
+```
+
 ## Tezos Minting
 
-The mint panel connects to Tezos wallets through Taquito/Beacon-compatible wallet flows and mints on the Tezos `Shadownet` testnet using the official tutorial contract:
+The mint panel connects to Tezos wallets through a bundled Taquito/Beacon flow and mints on the Tezos `Shadownet` testnet using the official tutorial contract:
 
 - Contract: `KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ`
 - Explorer: `https://shadownet.tzkt.io/KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ`
@@ -45,7 +51,7 @@ This keeps minted NFTs pointing at a stable image URL and metadata URL hosted by
 
 ## Cloudflare Pages
 
-This app is already static, so Cloudflare Pages can deploy `public/` directly from GitHub without a build step.
+The deployed site still publishes `public/`, but the browser client is now generated from `src/app.js`, so Cloudflare Pages should run the build before serving the output directory.
 
 Recommended setup:
 
@@ -53,7 +59,7 @@ Recommended setup:
 2. Use these build settings:
 
 - Framework preset: `None`
-- Build command: `exit 0`
+- Build command: `npm run build`
 - Build output directory: `public`
 - Production branch: `main`
 

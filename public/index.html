@@ -2,253 +2,267 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nouns Original Art Prototype</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="A mobile-first collaborative drum clicker built with Nouns-inspired avatars and Tezos collectible minting."
+    />
+    <meta name="theme-color" content="#ff7a1a" />
+    <title>Drum Nouns Jam</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app-shell">
-      <section class="hero">
-        <div class="hero-bar">
-          <div class="hero-copy">
-            <p class="eyebrow">Industry Next / Nouns Publisher</p>
-            <h1>Nouns Utility Console</h1>
-            <p class="hero-summary">
-              Generate from official Nouns art, inspect live assets, and mint to Tezos testnet
-              without leaving the same working surface.
+      <header class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Nouns x Tezos x collaborative rhythm</p>
+          <h1>Drum Nouns Jam</h1>
+          <p class="hero-summary">
+            Tap the pad, stack DRUM, show up as your own noun, and mint collectible drops on
+            Tezos testnet with the room.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <label class="pill-field" for="room-input">
+            <span>Room</span>
+            <input
+              id="room-input"
+              name="room"
+              type="text"
+              maxlength="24"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <button id="share-room-button" class="secondary-button" type="button">Share room</button>
+        </div>
+
+        <div class="hero-stats" aria-label="Game stats">
+          <div class="hero-stat">
+            <span>Mode</span>
+            <strong>collab clicker</strong>
+          </div>
+          <div class="hero-stat">
+            <span>Social</span>
+            <strong>hype, crew, drops</strong>
+          </div>
+          <div class="hero-stat">
+            <span>Mint</span>
+            <strong>DRUM collectible</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="stage-layout">
+        <article class="panel jam-panel">
+          <div class="panel-heading jam-heading">
+            <div class="identity-card">
+              <div id="player-avatar" class="player-avatar" aria-hidden="true"></div>
+              <div class="identity-copy">
+                <p class="eyebrow">Your noun drummer</p>
+                <label class="identity-name" for="player-name-input">
+                  <span class="sr-only">Player name</span>
+                  <input
+                    id="player-name-input"
+                    name="playerName"
+                    type="text"
+                    maxlength="24"
+                    autocomplete="nickname"
+                    spellcheck="false"
+                  />
+                </label>
+                <p id="identity-line" class="identity-line">Loading your groove profile...</p>
+              </div>
+            </div>
+
+            <div class="identity-actions">
+              <button id="randomize-avatar-button" class="ghost-button" type="button">
+                Shuffle noun
+              </button>
+              <button id="sound-toggle-button" class="ghost-button" type="button">Sound on</button>
+            </div>
+          </div>
+
+          <div class="score-grid" aria-label="Personal and room stats">
+            <article class="score-card accent-orange">
+              <span>Your DRUM</span>
+              <strong id="player-token-count">0</strong>
+              <small>personal token stash</small>
+            </article>
+            <article class="score-card accent-cyan">
+              <span>Room total</span>
+              <strong id="room-token-count">0</strong>
+              <small>everyone's shared output</small>
+            </article>
+            <article class="score-card accent-sand">
+              <span>Combo</span>
+              <strong id="combo-count">0x</strong>
+              <small>tap streak multiplier</small>
+            </article>
+            <article class="score-card accent-lime">
+              <span>Crew bonus</span>
+              <strong id="crew-multiplier">1.00x</strong>
+              <small>more live drummers, more yield</small>
+            </article>
+          </div>
+
+          <button id="drum-pad" class="drum-pad" type="button" aria-label="Drum pad">
+            <span class="drum-ring drum-ring-a" aria-hidden="true"></span>
+            <span class="drum-ring drum-ring-b" aria-hidden="true"></span>
+            <span class="drum-ring drum-ring-c" aria-hidden="true"></span>
+            <span class="drum-center">
+              <span class="drum-kicker">Tap / drum / click</span>
+              <strong id="drum-gain">+1 DRUM</strong>
+              <small id="combo-caption">Build a groove to unlock louder drops.</small>
+            </span>
+            <span class="drum-orbit drum-orbit-a" aria-hidden="true"></span>
+            <span class="drum-orbit drum-orbit-b" aria-hidden="true"></span>
+          </button>
+
+          <div class="reaction-row" aria-label="Social actions">
+            <button class="reaction-button" data-reaction="CLAP" type="button">Clap burst</button>
+            <button class="reaction-button" data-reaction="LASER" type="button">Laser flash</button>
+            <button class="reaction-button" data-reaction="BOOM" type="button">Boom drop</button>
+          </div>
+
+          <section class="panel-section">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Collection</p>
+                <h2>Unlocked drum drops</h2>
+              </div>
+              <p id="collection-status" class="section-note">Starter crate is ready.</p>
+            </div>
+
+            <div id="unlock-shelf" class="unlock-shelf" aria-live="polite"></div>
+          </section>
+        </article>
+
+        <div class="side-stack">
+          <article class="panel crew-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Crew</p>
+                <h2>Room drummers</h2>
+              </div>
+              <div class="inline-pills">
+                <span id="crew-count" class="inline-pill">0 active</span>
+                <span id="room-sync-status" class="inline-pill muted-pill">Syncing...</span>
+              </div>
+            </div>
+
+            <p id="room-status-line" class="section-note">
+              People show up as noun avatars and boost the room just by playing.
             </p>
-          </div>
 
-          <div class="hero-flags">
-            <span class="hero-flag">Original Art</span>
-            <span class="hero-flag">Tezos Testnet</span>
-            <span class="hero-flag">Cloudflare Live</span>
-          </div>
+            <div id="crew-list" class="crew-list" aria-live="polite"></div>
+          </article>
+
+          <article class="panel social-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Social</p>
+                <h2>Hype feed</h2>
+              </div>
+              <span id="share-status" class="inline-pill muted-pill">Invite the room</span>
+            </div>
+
+            <div id="feed-list" class="feed-list" aria-live="polite"></div>
+          </article>
+
+          <article class="panel mint-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Tezos</p>
+                <h2>Mint the current drop</h2>
+              </div>
+              <span id="selected-drop-pill" class="inline-pill">Starter crate</span>
+            </div>
+
+            <div class="wallet-actions">
+              <button id="wallet-button" class="primary-button" type="button">Connect wallet</button>
+              <button
+                id="disconnect-wallet-button"
+                class="ghost-button"
+                type="button"
+                hidden
+              >
+                Disconnect
+              </button>
+            </div>
+
+            <p id="wallet-status-line" class="status-line">
+              Connect a Tezos wallet to collect your current DRUM drop.
+            </p>
+
+            <div class="mint-summary" aria-label="Wallet and mint details">
+              <div class="summary-chip">
+                <span>Network</span>
+                <strong id="network-name">Tezos testnet</strong>
+              </div>
+              <div class="summary-chip">
+                <span>Wallet</span>
+                <strong id="wallet-address">Not connected</strong>
+              </div>
+              <div class="summary-chip">
+                <span>Balance</span>
+                <strong id="wallet-balance">-</strong>
+              </div>
+              <div class="summary-chip">
+                <span>Contract</span>
+                <strong id="contract-address">-</strong>
+              </div>
+            </div>
+
+            <div class="mint-form">
+              <label>
+                <span>Token name</span>
+                <input id="token-name-input" name="tokenName" type="text" />
+              </label>
+              <label>
+                <span>Drop note</span>
+                <textarea
+                  id="token-description-input"
+                  name="tokenDescription"
+                  rows="4"
+                ></textarea>
+              </label>
+            </div>
+
+            <div class="link-stack">
+              <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Open live noun art</a>
+              <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">
+                Open DRUM metadata
+              </a>
+              <a
+                href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Tezos wallet + mint docs
+              </a>
+              <a
+                href="https://docs.tezos.com/architecture/tokens/FA2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                FA2 token standard
+              </a>
+            </div>
+
+            <div class="wallet-actions">
+              <button id="mint-button" class="primary-button" type="button">Mint DRUM drop</button>
+              <button id="download-svg-button" class="ghost-button" type="button">Download SVG</button>
+              <button id="download-metadata-button" class="ghost-button" type="button">
+                Download metadata
+              </button>
+            </div>
+
+            <p id="mint-status-line" class="status-line">Pick a drop and connect your wallet.</p>
+            <p id="mint-result-line" class="status-line"></p>
+          </article>
         </div>
-
-        <div class="hero-utility-row">
-          <div class="hero-command">
-            <span class="prompt">$</span>
-            <code>noun-console --mode publish --network tezos-shadownet --seed current</code>
-          </div>
-
-          <div class="hero-stats" aria-label="Console status">
-            <div class="hero-stat">
-              <span>Render</span>
-              <strong>Live SVG</strong>
-            </div>
-            <div class="hero-stat">
-              <span>Metadata</span>
-              <strong>JSON Ready</strong>
-            </div>
-            <div class="hero-stat">
-              <span>Mint</span>
-              <strong>Shadownet</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="studio-grid">
-        <article class="card preview-card">
-          <div class="window-chrome" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <p>render-preview</p>
-          </div>
-
-          <div class="preview-meta">
-            <div>
-              <p class="meta-label">Render Surface</p>
-              <h2 id="noun-title">Loading noun…</h2>
-            </div>
-            <button id="randomize-button" class="primary-button" type="button">Randomize Seed</button>
-          </div>
-
-          <p id="status-line" class="status-line">Loading official asset catalog…</p>
-
-          <div id="noun-frame" class="noun-frame" aria-live="polite"></div>
-
-          <div class="trait-summary">
-            <div class="summary-chip">
-              <span>Body</span>
-              <strong id="body-name">-</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Accessory</span>
-              <strong id="accessory-name">-</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Head</span>
-              <strong id="head-name">-</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Glasses</span>
-              <strong id="glasses-name">-</strong>
-            </div>
-          </div>
-        </article>
-
-        <article class="card controls-card">
-          <div class="window-chrome" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <p>trait-registry</p>
-          </div>
-
-          <div class="panel-heading">
-            <p class="meta-label">Trait Controls</p>
-            <h2>Direct component selection</h2>
-          </div>
-
-          <p class="panel-copy">
-            Each selector maps directly to the official Nouns asset index. Change a field and the
-            preview, URLs, and mint payload update immediately.
-          </p>
-
-          <form id="trait-form" class="trait-form">
-            <label>
-              <span>Background</span>
-              <small>Scene substrate</small>
-              <select id="background-select" name="background"></select>
-            </label>
-            <label>
-              <span>Body</span>
-              <small>Base figure</small>
-              <select id="body-select" name="body"></select>
-            </label>
-            <label>
-              <span>Accessory</span>
-              <small>Handheld or add-on</small>
-              <select id="accessory-select" name="accessory"></select>
-            </label>
-            <label>
-              <span>Head</span>
-              <small>Primary silhouette</small>
-              <select id="head-select" name="head"></select>
-            </label>
-            <label>
-              <span>Glasses</span>
-              <small>Identity layer</small>
-              <select id="glasses-select" name="glasses"></select>
-            </label>
-          </form>
-        </article>
-
-        <article class="card mint-card">
-          <div class="window-chrome" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <p>tezos-mint</p>
-          </div>
-
-          <div class="panel-heading">
-            <p class="meta-label">Tezos Mint</p>
-            <h2>Wallet-safe testnet publish flow</h2>
-          </div>
-
-          <div class="wallet-actions">
-            <button id="wallet-button" class="secondary-button" type="button">Connect Wallet</button>
-            <button id="mint-button" class="primary-button" type="button">Mint on Tezos Testnet</button>
-          </div>
-
-          <p id="wallet-status-line" class="status-line">
-            This prototype uses the official Tezos NFT tutorial contract on Shadownet testnet.
-          </p>
-
-          <div class="mint-summary">
-            <div class="summary-chip">
-              <span>Network</span>
-              <strong id="network-name">Tezos Shadownet</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Wallet</span>
-              <strong id="wallet-address">Not connected</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Balance</span>
-              <strong id="wallet-balance">-</strong>
-            </div>
-            <div class="summary-chip">
-              <span>Contract</span>
-              <strong id="contract-address">-</strong>
-            </div>
-          </div>
-
-          <form id="mint-form" class="mint-form">
-            <label>
-              <span>Token name</span>
-              <small>Human-readable label for wallets and explorers</small>
-              <input id="token-name-input" name="tokenName" type="text" />
-            </label>
-            <label>
-              <span>Description</span>
-              <small>Plain-language metadata copy</small>
-              <textarea id="token-description-input" name="tokenDescription" rows="4"></textarea>
-            </label>
-          </form>
-
-          <div class="link-stack">
-            <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Open live SVG asset</a>
-            <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">Open token metadata JSON</a>
-            <a
-              href="https://shadownet.tzkt.io/KT1NbqYinUijW68V3fxboo4EzQPFgRcdfaYQ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open tutorial contract explorer
-            </a>
-            <a
-              href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Read official Tezos mint guide
-            </a>
-          </div>
-
-          <div class="download-actions">
-            <button id="download-svg-button" class="ghost-button" type="button">Download SVG</button>
-            <button id="download-metadata-button" class="ghost-button" type="button">
-              Download Metadata
-            </button>
-            <button
-              id="disconnect-wallet-button"
-              class="ghost-button"
-              type="button"
-              hidden
-            >
-              Disconnect
-            </button>
-          </div>
-
-          <p id="mint-status-line" class="status-line">Connect a Tezos wallet to mint this noun.</p>
-          <p id="mint-result-line" class="status-line"></p>
-        </article>
-
-        <article class="card sources-card">
-          <div class="window-chrome" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <p>source-log</p>
-          </div>
-
-          <div class="panel-heading">
-            <p class="meta-label">References</p>
-            <h2>Verified building blocks</h2>
-          </div>
-
-          <p class="panel-copy">
-            These links are the actual asset, rendering, and Tezos standards this utility console is
-            using under the hood.
-          </p>
-
-          <ul id="sources-list" class="sources-list"></ul>
-        </article>
       </section>
     </main>
 
