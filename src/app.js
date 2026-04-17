@@ -1142,7 +1142,8 @@ async function shareRoom() {
 
 async function ensureTezosToolkit() {
   if (!tezosSdkPromise) {
-    tezosSdkPromise = import("./tezos-client.js");
+    const tezosClientUrl = new URL("/tezos-client.js", window.location.origin);
+    tezosSdkPromise = import(tezosClientUrl.toString());
   }
 
   tezosSdk = tezosSdk || (await tezosSdkPromise);
@@ -1372,7 +1373,7 @@ function bindEvents() {
 }
 
 async function loadImageData() {
-  const response = await fetch("./data/image-data.json");
+  const response = await fetch("/data/image-data.json");
 
   if (!response.ok) {
     throw new Error("Failed to load official Nouns image data.");

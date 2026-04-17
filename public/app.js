@@ -990,7 +990,8 @@ async function shareRoom() {
 }
 async function ensureTezosToolkit() {
   if (!tezosSdkPromise) {
-    tezosSdkPromise = import("./chunks/tezos-client-VNDLGO3Q.js");
+    const tezosClientUrl = new URL("/tezos-client.js", window.location.origin);
+    tezosSdkPromise = import(tezosClientUrl.toString());
   }
   tezosSdk = tezosSdk || await tezosSdkPromise;
   if (!tezosToolkit) {
@@ -1177,7 +1178,7 @@ function bindEvents() {
   });
 }
 async function loadImageData() {
-  const response = await fetch("./data/image-data.json");
+  const response = await fetch("/data/image-data.json");
   if (!response.ok) {
     throw new Error("Failed to load official Nouns image data.");
   }

@@ -10,7 +10,7 @@ const publicDir = resolve(rootDir, "public");
 await rm(resolve(publicDir, "chunks"), { force: true, recursive: true });
 
 await build({
-  entryPoints: [resolve(rootDir, "src/app.js")],
+  entryPoints: [resolve(rootDir, "src/app.js"), resolve(rootDir, "src/tezos-client.js")],
   outdir: publicDir,
   bundle: true,
   format: "esm",
