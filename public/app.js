@@ -4,7 +4,6 @@ const OFFICIAL_SOURCES = {
   assetsPackage: "@nouns/assets",
   sdkPackage: "@nouns/sdk",
   monorepo: "https://github.com/nounsDAO/nouns-monorepo",
-  docs: "https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages",
   descriptorAddress: "0x33A9c445fb4FB21f2c030A6b2d3e2F12D017BFAC",
 };
 
@@ -182,7 +181,6 @@ function renderSources() {
     <li><strong>${OFFICIAL_SOURCES.sdkPackage}</strong> for the SVG assembly path used by Nouns</li>
     <li><strong>Nouns Descriptor</strong> mainnet contract ${OFFICIAL_SOURCES.descriptorAddress}</li>
     <li><a href="${OFFICIAL_SOURCES.monorepo}" target="_blank" rel="noreferrer">Official monorepo</a></li>
-    <li><a href="${OFFICIAL_SOURCES.docs}" target="_blank" rel="noreferrer">GitHub Pages workflow docs</a></li>
   `;
 }
 
