@@ -208,8 +208,82 @@ function serializeRoom(room) {
   };
 }
 
+function buildDailySpotlightRoomId(now = Date.now()) {
+  const date = new Date(now);
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+
+  return sanitizeRoomId(`daily-${year}${month}${day}`);
+}
+
+function summarizeRoom(snapshot) {
+  const leader = snapshot.players[0] || null;
+  const latestEvent = snapshot.events[0] || null;
+  const participantCount = snapshot.players.length;
+  const highestCombo = snapshot.players.reduce(
+    (highest, player) => Math.max(highest, player.bestCombo || 0),
+    0,
+  );
+  const freshnessWindow = Math.max(0, 600 - Math.round((Date.now() - snapshot.updatedAt) / 1000));
+  const score =
+    (snapshot.metrics?.activeCount || 0) * 120 +
+    (snapshot.metrics?.recentReactions || 0) * 42 +
+    (snapshot.metrics?.syncedBursts || 0) * 36 +
+    Math.min(120, Math.round((snapshot.totals?.tokens || 0) / 24)) +
+    Math.min(48, participantCount * 8) +
+    Math.min(24, Math.round(highestCombo * 1.5)) +
+    Math.min(60, freshnessWindow / 10);
+
+  return {
+    roomId: snapshot.roomId,
+    updatedAt: snapshot.updatedAt,
+    activeCount: snapshot.metrics?.activeCount || 0,
+    participantCount,
+    totalTokens: snapshot.totals?.tokens || 0,
+    crewMultiplier: snapshot.metrics?.crewMultiplier || 1,
+    recentReactions: snapshot.metrics?.recentReactions || 0,
+    syncedBursts: snapshot.metrics?.syncedBursts || 0,
+    highestCombo,
+    topPlayerName: leader?.name || "",
+    topPlayerSeed: leader?.seed || null,
+    leadTokens: leader?.totalTokens || 0,
+    latestEventType: latestEvent?.type || "",
+    latestEventMessage: latestEvent?.message || "",
+    score: Math.round(score),
+  };
+}
+
 export function getRoomSnapshot(roomId) {
   return serializeRoom(ensureRoom(roomId));
+}
+
+export function getRoomDirectory(limitInput = 6) {
+  cleanupStore();
+  const limit = sanitizeNumber(limitInput, 6, 12);
+  const snapshots = [...getStore().values()].map((room) => serializeRoom(room));
+  const summaries = snapshots
+    .map((snapshot) => summarizeRoom(snapshot))
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      return (right.updatedAt || 0) - (left.updatedAt || 0);
+    });
+
+  return {
+    updatedAt: Date.now(),
+    spotlightRoomId: buildDailySpotlightRoomId(),
+    totals: {
+      rooms: summaries.length,
+      liveRooms: summaries.filter((room) => room.activeCount > 0).length,
+      activeDrummers: summaries.reduce((sum, room) => sum + room.activeCount, 0),
+      participants: summaries.reduce((sum, room) => sum + room.participantCount, 0),
+      tokens: summaries.reduce((sum, room) => sum + room.totalTokens, 0),
+    },
+    rooms: summaries.slice(0, limit),
+  };
 }
 
 export function joinRoom(roomId, playerInput) {

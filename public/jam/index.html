@@ -56,34 +56,58 @@
       </header>
 
       <section class="stage-layout">
-        <article class="panel jam-panel">
+        <article class="panel jam-panel play-panel">
           <div class="panel-heading jam-heading">
             <div class="identity-card">
               <div id="player-avatar" class="player-avatar" aria-hidden="true"></div>
               <div class="identity-copy">
                 <p class="eyebrow">Your noun drummer</p>
-                <label class="identity-name" for="player-name-input">
-                  <span class="sr-only">Player name</span>
-                  <input
-                    id="player-name-input"
-                    name="playerName"
-                    type="text"
-                    maxlength="24"
-                    autocomplete="nickname"
-                    spellcheck="false"
-                  />
-                </label>
+                <div class="identity-name-shell">
+                  <span class="identity-meta-label">Stage name</span>
+                  <label class="identity-name" for="player-name-input">
+                    <span class="sr-only">Player name</span>
+                    <input
+                      id="player-name-input"
+                      name="playerName"
+                      type="text"
+                      maxlength="24"
+                      autocomplete="nickname"
+                      spellcheck="false"
+                      placeholder="Rim Rider"
+                    />
+                  </label>
+                </div>
                 <p id="identity-line" class="identity-line">Loading your groove profile...</p>
               </div>
             </div>
 
             <div class="identity-actions">
+              <button id="randomize-name-button" class="ghost-button" type="button">
+                Random name
+              </button>
               <button id="randomize-avatar-button" class="ghost-button" type="button">
-                Shuffle noun
+                Regenerate noun
+              </button>
+              <button id="randomize-profile-button" class="secondary-button" type="button">
+                Remix all
               </button>
               <button id="sound-toggle-button" class="ghost-button" type="button">Sound on</button>
             </div>
           </div>
+
+          <button id="drum-pad" class="drum-pad" type="button" aria-label="Drum pad">
+            <span class="drum-ring drum-ring-a" aria-hidden="true"></span>
+            <span class="drum-ring drum-ring-b" aria-hidden="true"></span>
+            <span class="drum-ring drum-ring-c" aria-hidden="true"></span>
+            <div id="crowd-stage" class="crowd-stage" aria-live="polite"></div>
+            <span class="drum-center">
+              <span class="drum-kicker">Tap / drum / click</span>
+              <strong id="drum-gain">+1 DRUM</strong>
+              <small id="combo-caption">Build a groove to unlock louder drops.</small>
+            </span>
+            <span class="drum-orbit drum-orbit-a" aria-hidden="true"></span>
+            <span class="drum-orbit drum-orbit-b" aria-hidden="true"></span>
+          </button>
 
           <div class="score-grid" aria-label="Personal and room stats">
             <article class="score-card accent-orange">
@@ -108,163 +132,557 @@
             </article>
           </div>
 
-          <button id="drum-pad" class="drum-pad" type="button" aria-label="Drum pad">
-            <span class="drum-ring drum-ring-a" aria-hidden="true"></span>
-            <span class="drum-ring drum-ring-b" aria-hidden="true"></span>
-            <span class="drum-ring drum-ring-c" aria-hidden="true"></span>
-            <span class="drum-center">
-              <span class="drum-kicker">Tap / drum / click</span>
-              <strong id="drum-gain">+1 DRUM</strong>
-              <small id="combo-caption">Build a groove to unlock louder drops.</small>
-            </span>
-            <span class="drum-orbit drum-orbit-a" aria-hidden="true"></span>
-            <span class="drum-orbit drum-orbit-b" aria-hidden="true"></span>
-          </button>
-
           <div class="reaction-row" aria-label="Social actions">
             <button class="reaction-button" data-reaction="CLAP" type="button">Clap burst</button>
             <button class="reaction-button" data-reaction="LASER" type="button">Laser flash</button>
             <button class="reaction-button" data-reaction="BOOM" type="button">Boom drop</button>
           </div>
 
-          <section class="panel-section">
+          <section class="power-up-panel" aria-label="Equipped power-up">
             <div class="section-head">
               <div>
-                <p class="eyebrow">Collection</p>
-                <h2>Unlocked drum drops</h2>
+                <p class="eyebrow">Power-up</p>
+                <h2>Equipped drop ability</h2>
               </div>
-              <p id="collection-status" class="section-note">Starter crate is ready.</p>
+              <span id="power-up-status-pill" class="inline-pill muted-pill">Ready now</span>
             </div>
 
-            <div id="unlock-shelf" class="unlock-shelf" aria-live="polite"></div>
+            <div class="power-up-hero">
+              <div class="power-up-copy">
+                <p id="power-up-name" class="power-up-name">Garage Kick • Backbeat Battery</p>
+                <p id="power-up-description" class="power-up-description">
+                  For 10 seconds every hit adds +1 DRUM. Clean, steady, and easy to stack with
+                  your combo.
+                </p>
+              </div>
+              <button id="activate-power-up-button" class="primary-button" type="button">
+                Fire power-up
+              </button>
+            </div>
+
+            <div class="power-up-meter" aria-hidden="true">
+              <span id="power-up-meter-fill" class="power-up-meter-fill"></span>
+            </div>
+
+            <p id="power-up-note" class="section-note">
+              Equip a different drop to swap to a new ability.
+            </p>
           </section>
+
+          <section class="collab-strip" aria-label="Live room activity">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Live room</p>
+                <h2>Stage presence</h2>
+              </div>
+              <span id="crowd-presence" class="inline-pill muted-pill">Solo warmup</span>
+            </div>
+
+            <p id="jam-status" class="section-note">
+              The room will feel louder as more noun drummers show up.
+            </p>
+
+            <div class="sync-meter" aria-hidden="true">
+              <span id="sync-meter-fill" class="sync-meter-fill"></span>
+            </div>
+          </section>
+
+          <section class="jam-guide" aria-label="Jam guide">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Jam guide</p>
+                <h2>Next best moves</h2>
+              </div>
+              <span id="jam-guide-pill" class="inline-pill muted-pill">Warm up</span>
+            </div>
+
+            <div class="jam-guide-grid">
+              <article class="guide-card guide-card-unlock">
+                <p class="guide-card-label">Unlock</p>
+                <strong id="guide-unlock-title" class="guide-card-title">Next drop</strong>
+                <p id="guide-unlock-copy" class="guide-card-copy">
+                  Keep tapping to open the next drop.
+                </p>
+                <div class="guide-progress" aria-hidden="true">
+                  <span id="guide-unlock-progress" class="guide-progress-fill"></span>
+                </div>
+                <button
+                  id="guide-unlock-button"
+                  class="ghost-button guide-card-button"
+                  type="button"
+                >
+                  See drops
+                </button>
+              </article>
+
+              <article class="guide-card guide-card-race">
+                <p class="guide-card-label">Race</p>
+                <strong id="guide-race-title" class="guide-card-title">Start a race</strong>
+                <p id="guide-race-copy" class="guide-card-copy">
+                  Share the room to put names on the board.
+                </p>
+                <div class="guide-progress" aria-hidden="true">
+                  <span id="guide-race-progress" class="guide-progress-fill"></span>
+                </div>
+                <button
+                  id="guide-race-button"
+                  class="ghost-button guide-card-button"
+                  type="button"
+                >
+                  Share room
+                </button>
+              </article>
+
+              <article class="guide-card guide-card-room">
+                <p class="guide-card-label">Room</p>
+                <strong id="guide-room-title" class="guide-card-title">Bring in the crew</strong>
+                <p id="guide-room-copy" class="guide-card-copy">
+                  More live noun drummers make the pad feel bigger.
+                </p>
+                <div class="guide-progress" aria-hidden="true">
+                  <span id="guide-room-progress" class="guide-progress-fill"></span>
+                </div>
+                <button
+                  id="guide-room-button"
+                  class="ghost-button guide-card-button"
+                  type="button"
+                >
+                  Share room
+                </button>
+              </article>
+            </div>
+          </section>
+
+          <section class="traffic-board" aria-label="Open stages">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Open stages</p>
+                <h2>Find the traffic</h2>
+              </div>
+              <span id="traffic-status-pill" class="inline-pill muted-pill">Scanning rooms</span>
+            </div>
+
+            <div class="panel-glance-grid traffic-glance-grid" aria-label="Traffic summary">
+              <article class="panel-glance-card">
+                <span>Live rooms</span>
+                <strong id="traffic-live-rooms">0</strong>
+              </article>
+              <article class="panel-glance-card">
+                <span>Live drummers</span>
+                <strong id="traffic-active-drummers">0</strong>
+              </article>
+              <article class="panel-glance-card">
+                <span>Spotlight</span>
+                <strong id="traffic-spotlight-room">daily room</strong>
+              </article>
+              <article class="panel-glance-card">
+                <span>You are in</span>
+                <strong id="traffic-current-room">global-jam</strong>
+              </article>
+            </div>
+
+            <p id="traffic-note" class="section-note">
+              Hot rooms, daily spotlight jams, and easy one-tap hops live here.
+            </p>
+
+            <div id="traffic-room-list" class="traffic-room-list" aria-live="polite"></div>
+          </section>
+
+          <nav class="support-rail" aria-label="Jump to support sections">
+            <a class="support-chip" data-support-jump="noun-panel" href="#noun-panel">Look</a>
+            <a class="support-chip" data-support-jump="collection-panel" href="#collection-panel">Drops</a>
+            <a class="support-chip" data-support-jump="leaderboard-panel" href="#leaderboard-panel">Rank</a>
+            <a class="support-chip" data-support-jump="crew-panel" href="#crew-panel">Crew</a>
+            <a class="support-chip" data-support-jump="social-panel" href="#social-panel">Feed</a>
+            <a class="support-chip" data-support-jump="mint-panel" href="#mint-panel">Mint</a>
+          </nav>
         </article>
 
-        <div class="side-stack">
-          <article class="panel crew-panel">
+        <section class="support-grid">
+          <article id="noun-panel" class="panel noun-panel" data-support-panel>
+            <section class="noun-lab" aria-label="Noun customizer">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Noun lab</p>
+                  <h2>Change your noun</h2>
+                </div>
+                <div class="support-head-actions">
+                  <span id="noun-style-pill" class="inline-pill muted-pill">Loading style</span>
+                  <button
+                    class="ghost-button support-panel-toggle"
+                    type="button"
+                    data-support-toggle="noun-panel"
+                    aria-expanded="true"
+                  >
+                    <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+              </div>
+
+	              <p id="noun-panel-preview" class="support-panel-preview">Current noun preview</p>
+
+	              <div class="panel-glance-grid panel-glance-grid-compact" aria-label="Noun summary">
+	                <article class="panel-glance-card">
+	                  <span>Stage</span>
+	                  <strong id="noun-glance-stage">Rim Rider</strong>
+	                </article>
+	                <article class="panel-glance-card">
+	                  <span>Head</span>
+	                  <strong id="noun-glance-head">Cool mode</strong>
+	                </article>
+	                <article class="panel-glance-card">
+	                  <span>Drop</span>
+	                  <strong id="noun-glance-drop">Garage Kick</strong>
+	                </article>
+	              </div>
+
+	              <div class="support-panel-body">
+	                <div id="noun-trait-list" class="noun-trait-list" aria-live="polite"></div>
+	              </div>
+            </section>
+          </article>
+
+          <article id="collection-panel" class="panel collection-panel" data-support-panel>
+            <section class="panel-section support-panel-body-shell">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Collection</p>
+                  <h2>Drops + power-ups</h2>
+                </div>
+                <div class="support-head-actions">
+                  <button
+                    class="ghost-button support-panel-toggle"
+                    type="button"
+                    data-support-toggle="collection-panel"
+                    aria-expanded="true"
+                  >
+                    <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+	              </div>
+
+	              <p id="collection-panel-preview" class="support-panel-preview">Drop progress preview</p>
+
+	              <div class="panel-glance-grid" aria-label="Collection summary">
+	                <article class="panel-glance-card">
+	                  <span>Unlocked</span>
+	                  <strong id="collection-glance-unlocked">1 / 5</strong>
+	                </article>
+	                <article class="panel-glance-card">
+	                  <span>Equipped</span>
+	                  <strong id="collection-glance-equipped">Garage Kick</strong>
+	                </article>
+	                <article class="panel-glance-card">
+	                  <span>Minted</span>
+	                  <strong id="collection-glance-minted">0 drops</strong>
+	                </article>
+	              </div>
+
+	              <div class="support-panel-body">
+	                <p id="collection-status" class="section-note">Starter drop ready. Pick a power-up.</p>
+	                <div id="unlock-shelf" class="unlock-shelf" aria-live="polite"></div>
+              </div>
+            </section>
+          </article>
+
+          <article id="leaderboard-panel" class="panel leaderboard-panel" data-support-panel>
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Leaderboard</p>
+                <h2>Room rankings</h2>
+              </div>
+              <div class="support-head-actions">
+                <span id="leaderboard-rank" class="inline-pill muted-pill">Rank --</span>
+                <button
+                  class="ghost-button support-panel-toggle"
+                  type="button"
+                  data-support-toggle="leaderboard-panel"
+                  aria-expanded="true"
+                >
+                  <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+	              </div>
+
+	            <p id="leaderboard-panel-preview" class="support-panel-preview">Leaderboard preview</p>
+
+	            <div class="panel-glance-grid" aria-label="Leaderboard summary">
+	              <article class="panel-glance-card">
+	                <span>Gap</span>
+	                <strong id="leaderboard-glance-gap">Solo</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Room</span>
+	                <strong id="leaderboard-glance-room">1 drummer</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Best combo</span>
+	                <strong id="leaderboard-glance-best">0x</strong>
+	              </article>
+	            </div>
+
+	            <div class="support-panel-body">
+	              <p id="leaderboard-status" class="section-note">
+	                Live DRUM totals update as the room plays.
+              </p>
+
+              <div id="leaderboard-list" class="jam-leaderboard-list" aria-live="polite"></div>
+            </div>
+          </article>
+
+          <article id="crew-panel" class="panel crew-panel" data-support-panel>
             <div class="section-head">
               <div>
                 <p class="eyebrow">Crew</p>
                 <h2>Room drummers</h2>
               </div>
-              <div class="inline-pills">
+              <div class="support-head-actions inline-pills">
                 <span id="crew-count" class="inline-pill">0 active</span>
                 <span id="room-sync-status" class="inline-pill muted-pill">Syncing...</span>
-              </div>
+                <button
+                  class="ghost-button support-panel-toggle"
+                  type="button"
+                  data-support-toggle="crew-panel"
+                  aria-expanded="true"
+                >
+                  <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+	              </div>
+
+	            <p id="crew-panel-preview" class="support-panel-preview">Crew preview</p>
+
+	            <div class="panel-glance-grid" aria-label="Crew summary">
+	              <article class="panel-glance-card">
+	                <span>Live</span>
+	                <strong id="crew-glance-live">0 live</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Known</span>
+	                <strong id="crew-glance-known">0 seen</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Bonus</span>
+	                <strong id="crew-glance-bonus">1.00x</strong>
+	              </article>
+	            </div>
+
+	            <div class="support-panel-body">
+	              <p id="room-status-line" class="section-note">
+	                People show up as noun avatars and boost the room just by playing.
+              </p>
+
+              <div id="crew-list" class="crew-list" aria-live="polite"></div>
             </div>
-
-            <p id="room-status-line" class="section-note">
-              People show up as noun avatars and boost the room just by playing.
-            </p>
-
-            <div id="crew-list" class="crew-list" aria-live="polite"></div>
           </article>
 
-          <article class="panel social-panel">
+          <article id="social-panel" class="panel social-panel" data-support-panel>
             <div class="section-head">
               <div>
                 <p class="eyebrow">Social</p>
                 <h2>Hype feed</h2>
               </div>
-              <span id="share-status" class="inline-pill muted-pill">Invite the room</span>
-            </div>
+              <div class="support-head-actions">
+                <span id="share-status" class="inline-pill muted-pill">Invite the room</span>
+                <button
+                  class="ghost-button support-panel-toggle"
+                  type="button"
+                  data-support-toggle="social-panel"
+                  aria-expanded="true"
+                >
+                  <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+	              </div>
 
-            <div id="feed-list" class="feed-list" aria-live="polite"></div>
+	            <p id="social-panel-preview" class="support-panel-preview">Feed preview</p>
+
+	            <div class="panel-glance-grid" aria-label="Social summary">
+	              <article class="panel-glance-card">
+	                <span>Moments</span>
+	                <strong id="social-glance-moments">0 recent</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Fresh</span>
+	                <strong id="social-glance-fresh">Quiet</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Mood</span>
+	                <strong id="social-glance-mood">Calm</strong>
+	              </article>
+	            </div>
+
+	            <div class="feed-action-row" aria-label="Hype shortcuts">
+	              <button class="reaction-button reaction-button-small" data-reaction="CLAP" type="button">
+	                Clap burst
+	              </button>
+	              <button class="reaction-button reaction-button-small" data-reaction="LASER" type="button">
+	                Laser flash
+	              </button>
+	              <button class="reaction-button reaction-button-small" data-reaction="BOOM" type="button">
+	                Boom drop
+	              </button>
+	            </div>
+
+	            <div class="support-panel-body">
+	              <div id="feed-list" class="feed-list" aria-live="polite"></div>
+	            </div>
           </article>
 
-          <article class="panel mint-panel">
+          <article id="mint-panel" class="panel mint-panel" data-support-panel>
             <div class="section-head">
               <div>
                 <p class="eyebrow">Tezos</p>
-                <h2>Mint the current drop</h2>
+                <h2>Mint your noun or drop</h2>
               </div>
-              <span id="selected-drop-pill" class="inline-pill">Starter crate</span>
-            </div>
+              <div class="support-head-actions">
+                <span id="selected-drop-pill" class="inline-pill">Starter crate</span>
+                <button
+                  class="ghost-button support-panel-toggle"
+                  type="button"
+                  data-support-toggle="mint-panel"
+                  aria-expanded="true"
+                >
+                  <span data-support-toggle-label>Hide</span>
+                  </button>
+                </div>
+	              </div>
 
-            <div class="wallet-actions">
-              <button id="wallet-button" class="primary-button" type="button">Connect wallet</button>
-              <button
-                id="disconnect-wallet-button"
-                class="ghost-button"
-                type="button"
-                hidden
-              >
-                Disconnect
-              </button>
-            </div>
+	            <p id="mint-panel-preview" class="support-panel-preview">Mint preview</p>
 
-            <p id="wallet-status-line" class="status-line">
-              Connect a Tezos wallet to collect your current DRUM drop.
-            </p>
+	            <div class="panel-glance-grid" aria-label="Mint summary">
+	              <article class="panel-glance-card">
+	                <span>Mode</span>
+	                <strong id="mint-glance-mode">Drop</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Wallet</span>
+	                <strong id="mint-glance-wallet">Not linked</strong>
+	              </article>
+	              <article class="panel-glance-card">
+	                <span>Saved</span>
+	                <strong id="mint-glance-saved">0 mints</strong>
+	              </article>
+	            </div>
 
-            <div class="mint-summary" aria-label="Wallet and mint details">
-              <div class="summary-chip">
-                <span>Network</span>
-                <strong id="network-name">Tezos testnet</strong>
+	            <div class="support-panel-body">
+	              <div class="mint-targets" aria-label="Mint target">
+                <button
+                  id="mint-drop-target-button"
+                  class="ghost-button mint-target-button"
+                  type="button"
+                >
+                  Mint drop
+                </button>
+                <button
+                  id="mint-noun-target-button"
+                  class="ghost-button mint-target-button"
+                  type="button"
+                >
+                  Mint noun
+                </button>
               </div>
-              <div class="summary-chip">
-                <span>Wallet</span>
-                <strong id="wallet-address">Not connected</strong>
+
+              <p id="mint-target-note" class="section-note">
+                Drops mint the equipped collectible. Noun mint captures your live avatar.
+              </p>
+
+              <div class="wallet-actions">
+                <button id="wallet-button" class="primary-button" type="button">Connect wallet</button>
+                <button
+                  id="disconnect-wallet-button"
+                  class="ghost-button"
+                  type="button"
+                  hidden
+                >
+                  Disconnect
+                </button>
               </div>
-              <div class="summary-chip">
-                <span>Balance</span>
-                <strong id="wallet-balance">-</strong>
+
+              <p id="wallet-status-line" class="status-line">
+                Connect a Tezos wallet to collect your current DRUM drop.
+              </p>
+
+              <p id="minted-asset-status" class="status-line">Current mint history will appear here.</p>
+
+              <div class="mint-summary" aria-label="Wallet and mint details">
+                <div class="summary-chip">
+                  <span>Network</span>
+                  <strong id="network-name">Tezos testnet</strong>
+                </div>
+                <div class="summary-chip">
+                  <span>Wallet</span>
+                  <strong id="wallet-address">Not connected</strong>
+                </div>
+                <div class="summary-chip">
+                  <span>Balance</span>
+                  <strong id="wallet-balance">-</strong>
+                </div>
+                <div class="summary-chip">
+                  <span>Contract</span>
+                  <strong id="contract-address">-</strong>
+                </div>
               </div>
-              <div class="summary-chip">
-                <span>Contract</span>
-                <strong id="contract-address">-</strong>
+
+              <div class="mint-form">
+                <label>
+                  <span>Token name</span>
+                  <input id="token-name-input" name="tokenName" type="text" />
+                </label>
+                <label>
+                  <span>Drop note</span>
+                  <textarea
+                    id="token-description-input"
+                    name="tokenDescription"
+                    rows="4"
+                  ></textarea>
+                </label>
               </div>
-            </div>
 
-            <div class="mint-form">
-              <label>
-                <span>Token name</span>
-                <input id="token-name-input" name="tokenName" type="text" />
-              </label>
-              <label>
-                <span>Drop note</span>
-                <textarea
-                  id="token-description-input"
-                  name="tokenDescription"
-                  rows="4"
-                ></textarea>
-              </label>
-            </div>
+              <div class="link-stack">
+                <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Open live noun art</a>
+                <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">
+                  Open DRUM metadata
+                </a>
+                <a
+                  href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Tezos wallet + mint docs
+                </a>
+                <a
+                  href="https://docs.tezos.com/architecture/tokens/FA2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  FA2 token standard
+                </a>
+              </div>
 
-            <div class="link-stack">
-              <a id="noun-image-link" href="#" target="_blank" rel="noreferrer">Open live noun art</a>
-              <a id="token-metadata-link" href="#" target="_blank" rel="noreferrer">
-                Open DRUM metadata
-              </a>
-              <a
-                href="https://docs.tezos.com/tutorials/create-nfts/send-transactions"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Tezos wallet + mint docs
-              </a>
-              <a
-                href="https://docs.tezos.com/architecture/tokens/FA2"
-                target="_blank"
-                rel="noreferrer"
-              >
-                FA2 token standard
-              </a>
-            </div>
+              <div class="wallet-actions">
+                <button id="mint-button" class="primary-button" type="button">Mint DRUM drop</button>
+                <button id="download-svg-button" class="ghost-button" type="button">Download SVG</button>
+                <button id="download-metadata-button" class="ghost-button" type="button">
+                  Download metadata
+                </button>
+              </div>
 
-            <div class="wallet-actions">
-              <button id="mint-button" class="primary-button" type="button">Mint DRUM drop</button>
-              <button id="download-svg-button" class="ghost-button" type="button">Download SVG</button>
-              <button id="download-metadata-button" class="ghost-button" type="button">
-                Download metadata
-              </button>
+              <p id="mint-status-line" class="status-line">Pick a drop and connect your wallet.</p>
+              <p id="mint-result-line" class="status-line"></p>
             </div>
-
-            <p id="mint-status-line" class="status-line">Pick a drop and connect your wallet.</p>
-            <p id="mint-result-line" class="status-line"></p>
           </article>
-        </div>
+        </section>
       </section>
+
+      <a
+        id="return-to-drum-button"
+        class="return-to-drum-button"
+        href="#drum-pad"
+        hidden
+      >
+        Back to drum
+      </a>
     </main>
 
     <script type="module" src="/app.js"></script>

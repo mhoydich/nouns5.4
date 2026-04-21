@@ -91,30 +91,22 @@ function computeRoomTelemetry(snapshot = {}) {
     roomMood
   };
 }
-function buildRoomHeadline(snapshot = {}, telemetry = computeRoomTelemetry(snapshot)) {
-  if (telemetry.roomMood === "full-room parade") {
-    return "Full-room parade";
-  }
-  if (telemetry.roomMood === "reaction storm") {
-    return "Reaction storm";
-  }
-  if (telemetry.roomMood === "crew build") {
-    return "Crew build";
-  }
-  if ((snapshot.totals?.tokens || 0) >= 500) {
-    return "Collectible weather";
-  }
-  if ((snapshot.totals?.tokens || 0) > 0) {
-    return "Solo grind";
-  }
-  return "Fresh tape";
-}
 function buildRoomSummary(snapshot = {}, telemetry = computeRoomTelemetry(snapshot)) {
-  return `${formatCount(snapshot.events?.length || 0)} logged events, ${formatCount(
-    snapshot.metrics?.activeCount || 0
-  )} active drummers, and a ${formatMultiplier(
+  return `${formatCount(snapshot.metrics?.activeCount || 0)} active, ${formatMultiplier(
     snapshot.metrics?.crewMultiplier || 1
-  )} crew bonus in ${snapshot.roomId || DEFAULT_ROOM_ID}.`;
+  )} crew, ${formatCount(snapshot.events?.length || 0)} tape events.`;
+}
+function buildRoomPrimaryLine(snapshot = {}, telemetry = computeRoomTelemetry(snapshot)) {
+  if ((snapshot.metrics?.activeCount || 0) > 0) {
+    return `${formatCount(snapshot.metrics.activeCount)} active drummers right now`;
+  }
+  if (telemetry.participantCount > 0) {
+    return `${formatCount(telemetry.participantCount)} drummers in the room`;
+  }
+  if (telemetry.roomMood === "fresh tape") {
+    return "First drummer sets the room weather";
+  }
+  return "Room telemetry is live";
 }
 function buildRoomMeta(snapshot = {}, roomIdInput = DEFAULT_ROOM_ID) {
   const roomId = roomIdInput || snapshot.roomId || DEFAULT_ROOM_ID;
@@ -142,6 +134,24 @@ function buildRoomMeta(snapshot = {}, roomIdInput = DEFAULT_ROOM_ID) {
 var STORAGE_KEY = "drum-nouns-jam.v1";
 var LAST_ROOM_STORAGE_KEY = "drum-nouns-jam.last-room";
 var POLL_MS = 15e3;
+var DIRECTORY_POLL_MS = 18e3;
+var ROOM_HEARTBEAT_MS = 12e3;
+var SURFACE_TICK_MS = 300;
+var PULSE_FLUSH_DELAY_MS = 900;
+var COMBO_TIMEOUT_MS = 2400;
+var LANDING_STAGE_SLOTS = [
+  { x: 18, y: 28 },
+  { x: 82, y: 28 },
+  { x: 18, y: 74 },
+  { x: 82, y: 74 }
+];
+var FEEDBACK_AREA_LABELS = {
+  "landing-pad": "Landing pad",
+  "live-board": "Live board",
+  nouns: "Noun look",
+  "drops-mint": "Drops + mint",
+  "overall-vibe": "Overall vibe"
+};
 var DROP_LIBRARY = [
   {
     id: "garage-kick",
@@ -175,6 +185,41 @@ var DROP_LIBRARY = [
   }
 ];
 var elements = {
+  marqueeAvatar: document.querySelector("#marquee-avatar"),
+  marqueeName: document.querySelector("#marquee-name"),
+  marqueeIdentity: document.querySelector("#marquee-identity"),
+  marqueeRemixButton: document.querySelector("#marquee-remix-button"),
+  landingDrumPad: document.querySelector("#landing-drum-pad"),
+  landingCrowd: document.querySelector("#landing-crowd"),
+  landingGain: document.querySelector("#landing-gain"),
+  landingCaption: document.querySelector("#landing-caption"),
+  landingPlayerTokens: document.querySelector("#landing-player-tokens"),
+  landingCombo: document.querySelector("#landing-combo"),
+  landingBestCombo: document.querySelector("#landing-best-combo"),
+  landingCrew: document.querySelector("#landing-crew"),
+  landingSessionNote: document.querySelector("#landing-session-note"),
+  mintRouteLink: document.querySelector("#mint-route-link"),
+  trafficKnown: document.querySelector("#traffic-known"),
+  trafficLive: document.querySelector("#traffic-live"),
+  trafficFeedback: document.querySelector("#traffic-feedback"),
+  trafficMints: document.querySelector("#traffic-mints"),
+  trafficNote: document.querySelector("#traffic-note"),
+  shareRoomButton: document.querySelector("#share-room-button"),
+  shareStatusLine: document.querySelector("#share-status-line"),
+  marketHotDrop: document.querySelector("#market-hot-drop"),
+  marketReadyRoute: document.querySelector("#market-ready-route"),
+  marketRecentCount: document.querySelector("#market-recent-count"),
+  marketList: document.querySelector("#market-list"),
+  feedbackIntro: document.querySelector("#feedback-intro"),
+  feedbackForm: document.querySelector("#feedback-form"),
+  feedbackArea: document.querySelector("#feedback-area"),
+  feedbackNote: document.querySelector("#feedback-note"),
+  feedbackSubmitButton: document.querySelector("#feedback-submit-button"),
+  feedbackStatus: document.querySelector("#feedback-status"),
+  feedbackTotal: document.querySelector("#feedback-total"),
+  feedbackTopArea: document.querySelector("#feedback-top-area"),
+  feedbackRecentCount: document.querySelector("#feedback-recent-count"),
+  feedbackList: document.querySelector("#feedback-list"),
   roomBadge: document.querySelector("#room-badge"),
   roomMood: document.querySelector("#room-mood"),
   heroHeadline: document.querySelector("#hero-headline"),
@@ -204,6 +249,11 @@ var elements = {
   trendSpread: document.querySelector("#trend-spread"),
   trendCombo: document.querySelector("#trend-combo"),
   trendNotes: document.querySelector("#trend-notes"),
+  openStageStatus: document.querySelector("#open-stage-status"),
+  openStageLiveRooms: document.querySelector("#open-stage-live-rooms"),
+  openStagePlayers: document.querySelector("#open-stage-players"),
+  openStageSpotlight: document.querySelector("#open-stage-spotlight"),
+  openStageList: document.querySelector("#open-stage-list"),
   eventFeed: document.querySelector("#event-feed"),
   stampLine: document.querySelector("#stamp-line")
 };
@@ -222,9 +272,33 @@ var headElements = {
 var state = {
   roomId: resolveRoomId(),
   profile: readProfile(),
+  session: {
+    combo: 0,
+    bestCombo: 0,
+    lastTapAt: 0,
+    lastGain: 1,
+    pendingHits: 0,
+    pendingTokens: 0
+  },
+  feedback: {
+    total: 0,
+    topArea: null,
+    entries: [],
+    statusMessage: "Tell us what feels fun, clear, or worth coming back for.",
+    isSubmitting: false
+  },
+  market: {
+    total: 0,
+    topDrop: null,
+    entries: []
+  },
+  shareStatus: "Invite the next drummer into this room.",
   room: createEmptyRoom(resolveRoomId()),
+  directory: createEmptyRoomDirectory(),
   imageData: null
 };
+var pulseFlushTimer;
+var pulseInFlight = false;
 function createEmptyRoom(roomId) {
   return {
     roomId,
@@ -243,12 +317,38 @@ function createEmptyRoom(roomId) {
     updatedAt: Date.now()
   };
 }
+function createEmptyRoomDirectory() {
+  return {
+    updatedAt: 0,
+    spotlightRoomId: "",
+    totals: {
+      rooms: 0,
+      liveRooms: 0,
+      activeDrummers: 0,
+      participants: 0,
+      tokens: 0
+    },
+    rooms: []
+  };
+}
+function createId(prefix) {
+  if (globalThis.crypto?.randomUUID) {
+    return `${prefix}-${globalThis.crypto.randomUUID()}`;
+  }
+  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
+}
 function sanitizeText(value, fallback, maxLength = 24, pattern = /[^a-zA-Z0-9 _-]/g) {
   const normalized = String(value ?? "").replace(/\s+/g, " ").replace(pattern, "").trim();
   return (normalized || fallback).slice(0, maxLength);
 }
 function sanitizeRoomId(value) {
   return sanitizeText(value, DEFAULT_ROOM_ID, 24).toLowerCase().replaceAll(" ", "-");
+}
+function buildDailySpotlightRoomId(date = /* @__PURE__ */ new Date()) {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return sanitizeRoomId(`daily-${year}${month}${day}`);
 }
 function sanitizeName(value) {
   return sanitizeText(value, "Rim Rider", 24);
@@ -259,6 +359,38 @@ function clampNumber(value, fallback = 0, max = 9999999) {
     return fallback;
   }
   return Math.min(numeric, max);
+}
+function sanitizeRoomDirectory(directory) {
+  const fallback = createEmptyRoomDirectory();
+  if (!directory || typeof directory !== "object") {
+    return fallback;
+  }
+  return {
+    updatedAt: clampNumber(directory.updatedAt, 0, Number.MAX_SAFE_INTEGER),
+    spotlightRoomId: sanitizeRoomId(directory.spotlightRoomId || buildDailySpotlightRoomId()),
+    totals: {
+      rooms: clampNumber(directory.totals?.rooms, 0, 999),
+      liveRooms: clampNumber(directory.totals?.liveRooms, 0, 999),
+      activeDrummers: clampNumber(directory.totals?.activeDrummers, 0, 9999),
+      participants: clampNumber(directory.totals?.participants, 0, 9999),
+      tokens: clampNumber(directory.totals?.tokens, 0, 999999999)
+    },
+    rooms: Array.isArray(directory.rooms) ? directory.rooms.map((room) => ({
+      roomId: sanitizeRoomId(room?.roomId),
+      updatedAt: clampNumber(room?.updatedAt, 0, Number.MAX_SAFE_INTEGER),
+      activeCount: clampNumber(room?.activeCount, 0, 999),
+      participantCount: clampNumber(room?.participantCount, 0, 999),
+      totalTokens: clampNumber(room?.totalTokens, 0, 999999999),
+      crewMultiplier: Number(room?.crewMultiplier || 1) || 1,
+      recentReactions: clampNumber(room?.recentReactions, 0, 999),
+      syncedBursts: clampNumber(room?.syncedBursts, 0, 999),
+      highestCombo: clampNumber(room?.highestCombo, 0, 999),
+      topPlayerName: sanitizeText(room?.topPlayerName, "", 24),
+      topPlayerSeed: room?.topPlayerSeed && typeof room.topPlayerSeed === "object" ? room.topPlayerSeed : null,
+      leadTokens: clampNumber(room?.leadTokens, 0, 999999999),
+      latestEventMessage: String(room?.latestEventMessage ?? "").replace(/\s+/g, " ").trim().slice(0, 180)
+    })) : []
+  };
 }
 function resolveRoomId() {
   const url = new URL(window.location.href);
@@ -277,6 +409,7 @@ function readProfile() {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : {};
     return {
+      playerId: sanitizeText(parsed?.playerId, createId("player"), 80, /[^a-zA-Z0-9 _-]/g),
       name: sanitizeName(parsed?.name),
       seed: parsed?.seed ?? null,
       lifetimeTokens: clampNumber(parsed?.lifetimeTokens),
@@ -286,6 +419,7 @@ function readProfile() {
     };
   } catch {
     return {
+      playerId: createId("player"),
       name: "Rim Rider",
       seed: null,
       lifetimeTokens: 0,
@@ -293,6 +427,26 @@ function readProfile() {
       mintedDrops: {},
       selectedDropId: DROP_LIBRARY[0].id
     };
+  }
+}
+function saveProfile() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        ...parsed,
+        playerId: state.profile.playerId,
+        name: state.profile.name,
+        seed: state.profile.seed,
+        lifetimeTokens: state.profile.lifetimeTokens,
+        lifetimeHits: state.profile.lifetimeHits,
+        mintedDrops: state.profile.mintedDrops,
+        selectedDropId: state.profile.selectedDropId
+      })
+    );
+  } catch {
   }
 }
 function formatRelativeTime(timestamp) {
@@ -311,6 +465,9 @@ function formatRelativeTime(timestamp) {
   }
   return `${Math.round(delta / 36e5)}h ago`;
 }
+function formatCountLabel(count, singular, plural) {
+  return `${formatCount(count)} ${count === 1 ? singular : plural}`;
+}
 function humanize(value) {
   return String(value).replace(/^(body|accessory|head|glasses)-/, "").replaceAll("-", " ");
 }
@@ -322,6 +479,54 @@ function getUnlockedDrops(profile) {
 }
 function getNextDrop(profile) {
   return DROP_LIBRARY.find((drop) => profile.lifetimeTokens < drop.threshold) ?? null;
+}
+function getNextMintableDrop(profile) {
+  return getUnlockedDrops(profile).find((drop) => !profile.mintedDrops?.[drop.id]) ?? null;
+}
+function randomIndex(length) {
+  return Math.floor(Math.random() * length);
+}
+function randomSeed() {
+  if (!state.imageData) {
+    return {
+      background: 0,
+      body: 0,
+      accessory: 0,
+      head: 0,
+      glasses: 0
+    };
+  }
+  return {
+    background: randomIndex(state.imageData.bgcolors.length),
+    body: randomIndex(state.imageData.images.bodies.length),
+    accessory: randomIndex(state.imageData.images.accessories.length),
+    head: randomIndex(state.imageData.images.heads.length),
+    glasses: randomIndex(state.imageData.images.glasses.length)
+  };
+}
+function getSelectedDropTitle() {
+  return getDropById(state.profile.selectedDropId).title;
+}
+function buildPlayerPayload() {
+  return {
+    id: state.profile.playerId,
+    name: state.profile.name,
+    seed: state.profile.seed,
+    selectedDrop: getSelectedDropTitle()
+  };
+}
+function getCurrentCombo(now = Date.now()) {
+  if (now - state.session.lastTapAt > COMBO_TIMEOUT_MS) {
+    return 0;
+  }
+  return state.session.combo;
+}
+function getCrewMultiplierValue() {
+  return Number(state.room.metrics?.crewMultiplier || 1);
+}
+function computeLandingGain(comboValue = getCurrentCombo() + 1) {
+  const comboBonus = 1 + Math.min(1.5, Math.floor(comboValue / 4) * 0.16);
+  return Math.max(1, Math.round(comboBonus * getCrewMultiplierValue()));
 }
 function buildNoun(seed) {
   if (!state.imageData || !seed) {
@@ -357,12 +562,67 @@ function renderAvatar(seed, fallbackLabel = "NOUN") {
   }
   return `<div class="stats-avatar-fallback">${escapeHtml(fallbackLabel)}</div>`;
 }
+function pulseLandingPad() {
+  elements.landingDrumPad.classList.remove("is-struck");
+  void elements.landingDrumPad.offsetWidth;
+  elements.landingDrumPad.classList.add("is-struck");
+  window.setTimeout(() => {
+    elements.landingDrumPad.classList.remove("is-struck");
+  }, 180);
+}
+function spawnLandingBurst(amount) {
+  const burst = document.createElement("span");
+  burst.className = "gain-burst";
+  burst.textContent = `+${amount} DRUM`;
+  burst.style.left = "50%";
+  burst.style.top = "50%";
+  elements.landingDrumPad.append(burst);
+  window.setTimeout(() => {
+    burst.remove();
+  }, 680);
+}
+function renderLandingCrowd() {
+  const players = (state.room.players || []).filter((player) => player.id !== state.profile.playerId).slice(0, LANDING_STAGE_SLOTS.length);
+  if (!players.length) {
+    elements.landingCrowd.innerHTML = "";
+    return;
+  }
+  elements.landingCrowd.innerHTML = players.map((player, index) => {
+    const slot = LANDING_STAGE_SLOTS[index] || LANDING_STAGE_SLOTS[0];
+    return `
+        <span class="landing-crowd-spot" style="--slot-x:${slot.x}%; --slot-y:${slot.y}%;">
+          <span class="landing-crowd-bubble">${renderAvatar(player.seed, player.name.slice(0, 2))}</span>
+          <span class="landing-crowd-label">${escapeHtml(player.name)}</span>
+        </span>
+      `;
+  }).join("");
+}
+function renderLandingPlay(roomTelemetry) {
+  const combo = getCurrentCombo();
+  const nextGain = computeLandingGain(combo + 1);
+  const selectedDrop = getDropById(state.profile.selectedDropId);
+  const nextDrop = getNextDrop(state.profile);
+  const activeSeed = state.profile.seed || state.room.players[0]?.seed || null;
+  const roomFootprint = roomTelemetry.participantCount > 0 ? `${formatCountLabel(roomTelemetry.participantCount, "drummer", "drummers")} in room memory.` : "No other drummers yet.";
+  elements.marqueeAvatar.innerHTML = renderAvatar(activeSeed, state.profile.name.slice(0, 4));
+  elements.marqueeName.textContent = state.profile.name;
+  elements.marqueeIdentity.textContent = nextDrop ? `${formatCount(nextDrop.threshold - state.profile.lifetimeTokens)} DRUM to ${nextDrop.title}. ${roomFootprint}` : `All drops unlocked. ${roomFootprint}`;
+  elements.landingGain.textContent = `+${state.session.lastGain || nextGain} DRUM`;
+  elements.landingCaption.textContent = combo > 0 ? `Combo ${combo}x live. Next hit is worth ${nextGain} DRUM in ${state.roomId}.` : `Tap to add ${nextGain} DRUM to ${state.roomId}.`;
+  elements.landingPlayerTokens.textContent = formatCount(state.profile.lifetimeTokens);
+  elements.landingCombo.textContent = `${combo}x`;
+  elements.landingBestCombo.textContent = `${Math.max(state.session.bestCombo, combo)}x`;
+  elements.landingCrew.textContent = formatMultiplier(getCrewMultiplierValue());
+  elements.landingSessionNote.textContent = nextDrop ? `${selectedDrop.title} equipped. ${formatCount(nextDrop.threshold - state.profile.lifetimeTokens)} DRUM to ${nextDrop.title}.` : `${selectedDrop.title} equipped. Enter the full jam for crew tools, minting, and the market board.`;
+  renderLandingCrowd();
+}
 function renderHero(room, roomTelemetry) {
+  const projectedRoomTotal = (room.totals?.tokens || 0) + state.session.pendingTokens;
   elements.roomBadge.textContent = room.roomId;
-  elements.heroHeadline.textContent = buildRoomHeadline(room, roomTelemetry);
+  elements.heroHeadline.textContent = buildRoomPrimaryLine(room, roomTelemetry);
   elements.heroSummary.textContent = buildRoomSummary(room, roomTelemetry);
   elements.roomMood.textContent = titleCase(roomTelemetry.roomMood);
-  elements.roomTotal.textContent = formatCompact(room.totals.tokens);
+  elements.roomTotal.textContent = formatCompact(projectedRoomTotal);
   elements.activeCount.textContent = formatCount(room.metrics.activeCount);
   elements.crewMultiplier.textContent = formatMultiplier(room.metrics.crewMultiplier);
   elements.hypeIndex.textContent = formatCount(roomTelemetry.hypeIndex);
@@ -370,6 +630,52 @@ function renderHero(room, roomTelemetry) {
   elements.signalFill.style.width = `${Math.min(100, Math.max(8, roomTelemetry.hypeIndex / 2.2))}%`;
   elements.enterRoomLink.href = `/jam/?room=${encodeURIComponent(room.roomId)}`;
   elements.stampLine.textContent = formatRelativeTime(room.updatedAt);
+}
+function renderCommerceBoard(room, roomTelemetry) {
+  const localMintCount = Object.keys(state.profile.mintedDrops || {}).length;
+  const nextMintableDrop = getNextMintableDrop(state.profile);
+  const fallbackHotDrop = state.profile.lifetimeTokens > 0 ? getDropById(state.profile.selectedDropId).title : room.players[0]?.selectedDrop || "Garage Kick";
+  let trafficNote = "Share the room to turn this into a crew and give the mint board something to watch.";
+  if (room.metrics.activeCount >= 3) {
+    trafficNote = `${formatCount(room.metrics.activeCount)} live drummers are pushing ${formatMultiplier(
+      room.metrics.crewMultiplier
+    )} crew energy in ${room.roomId}. This is the moment to send the jam link around.`;
+  } else if (roomTelemetry.participantCount > 0) {
+    trafficNote = `${formatCount(roomTelemetry.participantCount)} drummer${roomTelemetry.participantCount === 1 ? "" : "s"} have already touched ${room.roomId}. ${formatCount(
+      state.market.total
+    )} mint${state.market.total === 1 ? "" : "s"} and ${formatCount(state.feedback.total)} feedback note${state.feedback.total === 1 ? "" : "s"} are feeding the next pass.`;
+  }
+  elements.mintRouteLink.href = `/jam/?room=${encodeURIComponent(room.roomId)}#mint-panel`;
+  elements.trafficKnown.textContent = formatCount(roomTelemetry.participantCount);
+  elements.trafficLive.textContent = formatCount(room.metrics.activeCount);
+  elements.trafficFeedback.textContent = formatCount(state.feedback.total);
+  elements.trafficMints.textContent = formatCount(state.market.total);
+  elements.trafficNote.textContent = trafficNote;
+  elements.shareStatusLine.textContent = state.shareStatus;
+  elements.marketHotDrop.textContent = state.market.topDrop?.label || fallbackHotDrop;
+  elements.marketReadyRoute.textContent = nextMintableDrop ? `Ready: ${nextMintableDrop.title}` : localMintCount ? `${formatCount(localMintCount)} saved` : "Open mint desk";
+  elements.marketRecentCount.textContent = formatCount(state.market.entries.length);
+  if (!state.market.entries.length) {
+    elements.marketList.innerHTML = '<div class="stats-empty">Fresh mint activity will land here once the room starts collecting.</div>';
+    return;
+  }
+  elements.marketList.innerHTML = state.market.entries.map((entry) => {
+    const compactHash = entry.opHash ? `${entry.opHash.slice(0, 6)}...${entry.opHash.slice(-4)}` : "pending";
+    const actionMarkup = entry.explorerUrl ? `<a href="${escapeHtml(entry.explorerUrl)}" target="_blank" rel="noreferrer">View ${escapeHtml(compactHash)}</a>` : `<span>${escapeHtml(compactHash)}</span>`;
+    return `
+        <article class="market-item">
+          <div class="market-item-topline">
+            <strong>${escapeHtml(entry.itemLabel || entry.dropTitle || "Live mint")}</strong>
+            <span>${escapeHtml(formatRelativeTime(entry.createdAt))}</span>
+          </div>
+          <p>${escapeHtml(entry.playerName || "Rim Rider")} minted in ${escapeHtml(entry.roomId || room.roomId)}.</p>
+          <div class="market-item-actions">
+            <span class="market-item-badge">${escapeHtml(entry.target === "noun" ? "Noun" : "Drop")}</span>
+            ${actionMarkup}
+          </div>
+        </article>
+      `;
+  }).join("");
 }
 function renderLocalProfile(profile) {
   const selectedDrop = getDropById(profile.selectedDropId);
@@ -470,6 +776,118 @@ function renderTrendBoard(room, profile, roomStats) {
   elements.trendCombo.textContent = `${formatCount(roomStats.highestCombo)}x`;
   elements.trendNotes.innerHTML = noteLines.map((note) => `<p>${escapeHtml(note)}</p>`).join("");
 }
+function buildFallbackOpenStage(roomId) {
+  const snapshot = roomId === state.roomId ? state.room : createEmptyRoom(roomId);
+  const leader = snapshot.players?.[0] || null;
+  const highestCombo = (snapshot.players || []).reduce(
+    (highest, player) => Math.max(highest, player.bestCombo || 0),
+    0
+  );
+  return {
+    roomId,
+    updatedAt: snapshot.updatedAt || 0,
+    activeCount: snapshot.metrics?.activeCount || 0,
+    participantCount: snapshot.players?.length || 0,
+    totalTokens: snapshot.totals?.tokens || 0,
+    crewMultiplier: snapshot.metrics?.crewMultiplier || 1,
+    recentReactions: snapshot.metrics?.recentReactions || 0,
+    syncedBursts: snapshot.metrics?.syncedBursts || 0,
+    highestCombo,
+    topPlayerName: leader?.name || "",
+    topPlayerSeed: leader?.seed || null,
+    leadTokens: leader?.totalTokens || 0,
+    latestEventMessage: snapshot.events?.[0]?.message || ""
+  };
+}
+function getVisibleOpenStages() {
+  const spotlightRoomId = state.directory.spotlightRoomId || buildDailySpotlightRoomId();
+  const roomMap = new Map((state.directory.rooms || []).map((room) => [room.roomId, room]));
+  const visibleRooms = [];
+  const seen = /* @__PURE__ */ new Set();
+  const pushRoom = (roomId, label) => {
+    const normalizedRoomId = sanitizeRoomId(roomId);
+    if (!normalizedRoomId || seen.has(normalizedRoomId)) {
+      return;
+    }
+    const room = roomMap.get(normalizedRoomId) || buildFallbackOpenStage(normalizedRoomId);
+    visibleRooms.push({
+      ...room,
+      trafficLabel: label
+    });
+    seen.add(normalizedRoomId);
+  };
+  pushRoom(state.roomId, "Tracking now");
+  pushRoom(spotlightRoomId, "Daily spotlight");
+  pushRoom(DEFAULT_ROOM_ID, "Global jam");
+  (state.directory.rooms || []).forEach((room) => {
+    pushRoom(room.roomId, room.activeCount > 0 ? "Live room" : "Open room");
+  });
+  return visibleRooms.slice(0, 5);
+}
+function renderOpenStages() {
+  if (!elements.openStageList) {
+    return;
+  }
+  const spotlightRoomId = state.directory.spotlightRoomId || buildDailySpotlightRoomId();
+  const visibleRooms = getVisibleOpenStages();
+  const liveRooms = Math.max(
+    state.directory.totals?.liveRooms || 0,
+    state.room.metrics?.activeCount ? 1 : 0
+  );
+  const liveDrummers = Math.max(
+    state.directory.totals?.activeDrummers || 0,
+    state.room.metrics?.activeCount || 0
+  );
+  elements.openStageStatus.textContent = liveRooms > 0 ? `${formatCount(liveRooms)} rooms are active right now. Jump into the loudest one or rally people into today's spotlight room.` : "No loud rooms yet. Global jam and today's spotlight room are the best places to start the crowd.";
+  elements.openStageLiveRooms.textContent = formatCount(liveRooms);
+  elements.openStagePlayers.textContent = formatCount(liveDrummers);
+  elements.openStageSpotlight.textContent = spotlightRoomId;
+  if (!visibleRooms.length) {
+    elements.openStageList.innerHTML = '<div class="stats-empty">Open the full jam, share a room, and this lobby will start showing movement.</div>';
+    return;
+  }
+  elements.openStageList.innerHTML = visibleRooms.map((room) => {
+    const isCurrent = room.roomId === state.roomId;
+    const roomLeadSeed = room.topPlayerSeed || (isCurrent ? state.profile.seed : null);
+    const roomIntensity = Math.max(
+      isCurrent ? 20 : 10,
+      Math.min(
+        100,
+        room.activeCount * 24 + room.recentReactions * 10 + room.syncedBursts * 10 + Math.round(room.totalTokens / 20)
+      )
+    );
+    const roomBadge = room.activeCount > 0 ? `${room.activeCount} live` : room.participantCount > 0 ? `${room.participantCount} seen` : "Fresh room";
+    const roomCopy = room.activeCount > 0 ? `${formatCount(room.totalTokens)} DRUM stacked \u2022 crew ${formatMultiplier(room.crewMultiplier)} \u2022 ${room.topPlayerName || "First drummer"} leads` : room.participantCount > 0 ? `${formatCount(room.participantCount)} drummers touched this room \u2022 best ${formatCount(room.highestCombo)}x` : "Start here if you want to gather the next crowd.";
+    const roomMeta = room.latestEventMessage ? room.latestEventMessage : room.roomId === spotlightRoomId ? "This room rotates daily so players can collide in the same place." : room.roomId === DEFAULT_ROOM_ID ? "Always-on public room for quick drop-ins." : "Fresh room waiting for its first burst.";
+    return `
+        <article class="open-stage-card ${isCurrent ? "is-current" : ""}" data-live="${room.activeCount > 0 ? "true" : "false"}">
+          <div class="open-stage-card-head">
+            <div class="open-stage-card-title">
+              <strong>/${escapeHtml(room.roomId)}</strong>
+              <span>${escapeHtml(room.trafficLabel)}</span>
+            </div>
+            <span class="open-stage-card-badge">${escapeHtml(roomBadge)}</span>
+          </div>
+          <div class="open-stage-card-body">
+            <div class="open-stage-card-avatar">${renderAvatar(roomLeadSeed, (room.topPlayerName || room.roomId).slice(0, 3))}</div>
+            <div class="open-stage-card-copy">
+              <p>${escapeHtml(roomCopy)}</p>
+              <div class="leader-bar">
+                <span style="width:${roomIntensity}%"></span>
+              </div>
+              <small>${escapeHtml(roomMeta)}</small>
+            </div>
+          </div>
+          <div class="open-stage-card-actions">
+            <a class="${isCurrent ? "ghost-button" : "secondary-button"} button-link" href="/jam/?room=${encodeURIComponent(room.roomId)}">
+              ${isCurrent ? "Open full jam" : "Jump in"}
+            </a>
+            <a class="ghost-button button-link" href="/?room=${encodeURIComponent(room.roomId)}">Watch board</a>
+          </div>
+        </article>
+      `;
+  }).join("");
+}
 function renderEventFeed(room) {
   const events = room.events.slice(0, 8);
   if (!events.length) {
@@ -487,6 +905,32 @@ function renderEventFeed(room) {
             </div>
             <p>${escapeHtml(event.message || "Room movement logged.")}</p>
           </div>
+        </article>
+      `
+  ).join("");
+}
+function renderFeedback() {
+  const topAreaLabel = state.feedback.topArea?.label || "Still listening";
+  const recentCount = state.feedback.entries.length;
+  elements.feedbackIntro.textContent = `Feedback lands as ${state.profile.name}. Tell us what is clicking for you.`;
+  elements.feedbackTotal.textContent = formatCount(state.feedback.total);
+  elements.feedbackTopArea.textContent = topAreaLabel;
+  elements.feedbackRecentCount.textContent = formatCount(recentCount);
+  elements.feedbackStatus.textContent = state.feedback.statusMessage;
+  elements.feedbackSubmitButton.disabled = state.feedback.isSubmitting;
+  elements.feedbackSubmitButton.textContent = state.feedback.isSubmitting ? "Sending..." : "Send feedback";
+  if (!state.feedback.entries.length) {
+    elements.feedbackList.innerHTML = '<div class="stats-empty">Fresh praise will show up here after the first note.</div>';
+    return;
+  }
+  elements.feedbackList.innerHTML = state.feedback.entries.map(
+    (entry) => `
+        <article class="feedback-item">
+          <div class="feedback-item-topline">
+            <strong>${escapeHtml(entry.name)}</strong>
+            <span>${escapeHtml(entry.areaLabel || FEEDBACK_AREA_LABELS[entry.area] || "Overall vibe")} / ${escapeHtml(formatRelativeTime(entry.createdAt))}</span>
+          </div>
+          <p>${escapeHtml(entry.note)}</p>
         </article>
       `
   ).join("");
@@ -519,13 +963,218 @@ function syncDocumentMeta(room) {
   headElements.canonical?.setAttribute("href", meta.shareUrl);
   syncRoomUrl(meta.roomId);
 }
+async function postRoomAction(action, payload = {}) {
+  const response = await fetch("/api/jam-room", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      roomId: state.roomId,
+      action,
+      player: buildPlayerPayload(),
+      ...payload
+    })
+  });
+  if (!response.ok) {
+    throw new Error(`Room update failed with ${response.status}`);
+  }
+  return response.json();
+}
+async function loadFeedbackSnapshot() {
+  try {
+    const response = await fetch("/api/feedback", {
+      headers: {
+        Accept: "application/json"
+      },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      throw new Error(`Feedback request failed with ${response.status}`);
+    }
+    const snapshot = await response.json();
+    state.feedback.total = Number(snapshot.total || 0);
+    state.feedback.topArea = snapshot.topArea || null;
+    state.feedback.entries = Array.isArray(snapshot.entries) ? snapshot.entries : [];
+    if (!state.feedback.isSubmitting) {
+      state.feedback.statusMessage = state.feedback.total ? "We\u2019re tracking what people enjoy most right now." : "Tell us what feels fun, clear, or worth coming back for.";
+    }
+  } catch {
+    if (!state.feedback.total) {
+      state.feedback.statusMessage = "Feedback is loading a little slowly, but you can still send a note.";
+    }
+  }
+  renderFeedback();
+  renderCommerceBoard(state.room, computeRoomTelemetry(state.room));
+}
+async function loadMintFeedSnapshot() {
+  try {
+    const response = await fetch("/api/mint-feed", {
+      headers: {
+        Accept: "application/json"
+      },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      throw new Error(`Mint feed request failed with ${response.status}`);
+    }
+    const snapshot = await response.json();
+    state.market.total = Number(snapshot.total || 0);
+    state.market.topDrop = snapshot.topDrop || null;
+    state.market.entries = Array.isArray(snapshot.entries) ? snapshot.entries : [];
+  } catch {
+    state.market.total = state.market.total || 0;
+    state.market.topDrop = state.market.topDrop || null;
+    state.market.entries = Array.isArray(state.market.entries) ? state.market.entries : [];
+  }
+  renderCommerceBoard(state.room, computeRoomTelemetry(state.room));
+}
+async function submitFeedback(event) {
+  event.preventDefault();
+  const note = elements.feedbackNote.value.trim();
+  if (note.length < 8) {
+    state.feedback.statusMessage = "Give us a little more detail so we know what to keep.";
+    renderFeedback();
+    return;
+  }
+  state.feedback.isSubmitting = true;
+  state.feedback.statusMessage = "Sending your note...";
+  renderFeedback();
+  try {
+    const response = await fetch("/api/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: state.profile.name,
+        area: elements.feedbackArea.value,
+        note,
+        roomId: state.roomId
+      })
+    });
+    const payload = await response.json();
+    if (!response.ok) {
+      throw new Error(payload?.error || "Unable to save feedback right now.");
+    }
+    state.feedback.total = Number(payload.total || 0);
+    state.feedback.topArea = payload.topArea || null;
+    state.feedback.entries = Array.isArray(payload.entries) ? payload.entries : [];
+    state.feedback.statusMessage = `Thanks. We saved what you\u2019re enjoying about ${FEEDBACK_AREA_LABELS[elements.feedbackArea.value] || "the build"}.`;
+    elements.feedbackNote.value = "";
+  } catch (error) {
+    state.feedback.statusMessage = error instanceof Error ? error.message : "Unable to save feedback right now.";
+  } finally {
+    state.feedback.isSubmitting = false;
+    renderFeedback();
+    renderCommerceBoard(state.room, computeRoomTelemetry(state.room));
+  }
+}
+async function shareRoomInvite() {
+  const inviteUrl = new URL("/jam/", window.location.origin);
+  if (state.roomId !== DEFAULT_ROOM_ID) {
+    inviteUrl.searchParams.set("room", state.roomId);
+  }
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "Drum Nouns Jam",
+        text: `Join ${state.roomId} and stack DRUM with me.`,
+        url: inviteUrl.toString()
+      });
+      state.shareStatus = `Shared ${state.roomId}`;
+      renderCommerceBoard(state.room, computeRoomTelemetry(state.room));
+      return;
+    }
+    await navigator.clipboard.writeText(inviteUrl.toString());
+    state.shareStatus = "Jam invite copied";
+  } catch (error) {
+    state.shareStatus = error instanceof Error && error.message ? `Invite failed: ${error.message}` : "Invite failed right now.";
+  }
+  renderCommerceBoard(state.room, computeRoomTelemetry(state.room));
+}
+async function joinRoom() {
+  try {
+    const snapshot = await postRoomAction("join");
+    state.room = snapshot?.roomId ? snapshot : state.room;
+    renderAll();
+  } catch {
+  }
+}
+function schedulePulseFlush(delay = PULSE_FLUSH_DELAY_MS) {
+  window.clearTimeout(pulseFlushTimer);
+  pulseFlushTimer = window.setTimeout(() => {
+    flushPendingPulse();
+  }, delay);
+}
+async function flushPendingPulse(force = false) {
+  if (pulseInFlight) {
+    return;
+  }
+  const hits = state.session.pendingHits;
+  const tokens = state.session.pendingTokens;
+  if (!hits && !force) {
+    return;
+  }
+  pulseInFlight = true;
+  try {
+    const snapshot = await postRoomAction("pulse", {
+      hits,
+      tokens,
+      combo: Math.max(state.session.bestCombo, getCurrentCombo())
+    });
+    state.session.pendingHits = Math.max(0, state.session.pendingHits - hits);
+    state.session.pendingTokens = Math.max(0, state.session.pendingTokens - tokens);
+    state.room = snapshot?.roomId ? snapshot : state.room;
+  } catch {
+  } finally {
+    pulseInFlight = false;
+    renderAll();
+    if (state.session.pendingHits) {
+      schedulePulseFlush(1200);
+    }
+  }
+}
+function remixLandingProfile() {
+  if (!state.imageData) {
+    return;
+  }
+  state.profile.seed = randomSeed();
+  saveProfile();
+  renderAll();
+  joinRoom();
+}
+function registerLandingHit() {
+  const now = Date.now();
+  if (now - state.session.lastTapAt > COMBO_TIMEOUT_MS) {
+    state.session.combo = 0;
+  }
+  state.session.combo += 1;
+  state.session.bestCombo = Math.max(state.session.bestCombo, state.session.combo);
+  state.session.lastTapAt = now;
+  const gain = computeLandingGain(state.session.combo);
+  state.session.lastGain = gain;
+  state.session.pendingHits += 1;
+  state.session.pendingTokens += gain;
+  state.profile.lifetimeHits += 1;
+  state.profile.lifetimeTokens += gain;
+  saveProfile();
+  renderAll();
+  pulseLandingPad();
+  spawnLandingBurst(gain);
+  schedulePulseFlush();
+}
 function renderAll() {
   const roomTelemetry = computeRoomTelemetry(state.room);
+  renderLandingPlay(roomTelemetry);
   renderHero(state.room, roomTelemetry);
+  renderCommerceBoard(state.room, roomTelemetry);
+  renderFeedback();
   renderLocalProfile(state.profile);
   renderRoomNouns(state.room, roomTelemetry);
   renderLeaderboard(state.room);
   renderTrendBoard(state.room, state.profile, roomTelemetry);
+  renderOpenStages();
   renderEventFeed(state.room);
   syncDocumentMeta(state.room);
 }
@@ -540,6 +1189,10 @@ async function loadImageData() {
       return;
     }
     state.imageData = await response.json();
+    if (!state.profile.seed) {
+      state.profile.seed = randomSeed();
+      saveProfile();
+    }
   } catch {
     state.imageData = null;
   }
@@ -558,18 +1211,89 @@ async function loadRoomSnapshot() {
     const snapshot = await response.json();
     state.room = snapshot?.roomId ? snapshot : createEmptyRoom(state.roomId);
   } catch {
-    state.room = createEmptyRoom(state.roomId);
+    state.room = state.room?.roomId ? state.room : createEmptyRoom(state.roomId);
   }
   renderAll();
+}
+async function loadRoomDirectory() {
+  try {
+    const response = await fetch("/api/jam-rooms?limit=5", {
+      headers: {
+        Accept: "application/json"
+      },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      throw new Error(`Directory request failed with ${response.status}`);
+    }
+    state.directory = sanitizeRoomDirectory(await response.json());
+  } catch {
+    state.directory = state.directory?.rooms?.length ? state.directory : createEmptyRoomDirectory();
+  }
+  renderOpenStages();
 }
 function startPolling() {
   window.setInterval(() => {
     loadRoomSnapshot();
   }, POLL_MS);
+  window.setInterval(() => {
+    loadRoomDirectory();
+  }, DIRECTORY_POLL_MS);
+}
+function startPresenceHeartbeat() {
+  window.setInterval(() => {
+    joinRoom();
+  }, ROOM_HEARTBEAT_MS);
+}
+function startSurfaceTick() {
+  window.setInterval(() => {
+    const roomTelemetry = computeRoomTelemetry(state.room);
+    renderLandingPlay(roomTelemetry);
+    renderHero(state.room, roomTelemetry);
+  }, SURFACE_TICK_MS);
 }
 elements.refreshButton.addEventListener("click", () => {
   loadRoomSnapshot();
+  loadRoomDirectory();
+  loadFeedbackSnapshot();
+  loadMintFeedSnapshot();
 });
-await Promise.all([loadImageData(), loadRoomSnapshot()]);
+elements.marqueeRemixButton.addEventListener("click", () => {
+  remixLandingProfile();
+});
+elements.shareRoomButton.addEventListener("click", () => {
+  shareRoomInvite();
+});
+elements.feedbackForm.addEventListener("submit", submitFeedback);
+elements.landingDrumPad.addEventListener("pointerdown", (event) => {
+  event.preventDefault();
+  registerLandingHit();
+});
+elements.landingDrumPad.addEventListener("keydown", (event) => {
+  if (event.key === " " || event.key === "Enter") {
+    event.preventDefault();
+    registerLandingHit();
+  }
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    flushPendingPulse(true);
+    return;
+  }
+  joinRoom();
+  loadRoomSnapshot();
+  loadRoomDirectory();
+  loadFeedbackSnapshot();
+  loadMintFeedSnapshot();
+});
+await loadImageData();
+renderAll();
+await joinRoom();
+await loadRoomSnapshot();
+await loadRoomDirectory();
+await loadFeedbackSnapshot();
+await loadMintFeedSnapshot();
 renderAll();
 startPolling();
+startPresenceHeartbeat();
+startSurfaceTick();

@@ -44,7 +44,7 @@
       <header class="stats-topbar">
         <a class="stats-brand" href="/">INDUSTRY NEXT</a>
         <nav class="stats-nav" aria-label="Primary">
-          <a id="enter-room-link" href="/jam/">Enter Jam</a>
+          <a href="/jam/">Enter Jam</a>
           <button id="refresh-button" class="ghost-button" type="button">Refresh live view</button>
           <a href="https://github.com/mhoydich/nouns5.4" target="_blank" rel="noreferrer">
             GitHub
@@ -52,77 +52,120 @@
         </nav>
       </header>
 
-      <section class="stats-overview">
-        <div class="overview-copy">
-          <div class="overview-heading">
-            <p class="eyebrow">Drum Nouns Jam / Live board</p>
-            <h1>Clean read on the room, your progress, and what the Nouns are doing.</h1>
-            <p id="hero-summary" class="stats-copy">
-              Pulling live room totals, crowd behavior, and your local drop progress.
-            </p>
+      <section class="marquee-shell">
+        <article class="play-marquee">
+          <div class="play-marquee-head">
+            <div class="play-marquee-player">
+              <div id="marquee-avatar" class="marquee-avatar" aria-hidden="true"></div>
+              <div class="play-marquee-copy">
+                <p class="eyebrow">Warm up on the landing page</p>
+                <strong id="marquee-name" class="play-marquee-name">Rim Rider</strong>
+                <p id="marquee-identity" class="stats-copy">
+                  Tap to join the room, stack DRUM, and carry your noun into the full jam.
+                </p>
+              </div>
+            </div>
+
+            <div class="play-marquee-actions">
+              <button id="marquee-remix-button" class="ghost-button" type="button">Remix noun</button>
+              <a id="enter-room-link" class="secondary-button button-link" href="/jam/">
+                Enter full jam
+              </a>
+            </div>
           </div>
 
-          <div class="overview-meta" aria-label="Room status">
-            <article class="meta-chip">
-              <span>Room</span>
-              <strong id="room-badge">global-jam</strong>
+          <button id="landing-drum-pad" class="landing-drum-pad" type="button" aria-label="Tap to play the room">
+            <div id="landing-crowd" class="landing-crowd" aria-hidden="true"></div>
+            <span class="landing-pad-center">
+              <span class="landing-pad-kicker">Tap the room</span>
+              <strong id="landing-gain">+1 DRUM</strong>
+              <small id="landing-caption">Next hit adds 1 DRUM to global-jam.</small>
+            </span>
+          </button>
+
+          <div class="landing-score-grid" aria-label="Local play stats">
+            <article class="landing-score-card">
+              <span>Your DRUM</span>
+              <strong id="landing-player-tokens">0</strong>
             </article>
-            <article class="meta-chip">
-              <span>Mood</span>
-              <strong id="room-mood">Quiet reset</strong>
+            <article class="landing-score-card">
+              <span>Combo</span>
+              <strong id="landing-combo">0x</strong>
             </article>
-            <article class="meta-chip">
-              <span>Synced</span>
-              <strong id="stamp-line">Syncing...</strong>
+            <article class="landing-score-card">
+              <span>Best</span>
+              <strong id="landing-best-combo">0x</strong>
+            </article>
+            <article class="landing-score-card">
+              <span>Crew</span>
+              <strong id="landing-crew">1.00x</strong>
             </article>
           </div>
-        </div>
 
-        <div class="stats-meter">
-          <div class="stats-meter-head">
-            <span>Signal strength</span>
-            <strong>Live room telemetry</strong>
+          <p id="landing-session-note" class="landing-session-note">
+            Open the full jam for room sharing, drops, minting, and the full crowd view.
+          </p>
+        </article>
+
+        <article class="stats-overview">
+          <div class="overview-strip">
+            <div class="overview-main">
+              <p class="eyebrow">Drum Nouns Jam / Live board</p>
+              <strong id="hero-headline" class="overview-headline">Loading room status...</strong>
+              <p id="hero-summary" class="stats-copy">
+                Live room totals, crowd state, and your drop progress.
+              </p>
+            </div>
+
+            <div class="overview-meta" aria-label="Room status">
+              <article class="meta-chip">
+                <span>Room</span>
+                <strong id="room-badge">global-jam</strong>
+              </article>
+              <article class="meta-chip">
+                <span>Mood</span>
+                <strong id="room-mood">Quiet reset</strong>
+              </article>
+              <article class="meta-chip">
+                <span>Synced</span>
+                <strong id="stamp-line">Syncing...</strong>
+              </article>
+            </div>
+
+            <div class="overview-signal">
+              <div class="signal-topline">
+                <span>Pulse</span>
+                <strong><span id="pulse-velocity">0</span> DRUM / player</strong>
+              </div>
+              <div class="stats-meter-track">
+                <span id="signal-fill"></span>
+              </div>
+            </div>
           </div>
-          <div class="stats-meter-track">
-            <span id="signal-fill"></span>
+
+          <div class="stats-card-grid" aria-label="Live room metrics">
+            <article class="telemetry-card">
+              <span>Room total</span>
+              <strong id="room-total">0</strong>
+              <small>DRUM stacked in the tracked room</small>
+            </article>
+            <article class="telemetry-card">
+              <span>Active drummers</span>
+              <strong id="active-count">0</strong>
+              <small>rolling 45-second window</small>
+            </article>
+            <article class="telemetry-card">
+              <span>Crew bonus</span>
+              <strong id="crew-multiplier-live">1.00x</strong>
+              <small>crowd energy multiplier</small>
+            </article>
+            <article class="telemetry-card">
+              <span>Hype index</span>
+              <strong id="hype-index">0</strong>
+              <small>bursts, reactions, and room heat</small>
+            </article>
           </div>
-        </div>
-
-        <div class="stats-card-grid" aria-label="Live room metrics">
-          <article class="telemetry-card">
-            <span>Room total</span>
-            <strong id="room-total">0</strong>
-            <small>DRUM stacked in the tracked room</small>
-          </article>
-          <article class="telemetry-card">
-            <span>Active drummers</span>
-            <strong id="active-count">0</strong>
-            <small>rolling 45-second window</small>
-          </article>
-          <article class="telemetry-card">
-            <span>Crew bonus</span>
-            <strong id="crew-multiplier-live">1.00x</strong>
-            <small>crowd energy multiplier</small>
-          </article>
-          <article class="telemetry-card">
-            <span>Hype index</span>
-            <strong id="hype-index">0</strong>
-            <small>bursts, reactions, and room heat</small>
-          </article>
-        </div>
-
-        <div class="brief-grid" aria-label="Quick reads">
-          <article class="brief-card">
-            <span>Room read</span>
-            <strong id="hero-headline">Loading the room weather...</strong>
-            <small>fast interpretation of current activity</small>
-          </article>
-          <article class="brief-card">
-            <span>Pulse velocity</span>
-            <strong id="pulse-velocity">0</strong>
-            <small>DRUM per active drummer</small>
-          </article>
-        </div>
+        </article>
       </section>
 
       <section class="stats-grid">
@@ -207,9 +250,173 @@
               <p>Computing room lore...</p>
             </div>
           </article>
+
+          <article class="stats-panel open-stage-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Open stages</p>
+                <h2>Where people are playing</h2>
+              </div>
+            </div>
+
+            <p id="open-stage-status" class="stats-copy">
+              Live rooms and the daily spotlight will show up here.
+            </p>
+
+            <div class="feedback-summary" aria-label="Open stage summary">
+              <article class="mini-stat">
+                <span>Live rooms</span>
+                <strong id="open-stage-live-rooms">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Live drummers</span>
+                <strong id="open-stage-players">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Spotlight room</span>
+                <strong id="open-stage-spotlight">daily room</strong>
+              </article>
+            </div>
+
+            <div id="open-stage-list" class="open-stage-list">
+              <div class="stats-empty">Scanning for live rooms...</div>
+            </div>
+          </article>
+
+          <article class="stats-panel feedback-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Feedback</p>
+                <h2>What are you enjoying?</h2>
+              </div>
+            </div>
+
+            <p id="feedback-intro" class="stats-copy">Tell us what feels good so we can keep leaning into it.</p>
+
+            <form id="feedback-form" class="feedback-form">
+              <label class="feedback-field" for="feedback-area">
+                <span>Focus</span>
+                <select id="feedback-area" name="feedback-area">
+                  <option value="landing-pad">Landing pad</option>
+                  <option value="live-board">Live board</option>
+                  <option value="nouns">Noun look</option>
+                  <option value="drops-mint">Drops + mint</option>
+                  <option value="overall-vibe">Overall vibe</option>
+                </select>
+              </label>
+
+              <label class="feedback-field" for="feedback-note">
+                <span>What are you enjoying?</span>
+                <textarea
+                  id="feedback-note"
+                  name="feedback-note"
+                  rows="3"
+                  maxlength="280"
+                  placeholder="I like the live pad because..."
+                ></textarea>
+              </label>
+
+              <div class="feedback-actions">
+                <button id="feedback-submit-button" class="secondary-button" type="submit">
+                  Send feedback
+                </button>
+                <p id="feedback-status" class="stats-copy">
+                  Tell us what feels fun, clear, or worth coming back for.
+                </p>
+              </div>
+            </form>
+
+            <div class="feedback-summary" aria-label="Feedback summary">
+              <article class="mini-stat">
+                <span>Total notes</span>
+                <strong id="feedback-total">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Top delight</span>
+                <strong id="feedback-top-area">Listening...</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Recent read</span>
+                <strong id="feedback-recent-count">0</strong>
+              </article>
+            </div>
+
+            <div id="feedback-list" class="feedback-list">
+              <div class="stats-empty">Fresh praise will show up here after the first note.</div>
+            </div>
+          </article>
         </div>
 
         <div class="stats-column stats-column-main">
+          <article class="stats-panel commerce-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Growth</p>
+                <h2>Traffic and market board</h2>
+              </div>
+              <a id="mint-route-link" class="ghost-button button-link" href="/jam/?room=global-jam#mint-panel">
+                Open mint desk
+              </a>
+            </div>
+
+            <div class="room-panel-grid commerce-grid">
+              <section class="room-panel-section">
+                <p class="panel-kicker">Traffic desk</p>
+
+                <div class="traffic-grid">
+                  <article class="mini-stat">
+                    <span>Known drummers</span>
+                    <strong id="traffic-known">0</strong>
+                  </article>
+                  <article class="mini-stat">
+                    <span>Live now</span>
+                    <strong id="traffic-live">0</strong>
+                  </article>
+                  <article class="mini-stat">
+                    <span>Feedback notes</span>
+                    <strong id="traffic-feedback">0</strong>
+                  </article>
+                  <article class="mini-stat">
+                    <span>Mint feed</span>
+                    <strong id="traffic-mints">0</strong>
+                  </article>
+                </div>
+
+                <p id="traffic-note" class="stats-copy">
+                  Share the room to turn this into a crew and give the mint board something to watch.
+                </p>
+
+                <div class="traffic-actions">
+                  <button id="share-room-button" class="secondary-button" type="button">Copy jam invite</button>
+                  <p id="share-status-line" class="stats-copy">Invite the next drummer into this room.</p>
+                </div>
+              </section>
+
+              <section class="room-panel-section">
+                <p class="panel-kicker">Market watch</p>
+
+                <div class="market-summary">
+                  <article class="mini-stat">
+                    <span>Hot collectible</span>
+                    <strong id="market-hot-drop">Listening...</strong>
+                  </article>
+                  <article class="mini-stat">
+                    <span>Mint route</span>
+                    <strong id="market-ready-route">Warmup</strong>
+                  </article>
+                  <article class="mini-stat">
+                    <span>Recent mints</span>
+                    <strong id="market-recent-count">0</strong>
+                  </article>
+                </div>
+
+                <div id="market-list" class="market-list">
+                  <div class="stats-empty">Fresh mint activity will land here once the room starts collecting.</div>
+                </div>
+              </section>
+            </div>
+          </article>
+
           <article class="stats-panel room-panel">
             <div class="panel-head">
               <div>

@@ -135,11 +135,9 @@ export function buildRoomHeadline(snapshot = {}, telemetry = computeRoomTelemetr
 }
 
 export function buildRoomSummary(snapshot = {}, telemetry = computeRoomTelemetry(snapshot)) {
-  return `${formatCount(snapshot.events?.length || 0)} logged events, ${formatCount(
-    snapshot.metrics?.activeCount || 0,
-  )} active drummers, and a ${formatMultiplier(
+  return `${formatCount(snapshot.metrics?.activeCount || 0)} active, ${formatMultiplier(
     snapshot.metrics?.crewMultiplier || 1,
-  )} crew bonus in ${snapshot.roomId || DEFAULT_ROOM_ID}.`;
+  )} crew, ${formatCount(snapshot.events?.length || 0)} tape events.`;
 }
 
 export function buildRoomPrimaryLine(snapshot = {}, telemetry = computeRoomTelemetry(snapshot)) {
