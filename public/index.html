@@ -36,7 +36,8 @@
     <meta id="meta-twitter-image" name="twitter:image" content="https://www.industrynext.xyz/api/og.svg?room=global-jam" />
     <link id="meta-canonical" rel="canonical" href="https://www.industrynext.xyz/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Industry Next | Drum Nouns Jam Stats</title>
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Industry Next | Live Drum Nouns Arcade</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="route-home">
@@ -45,12 +46,54 @@
         <a class="stats-brand" href="/">INDUSTRY NEXT</a>
         <nav class="stats-nav" aria-label="Primary">
           <a href="/jam/">Enter Jam</a>
+          <a href="#open-stages">Open Stages</a>
+          <a href="#industry-next">About</a>
           <button id="refresh-button" class="ghost-button" type="button">Refresh live view</button>
           <a href="https://github.com/mhoydich/nouns5.4" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </nav>
       </header>
+
+      <section id="industry-next" class="domain-hero" aria-label="Industry Next launch desk">
+        <div class="domain-hero-copy">
+          <p class="eyebrow">industrynext.xyz / public arcade</p>
+          <h1>Play the room. Build the crowd. Mint the noise.</h1>
+          <p>
+            Industry Next is becoming a live, collaborative playground for small internet rituals:
+            tap drums, show up as a Noun, stack DRUM, and turn room activity into collectible moments.
+          </p>
+          <div class="domain-hero-actions">
+            <a class="secondary-button button-link" href="/jam/?room=global-jam">Start drumming</a>
+            <a class="ghost-button button-link" href="/?room=global-jam#open-stages">Watch open stages</a>
+          </div>
+        </div>
+
+        <div class="domain-console" aria-label="Domain status">
+          <div class="domain-console-top">
+            <span>LIVE ROUTE</span>
+            <strong>www.industrynext.xyz</strong>
+          </div>
+          <div class="domain-console-grid">
+            <article>
+              <span>Game</span>
+              <strong>Drum Nouns Jam</strong>
+            </article>
+            <article>
+              <span>Multiplayer</span>
+              <strong>Durable rooms</strong>
+            </article>
+            <article>
+              <span>Wallet</span>
+              <strong>Tezos testnet</strong>
+            </article>
+            <article>
+              <span>Next</span>
+              <strong>Namecheap apex</strong>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <section class="marquee-shell">
         <article class="play-marquee">
@@ -251,7 +294,7 @@
             </div>
           </article>
 
-          <article class="stats-panel open-stage-panel">
+          <article id="open-stages" class="stats-panel open-stage-panel">
             <div class="panel-head">
               <div>
                 <p class="eyebrow">Open stages</p>

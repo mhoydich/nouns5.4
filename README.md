@@ -110,6 +110,19 @@ Then add `www.industrynext.xyz` as a custom domain in Cloudflare Pages and point
 
 `industrynext-nouns.pages.dev`
 
+Current public domain target:
+
+- `https://www.industrynext.xyz/` serves the Cloudflare Pages app
+- `www` CNAME resolves to `industrynext-nouns.pages.dev`
+- The apex `industrynext.xyz` should redirect to `https://www.industrynext.xyz/`
+
+If the apex is still parked at Namecheap, remove any `A` record for `@` that points to `162.255.119.70` and replace it with:
+
+- Type: `URL Redirect Record`
+- Host: `@`
+- Value: `https://www.industrynext.xyz/`
+- Redirect type: `Unmasked`
+
 ## Durable Room Coordinator
 
 The jam room APIs work without extra services in local fallback mode, but production traffic should use the Durable Object coordinator so room activity, discovery, and leaderboards survive worker isolate churn.

@@ -1,0 +1,17 @@
+{
+  "name": "Industry Next",
+  "short_name": "IndustryNext",
+  "description": "A live Drum Nouns arcade for collaborative play, DRUM tokens, and Tezos minting experiments.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#10161f",
+  "theme_color": "#10161f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
