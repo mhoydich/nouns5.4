@@ -32,7 +32,7 @@ export async function fetchRoomCoordinator(context, path, init = {}) {
   const sourceUrl = new URL(context.request.url);
   const targetUrl = new URL(path, sourceUrl.origin);
 
-  return stub.fetch(targetUrl.toString(), init);
+  return await stub.fetch(targetUrl.toString(), init);
 }
 
 export async function coordinatorJson(context, path, init = {}) {
@@ -42,5 +42,5 @@ export async function coordinatorJson(context, path, init = {}) {
     return null;
   }
 
-  return response.json();
+  return await response.json();
 }
