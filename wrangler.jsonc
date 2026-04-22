@@ -2,11 +2,5 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "industrynext-nouns",
   "compatibility_date": "2026-04-16",
-  "pages_build_output_dir": "./public",
-  "services": [
-    {
-      "binding": "JAM_ROOM_COORDINATOR",
-      "service": "industrynext-jam-room-coordinator"
-    }
-  ]
+  "pages_build_output_dir": "./public"
 }
