@@ -120,7 +120,11 @@ Deploy the coordinator Worker first:
 npm run cf:rooms:deploy
 ```
 
-Then bind it to the Pages project as `JAM_ROOM_COORDINATOR`. In Cloudflare, this can be configured as a Durable Object binding or a service binding to the `industrynext-jam-room-coordinator` Worker. The Pages Functions adapter supports both shapes and falls back to the in-memory store when the binding is absent.
+Pages Functions call the deployed coordinator over HTTPS by default:
+
+`https://industrynext-jam-room-coordinator.mhoydich.workers.dev`
+
+Set `JAM_ROOM_COORDINATOR_URL` to a different coordinator URL if the Worker moves, or set it to `disabled` to force the local in-memory fallback. Avoid a Pages service binding here for now; Cloudflare currently serializes those Worker responses as RPC proxy objects in this project and can throw 1101s.
 
 For local Durable Object testing, run the coordinator in one terminal:
 
