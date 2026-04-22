@@ -12,7 +12,9 @@
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
     "cf:dev": "npm run build && wrangler pages dev public",
     "cf:project": "wrangler pages project create industrynext-nouns --production-branch main",
-    "cf:deploy": "npm run build && wrangler pages deploy public --project-name industrynext-nouns"
+    "cf:deploy": "npm run build && wrangler pages deploy public --project-name industrynext-nouns",
+    "cf:rooms:dev": "wrangler dev --config workers/jam-room-coordinator/wrangler.jsonc",
+    "cf:rooms:deploy": "wrangler deploy --config workers/jam-room-coordinator/wrangler.jsonc"
   },
   "dependencies": {
     "@nouns/assets": "^0.10.0",

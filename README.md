@@ -110,6 +110,36 @@ Then add `www.industrynext.xyz` as a custom domain in Cloudflare Pages and point
 
 `industrynext-nouns.pages.dev`
 
+## Durable Room Coordinator
+
+The jam room APIs work without extra services in local fallback mode, but production traffic should use the Durable Object coordinator so room activity, discovery, and leaderboards survive worker isolate churn.
+
+Deploy the coordinator Worker first:
+
+```sh
+npm run cf:rooms:deploy
+```
+
+Then bind it to the Pages project as `JAM_ROOM_COORDINATOR`. In Cloudflare, this can be configured as a Durable Object binding or a service binding to the `industrynext-jam-room-coordinator` Worker. The Pages Functions adapter supports both shapes and falls back to the in-memory store when the binding is absent.
+
+For local Durable Object testing, run the coordinator in one terminal:
+
+```sh
+npm run cf:rooms:dev
+```
+
+Then run Pages dev with a matching binding, for example:
+
+```sh
+npx wrangler pages dev public --do JAM_ROOM_COORDINATOR=JamRoomCoordinator@industrynext-jam-room-coordinator
+```
+
+The coordinator owns:
+
+- `/api/jam-room` room joins, pulses, reactions, and snapshots
+- `/api/jam-room-stream` server-sent room snapshots
+- `/api/jam-rooms` open-stage discovery and daily spotlight room ranking
+
 ## GitHub Pages Fallback
 
 The repository still includes a GitHub Pages workflow and the deployed artifact still contains the custom-domain file:

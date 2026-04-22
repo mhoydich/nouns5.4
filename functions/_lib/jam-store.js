@@ -63,6 +63,67 @@ function createRoom(roomId) {
   };
 }
 
+function serializeRoomForStorage(room) {
+  return {
+    roomId: room.roomId,
+    createdAt: room.createdAt,
+    updatedAt: room.updatedAt,
+    sequence: room.sequence,
+    totals: room.totals,
+    players: [...room.players.values()],
+    events: room.events,
+  };
+}
+
+function roomFromStorage(record = {}) {
+  const room = createRoom(record.roomId);
+
+  room.createdAt = sanitizeNumber(record.createdAt, room.createdAt, Number.MAX_SAFE_INTEGER);
+  room.updatedAt = sanitizeNumber(record.updatedAt, room.updatedAt, Number.MAX_SAFE_INTEGER);
+  room.sequence = sanitizeNumber(record.sequence, 0, Number.MAX_SAFE_INTEGER);
+  room.totals = {
+    hits: sanitizeNumber(record.totals?.hits, 0, Number.MAX_SAFE_INTEGER),
+    tokens: sanitizeNumber(record.totals?.tokens, 0, Number.MAX_SAFE_INTEGER),
+  };
+  room.events = Array.isArray(record.events)
+    ? record.events.slice(0, EVENT_LIMIT).map((event) => ({
+        id: sanitizeText(event?.id, `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, 80),
+        createdAt: sanitizeNumber(event?.createdAt, Date.now(), Number.MAX_SAFE_INTEGER),
+        type: sanitizeText(event?.type, "pulse", 24),
+        playerId: sanitizeText(event?.playerId, "guest", 80),
+        playerName: sanitizeText(event?.playerName, "Rim Rider", 24),
+        seed: sanitizeSeed(event?.seed),
+        selectedDrop: sanitizeText(event?.selectedDrop, "Garage Kick", 32),
+        reaction: event?.reaction ? sanitizeText(event.reaction, "CLAP", 16).toUpperCase() : undefined,
+        hits: sanitizeNumber(event?.hits, 0, 999),
+        tokens: sanitizeNumber(event?.tokens, 0, 99999),
+        combo: sanitizeNumber(event?.combo, 0, 999),
+        message: sanitizeText(event?.message, "Room movement logged.", 180, /$^/g),
+      }))
+    : [];
+  room.players = new Map(
+    Array.isArray(record.players)
+      ? record.players.map((player) => [
+          sanitizeText(player?.id, `guest-${Date.now()}`, 80),
+          {
+            id: sanitizeText(player?.id, `guest-${Date.now()}`, 80),
+            name: sanitizeText(player?.name, "Rim Rider", 24),
+            seed: sanitizeSeed(player?.seed),
+            selectedDrop: sanitizeText(player?.selectedDrop, "Garage Kick", 32),
+            totalHits: sanitizeNumber(player?.totalHits, 0, Number.MAX_SAFE_INTEGER),
+            totalTokens: sanitizeNumber(player?.totalTokens, 0, Number.MAX_SAFE_INTEGER),
+            bestCombo: sanitizeNumber(player?.bestCombo, 0, 999),
+            lastSeenAt: sanitizeNumber(player?.lastSeenAt, Date.now(), Number.MAX_SAFE_INTEGER),
+            lastBeatAt: sanitizeNumber(player?.lastBeatAt, 0, Number.MAX_SAFE_INTEGER),
+            lastReactionAt: sanitizeNumber(player?.lastReactionAt, 0, Number.MAX_SAFE_INTEGER),
+          },
+        ])
+      : [],
+  );
+
+  return room;
+}
+
 function cleanupStore() {
   const now = Date.now();
   const store = getStore();
@@ -284,6 +345,32 @@ export function getRoomDirectory(limitInput = 6) {
     },
     rooms: summaries.slice(0, limit),
   };
+}
+
+export function exportRoomStoreSnapshot() {
+  cleanupStore();
+
+  return {
+    version: 1,
+    savedAt: Date.now(),
+    rooms: [...getStore().values()].map(serializeRoomForStorage),
+  };
+}
+
+export function importRoomStoreSnapshot(snapshot = {}) {
+  const store = getStore();
+  store.clear();
+
+  if (!Array.isArray(snapshot.rooms)) {
+    return;
+  }
+
+  snapshot.rooms.forEach((record) => {
+    const roomId = sanitizeRoomId(record?.roomId);
+    store.set(roomId, roomFromStorage({ ...record, roomId }));
+  });
+
+  cleanupStore();
 }
 
 export function joinRoom(roomId, playerInput) {

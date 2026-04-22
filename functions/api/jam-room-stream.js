@@ -1,4 +1,5 @@
 import { getRoomSnapshot, sanitizeRoomId } from "../_lib/jam-store.js";
+import { coordinatorJson } from "../_lib/jam-room-service.js";
 
 const STREAM_POLL_MS = 900;
 const STREAM_HEARTBEAT_MS = 15000;
@@ -22,6 +23,13 @@ export async function onRequestGet(context) {
   const roomId = sanitizeRoomId(url.searchParams.get("room"));
   const encoder = new TextEncoder();
 
+  const readSnapshot = async () =>
+    (await coordinatorJson(context, `/room?room=${encodeURIComponent(roomId)}`, {
+      headers: {
+        Accept: "application/json",
+      },
+    })) || getRoomSnapshot(roomId);
+
   const stream = new ReadableStream({
     start(controller) {
       let closed = false;
@@ -37,8 +45,15 @@ export async function onRequestGet(context) {
         controller.enqueue(encoder.encode(serializeEvent(eventName, payload)));
       };
 
-      const sendSnapshot = () => {
-        const snapshot = getRoomSnapshot(roomId);
+      const sendSnapshot = async () => {
+        let snapshot;
+
+        try {
+          snapshot = await readSnapshot();
+        } catch {
+          snapshot = getRoomSnapshot(roomId);
+        }
+
         const nextSignature = snapshotSignature(snapshot);
 
         if (nextSignature === lastSignature) {

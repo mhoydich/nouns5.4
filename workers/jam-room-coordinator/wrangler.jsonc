@@ -1,0 +1,20 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "industrynext-jam-room-coordinator",
+  "main": "./worker.js",
+  "compatibility_date": "2026-04-16",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "JAM_ROOM_COORDINATOR",
+        "class_name": "JamRoomCoordinator"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["JamRoomCoordinator"]
+    }
+  ]
+}
