@@ -5,7 +5,7 @@ import {
   recordReaction,
   sanitizeRoomId,
 } from "../_lib/jam-store.js";
-import { fetchRoomCoordinator } from "../_lib/jam-room-service.js";
+import { coordinatorJson } from "../_lib/jam-room-service.js";
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -27,14 +27,14 @@ async function readBody(request) {
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
   const roomId = sanitizeRoomId(url.searchParams.get("room"));
-  const coordinatorResponse = await fetchRoomCoordinator(context, `/room?room=${encodeURIComponent(roomId)}`, {
+  const coordinatorSnapshot = await coordinatorJson(context, `/room?room=${encodeURIComponent(roomId)}`, {
     headers: {
       Accept: "application/json",
     },
   });
 
-  if (coordinatorResponse) {
-    return coordinatorResponse;
+  if (coordinatorSnapshot) {
+    return json(coordinatorSnapshot);
   }
 
   return json(getRoomSnapshot(roomId));
@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
   const body = await readBody(context.request);
   const roomId = sanitizeRoomId(body.roomId);
   const player = body.player ?? {};
-  const coordinatorResponse = await fetchRoomCoordinator(context, "/room", {
+  const coordinatorSnapshot = await coordinatorJson(context, "/room", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,8 +56,8 @@ export async function onRequestPost(context) {
     }),
   });
 
-  if (coordinatorResponse) {
-    return coordinatorResponse;
+  if (coordinatorSnapshot) {
+    return json(coordinatorSnapshot);
   }
 
   switch (body.action) {
