@@ -37,10 +37,12 @@ await build({
 });
 
 const networkMarker = "data-pointcast-network";
+const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"first-100-lead\" data-context=\"tezos network el segundo first 100 wallet nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
 const networkMount = [
-  "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"site-footer\"></div>",
+  networkMountElement,
   "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>",
 ].join("\n");
+const networkMountPattern = /[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>/;
 
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -55,7 +57,15 @@ async function htmlFiles(directory) {
 
 for (const htmlFile of await htmlFiles(publicDir)) {
   const html = await readFile(htmlFile, "utf8");
-  if (html.includes(networkMarker)) continue;
-  if (!html.includes("</body>")) throw new Error(`Cannot mount open ad network in ${htmlFile}`);
-  await writeFile(htmlFile, html.replace("</body>", `${networkMount}\n</body>`));
+  let nextHtml;
+  if (html.includes(networkMarker)) {
+    if (!networkMountPattern.test(html)) {
+      throw new Error(`Cannot update open ad network mount in ${htmlFile}`);
+    }
+    nextHtml = html.replace(networkMountPattern, networkMountElement);
+  } else {
+    if (!html.includes("</body>")) throw new Error(`Cannot mount open ad network in ${htmlFile}`);
+    nextHtml = html.replace("</body>", `${networkMount}\n</body>`);
+  }
+  if (nextHtml !== html) await writeFile(htmlFile, nextHtml);
 }

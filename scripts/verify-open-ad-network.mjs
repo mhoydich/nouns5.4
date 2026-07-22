@@ -22,7 +22,9 @@ for (const file of files) {
   const html = await readFile(file, "utf8");
   assert.match(html, /data-pointcast-network/);
   assert.match(html, /data-publisher="industrynext"/);
+  assert.match(html, /data-placement="first-100-lead"/);
+  assert.match(html, /data-campaign="PC-NETWORK-EL-SEGUNDO-2026"/);
   assert.match(html, /https:\/\/pointcast\.xyz\/open-ad-network\.js/);
 }
 
-console.log(`Verified reciprocal open-ad mount on ${files.length} Industry Next pages.`);
+console.log(`Verified first-100 campaign mount on ${files.length} Industry Next pages.`);
