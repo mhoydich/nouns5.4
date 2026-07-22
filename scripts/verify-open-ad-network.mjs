@@ -25,6 +25,9 @@ for (const file of files) {
   assert.match(html, /data-placement="first-100-lead"/);
   assert.match(html, /data-campaign="PC-NETWORK-EL-SEGUNDO-2026"/);
   assert.match(html, /https:\/\/pointcast\.xyz\/open-ad-network\.js/);
+  assert.match(html, /<body\b[^>]*>\s*<div data-pointcast-network/);
+  assert.equal((html.match(/data-pointcast-network/g) || []).length, 1);
+  assert.equal((html.match(/https:\/\/pointcast\.xyz\/open-ad-network\.js/g) || []).length, 1);
 }
 
 console.log(`Verified first-100 campaign mount on ${files.length} Industry Next pages.`);

@@ -38,11 +38,14 @@ await build({
 
 const networkMarker = "data-pointcast-network";
 const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"first-100-lead\" data-context=\"tezos network el segundo first 100 wallet nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
+const networkScriptElement = "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>";
 const networkMount = [
   networkMountElement,
-  "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>",
+  networkScriptElement,
 ].join("\n");
 const networkMountPattern = /[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>/;
+const networkScriptPattern = /[ \t]*<script\s+async\s+src="https:\/\/pointcast\.xyz\/open-ad-network\.js"><\/script>/;
+const bodyPattern = /<body\b[^>]*>/;
 
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -57,15 +60,14 @@ async function htmlFiles(directory) {
 
 for (const htmlFile of await htmlFiles(publicDir)) {
   const html = await readFile(htmlFile, "utf8");
-  let nextHtml;
-  if (html.includes(networkMarker)) {
-    if (!networkMountPattern.test(html)) {
-      throw new Error(`Cannot update open ad network mount in ${htmlFile}`);
-    }
-    nextHtml = html.replace(networkMountPattern, networkMountElement);
-  } else {
-    if (!html.includes("</body>")) throw new Error(`Cannot mount open ad network in ${htmlFile}`);
-    nextHtml = html.replace("</body>", `${networkMount}\n</body>`);
+  if (html.includes(networkMarker) && !networkMountPattern.test(html)) {
+    throw new Error(`Cannot update open ad network mount in ${htmlFile}`);
   }
+  const body = html.match(bodyPattern)?.[0];
+  if (!body) throw new Error(`Cannot find body for open ad network in ${htmlFile}`);
+  const withoutPreviousMount = html
+    .replace(networkMountPattern, "")
+    .replace(networkScriptPattern, "");
+  const nextHtml = withoutPreviousMount.replace(body, `${body}\n${networkMount}`);
   if (nextHtml !== html) await writeFile(htmlFile, nextHtml);
 }
