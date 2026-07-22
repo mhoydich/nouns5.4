@@ -9,9 +9,5 @@
       "binding": "INDUSTRY_NEXT_MADE",
       "id": "eb5d38abafb648f6bf418ec03d13fae8"
     }
-  ],
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1
-  }
+  ]
 }
