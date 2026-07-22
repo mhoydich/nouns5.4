@@ -1,9 +1,9 @@
 import {
   buildSVG
-} from "./chunks/chunk-2ZOWXPXB.js";
+} from "./chunks/chunk-FNE6KAMG.js";
 import {
   init_browser_shims
-} from "./chunks/chunk-TF5QER46.js";
+} from "./chunks/chunk-2GQYEBYG.js";
 
 // src/home.js
 init_browser_shims();

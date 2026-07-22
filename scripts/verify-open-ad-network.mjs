@@ -1,0 +1,28 @@
+import assert from "node:assert/strict";
+import { readdir, readFile } from "node:fs/promises";
+import { resolve } from "node:path";
+
+const publicDir = resolve(import.meta.dirname, "../public");
+
+async function htmlFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await htmlFiles(path));
+    else if (entry.isFile() && entry.name.endsWith(".html")) files.push(path);
+  }
+  return files;
+}
+
+const files = await htmlFiles(publicDir);
+assert.ok(files.length >= 6, `expected Industry Next page set, found ${files.length}`);
+
+for (const file of files) {
+  const html = await readFile(file, "utf8");
+  assert.match(html, /data-pointcast-network/);
+  assert.match(html, /data-publisher="industrynext"/);
+  assert.match(html, /https:\/\/pointcast\.xyz\/open-ad-network\.js/);
+}
+
+console.log(`Verified reciprocal open-ad mount on ${files.length} Industry Next pages.`);

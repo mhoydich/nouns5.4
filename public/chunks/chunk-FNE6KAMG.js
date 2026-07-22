@@ -1,6 +1,6 @@
 import {
   init_browser_shims
-} from "./chunk-TF5QER46.js";
+} from "./chunk-2GQYEBYG.js";
 
 // public/lib/nouns-svg.js
 init_browser_shims();

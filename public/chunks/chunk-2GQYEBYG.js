@@ -39,9 +39,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/base64-js/index.js
+// ../../node_modules/base64-js/index.js
 var require_base64_js = __commonJS({
-  "node_modules/base64-js/index.js"(exports) {
+  "../../node_modules/base64-js/index.js"(exports) {
     "use strict";
     init_browser_shims();
     exports.byteLength = byteLength;
@@ -141,9 +141,9 @@ var require_base64_js = __commonJS({
   }
 });
 
-// node_modules/ieee754/index.js
+// ../../node_modules/ieee754/index.js
 var require_ieee754 = __commonJS({
-  "node_modules/ieee754/index.js"(exports) {
+  "../../node_modules/ieee754/index.js"(exports) {
     init_browser_shims();
     exports.read = function(buffer, offset, isLE, mLen, nBytes) {
       var e, m;
@@ -225,9 +225,9 @@ var require_ieee754 = __commonJS({
   }
 });
 
-// node_modules/buffer/index.js
+// ../../node_modules/buffer/index.js
 var require_buffer = __commonJS({
-  "node_modules/buffer/index.js"(exports) {
+  "../../node_modules/buffer/index.js"(exports) {
     "use strict";
     init_browser_shims();
     var base64 = require_base64_js();

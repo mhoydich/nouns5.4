@@ -6,6 +6,7 @@
   "description": "Local browser prototype that renders authentic Nouns using the official CC0 asset set.",
   "scripts": {
     "build": "node ./scripts/build-client.mjs",
+    "verify:open-ad-network": "node ./scripts/verify-open-ad-network.mjs",
     "verify:art-home": "node ./scripts/verify-art-home.mjs",
     "verify:open-studio": "node ./scripts/verify-open-studio-002.mjs",
     "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
