@@ -6,498 +6,174 @@
     <meta
       id="meta-description"
       name="description"
-      content="Live Nouns-style drum room with crew bonus, collectible drops, and Tezos minting. See active drummers, room heat, and jump into the jam."
+      content="Industry Next is an art-forward CC0 playground. Turn a Noun into a sign, club, tool, character, ritual, or institution—then leave it on the public worktable."
     />
-    <meta name="theme-color" content="#10161f" />
+    <meta name="theme-color" content="#eeff41" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Industry Next" />
-    <meta id="meta-og-title" property="og:title" content="Drum Nouns Jam is live on Industry Next" />
+    <meta id="meta-og-title" property="og:title" content="Industry Next — permission is a material" />
     <meta
       id="meta-og-description"
       property="og:description"
-      content="Track the room, watch the crew bonus climb, and jump into the live Nouns-style drum game."
+      content="A small, art-forward CC0 playground for making very public things with Nouns."
     />
     <meta id="meta-og-url" property="og:url" content="https://www.industrynext.xyz/" />
-    <meta id="meta-og-image" property="og:image" content="https://www.industrynext.xyz/api/og.svg?room=global-jam" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      id="meta-og-image-alt"
-      property="og:image:alt"
-      content="A Drum Nouns Jam share card showing live participants, room total, crew bonus, and a call to jump into the room."
-    />
+    <meta id="meta-og-image" property="og:image" content="https://www.industrynext.xyz/api/noun?background=1&body=4&accessory=26&head=89&glasses=3" />
+    <meta property="og:image:width" content="320" />
+    <meta property="og:image:height" content="320" />
+    <meta id="meta-og-image-alt" property="og:image:alt" content="A colorful pixel Noun made from CC0 artwork." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta id="meta-twitter-title" name="twitter:title" content="Drum Nouns Jam is live on Industry Next" />
-    <meta
-      id="meta-twitter-description"
-      name="twitter:description"
-      content="A live Nouns-style drum room with crew bonus, room stats, and collectible drops."
-    />
-    <meta id="meta-twitter-image" name="twitter:image" content="https://www.industrynext.xyz/api/og.svg?room=global-jam" />
+    <meta id="meta-twitter-title" name="twitter:title" content="Industry Next — permission is a material" />
+    <meta id="meta-twitter-description" name="twitter:description" content="Make a very public thing with a CC0 Noun." />
+    <meta id="meta-twitter-image" name="twitter:image" content="https://www.industrynext.xyz/api/noun?background=1&body=4&accessory=26&head=89&glasses=3" />
     <link id="meta-canonical" rel="canonical" href="https://www.industrynext.xyz/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>Industry Next | Live Drum Nouns Arcade</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <title>Industry Next — Permission Is a Material</title>
+    <link rel="stylesheet" href="/art-home.css?v=20260722a" />
   </head>
-  <body class="route-home">
-    <main class="stats-shell">
-      <header class="stats-topbar">
-        <a class="stats-brand" href="/">INDUSTRY NEXT</a>
-        <nav class="stats-nav" aria-label="Primary">
-          <a href="/make/">Permission Lab</a>
-          <a href="/made/">Made</a>
-          <a href="/jam/">Enter Jam</a>
-          <a href="#open-stages">Open Stages</a>
-          <a href="/about/">About Nouns</a>
-          <button id="refresh-button" class="ghost-button" type="button">Refresh live view</button>
-          <a href="https://github.com/mhoydich/nouns5.4" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </nav>
-      </header>
+  <body class="art-home">
+    <a class="skip-link" href="#main">Skip to the work</a>
 
-      <section id="industry-next" class="domain-hero" aria-label="Industry Next launch desk">
-        <div class="domain-hero-copy">
-          <p class="eyebrow">industrynext.xyz / public arcade</p>
-          <h1>Play the room. Build the crowd. Mint the noise.</h1>
-          <p>
-            Industry Next is becoming a live, collaborative playground for small internet rituals:
-            tap drums, show up as a Noun, stack DRUM, and turn room activity into collectible moments.
+    <header class="site-head">
+      <a class="wordmark" href="/" aria-label="Industry Next, home">
+        <span>INDUSTRY</span><span>NEXT</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/make/">Make</a>
+        <a href="/made/">Made</a>
+        <a href="/about/">Nouns?</a>
+        <a href="/next/">Next ↗</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-type" aria-hidden="true">
+          <span class="hero-type-top">PERMISSION</span>
+          <span class="hero-type-bottom">IS A MATERIAL</span>
+        </div>
+
+        <div class="hero-copy">
+          <p class="edition-tag">INDUSTRY NEXT / OPEN STUDIO 001</p>
+          <h1 id="hero-title">Make the thing<br />you weren’t<br />waiting to<br />be allowed to make.</h1>
+          <p class="hero-deck">
+            Nouns are CC0. That means the interesting part starts after permission.
           </p>
-          <div class="domain-hero-actions">
-            <a class="secondary-button button-link" href="/make/">Make with a Noun</a>
-            <a class="secondary-button button-link" href="/jam/?room=global-jam">Start drumming</a>
-            <a class="ghost-button button-link" href="/next/">See what’s next</a>
+          <div class="hero-actions">
+            <a class="button button-primary" href="/make/">Enter Permission Lab <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="/about/">Why Nouns are interesting</a>
           </div>
         </div>
 
-        <div class="domain-console" aria-label="Domain status">
-          <div class="domain-console-top">
-            <span>LIVE ROUTE</span>
-            <strong>www.industrynext.xyz</strong>
-          </div>
-          <div class="domain-console-grid">
-            <article>
-              <span>Game</span>
-              <strong>Drum Nouns Jam</strong>
-            </article>
-            <article>
-              <span>Multiplayer</span>
-              <strong>Durable rooms</strong>
-            </article>
-            <article>
-              <span>Wallet</span>
-              <strong>Tezos testnet</strong>
-            </article>
-            <article>
-              <span>Next</span>
-              <strong>Permission Lab</strong>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="marquee-shell">
-        <article class="play-marquee">
-          <div class="play-marquee-head">
-            <div class="play-marquee-player">
-              <div id="marquee-avatar" class="marquee-avatar" aria-hidden="true"></div>
-              <div class="play-marquee-copy">
-                <p class="eyebrow">Warm up on the landing page</p>
-                <strong id="marquee-name" class="play-marquee-name">Rim Rider</strong>
-                <p id="marquee-identity" class="stats-copy">
-                  Tap to join the room, stack DRUM, and carry your noun into the full jam.
-                </p>
-              </div>
-            </div>
-
-            <div class="play-marquee-actions">
-              <button id="marquee-remix-button" class="ghost-button" type="button">Remix noun</button>
-              <a id="enter-room-link" class="secondary-button button-link" href="/jam/">
-                Enter full jam
-              </a>
-            </div>
-          </div>
-
-          <button id="landing-drum-pad" class="landing-drum-pad" type="button" aria-label="Tap to play the room">
-            <div id="landing-crowd" class="landing-crowd" aria-hidden="true"></div>
-            <span class="landing-pad-center">
-              <span class="landing-pad-kicker">Tap the room</span>
-              <strong id="landing-gain">+1 DRUM</strong>
-              <small id="landing-caption">Next hit adds 1 DRUM to global-jam.</small>
-            </span>
+        <div class="sculpture-wrap" data-voxel-stage>
+          <div class="orbit orbit-a" aria-hidden="true"></div>
+          <div class="orbit orbit-b" aria-hidden="true"></div>
+          <div class="stage-label stage-label-top" aria-hidden="true">CC0 / 32 × 32 × ∞</div>
+          <div class="stage-label stage-label-side" aria-hidden="true">TOUCH + DRAG</div>
+          <canvas id="voxel-canvas" class="voxel-canvas" aria-hidden="true"></canvas>
+          <img
+            id="voxel-fallback"
+            class="voxel-fallback"
+            src="/api/noun?background=1&amp;body=4&amp;accessory=26&amp;head=89&amp;glasses=3"
+            alt="A colorful pixel Noun, the CC0 character at the center of Industry Next."
+            width="320"
+            height="320"
+          />
+          <button id="remix-sculpture" class="remix-button" type="button">
+            <span>Remix sculpture</span><span aria-hidden="true">↻</span>
           </button>
+          <p id="scene-status" class="sr-only" aria-live="polite">Voxel Noun sculpture ready.</p>
+        </div>
 
-          <div class="landing-score-grid" aria-label="Local play stats">
-            <article class="landing-score-card">
-              <span>Your DRUM</span>
-              <strong id="landing-player-tokens">0</strong>
-            </article>
-            <article class="landing-score-card">
-              <span>Combo</span>
-              <strong id="landing-combo">0x</strong>
-            </article>
-            <article class="landing-score-card">
-              <span>Best</span>
-              <strong id="landing-best-combo">0x</strong>
-            </article>
-            <article class="landing-score-card">
-              <span>Crew</span>
-              <strong id="landing-crew">1.00x</strong>
-            </article>
-          </div>
-
-          <p id="landing-session-note" class="landing-session-note">
-            Open the full jam for room sharing, drops, minting, and the full crowd view.
-          </p>
-        </article>
-
-        <article class="stats-overview">
-          <div class="overview-strip">
-            <div class="overview-main">
-              <p class="eyebrow">Drum Nouns Jam / Live board</p>
-              <strong id="hero-headline" class="overview-headline">Loading room status...</strong>
-              <p id="hero-summary" class="stats-copy">
-                Live room totals, crowd state, and your drop progress.
-              </p>
-            </div>
-
-            <div class="overview-meta" aria-label="Room status">
-              <article class="meta-chip">
-                <span>Room</span>
-                <strong id="room-badge">global-jam</strong>
-              </article>
-              <article class="meta-chip">
-                <span>Mood</span>
-                <strong id="room-mood">Quiet reset</strong>
-              </article>
-              <article class="meta-chip">
-                <span>Synced</span>
-                <strong id="stamp-line">Syncing...</strong>
-              </article>
-            </div>
-
-            <div class="overview-signal">
-              <div class="signal-topline">
-                <span>Pulse</span>
-                <strong><span id="pulse-velocity">0</span> DRUM / player</strong>
-              </div>
-              <div class="stats-meter-track">
-                <span id="signal-fill"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="stats-card-grid" aria-label="Live room metrics">
-            <article class="telemetry-card">
-              <span>Room total</span>
-              <strong id="room-total">0</strong>
-              <small>DRUM stacked in the tracked room</small>
-            </article>
-            <article class="telemetry-card">
-              <span>Active drummers</span>
-              <strong id="active-count">0</strong>
-              <small>rolling 45-second window</small>
-            </article>
-            <article class="telemetry-card">
-              <span>Crew bonus</span>
-              <strong id="crew-multiplier-live">1.00x</strong>
-              <small>crowd energy multiplier</small>
-            </article>
-            <article class="telemetry-card">
-              <span>Hype index</span>
-              <strong id="hype-index">0</strong>
-              <small>bursts, reactions, and room heat</small>
-            </article>
-          </div>
-        </article>
+        <div class="hero-footnote">
+          <span class="footnote-mark">*</span>
+          <p>Not a roadmap.<br />A work surface.</p>
+        </div>
       </section>
 
-      <section class="stats-grid">
-        <div class="stats-column stats-column-compact">
-          <article class="stats-panel local-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Local</p>
-                <h2>Your profile</h2>
-              </div>
-            </div>
-
-            <div class="local-identity">
-              <div id="local-avatar" class="local-avatar" aria-hidden="true"></div>
-              <div class="local-copy">
-                <strong id="local-name">Rim Rider</strong>
-                <p id="local-tagline" class="stats-copy">
-                  No local drum history yet. Jump into the jam and start the graph.
-                </p>
-              </div>
-            </div>
-
-            <div class="local-metrics">
-              <article class="mini-stat">
-                <span>Lifetime DRUM</span>
-                <strong id="local-tokens">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Lifetime hits</span>
-                <strong id="local-hits">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Minted collectibles</span>
-                <strong id="local-mints">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>DRUM / hit</span>
-                <strong id="local-efficiency">0.00</strong>
-              </article>
-            </div>
-
-            <div class="progress-card">
-              <div class="progress-head">
-                <span id="local-drop-name">Garage Kick / Starter</span>
-                <strong>Drop frontier</strong>
-              </div>
-              <div class="progress-track">
-                <span id="drop-progress-fill"></span>
-              </div>
-              <p id="local-drop-note" class="stats-copy">Starter crate is online.</p>
-            </div>
-          </article>
-
-          <article class="stats-panel trend-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Signals</p>
-                <h2>Trend board</h2>
-              </div>
-            </div>
-
-            <div class="trend-grid">
-              <article class="mini-stat">
-                <span>Rolling tape</span>
-                <strong id="trend-tape">0 / 18</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Last spike</span>
-                <strong id="trend-pulse">just now</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Noun spread</span>
-                <strong id="trend-spread">0 heads / 0 drops</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Combo ceiling</span>
-                <strong id="trend-combo">0x</strong>
-              </article>
-            </div>
-
-            <div id="trend-notes" class="trend-notes">
-              <p>Computing room lore...</p>
-            </div>
-          </article>
-
-          <article id="open-stages" class="stats-panel open-stage-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Open stages</p>
-                <h2>Where people are playing</h2>
-              </div>
-            </div>
-
-            <p id="open-stage-status" class="stats-copy">
-              Live rooms and the daily spotlight will show up here.
-            </p>
-
-            <div class="feedback-summary" aria-label="Open stage summary">
-              <article class="mini-stat">
-                <span>Live rooms</span>
-                <strong id="open-stage-live-rooms">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Live drummers</span>
-                <strong id="open-stage-players">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Spotlight room</span>
-                <strong id="open-stage-spotlight">daily room</strong>
-              </article>
-            </div>
-
-            <div id="open-stage-list" class="open-stage-list">
-              <div class="stats-empty">Scanning for live rooms...</div>
-            </div>
-          </article>
-
-          <article class="stats-panel feedback-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Feedback</p>
-                <h2>What are you enjoying?</h2>
-              </div>
-            </div>
-
-            <p id="feedback-intro" class="stats-copy">Tell us what feels good so we can keep leaning into it.</p>
-
-            <form id="feedback-form" class="feedback-form">
-              <label class="feedback-field" for="feedback-area">
-                <span>Focus</span>
-                <select id="feedback-area" name="feedback-area">
-                  <option value="landing-pad">Landing pad</option>
-                  <option value="live-board">Live board</option>
-                  <option value="nouns">Noun look</option>
-                  <option value="drops-mint">Drops + mint</option>
-                  <option value="overall-vibe">Overall vibe</option>
-                </select>
-              </label>
-
-              <label class="feedback-field" for="feedback-note">
-                <span>What are you enjoying?</span>
-                <textarea
-                  id="feedback-note"
-                  name="feedback-note"
-                  rows="3"
-                  maxlength="280"
-                  placeholder="I like the live pad because..."
-                ></textarea>
-              </label>
-
-              <div class="feedback-actions">
-                <button id="feedback-submit-button" class="secondary-button" type="submit">
-                  Send feedback
-                </button>
-                <p id="feedback-status" class="stats-copy">
-                  Tell us what feels fun, clear, or worth coming back for.
-                </p>
-              </div>
-            </form>
-
-            <div class="feedback-summary" aria-label="Feedback summary">
-              <article class="mini-stat">
-                <span>Total notes</span>
-                <strong id="feedback-total">0</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Top delight</span>
-                <strong id="feedback-top-area">Listening...</strong>
-              </article>
-              <article class="mini-stat">
-                <span>Recent read</span>
-                <strong id="feedback-recent-count">0</strong>
-              </article>
-            </div>
-
-            <div id="feedback-list" class="feedback-list">
-              <div class="stats-empty">Fresh praise will show up here after the first note.</div>
-            </div>
-          </article>
+      <section class="manifesto" aria-labelledby="manifesto-title">
+        <div class="manifesto-rule"><span>01</span><span>THE USEFUL BIT</span></div>
+        <h2 id="manifesto-title">
+          The image is free.<br />
+          <em>The consequences are yours.</em>
+        </h2>
+        <div class="manifesto-copy">
+          <p>
+            A Noun can be a mascot, a municipal sign, a strange institution, a character in public,
+            or the face of a club that does not exist yet.
+          </p>
+          <p>
+            Industry Next is where that possibility becomes an object. Make quickly. Publish visibly.
+            Let somebody else begin where you stopped.
+          </p>
         </div>
+        <a class="round-link" href="/about/" aria-label="Read the short Nouns thesis">
+          <span>SHORT<br />THESIS</span><strong aria-hidden="true">↗</strong>
+        </a>
+      </section>
 
-        <div class="stats-column stats-column-main">
-          <article class="stats-panel commerce-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Growth</p>
-                <h2>Traffic and market board</h2>
-              </div>
-              <a id="mint-route-link" class="ghost-button button-link" href="/jam/?room=global-jam#mint-panel">
-                Open mint desk
-              </a>
-            </div>
-
-            <div class="room-panel-grid commerce-grid">
-              <section class="room-panel-section">
-                <p class="panel-kicker">Traffic desk</p>
-
-                <div class="traffic-grid">
-                  <article class="mini-stat">
-                    <span>Known drummers</span>
-                    <strong id="traffic-known">0</strong>
-                  </article>
-                  <article class="mini-stat">
-                    <span>Live now</span>
-                    <strong id="traffic-live">0</strong>
-                  </article>
-                  <article class="mini-stat">
-                    <span>Feedback notes</span>
-                    <strong id="traffic-feedback">0</strong>
-                  </article>
-                  <article class="mini-stat">
-                    <span>Mint feed</span>
-                    <strong id="traffic-mints">0</strong>
-                  </article>
-                </div>
-
-                <p id="traffic-note" class="stats-copy">
-                  Share the room to turn this into a crew and give the mint board something to watch.
-                </p>
-
-                <div class="traffic-actions">
-                  <button id="share-room-button" class="secondary-button" type="button">Copy jam invite</button>
-                  <p id="share-status-line" class="stats-copy">Invite the next drummer into this room.</p>
-                </div>
-              </section>
-
-              <section class="room-panel-section">
-                <p class="panel-kicker">Market watch</p>
-
-                <div class="market-summary">
-                  <article class="mini-stat">
-                    <span>Hot collectible</span>
-                    <strong id="market-hot-drop">Listening...</strong>
-                  </article>
-                  <article class="mini-stat">
-                    <span>Mint route</span>
-                    <strong id="market-ready-route">Warmup</strong>
-                  </article>
-                  <article class="mini-stat">
-                    <span>Recent mints</span>
-                    <strong id="market-recent-count">0</strong>
-                  </article>
-                </div>
-
-                <div id="market-list" class="market-list">
-                  <div class="stats-empty">Fresh mint activity will land here once the room starts collecting.</div>
-                </div>
-              </section>
-            </div>
-          </article>
-
-          <article class="stats-panel room-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Room</p>
-                <h2>Crew and leaderboard</h2>
-              </div>
-            </div>
-
-            <div class="room-panel-grid">
-              <section class="room-panel-section">
-                <p class="panel-kicker">Active noun line</p>
-                <div id="room-nouns" class="room-nouns"></div>
-              </section>
-
-              <section class="room-panel-section">
-                <p class="panel-kicker">Top drummers</p>
-                <div id="leaderboard-list" class="leaderboard-list"></div>
-              </section>
-            </div>
-          </article>
-
-          <article class="stats-panel feed-panel">
-            <div class="panel-head">
-              <div>
-                <p class="eyebrow">Tape</p>
-                <h2>Latest activity</h2>
-              </div>
-            </div>
-
-            <div id="event-feed" class="event-feed"></div>
-          </article>
+      <section class="doors" aria-labelledby="doors-title">
+        <div class="section-cap">
+          <p>THREE DOORS / NO ACCOUNT REQUIRED TO LOOK</p>
+          <h2 id="doors-title">Choose your entrance.</h2>
         </div>
+        <div class="door-grid">
+          <a class="door door-make" href="/make/">
+            <span class="door-number">01</span>
+            <span class="door-art" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+            </span>
+            <span class="door-copy"><strong>MAKE</strong><small>Turn a Noun into a public object.</small></span>
+            <span class="door-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="door door-made" href="/made/">
+            <span class="door-number">02</span>
+            <span class="door-art door-art-stack" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="door-copy"><strong>MADE</strong><small>See what strangers left on the table.</small></span>
+            <span class="door-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="door door-play" href="/jam/">
+            <span class="door-number">03</span>
+            <span class="door-art door-art-pulse" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="door-copy"><strong>PLAY</strong><small>Join the loud, live Nouns drum room.</small></span>
+            <span class="door-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="worktable" aria-labelledby="worktable-title">
+        <div class="worktable-head">
+          <div>
+            <p class="section-index">02 / PUBLIC OUTPUT</p>
+            <h2 id="worktable-title">Fresh from the worktable.</h2>
+          </div>
+          <a class="text-link" href="/made/">See everything made →</a>
+        </div>
+        <div id="home-made-grid" class="home-made-grid" aria-live="polite">
+          <article class="made-placeholder"><span>LOADING</span><strong>THE TABLE IS TURNING</strong></article>
+          <article class="made-placeholder made-placeholder-alt" aria-hidden="true"><span>CC0</span><strong>NO VELVET ROPE</strong></article>
+          <article class="made-placeholder made-placeholder-dark" aria-hidden="true"><span>NEXT</span><strong>PASS IT FORWARD</strong></article>
+        </div>
+      </section>
+
+      <section class="closing" aria-label="Invitation">
+        <div class="closing-spinner" aria-hidden="true"><span>USE IT · CHANGE IT · PASS IT ON · </span></div>
+        <p>CC0 IS NOT THE END OF THE STORY.</p>
+        <h2>It is the door<br />being left open.</h2>
+        <a class="button button-light" href="/make/">Make something now <span aria-hidden="true">↗</span></a>
       </section>
     </main>
 
-    <script type="module" src="/home.js"></script>
+    <footer class="site-footer">
+      <a class="wordmark footer-mark" href="/"><span>INDUSTRY</span><span>NEXT</span></a>
+      <p>A public experiment in permission, play, and small internet institutions.</p>
+      <nav aria-label="Footer">
+        <a href="/next/">Field map</a><a href="/about/">About Nouns</a><a href="https://github.com/mhoydich/nouns5.4">Source</a>
+      </nav>
+      <p class="footer-note">BUILT IN PUBLIC / ART WANTS USE</p>
+    </footer>
+
+    <script type="module" src="/art-home.js?v=20260722a"></script>
   </body>
 </html>

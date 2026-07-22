@@ -33,7 +33,7 @@ export async function onRequestGet(context) {
   const contentType = response.headers.get("Content-Type") || "";
   const url = new URL(context.request.url);
 
-  if (!contentType.includes("text/html") || url.pathname !== "/") {
+  if (!contentType.includes("text/html") || url.pathname !== "/" || !url.searchParams.has("room")) {
     return response;
   }
 
