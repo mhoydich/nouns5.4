@@ -12,11 +12,21 @@ function showEmpty(message) {
 
 function renderEntry(entry) {
   const card = document.createElement("article"); card.className = "made-card";
+  card.id = `made-${entry.id}`;
   card.append(createPoster(entry, "feed"));
   const meta = document.createElement("div"); meta.className = "made-card-meta";
   const maker = document.createElement("span"); maker.textContent = entry.maker || "Anonymous";
   const time = document.createElement("time"); time.dateTime = entry.createdAt; time.textContent = new Date(entry.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-  meta.append(maker, time); card.append(meta); return card;
+  meta.append(maker, time);
+  const actions = document.createElement("div"); actions.className = "made-card-actions";
+  const edition = document.createElement("a"); edition.href = entry.edition === "open-studio-002" ? "/studio/002/" : "/made/"; edition.textContent = entry.edition === "open-studio-002" ? "Studio 002" : "Studio 001";
+  const remix = document.createElement("a"); remix.href = `/make/?remix=${encodeURIComponent(entry.id)}`; remix.textContent = "Remix this ↗";
+  actions.append(edition, remix);
+  if (entry.parentId) {
+    const parent = document.createElement("a"); parent.href = `#made-${encodeURIComponent(entry.parentId)}`; parent.textContent = "From an earlier work ↖"; actions.prepend(parent);
+    card.classList.add("is-remix");
+  }
+  card.append(meta, actions); return card;
 }
 
 fetch("/api/made?limit=48", { headers: { Accept: "application/json" } })

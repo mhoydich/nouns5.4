@@ -1,3 +1,5 @@
+import { CURRENT_STUDIO, STARTER_WORKS } from "/lib/open-studios.js";
+
 const stage = document.querySelector("[data-voxel-stage]");
 const canvas = document.querySelector("#voxel-canvas");
 const fallback = document.querySelector("#voxel-fallback");
@@ -394,20 +396,40 @@ function madeCard(entry, index) {
   const maker = document.createElement("span");
   maker.textContent = entry.maker || "Anonymous";
   const time = document.createElement("time");
-  time.dateTime = entry.createdAt;
-  time.textContent = new Date(entry.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  if (entry.createdAt) time.dateTime = entry.createdAt;
+  time.textContent = entry.createdAt
+    ? new Date(entry.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })
+    : "Studio starter";
   meta.append(maker, time);
-  article.append(poster, meta);
+  const action = document.createElement("div");
+  action.className = "home-made-action";
+  const edition = document.createElement("span");
+  edition.textContent = "Open Studio 002";
+  const remix = document.createElement("a");
+  remix.href = entry.isStarter
+    ? `/make/?starter=${encodeURIComponent(entry.id)}`
+    : `/make/?remix=${encodeURIComponent(entry.id)}`;
+  remix.textContent = entry.isStarter ? "Begin here ↗" : "Remix this ↗";
+  action.append(edition, remix);
+  article.append(poster, meta, action);
   return article;
+}
+
+function currentStudioSelection(entries) {
+  const current = entries.filter((entry) => entry.edition === CURRENT_STUDIO.id);
+  const messages = new Set(current.map((entry) => entry.message.toLowerCase()));
+  const pool = [...current, ...STARTER_WORKS.filter((entry) => !messages.has(entry.message.toLowerCase()))];
+  const offset = Math.floor(Date.now() / 86_400_000) % pool.length;
+  return [...pool.slice(offset), ...pool.slice(0, offset)].slice(0, 3);
 }
 
 async function loadMade() {
   try {
-    const response = await fetch("/api/made?limit=3", { headers: { Accept: "application/json" } });
+    const response = await fetch("/api/made?limit=12", { headers: { Accept: "application/json" } });
     if (!response.ok) throw new Error("Made feed is unavailable.");
     const { entries } = await response.json();
-    if (!Array.isArray(entries) || entries.length === 0) return;
-    madeGrid.replaceChildren(...entries.map(madeCard));
+    if (!Array.isArray(entries)) throw new Error("Made feed is unavailable.");
+    madeGrid.replaceChildren(...currentStudioSelection(entries).map(madeCard));
   } catch {
     const first = madeGrid.querySelector(".made-placeholder span");
     const message = madeGrid.querySelector(".made-placeholder strong");

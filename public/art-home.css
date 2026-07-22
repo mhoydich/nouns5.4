@@ -150,7 +150,8 @@ img, canvas { display: block; max-width: 100%; }
   font: 500 clamp(.65rem, .8vw, .78rem)/1.4 var(--mono);
   letter-spacing: .1em;
 }
-.edition-tag { display: inline-block; padding: 8px 11px; border: var(--line); background: var(--paper); }
+.edition-tag { display: inline-block; padding: 8px 11px; border: var(--line); background: var(--paper); text-decoration:none; }
+.edition-tag:hover, .edition-tag:focus-visible { background:var(--pink); }
 .hero h1 {
   max-width: 740px;
   margin: 25px 0 26px;
@@ -286,6 +287,38 @@ img, canvas { display: block; max-width: 100%; }
 .hero-footnote p { margin: 0; }
 .footnote-mark { font: 900 1.3rem/1 var(--sans); }
 
+.studio-brief-home {
+  min-height: 640px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 60px;
+  padding: 90px var(--page-pad);
+  background: var(--blue);
+  color: #fff;
+  border-bottom: var(--line);
+  overflow: hidden;
+}
+.studio-brief-number {
+  position: absolute;
+  left: -3vw;
+  top: -8vw;
+  color: rgba(255,255,255,.1);
+  font-size: clamp(15rem, 40vw, 42rem);
+  font-weight: 900;
+  line-height: .78;
+  letter-spacing: -.12em;
+  pointer-events: none;
+}
+.studio-brief-copy, .studio-brief-home ol { position:relative; z-index:1; }
+.studio-brief-copy > p { margin:0 0 18px; font:500 .68rem/1.2 var(--mono); letter-spacing:.1em; }
+.studio-brief-copy h2 { margin:0; max-width:800px; font-size:clamp(3.2rem,7.5vw,8.5rem); line-height:.79; letter-spacing:-.085em; }
+.studio-brief-home ol { margin:0; padding:0; list-style:none; border-top:2px solid currentColor; }
+.studio-brief-home li { display:grid; grid-template-columns:48px 1fr; gap:10px; padding:18px 0; border-bottom:1px solid currentColor; font:400 clamp(.78rem,1.15vw,1rem)/1.45 var(--mono); }
+.studio-brief-home li span { font-size:.65rem; font-weight:500; }
+.studio-brief-link { left:auto; right:var(--page-pad); bottom:35px; color:var(--ink); }
+
 .manifesto {
   position: relative;
   padding: 95px var(--page-pad) 118px;
@@ -416,6 +449,8 @@ img, canvas { display: block; max-width: 100%; }
 .home-made-poster strong, .made-placeholder strong { position: relative; z-index: 2; max-width: 95%; font-size: clamp(1.8rem, 3vw, 3.7rem); line-height: .86; letter-spacing: -.07em; text-transform: uppercase; overflow-wrap: anywhere; }
 .home-made-poster span, .made-placeholder span { font: 500 .63rem/1 var(--mono); letter-spacing: .09em; }
 .home-made-meta { display: flex; justify-content: space-between; padding: 18px 2px 0; font: 500 .66rem/1.35 var(--mono); text-transform: uppercase; }
+.home-made-action { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:13px; padding:11px 2px 0; border-top:1px solid var(--ink); font:500 .64rem/1.3 var(--mono); text-transform:uppercase; }
+.home-made-action a { text-underline-offset:3px; }
 .made-placeholder-alt { background: var(--blue); color: #fff; transform: rotate(1.4deg); }
 .made-placeholder-dark { background: var(--ink); color: #fff; transform: rotate(-1deg); }
 
@@ -481,6 +516,8 @@ img, canvas { display: block; max-width: 100%; }
   .sculpture-wrap { width: min(82vw, 700px); justify-self: center; margin: -40px -5vw 10px 0; }
   .hero-footnote { bottom: 16px; }
   .manifesto-copy { width: 76%; }
+  .studio-brief-home { grid-template-columns:1fr; }
+  .studio-brief-home ol { width:min(74%,650px); margin-left:auto; }
   .door { min-height: 410px; }
   .site-footer { grid-template-columns: 1fr 1fr; }
 }
@@ -511,6 +548,11 @@ img, canvas { display: block; max-width: 100%; }
   .stage-label-side { left: 9%; bottom: 23%; }
   .remix-button { right: 8%; bottom: 10%; }
   .hero-footnote { display: none; }
+  .studio-brief-home { min-height:780px; display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:42px; padding-top:70px; padding-bottom:100px; }
+  .studio-brief-number { top:0; font-size:72vw; }
+  .studio-brief-copy h2 { font-size:clamp(3.4rem,16vw,5.7rem); }
+  .studio-brief-home ol { width:100%; margin:0; }
+  .studio-brief-link { right:18px; bottom:24px; }
   .manifesto { padding-top: 62px; padding-bottom: 70px; }
   .manifesto-rule { grid-template-columns: 52px 1fr; }
   .manifesto h2 { margin: 42px 0 38px; font-size: clamp(2.55rem, 14.7vw, 5.6rem); line-height: .88; }

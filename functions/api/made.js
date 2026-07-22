@@ -1,4 +1,4 @@
-import { listMade, saveMade } from "../_lib/made-store.js";
+import { getMadeById, listMade, saveMade } from "../_lib/made-store.js";
 
 function json(data, status = 200) {
   return Response.json(data, {
@@ -39,7 +39,16 @@ export async function onRequestGet(context) {
   try {
     requireStore(context.env);
     const url = new URL(context.request.url);
-    const entries = await listMade(context.env, url.searchParams.get("limit"));
+    const id = url.searchParams.get("id");
+    if (id) {
+      const entry = await getMadeById(context.env, id);
+      return entry ? json({ entry }) : json({ error: "That work is no longer on the table." }, 404);
+    }
+    const entries = await listMade(
+      context.env,
+      url.searchParams.get("limit"),
+      url.searchParams.get("edition") || "",
+    );
     return json({ entries });
   } catch (error) {
     console.error(JSON.stringify({ event: "made.list.failed", message: error instanceof Error ? error.message : "unknown" }));

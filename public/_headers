@@ -24,6 +24,9 @@
 /made/*
   Cache-Control: public, max-age=300
 
+/studio/*
+  Cache-Control: public, max-age=300
+
 /next/*
   Cache-Control: public, max-age=300
 

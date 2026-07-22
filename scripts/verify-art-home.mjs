@@ -15,7 +15,8 @@ assert.match(home, /href="\/jam\/"/);
 assert.match(home, /href="\/about\/"/);
 assert.match(home, /href="\/next\/"/);
 assert.match(home, /Skip to the work/);
-assert.match(home, /Permission Is a Material/);
+assert.match(home, /Open Studio 002/);
+assert.match(home, /Signals in circulation/);
 assert.match(css, /prefers-reduced-motion: reduce/);
 assert.match(css, /@media \(max-width: 700px\)/);
 assert.match(script, /getContext\("webgl"/);
@@ -23,6 +24,7 @@ assert.match(script, /Math\.min\(window\.devicePixelRatio \|\| 1, compactDevice 
 assert.match(script, /IntersectionObserver/);
 assert.match(script, /image\.decoding = "async"/);
 assert.doesNotMatch(script, /innerHTML/);
+assert.match(script, /CURRENT_STUDIO/);
 
 const untouched = new Response(home, { headers: { "Content-Type": "text/html; charset=utf-8" } });
 const defaultResponse = await onIndexRequest({

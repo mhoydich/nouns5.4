@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Turn an authentic CC0 Noun into a public sign, club, tool, character, ritual, or tiny institution." />
+    <meta name="description" content="Open Studio 002: make a public signal for people who haven’t met yet, using an authentic CC0 Noun." />
     <meta name="theme-color" content="#f4eddd" />
-    <meta property="og:title" content="Permission Lab | Industry Next" />
-    <meta property="og:description" content="Start with permission. Make something with a Noun, export it, or publish it to the public Made stream." />
+    <meta property="og:title" content="Open Studio 002 | Permission Lab" />
+    <meta property="og:description" content="Make a public signal for people who haven’t met yet. Start fresh or remix something already in circulation." />
     <meta property="og:url" content="https://www.industrynext.xyz/make/" />
     <link rel="canonical" href="https://www.industrynext.xyz/make/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Permission Lab | Industry Next</title>
+    <title>Open Studio 002 | Permission Lab</title>
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/permission-lab.css?v=20260722" />
+    <link rel="stylesheet" href="/permission-lab.css?v=20260722c" />
   </head>
   <body class="route-lab">
     <main class="lab-shell">
@@ -28,20 +28,26 @@
 
       <section class="lab-intro">
         <div>
-          <p class="lab-kicker">Permission Lab / experiment 01</p>
-          <h1>Make first. Ask never.</h1>
+          <p class="lab-kicker">Open Studio 002 / current brief</p>
+          <h1>Make a signal for strangers.</h1>
         </div>
         <div class="lab-intro-copy">
-          <p>Turn a CC0 Noun into the beginning of something else: a sign, a club, a tool, a character, a ritual, or a tiny institution.</p>
-          <p>Export is private. Publishing is deliberate. No wallet or account required.</p>
+          <p>One Noun. One sentence. Put it where somebody you haven’t met could begin.</p>
+          <p><a href="/studio/002/">Read the complete studio brief →</a> Export is private. Publishing is deliberate. No wallet or account required.</p>
         </div>
       </section>
+
+      <aside id="remix-context" class="remix-context" hidden>
+        <span>REMIX IN PROGRESS</span>
+        <p id="remix-context-copy">Change at least one thing, then pass it on.</p>
+        <a id="remix-source-link" href="/made/">See the source work ↗</a>
+      </aside>
 
       <section class="lab-grid" aria-label="Permission Lab maker">
         <form id="lab-form" class="lab-controls">
           <div class="lab-control">
             <label for="message">What does it say?</label>
-            <input id="message" name="message" maxlength="96" value="Permission is the starting point." required />
+            <input id="message" name="message" maxlength="96" value="Meet here without a reason." required />
           </div>
           <div class="lab-control">
             <label for="maker">Your name <span>(optional)</span></label>
@@ -74,7 +80,7 @@
             <button id="download-button" class="lab-button" type="button">Download PNG</button>
             <button id="publish-button" class="lab-button publish" type="submit">Publish to Made</button>
           </div>
-          <p class="lab-consent">Publishing makes the Noun, message, chosen name, and timestamp visible on the public <a href="/made/">Made stream</a> for up to 180 days. We use a rotating, one-way network hash only to limit spam.</p>
+          <p class="lab-consent">Publishing makes the Noun, message, chosen name, edition, remix source, and timestamp visible on the public <a href="/made/">Made stream</a> for up to 180 days. We use a rotating, one-way network hash only to limit spam.</p>
           <p id="lab-status" class="lab-status" role="status" aria-live="polite"></p>
         </form>
 
@@ -87,6 +93,6 @@
         </div>
       </section>
     </main>
-    <script type="module" src="/make/make.js?v=20260722"></script>
+    <script type="module" src="/make/make.js?v=20260722c"></script>
   </body>
 </html>
