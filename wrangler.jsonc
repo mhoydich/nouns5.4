@@ -1,6 +1,17 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "industrynext-nouns",
-  "compatibility_date": "2026-04-16",
-  "pages_build_output_dir": "./public"
+  "compatibility_date": "2026-07-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "./public",
+  "kv_namespaces": [
+    {
+      "binding": "INDUSTRY_NEXT_MADE",
+      "id": "eb5d38abafb648f6bf418ec03d13fae8"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
 }

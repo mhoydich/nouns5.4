@@ -31,12 +31,12 @@ export function rewriteRoomMeta(html, meta) {
 export async function onRequestGet(context) {
   const response = await context.next();
   const contentType = response.headers.get("Content-Type") || "";
+  const url = new URL(context.request.url);
 
-  if (!contentType.includes("text/html")) {
+  if (!contentType.includes("text/html") || url.pathname !== "/") {
     return response;
   }
 
-  const url = new URL(context.request.url);
   const roomId = sanitizeRoomId(url.searchParams.get("room"));
   const snapshot = getRoomSnapshot(roomId);
   const meta = buildRoomMeta(snapshot, roomId);

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Turn an authentic CC0 Noun into a public sign, club, tool, character, ritual, or tiny institution." />
+    <meta name="theme-color" content="#f4eddd" />
+    <meta property="og:title" content="Permission Lab | Industry Next" />
+    <meta property="og:description" content="Start with permission. Make something with a Noun, export it, or publish it to the public Made stream." />
+    <meta property="og:url" content="https://www.industrynext.xyz/make/" />
+    <link rel="canonical" href="https://www.industrynext.xyz/make/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Permission Lab | Industry Next</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/permission-lab.css?v=20260722" />
+  </head>
+  <body class="route-lab">
+    <main class="lab-shell">
+      <header class="lab-topbar">
+        <a class="lab-brand" href="/">INDUSTRY NEXT</a>
+        <nav class="lab-nav" aria-label="Primary">
+          <a href="/make/" aria-current="page">Make</a>
+          <a href="/made/">Made</a>
+          <a href="/next/">What’s next</a>
+          <a href="/about/">About Nouns</a>
+        </nav>
+      </header>
+
+      <section class="lab-intro">
+        <div>
+          <p class="lab-kicker">Permission Lab / experiment 01</p>
+          <h1>Make first. Ask never.</h1>
+        </div>
+        <div class="lab-intro-copy">
+          <p>Turn a CC0 Noun into the beginning of something else: a sign, a club, a tool, a character, a ritual, or a tiny institution.</p>
+          <p>Export is private. Publishing is deliberate. No wallet or account required.</p>
+        </div>
+      </section>
+
+      <section class="lab-grid" aria-label="Permission Lab maker">
+        <form id="lab-form" class="lab-controls">
+          <div class="lab-control">
+            <label for="message">What does it say?</label>
+            <input id="message" name="message" maxlength="96" value="Permission is the starting point." required />
+          </div>
+          <div class="lab-control">
+            <label for="maker">Your name <span>(optional)</span></label>
+            <input id="maker" name="maker" maxlength="28" placeholder="Anonymous is welcome" />
+          </div>
+          <fieldset class="lab-control lab-options">
+            <legend>What can it become?</legend>
+            <div class="lab-option-grid">
+              <label class="lab-choice"><input type="radio" name="mode" value="sign" checked /><span>Sign</span></label>
+              <label class="lab-choice"><input type="radio" name="mode" value="club" /><span>Club</span></label>
+              <label class="lab-choice"><input type="radio" name="mode" value="tool" /><span>Tool</span></label>
+              <label class="lab-choice"><input type="radio" name="mode" value="character" /><span>Character</span></label>
+              <label class="lab-choice"><input type="radio" name="mode" value="ritual" /><span>Ritual</span></label>
+              <label class="lab-choice"><input type="radio" name="mode" value="institution" /><span>Institution</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="lab-control lab-options">
+            <legend>Color signal</legend>
+            <div class="lab-option-grid">
+              <label class="lab-choice"><input type="radio" name="palette" value="signal" checked /><span>Signal</span></label>
+              <label class="lab-choice"><input type="radio" name="palette" value="garden" /><span>Garden</span></label>
+              <label class="lab-choice"><input type="radio" name="palette" value="paper" /><span>Paper</span></label>
+              <label class="lab-choice"><input type="radio" name="palette" value="night" /><span>Night</span></label>
+              <label class="lab-choice"><input type="radio" name="palette" value="civic" /><span>Civic</span></label>
+              <label class="lab-choice"><input type="radio" name="palette" value="candy" /><span>Candy</span></label>
+            </div>
+          </fieldset>
+          <div class="lab-actions">
+            <button id="remix-button" class="lab-button secondary" type="button">Remix Noun</button>
+            <button id="download-button" class="lab-button" type="button">Download PNG</button>
+            <button id="publish-button" class="lab-button publish" type="submit">Publish to Made</button>
+          </div>
+          <p class="lab-consent">Publishing makes the Noun, message, chosen name, and timestamp visible on the public <a href="/made/">Made stream</a> for up to 180 days. We use a rotating, one-way network hash only to limit spam.</p>
+          <p id="lab-status" class="lab-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="lab-stage">
+          <div id="poster-preview" aria-live="polite"></div>
+        </div>
+        <div class="lab-publish-note">
+          <span>Authentic Nouns parts, used as CC0 creative material.</span>
+          <span>Next stop: export anywhere, or let the public stream carry it.</span>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/make/make.js?v=20260722"></script>
+  </body>
+</html>
