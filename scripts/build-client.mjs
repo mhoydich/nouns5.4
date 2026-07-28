@@ -39,8 +39,8 @@ await build({
 const networkMarker = "data-pointcast-network";
 const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"footer\" data-context=\"small internet institutions tone bloom pointcast rally nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
 const networkScriptElement = "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>";
-const networkMountPattern = /[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>/;
-const networkScriptPattern = /[ \t]*<script\s+async\s+src="https:\/\/pointcast\.xyz\/open-ad-network\.js"><\/script>/;
+const networkMountPattern = /^[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>[ \t]*\r?\n?/m;
+const networkScriptPattern = /^[ \t]*<script\s+async\s+src="https:\/\/pointcast\.xyz\/open-ad-network\.js"><\/script>[ \t]*\r?\n?/m;
 const bodyPattern = /<body\b[^>]*>/;
 const bodyClose = "</body>";
 const footerClose = "</footer>";
@@ -63,6 +63,22 @@ for (const htmlFile of await htmlFiles(publicDir)) {
   }
   const body = html.match(bodyPattern)?.[0];
   if (!body) throw new Error(`Cannot find body for open ad network in ${htmlFile}`);
+  const existingMountCount = (html.match(/data-pointcast-network/g) || []).length;
+  const existingScriptCount = (html.match(/https:\/\/pointcast\.xyz\/open-ad-network\.js/g) || []).length;
+  const existingMountIndex = html.indexOf(networkMarker);
+  const existingScriptIndex = html.indexOf("https://pointcast.xyz/open-ad-network.js");
+  const originalBodyCloseIndex = html.lastIndexOf(bodyClose);
+  const originalFooterStartIndex = html.lastIndexOf("<footer");
+  const originalFooterCloseIndex = html.lastIndexOf(footerClose);
+  const mountIsCorrect = originalFooterCloseIndex === -1
+    ? existingMountIndex > html.indexOf("<main") && existingMountIndex < originalBodyCloseIndex
+    : existingMountIndex > originalFooterStartIndex && existingMountIndex < originalFooterCloseIndex;
+  const scriptIsCorrect = existingScriptIndex > existingMountIndex && existingScriptIndex < originalBodyCloseIndex;
+
+  if (existingMountCount === 1 && existingScriptCount === 1 && mountIsCorrect && scriptIsCorrect) {
+    continue;
+  }
+
   let nextHtml = html
     .replace(networkMountPattern, "")
     .replace(networkScriptPattern, "");
@@ -70,10 +86,12 @@ for (const htmlFile of await htmlFiles(publicDir)) {
   const bodyCloseIndex = nextHtml.lastIndexOf(bodyClose);
   if (bodyCloseIndex === -1) throw new Error(`Cannot find closing body for open ad network in ${htmlFile}`);
   const footerCloseIndex = nextHtml.lastIndexOf(footerClose);
-  const mountIndex = footerCloseIndex === -1 ? bodyCloseIndex : footerCloseIndex;
+  const mountCloseIndex = footerCloseIndex === -1 ? bodyCloseIndex : footerCloseIndex;
+  const mountIndex = nextHtml.lastIndexOf("\n", mountCloseIndex) + 1;
   nextHtml = `${nextHtml.slice(0, mountIndex)}${networkMountElement}\n${nextHtml.slice(mountIndex)}`;
 
-  const scriptIndex = nextHtml.lastIndexOf(bodyClose);
+  const bodyCloseAfterMount = nextHtml.lastIndexOf(bodyClose);
+  const scriptIndex = nextHtml.lastIndexOf("\n", bodyCloseAfterMount) + 1;
   nextHtml = `${nextHtml.slice(0, scriptIndex)}${networkScriptElement}\n${nextHtml.slice(scriptIndex)}`;
   if (nextHtml !== html) await writeFile(htmlFile, nextHtml);
 }

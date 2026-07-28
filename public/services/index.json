@@ -1,0 +1,97 @@
+{
+  "name": "Industry Next Services",
+  "canonical_url": "https://www.industrynext.xyz/services/",
+  "contact": {
+    "email": "mh@pointcast.xyz",
+    "brief_fields": [
+      "organization",
+      "decision owner",
+      "problem",
+      "people affected",
+      "what should be working in 90 days",
+      "budget range"
+    ]
+  },
+  "positioning": "A senior build studio for working AI products, media formats, commerce systems, cultural tools, and organizational workflows.",
+  "starter_kit": {
+    "price_usd": 50000,
+    "price_type": "fixed",
+    "duration_weeks": 5,
+    "deliverables": [
+      "Decision room and problem definition",
+      "Opportunity map with up to 12 ranked moves",
+      "One shipped public or private prototype",
+      "One repeatable internal AI workflow",
+      "Experience and voice system",
+      "Measurement plan, governance, and risk register",
+      "90-day build plan with owners and budget bands",
+      "Source files, runbook, team handoff, and 30 days of post-launch care"
+    ],
+    "separately_scoped": [
+      "model training",
+      "major data migration",
+      "paid-media spend",
+      "compliance certification",
+      "third-party fees",
+      "ongoing production"
+    ]
+  },
+  "working_modes": [
+    "personal AI",
+    "corporate AI",
+    "art and culture",
+    "organizational AI"
+  ],
+  "packages": [
+    {
+      "name": "AI Format Lab",
+      "sector": "media and entertainment",
+      "starting_price_usd": 150000,
+      "duration_weeks": "10-12",
+      "outcome": "A repeatable audience format the client team can produce again."
+    },
+    {
+      "name": "Launch System",
+      "sector": "AI organizations",
+      "starting_price_usd": 100000,
+      "duration_weeks": "8-10",
+      "outcome": "A working demonstration and one launch story with receipts."
+    },
+    {
+      "name": "Growth Operating System",
+      "sector": "CPG and cannabis",
+      "starting_price_usd": 125000,
+      "duration_weeks": "10-12",
+      "outcome": "A connected offer, Shopify journey, content system, and operating dashboard."
+    },
+    {
+      "name": "Store as Media",
+      "sector": "Shopify",
+      "starting_price_usd": 75000,
+      "duration_weeks": "6-8",
+      "outcome": "A storefront and publishing system that teaches the next campaign."
+    },
+    {
+      "name": "High-Consequence AI Pilot",
+      "sector": "regulated enterprise and Axon-type organizations",
+      "starting_price_usd": 200000,
+      "duration_weeks": "12-16",
+      "outcome": "A bounded, human-reviewed pilot with evidence, evaluation, and stop-scale gates."
+    },
+    {
+      "name": "Personal and Cultural Studio",
+      "sector": "individuals, artists, archives, and cultural organizations",
+      "starting_price_usd": 25000,
+      "duration_weeks": "3-8",
+      "outcome": "A distinct personal system or public cultural object with source and stewardship."
+    }
+  ],
+  "operating_principles": [
+    "prototype before PowerPoint",
+    "use the smallest safe data boundary",
+    "read behavior rather than enthusiasm",
+    "name human review points",
+    "leave source, owners, and a team that can run the next cycle",
+    "do not train on private client material by default"
+  ]
+}

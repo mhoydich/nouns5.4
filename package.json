@@ -11,6 +11,7 @@
     "verify:open-studio": "node ./scripts/verify-open-studio-002.mjs",
     "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
     "verify:permission-lab": "node ./scripts/verify-permission-lab.mjs",
+    "verify:services": "node ./scripts/verify-services.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
