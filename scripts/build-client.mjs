@@ -37,15 +37,13 @@ await build({
 });
 
 const networkMarker = "data-pointcast-network";
-const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"first-100-lead\" data-context=\"tezos network el segundo first 100 wallet nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
+const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"footer\" data-context=\"small internet institutions tone bloom pointcast rally nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
 const networkScriptElement = "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>";
-const networkMount = [
-  networkMountElement,
-  networkScriptElement,
-].join("\n");
 const networkMountPattern = /[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>/;
 const networkScriptPattern = /[ \t]*<script\s+async\s+src="https:\/\/pointcast\.xyz\/open-ad-network\.js"><\/script>/;
 const bodyPattern = /<body\b[^>]*>/;
+const bodyClose = "</body>";
+const footerClose = "</footer>";
 
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -65,9 +63,17 @@ for (const htmlFile of await htmlFiles(publicDir)) {
   }
   const body = html.match(bodyPattern)?.[0];
   if (!body) throw new Error(`Cannot find body for open ad network in ${htmlFile}`);
-  const withoutPreviousMount = html
+  let nextHtml = html
     .replace(networkMountPattern, "")
     .replace(networkScriptPattern, "");
-  const nextHtml = withoutPreviousMount.replace(body, `${body}\n${networkMount}`);
+
+  const bodyCloseIndex = nextHtml.lastIndexOf(bodyClose);
+  if (bodyCloseIndex === -1) throw new Error(`Cannot find closing body for open ad network in ${htmlFile}`);
+  const footerCloseIndex = nextHtml.lastIndexOf(footerClose);
+  const mountIndex = footerCloseIndex === -1 ? bodyCloseIndex : footerCloseIndex;
+  nextHtml = `${nextHtml.slice(0, mountIndex)}${networkMountElement}\n${nextHtml.slice(mountIndex)}`;
+
+  const scriptIndex = nextHtml.lastIndexOf(bodyClose);
+  nextHtml = `${nextHtml.slice(0, scriptIndex)}${networkScriptElement}\n${nextHtml.slice(scriptIndex)}`;
   if (nextHtml !== html) await writeFile(htmlFile, nextHtml);
 }
