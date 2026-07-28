@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 
 const html = await readFile(new URL("../public/services/index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../public/services/services.css", import.meta.url), "utf8");
-const data = JSON.parse(await readFile(new URL("../public/services/index.json", import.meta.url), "utf8"));
+const data = JSON.parse(await readFile(new URL("../public/services.json", import.meta.url), "utf8"));
 const home = await readFile(new URL("../public/index.html", import.meta.url), "utf8");
 const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
 
