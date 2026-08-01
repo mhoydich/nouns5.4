@@ -1,0 +1,65 @@
+{
+  "id": "industry-next-role-001",
+  "status": "open",
+  "title": "Playlist Editor + Listener Growth Lead",
+  "canonical_url": "https://www.industrynext.xyz/roles/playlist-editor/",
+  "organization": "Industry Next",
+  "mission": "Create living Spotify playlists with a point of view and help good music earn more real, repeat listening.",
+  "positioning": "Spotify is the shelf. The work is the room.",
+  "outcomes": [
+    "Authored playlist worlds with a clear premise, sequence, cover language, description, and editorial rhythm",
+    "More real listeners choosing to save, share, revisit, and continue into the artists they discover",
+    "A repeatable release and maintenance practice connecting artists, communities, editorial, and owned channels",
+    "An honest evidence trail showing what traveled, what did not, and what should change next"
+  ],
+  "responsibilities": [
+    "Define playlist concepts, audiences, settings, and emotional arcs",
+    "Research, sequence, edit, credit, and maintain Spotify playlists",
+    "Direct covers, titles, descriptions, notes, and shareable launch materials",
+    "Build trusted circulation with artists, labels, DJs, music communities, editorial, and owned channels",
+    "Read authorized audience signals and turn them into a better next edition",
+    "Document the operating rhythm so the work can keep running"
+  ],
+  "success_signals": [
+    "playlist saves and follows",
+    "repeat listening",
+    "song and artist saves after discovery",
+    "meaningful shares",
+    "healthy skip, exit, and completion patterns",
+    "credible next actions for participating artists"
+  ],
+  "first_90_days": [
+    {
+      "period": "weeks 1-2",
+      "outcome": "Audit the field, set an honest baseline, and pitch three playlist worlds."
+    },
+    {
+      "period": "weeks 3-6",
+      "outcome": "Launch the strongest concepts with cover systems, notes, circulation plans, and weekly editorial care."
+    },
+    {
+      "period": "weeks 7-12",
+      "outcome": "Refine from real behavior and leave a working listener-growth playbook with receipts."
+    }
+  ],
+  "non_negotiables": [
+    "no purchased streams, followers, saves, comments, or listener impersonation",
+    "no bots, click farms, or fake accounts",
+    "no undisclosed pay-for-placement or playlist takeovers",
+    "no promises of editorial placement outside our control",
+    "no guaranteed listener number before the work earns it"
+  ],
+  "application": {
+    "email": "mh@pointcast.xyz",
+    "subject": "Role 001 — Playlist Editor + Listener Growth Lead",
+    "resume_required": false,
+    "follower_minimum": false,
+    "proof": [
+      "three songs in order and why they belong together",
+      "one playlist you built or wish you had built",
+      "an honest example of helping music reach real listeners",
+      "one song you would remove from your own sequence and why",
+      "relevant links"
+    ]
+  }
+}

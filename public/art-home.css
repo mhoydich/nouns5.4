@@ -739,6 +739,103 @@ img, canvas { display: block; max-width: 100%; }
 .services-starter-card p { margin: 0; font: 400 .73rem/1.6 var(--mono); }
 .services-starter-card b { margin-top: auto; padding-top: 26px; border-top: 1px solid var(--ink); }
 
+.role-door {
+  min-height: 720px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) minmax(420px, 1fr);
+  align-items: center;
+  gap: clamp(55px, 8vw, 145px);
+  padding: 110px var(--page-pad) 125px;
+  border-bottom: var(--line);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px) 0 0 / 42px 42px,
+    linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px) 0 0 / 42px 42px,
+    var(--ink);
+  color: #fff;
+  overflow: hidden;
+}
+.role-door::before {
+  content: "LISTEN";
+  position: absolute;
+  left: -2vw;
+  bottom: -5vw;
+  color: rgba(255,255,255,.07);
+  font-size: clamp(10rem, 26vw, 29rem);
+  font-weight: 900;
+  line-height: .7;
+  letter-spacing: -.12em;
+  pointer-events: none;
+}
+.role-door-copy, .role-listening-card { position: relative; z-index: 1; }
+.role-door h2 {
+  margin: 20px 0 28px;
+  font-size: clamp(4rem, 7.8vw, 9rem);
+  line-height: .75;
+  letter-spacing: -.095em;
+}
+.role-door-copy > p:not(.section-index) {
+  max-width: 610px;
+  margin: 0 0 35px;
+  font: 400 clamp(.82rem, 1.1vw, 1rem)/1.65 var(--mono);
+}
+.role-door-button { background: var(--acid); color: var(--ink); }
+.role-listening-card {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(30px, 4vw, 54px);
+  border: var(--line);
+  background:
+    linear-gradient(90deg, rgba(17,17,17,.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 16px 18px 0 var(--blue), 29px 34px 0 var(--pink);
+  transform: rotate(1.2deg);
+  transition: transform .2s, box-shadow .2s;
+}
+.role-listening-card:hover, .role-listening-card:focus-visible {
+  transform: translateY(-7px) rotate(0deg);
+  box-shadow: 20px 25px 0 var(--blue), 33px 42px 0 var(--pink);
+}
+.role-card-tab {
+  position: absolute;
+  left: 22px;
+  top: -35px;
+  max-width: calc(100% - 44px);
+  padding: 11px 15px;
+  border: var(--line);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  background: var(--acid);
+  font: 500 .57rem/1 var(--mono);
+  letter-spacing: .07em;
+}
+.role-card-record {
+  width: 145px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 34px;
+  top: 42px;
+  display: grid;
+  place-items: center;
+  border: var(--line);
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #151515 0 5px, #2b2b2b 6px 7px, #151515 8px 13px);
+  box-shadow: 7px 8px 0 var(--orange);
+  transition: transform .8s;
+}
+.role-listening-card:hover .role-card-record { transform: rotate(54deg); }
+.role-card-record::before { content: ""; width: 37%; aspect-ratio: 1; border-radius: 50%; background: var(--cyan); }
+.role-card-record i { position: absolute; inset: 16%; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; }
+.role-card-record span { position: absolute; width: 24%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--acid); font: 500 .42rem/1 var(--mono); text-align: center; }
+.role-listening-card small, .role-listening-card b { font: 500 .6rem/1.4 var(--mono); letter-spacing: .08em; }
+.role-listening-card > small { max-width: 170px; }
+.role-listening-card strong { margin: auto 0 25px; font-size: clamp(3.6rem, 6.5vw, 7.4rem); line-height: .74; letter-spacing: -.095em; }
+.role-listening-card p { margin: 0 0 22px; padding: 13px; border: 1px solid var(--ink); background: var(--pink); font: 500 .57rem/1.4 var(--mono); }
+.role-listening-card b { padding-top: 19px; border-top: 1px solid var(--ink); }
+
 .studio-brief-home {
   min-height: 640px;
   position: relative;
@@ -990,6 +1087,8 @@ img, canvas { display: block; max-width: 100%; }
   .lead-request-card { width: min(86%, 760px); justify-self: center; }
   .services-door { grid-template-columns: 1fr; }
   .services-starter-card { width: min(84%, 680px); justify-self: center; }
+  .role-door { grid-template-columns: 1fr; }
+  .role-listening-card { width: min(84%, 680px); justify-self: center; }
   .studio-brief-home { grid-template-columns:1fr; }
   .studio-brief-home ol { width:min(74%,650px); margin-left:auto; }
   .door { min-height: 410px; }
@@ -1067,6 +1166,14 @@ img, canvas { display: block; max-width: 100%; }
   .services-door-copy > p:not(.section-index) { font-size: .73rem; }
   .services-starter-card { width: 94%; min-height: 410px; margin-top: 20px; padding: 30px 24px; box-shadow: 10px 12px 0 var(--pink), 19px 24px 0 var(--ink); transform: rotate(1deg); }
   .services-starter-card strong { font-size: 16vw; }
+  .role-door { min-height: 890px; padding-top: 72px; padding-bottom: 98px; }
+  .role-door::before { bottom: 0; font-size: 37vw; }
+  .role-door h2 { font-size: 18vw; }
+  .role-door-copy > p:not(.section-index) { font-size: .73rem; }
+  .role-listening-card { width: 94%; min-height: 470px; margin-top: 42px; padding: 30px 24px; box-shadow: 10px 12px 0 var(--blue), 19px 24px 0 var(--pink); transform: rotate(1deg); }
+  .role-card-tab { font-size: .48rem; line-height: 1.2; }
+  .role-card-record { width: 105px; right: 22px; top: 44px; }
+  .role-listening-card strong { font-size: 17vw; }
   .studio-brief-home { min-height:780px; display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:42px; padding-top:70px; padding-bottom:100px; }
   .studio-brief-number { top:0; font-size:72vw; }
   .studio-brief-copy h2 { font-size:clamp(3.4rem,16vw,5.7rem); }

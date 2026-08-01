@@ -12,6 +12,7 @@
     "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
     "verify:permission-lab": "node ./scripts/verify-permission-lab.mjs",
     "verify:services": "node ./scripts/verify-services.mjs",
+    "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
