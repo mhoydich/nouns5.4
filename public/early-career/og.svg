@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Industry Next Starting Line</title>
+  <desc id="desc">A bright field kit for interns and recent graduates.</desc>
+  <rect width="1200" height="630" fill="#eeff41"/>
+  <path d="M0 0h42v630H0z" fill="#121212"/>
+  <g fill="#f6f0e7" stroke="#121212" stroke-width="8">
+    <circle cx="21" cy="86" r="10"/><circle cx="21" cy="204" r="10"/><circle cx="21" cy="322" r="10"/><circle cx="21" cy="440" r="10"/><circle cx="21" cy="558" r="10"/>
+  </g>
+  <rect x="82" y="66" width="1038" height="500" rx="24" fill="#f6f0e7" stroke="#121212" stroke-width="8"/>
+  <rect x="82" y="66" width="1038" height="48" rx="18" fill="#ff5baf"/>
+  <path d="M82 114h1038" stroke="#121212" stroke-width="8"/>
+  <text x="116" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="900" fill="#121212">INDUSTRY NEXT / FIELD DESK 001</text>
+  <text x="116" y="210" font-family="Arial, sans-serif" font-size="76" font-weight="900" fill="#121212">STARTING LINE</text>
+  <text x="116" y="264" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#121212">INTERNS + RECENT GRADUATES</text>
+  <g font-family="Arial, sans-serif" font-weight="900" fill="#121212">
+    <g transform="translate(116 326)"><rect width="270" height="156" fill="#72d9ff" stroke="#121212" stroke-width="6"/><text x="22" y="44" font-size="21">01 / READ</text><text x="22" y="94" font-size="34">THE WHOLE</text><text x="22" y="132" font-size="34">DEAL</text></g>
+    <g transform="translate(419 326)"><rect width="270" height="156" fill="#ff6b45" stroke="#121212" stroke-width="6"/><text x="22" y="44" font-size="21">02 / MAKE</text><text x="22" y="94" font-size="34">ONE USEFUL</text><text x="22" y="132" font-size="34">THING</text></g>
+    <g transform="translate(722 326)"><rect width="270" height="156" fill="#b68cff" stroke="#121212" stroke-width="6"/><text x="22" y="44" font-size="21">03 / SHOW</text><text x="22" y="94" font-size="34">WHAT</text><text x="22" y="132" font-size="34">CHANGED</text></g>
+  </g>
+  <path d="M1034 175l16 36 39-8-18 36 31 24-38 12 2 40-35-20-29 28-6-40-40-3 27-30-23-33 40 4z" fill="#eeff41" stroke="#121212" stroke-width="6"/>
+  <text x="1003" y="247" font-family="Arial, sans-serif" font-size="23" font-weight="900" text-anchor="middle" fill="#121212">START</text>
+  <text x="1003" y="273" font-family="Arial, sans-serif" font-size="23" font-weight="900" text-anchor="middle" fill="#121212">SMALL</text>
+  <text x="116" y="536" font-family="Courier New, monospace" font-size="22" font-weight="700" fill="#121212">YOU DO NOT NEED A PERFECT PLAN. YOU NEED A FIRST RECEIPT.</text>
+</svg>

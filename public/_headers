@@ -102,6 +102,13 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/early-career/*
+  Cache-Control: public, max-age=300
+
+/early-career.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /api/made
   Cache-Control: no-store
 
