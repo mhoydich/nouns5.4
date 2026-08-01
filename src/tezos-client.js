@@ -1,6 +1,6 @@
 import { TezosToolkit, MichelsonMap } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { stringToBytes } from "@taquito/utils";
+import { getPkhfromPk, stringToBytes, verifySignature } from "@taquito/utils";
 import { PostMessageTransport } from "@ecadlabs/beacon-transport-postmessage";
 
 export function createTezosToolkit(rpcUrl) {
@@ -38,6 +38,14 @@ export async function disconnectTezosWallet(wallet) {
   }
 
   await wallet.disconnect();
+}
+
+export function publicKeyToTezosAddress(publicKey) {
+  return getPkhfromPk(publicKey);
+}
+
+export function verifyTezosSignature(payload, publicKey, signature) {
+  return verifySignature(payload, publicKey, signature);
 }
 
 export { MichelsonMap, stringToBytes };

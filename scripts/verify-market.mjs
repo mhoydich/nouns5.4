@@ -1,10 +1,17 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
+import {
+  TEZOS_AUTH_SESSION_SCHEMA,
+  buildTezosAuthChallenge,
+  isFreshTezosAuthSession,
+  packTezosMessage,
+  publicTezosAuthProof,
+} from "../src/market-auth-core.js";
 
 const files = {
   html: new URL("../public/market/index.html", import.meta.url),
   css: new URL("../public/market/market.css", import.meta.url),
-  script: new URL("../public/market/market.js", import.meta.url),
+  script: new URL("../public/market.js", import.meta.url),
   json: new URL("../public/market.json", import.meta.url),
   og: new URL("../public/market/og.svg", import.meta.url),
 };
@@ -36,8 +43,11 @@ assert.match(html, /Playlist[\s\S]*Editor/);
 assert.match(html, /AI[\s\S]*Credits/);
 assert.match(html, /TERMS BEFORE TRANSACTIONS/);
 assert.match(html, /No candidate owes unpaid commercial production/);
-assert.match(html, /No card here connects a wallet/);
-assert.match(html, /Local only\. No account\. No wallet\./);
+assert.match(html, /Sign in with Tezos/);
+assert.match(html, /NO NETWORK FEE/);
+assert.match(html, /A valid signature proves control of one address/);
+assert.match(html, /Local only\. Tezos identity is optional\./);
+assert.match(html, /id="listing-auth-mark"/);
 assert.match(html, /rel="alternate" type="application\/json" href="\/market\.json"/);
 assert.match(html, /industry-next-icon\.svg/);
 assert.match(html, /data-placement="footer"/);
@@ -50,6 +60,8 @@ assert.equal((html.match(/data-kind="token"/g) || []).length, 3);
 
 assert.match(css, /\.market-grid/);
 assert.match(css, /\.listing-form/);
+assert.match(css, /\.auth-desk/);
+assert.match(css, /\.auth-card/);
 assert.match(css, /@media \(max-width: 760px\)/);
 assert.match(css, /prefers-reduced-motion: reduce/);
 assert.match(css, /prefers-contrast: more/);
@@ -58,12 +70,26 @@ assert.match(script, /navigator\.clipboard/);
 assert.match(script, /local-draft/);
 assert.match(script, /automatic_settlement: false/);
 assert.match(script, /scrollIntoView/);
+assert.match(script, /requestSignPayload/);
+assert.match(script, /sessionStorage/);
+assert.match(script, /verifyTezosSignature/);
+assert.match(script, /tezos_auth/);
 assert.doesNotMatch(script, /innerHTML/);
 
 assert.match(og, /width="1200" height="630"/);
 assert.match(og, /TURN WORK/);
 
 assert.equal(data.id, "industrynext.work-market/v1");
+assert.equal(data.authentication.network, "mainnet");
+assert.equal(data.authentication.method, "wallet-signed Micheline challenge");
+assert.equal(data.authentication.session_duration_minutes, 20);
+assert.equal(data.authentication.required_to_browse, false);
+assert.equal(data.authentication.transaction, false);
+assert.equal(data.authentication.network_fee, false);
+assert.equal(data.authentication.token_transfer, false);
+assert.equal(data.authentication.on_chain_write, false);
+assert.equal(data.authentication.grants_publish_permission, false);
+assert.equal(data.authentication.grants_organization_authority, false);
 assert.equal(data.market_rules.escrow_contract, false);
 assert.equal(data.market_rules.automatic_settlement, false);
 assert.equal(data.market_rules.written_terms_required_before_work, true);
@@ -109,4 +135,42 @@ assert.match(sitemap, /industrynext\.xyz\/market\//);
 assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === "/market/"));
 assert.equal(pkg.scripts["verify:market"], "node ./scripts/verify-market.mjs");
 
-console.log("Work Market verification passed: linked jobs, first tasks, organization authority, reward rails, local listing drafts, JSON contract, and site doorways.");
+const fixedNow = Date.UTC(2026, 6, 31, 23, 55, 0);
+const authAddress = "tz2MVED1t9Jery77Bwm1m5YhUx8Wp5KWWRQe";
+const challenge = buildTezosAuthChallenge({
+  origin: "https://www.industrynext.xyz",
+  address: authAddress,
+  nonce: "market-auth-test-20260731",
+  now: fixedNow,
+});
+assert.equal(challenge.domain, "www.industrynext.xyz");
+assert.equal(challenge.address, authAddress);
+assert.equal(challenge.payload, packTezosMessage(challenge.message));
+assert.match(challenge.payload, /^0501[0-9a-f]{8}/);
+assert.match(challenge.message, /proves wallet control only/);
+
+const session = {
+  schema: TEZOS_AUTH_SESSION_SCHEMA,
+  network: "mainnet",
+  address: authAddress,
+  public_key: "sppk-test-public-key",
+  signature: "spsig-test-signature",
+  signing_type: "micheline",
+  payload: challenge.payload,
+  challenge,
+  verified: true,
+};
+assert.equal(isFreshTezosAuthSession(session, { origin: "https://www.industrynext.xyz", now: fixedNow + 1000 }), true);
+assert.equal(isFreshTezosAuthSession(session, { origin: "https://industrynext.xyz", now: fixedNow + 1000 }), false);
+assert.equal(isFreshTezosAuthSession(session, { origin: "https://www.industrynext.xyz", now: Date.parse(challenge.expiration_time) }), false);
+assert.equal(isFreshTezosAuthSession({
+  ...session,
+  challenge: {
+    ...challenge,
+    issued_at: new Date(fixedNow + 60_000).toISOString(),
+    expiration_time: new Date(fixedNow + 60_000 + 20 * 60 * 1000).toISOString(),
+  },
+}, { origin: "https://www.industrynext.xyz", now: fixedNow + 1000 }), false);
+assert.deepEqual(publicTezosAuthProof(session).scope, ["market:identity", "market:draft-attribution"]);
+
+console.log("Work Market verification passed: linked work, wallet-signed Tezos auth, local verification, explicit authority boundaries, listing drafts, JSON contract, and site doorways.");

@@ -15,6 +15,7 @@ await build({
     resolve(rootDir, "src/home.js"),
     resolve(rootDir, "src/tezos-client.js"),
     resolve(rootDir, "src/desk.js"),
+    resolve(rootDir, "src/market.js"),
   ],
   outdir: publicDir,
   bundle: true,

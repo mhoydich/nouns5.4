@@ -183,6 +183,61 @@ button, select { cursor: pointer; }
 .hero-ticket b { font: 400 2.2rem/.7 var(--sans); }
 .hero-ticket span { font-size: .52rem; line-height: 1.2; }
 
+.auth-desk {
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: clamp(55px, 8vw, 130px);
+  align-items: center;
+  position: relative;
+  padding: 105px var(--pad) 125px;
+  border-bottom: var(--line);
+  background: var(--purple);
+  color: #fff;
+  overflow: hidden;
+}
+.auth-desk::before {
+  content: "TZ";
+  position: absolute;
+  left: -4vw;
+  bottom: -11vw;
+  color: rgba(255,255,255,.07);
+  font: 400 clamp(15rem, 37vw, 42rem)/.7 var(--sans);
+  letter-spacing: -.12em;
+  pointer-events: none;
+}
+.auth-copy { position: relative; z-index: 2; }
+.auth-copy h2 { margin: 17px 0 30px; font: 400 clamp(3.7rem, 7.3vw, 8rem)/.79 var(--sans); letter-spacing: -.083em; }
+.auth-copy h2 em { color: var(--acid); font-style: normal; }
+.auth-copy > p:not(.section-index) { max-width: 650px; margin: 0; font-size: .76rem; line-height: 1.7; }
+.auth-copy ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 34px 0 0; padding: 0; list-style: none; }
+.auth-copy li { padding: 8px 10px; border: 1px solid currentColor; font-size: .53rem; letter-spacing: .07em; }
+.auth-card {
+  min-height: 430px;
+  position: relative;
+  z-index: 2;
+  padding: 66px 31px 29px;
+  border: var(--line);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 14px 16px 0 var(--acid), 27px 31px 0 var(--ink);
+  transform: rotate(1deg);
+}
+.auth-card-top { position: absolute; inset: 0 0 auto; min-height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 13px; border-bottom: 1px solid var(--ink); background: var(--blue); font-size: .56rem; letter-spacing: .08em; }
+.auth-card-top b { padding: 6px 8px; background: var(--ink); color: #fff; font-weight: 500; }
+.auth-card-top b[data-state="verified"] { background: var(--acid); color: var(--ink); }
+.auth-card-top b[data-state="busy"] { background: var(--red); color: var(--ink); }
+.auth-network { display: flex; align-items: center; gap: 9px; margin: 0 0 15px; font-size: .57rem; letter-spacing: .1em; }
+.auth-network i { width: 10px; height: 10px; border: 1px solid var(--ink); border-radius: 50%; background: var(--acid); box-shadow: 0 0 0 4px rgba(238,255,65,.35); }
+.auth-card > strong { display: block; margin-bottom: 16px; font: 400 clamp(2.15rem, 4vw, 4.6rem)/.88 var(--sans); letter-spacing: -.07em; overflow-wrap: anywhere; }
+.auth-card > p:not(.auth-network):not(.auth-expires):not(.auth-boundary) { max-width: 620px; min-height: 45px; margin: 0 0 13px; font-size: .65rem; line-height: 1.55; }
+.auth-expires { margin: 0 0 22px; font-size: .54rem; letter-spacing: .08em; opacity: .62; }
+.auth-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.button-auth { min-width: 230px; background: var(--ink); color: var(--acid); box-shadow: 6px 6px 0 var(--purple); }
+.auth-secondary { min-height: 43px; padding: 0 13px; border: 1px solid var(--ink); background: transparent; font: 500 .55rem/1 var(--mono); text-transform: uppercase; }
+.auth-secondary:hover,
+.auth-secondary:focus-visible { background: var(--ink); color: var(--acid); }
+.auth-boundary { margin: 29px 0 0; padding-top: 17px; border-top: 1px dashed var(--ink); font-size: .55rem; line-height: 1.55; opacity: .72; }
+
 .market-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--line); background: var(--ink); color: #fff; }
 .market-strip p { min-height: 128px; display: flex; flex-direction: column; justify-content: center; gap: 9px; margin: 0; padding: 22px var(--pad); border-right: 1px solid #fff; }
 .market-strip p:last-child { border-right: 0; }
@@ -276,6 +331,7 @@ button, select { cursor: pointer; }
 .listing-form { position: relative; padding: 57px 28px 30px; border: var(--line); background: var(--white); box-shadow: 12px 14px 0 var(--red), 25px 29px 0 var(--ink); }
 .form-top { position: absolute; inset: 0 0 auto; min-height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid var(--ink); background: var(--acid); font-size: .55rem; }
 .form-top b { color: var(--red); }
+.form-top b[data-state="verified"] { color: var(--purple); }
 .listing-form > label,
 .field-row label { display: grid; gap: 8px; margin-bottom: 17px; font: 500 .58rem/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
@@ -302,6 +358,8 @@ button, select { cursor: pointer; }
   .site-nav a { min-width: 78px; }
   .market-hero { grid-template-columns: 1fr; padding-top: 100px; }
   .terms-folder { width: min(82%, 680px); justify-self: center; }
+  .auth-desk { grid-template-columns: 1fr; }
+  .auth-card { width: min(88%, 760px); justify-self: center; }
   .market-card { grid-column: span 6; }
   .card-featured { grid-column: span 12; }
   .rules,
@@ -327,6 +385,14 @@ button, select { cursor: pointer; }
   .terms-folder li { grid-template-columns: 55px 1fr; min-height: 78px; }
   .terms-folder li strong { font-size: 1.35rem; }
   .hero-ticket { display: none; }
+  .auth-desk { display: block; padding-top: 78px; padding-bottom: 100px; }
+  .auth-copy h2 { font-size: 15.5vw; }
+  .auth-copy > p:not(.section-index) { font-size: .71rem; }
+  .auth-card { width: 94%; min-height: 440px; margin: 75px auto 0; padding: 61px 21px 25px; box-shadow: 9px 11px 0 var(--acid), 18px 22px 0 var(--ink); transform: none; }
+  .auth-card > strong { font-size: 10.5vw; }
+  .auth-actions { align-items: stretch; flex-direction: column; }
+  .button-auth { width: 100%; min-width: 0; }
+  .auth-secondary { width: 100%; }
   .market-strip { grid-template-columns: 1fr 1fr; }
   .market-strip p { min-height: 105px; padding: 20px; }
   .market-strip p:nth-child(2) { border-right: 0; }
@@ -368,5 +434,6 @@ button, select { cursor: pointer; }
   :root { --paper: #fff; --white: #fff; --acid: #f4ff00; --blue: #00dacf; }
   .market-card,
   .listing-form,
-  .terms-folder { border-width: 3px; }
+  .terms-folder,
+  .auth-card { border-width: 3px; }
 }
