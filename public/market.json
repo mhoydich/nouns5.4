@@ -3,7 +3,7 @@
   "schema_version": 1,
   "name": "Industry Next Work Market",
   "canonical_url": "https://www.industrynext.xyz/market/",
-  "updated_at": "2026-07-31T23:55:00-07:00",
+  "updated_at": "2026-07-31T23:59:00-07:00",
   "summary": "A public board connecting jobs, first tasks, accountable organizations, and explicit token or credit reward terms.",
   "authentication": {
     "network": "mainnet",
@@ -36,7 +36,7 @@
   },
   "counts": {
     "open_jobs": 4,
-    "first_tasks": 4,
+    "first_tasks": 5,
     "organizations": 1,
     "reward_and_proof_rails": 3,
     "funded_credit_rails": 1,
@@ -208,6 +208,19 @@
       "outcome": "Choose the real group first, run one clickable or facilitated ritual, and leave a one-page field note about the handoff.",
       "acceptance": "One group completes one live loop and can say whether it should restart.",
       "reward": "Inside the provided AI-credit build budget."
+    },
+    {
+      "id": "door-audit-001",
+      "kind": "task",
+      "status": "open",
+      "title": "Repair one broken door",
+      "organization_id": "industry-next",
+      "outcome": "Rewrite one vague public invitation as a complete door with WHO, FIRST MOVE, TERMS, and YES.",
+      "acceptance": "One public source link and one rewritten door after claim confirmation.",
+      "available_claims": 3,
+      "timebox_minutes": 60,
+      "reward": "Unpaid editorial field exercise; contributor retains rights and publication requires written approval.",
+      "claim_url": "https://www.industrynext.xyz/issues/001/#field-task"
     }
   ]
 }

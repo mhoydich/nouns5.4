@@ -112,6 +112,7 @@ button { font: inherit; }
 }
 .issue-tape span:nth-child(2) { text-align: center; }
 .issue-tape a { justify-self: end; text-underline-offset: 4px; }
+.issue-tape a:first-child { justify-self: start; }
 
 .eyebrow, .section-index, .project-kicker, .call-status {
   margin: 0;
@@ -561,7 +562,8 @@ button { font: inherit; }
   .site-nav a { min-width: 84px; padding: 0 12px; font-size: .58rem; }
   .site-nav .nav-action { min-width: 132px; }
   .issue-tape { min-height: 32px; padding: 6px 12px; font-size: .5rem; }
-  .issue-tape a { max-width: 150px; text-align: right; }
+  .issue-tape a { max-width: 145px; text-align: right; }
+  .issue-tape a:first-child { text-align: left; }
   .hero { min-height: auto; }
   .binder-holes { left: 4px; }
   .binder-holes i { width: 7px; height: 7px; }

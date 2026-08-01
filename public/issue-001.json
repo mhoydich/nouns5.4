@@ -1,0 +1,40 @@
+{
+  "id": "industrynext.issue/001",
+  "schema_version": 1,
+  "issue_number": 1,
+  "title": "Work Needs Better Doors",
+  "canonical_url": "https://www.industrynext.xyz/issues/001/",
+  "published_at": "2026-07-31T23:59:00-07:00",
+  "summary": "A door names who it is for, the first move, the terms, and how yes happens.",
+  "thesis": "An invitation is an interface. Openness without a legible first move transfers the work of entry to the person being invited.",
+  "door_parts": [
+    { "id": "who", "name": "Who", "rule": "Name the judgment, appetite, or lived knowledge the work actually needs." },
+    { "id": "first-move", "name": "First move", "rule": "Bound the proof without extracting free commercial labor." },
+    { "id": "terms", "name": "Terms", "rule": "State cash, credit, access, ownership, timing, rights, and uncertainty up front." },
+    { "id": "yes", "name": "Yes", "rule": "Name the human decider and the response clock." }
+  ],
+  "working_proof": {
+    "name": "Industry Next Work Market",
+    "url": "https://www.industrynext.xyz/market/",
+    "claim": "The job, first task, accountable organization, and reward rail appear on one public surface."
+  },
+  "field_task": {
+    "id": "door-audit-001",
+    "status": "open",
+    "title": "Repair one broken door",
+    "available_claims": 3,
+    "start_rule": "Do not begin before Industry Next confirms the claim.",
+    "timebox_minutes": 60,
+    "deliverable": "One public source link and one rewritten door using WHO, FIRST MOVE, TERMS, and YES.",
+    "compensation": { "cash_usd": 0, "kind": "unpaid editorial field exercise", "commercial_production": false },
+    "rights": "The contributor retains their work. Industry Next publishes only with written approval and credit.",
+    "response_window_business_days": 5,
+    "claim_url": "mailto:mh@pointcast.xyz?subject=Claim%20Field%20Task%20001%20%E2%80%94%20Door%20Audit"
+  },
+  "service_door": {
+    "name": "Industry Next Starter Kit",
+    "price_usd": 50000,
+    "duration_weeks": 5,
+    "url": "https://www.industrynext.xyz/services/"
+  }
+}

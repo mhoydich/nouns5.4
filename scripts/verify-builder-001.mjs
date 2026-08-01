@@ -68,7 +68,7 @@ assert.ok(builderTask);
 assert.equal(builderJob.first_task_id, builderTask.id);
 assert.equal(builderJob.reward.rail_id, "ai-credits");
 assert.equal(marketData.counts.open_jobs, 4);
-assert.equal(marketData.counts.first_tasks, 4);
+assert.equal(marketData.counts.first_tasks, 5);
 assert.match(marketHtml, /Small Social<br \/>Systems Builder/);
 assert.match(marketHtml, /JOB \/ 011/);
 assert.match(marketHtml, /TASK \/ 012/);
