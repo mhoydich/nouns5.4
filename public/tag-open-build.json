@@ -1,0 +1,29 @@
+{
+  "schema": "industrynext.open-build/v1",
+  "id": "industrynext.open-build.tag-001",
+  "status": "open",
+  "title": "TAG",
+  "edition": "Open Build 001",
+  "canonical_url": "https://www.industrynext.xyz/next/tag/",
+  "summary": "A tiny social relay for group chats: one person, one prompt, one clock, and a handoff that creates the next invitation.",
+  "lead": {
+    "role": "Creative technologist / product-minded builder",
+    "count": 1,
+    "duration_weeks": 4,
+    "owns": ["Product calls", "Working mobile MVP", "Three live group tests", "Public release and technical handoff"]
+  },
+  "support": {
+    "provided": ["AI model and tool credits", "Creative direction", "Initial testers", "Editorial launch"],
+    "terms": "AI credits cover model and tool usage. Cash costs and paid services require a separate agreement before work begins."
+  },
+  "mvp": ["4–12 people", "One active tag", "Photo, text, and voice responses", "Timer and pass mechanic", "Five mood packs", "End-of-round recap"],
+  "pilot": {"groups": 3, "days": 7, "decision": ["kill", "tune", "native build"]},
+  "apply": {
+    "email": "mh@pointcast.xyz",
+    "subject": "TAG LEAD",
+    "requested": ["One thing you shipped", "Three sentences on your first prototype", "What makes a group game fun", "Availability for four weeks"],
+    "privacy": "The web form stores drafts only in the applicant's browser and opens a prepared email. It does not upload application data."
+  },
+  "deck_url": "https://www.industrynext.xyz/next/tag/tag-open-build.pptx",
+  "published_by": "Industry Next"
+}
