@@ -7,6 +7,7 @@ const home = await readFile(new URL("../public/index.html", import.meta.url), "u
 const css = await readFile(new URL("../public/art-home.css", import.meta.url), "utf8");
 const script = await readFile(new URL("../public/art-home.js", import.meta.url), "utf8");
 const favicon = await readFile(new URL("../public/favicon.svg", import.meta.url), "utf8");
+const brandedFavicon = await readFile(new URL("../public/industry-next-icon.svg", import.meta.url), "utf8");
 const manifest = JSON.parse(await readFile(new URL("../public/site.webmanifest", import.meta.url), "utf8"));
 
 assert.match(home, /id="voxel-canvas"/);
@@ -35,11 +36,12 @@ assert.match(home, /Rally/);
 assert.match(home, /THE \$50K[\s\S]*STARTER KIT/);
 assert.match(home, /data-placement="footer"/);
 assert.match(home, /Signals in circulation/);
-assert.match(home, /href="\/favicon\.svg\?v=20260731a"/);
+assert.match(home, /href="\/industry-next-icon\.svg"/);
 assert.match(favicon, /<title>Industry Next<\/title>/);
 assert.match(favicon, /#111111/);
 assert.match(favicon, /#EEFF41/);
-assert.equal(manifest.icons[0].src, "/favicon.svg?v=20260731a");
+assert.equal(brandedFavicon, favicon);
+assert.equal(manifest.icons[0].src, "/industry-next-icon.svg");
 assert.match(css, /\.current-signals/);
 assert.match(css, /\.signal-card-rally/);
 assert.match(css, /\.signal-card-halation/);

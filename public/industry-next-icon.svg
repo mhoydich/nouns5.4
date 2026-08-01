@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Industry Next</title>
+  <rect width="64" height="64" rx="12" fill="#111111" />
+  <path d="M8 12H28V18H22V46H28V52H8V46H14V18H8V12Z" fill="#EEFF41" />
+  <path d="M33 12H40L50 37V12H57V52H50L40 27V52H33V12Z" fill="#EEFF41" />
+  <path d="M7 56H44V59H7V56Z" fill="#FF5C9A" />
+  <path d="M47 56H57V59H47V56Z" fill="#59F4E8" />
+</svg>
