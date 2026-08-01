@@ -17,7 +17,7 @@
   ],
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/favicon.svg?v=20260731a",
       "sizes": "any",
       "type": "image/svg+xml"
     }
