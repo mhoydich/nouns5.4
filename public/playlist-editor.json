@@ -6,6 +6,14 @@
   "organization": "Industry Next",
   "mission": "Create living Spotify playlists with a point of view and help good music earn more real, repeat listening.",
   "positioning": "Spotify is the shelf. The work is the room.",
+  "compensation": {
+    "guaranteed_cash_usd": 0,
+    "salary": false,
+    "guaranteed_contractor_fee": false,
+    "potential_upside": "project-specific revenue share",
+    "revenue_guaranteed": false,
+    "disclosure": "Scope, share percentage, eligible revenue, credit, ownership, reporting, payout timing, and exit terms will be agreed in writing before work begins."
+  },
   "outcomes": [
     "Authored playlist worlds with a clear premise, sequence, cover language, description, and editorial rhythm",
     "More real listeners choosing to save, share, revisit, and continue into the artists they discover",
@@ -54,6 +62,7 @@
     "subject": "Role 001 — Playlist Editor + Listener Growth Lead",
     "resume_required": false,
     "follower_minimum": false,
+    "requires_compensation_acknowledgement": true,
     "proof": [
       "three songs in order and why they belong together",
       "one playlist you built or wish you had built",
