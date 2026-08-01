@@ -1,0 +1,74 @@
+{
+  "schema": "industrynext.early-career/v1",
+  "id": "industrynext.early-career/starting-line-001",
+  "title": "Starting Line — Resources for Interns and Recent Graduates",
+  "canonical": "https://www.industrynext.xyz/early-career/",
+  "published": "2026-08-01",
+  "audience": ["interns", "recent graduates", "early-career builders"],
+  "principle": "Read the whole deal. Make one useful thing. Leave proof someone else can inspect.",
+  "resources": [
+    {
+      "id": "intern-read-001",
+      "title": "Your First Decade Is a Position",
+      "kind": "field guide and local model",
+      "url": "https://www.industrynext.xyz/intern-read/001/",
+      "output": "A personal ten-year agency map"
+    },
+    {
+      "id": "whole-offer",
+      "title": "Read the Whole Offer",
+      "kind": "six-part checklist",
+      "url": "https://www.industrynext.xyz/early-career/#offer-file",
+      "output": "Written answers across cash, health, time, learning, ownership, and exit"
+    },
+    {
+      "id": "first-receipt",
+      "title": "First Receipt Lab",
+      "kind": "private local worksheet",
+      "url": "https://www.industrynext.xyz/early-career/#receipt-lab",
+      "output": "A portable record of what was noticed, changed, evidenced, and recommended next",
+      "transmits_or_stores_inputs": false
+    },
+    {
+      "id": "first-90-days",
+      "title": "The First 90 Days",
+      "kind": "30 / 60 / 90 day field map",
+      "url": "https://www.industrynext.xyz/early-career/#first-90",
+      "output": "A system map, one before-and-after, and a public-safe receipt"
+    },
+    {
+      "id": "ai-field-rules",
+      "title": "AI at Work",
+      "kind": "four field rules",
+      "url": "https://www.industrynext.xyz/early-career/#ai-field-rules",
+      "output": "Protected inputs, verified claims, visible decisions, and owned outputs"
+    },
+    {
+      "id": "our-jobs",
+      "title": "Our Jobs",
+      "kind": "Industry Next opportunity board",
+      "url": "https://www.industrynext.xyz/market/",
+      "source": "https://www.industrynext.xyz/market.json"
+    }
+  ],
+  "jobs_snapshot": {
+    "source": "https://www.industrynext.xyz/market.json",
+    "as_of": "2026-08-01",
+    "organization_id": "industry-next",
+    "open_role_ids": [
+      "halation-lead",
+      "playlist-editor-listener-growth",
+      "tag-open-build-lead",
+      "small-social-systems-builder"
+    ],
+    "bounded_field_task_ids": ["door-audit-001", "enjoyable-hour-001"],
+    "cash_compensation_implied": false,
+    "written_terms_required_before_work": true
+  },
+  "official_sources": [
+    "https://www.consumerfinance.gov/consumer-tools/",
+    "https://studentaid.gov/loan-simulator/",
+    "https://www.irs.gov/filing/individuals/who-should-file",
+    "https://www.investor.gov/introduction-investing"
+  ]
+}
