@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Your First Decade Is a Position</title>
+  <desc id="desc">Industry Next Intern Read 001, a ten-year field map for building financial agency.</desc>
+  <defs>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" fill="none" stroke="#f7f1df" stroke-opacity="0.09" stroke-width="1" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#10121d" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <rect x="46" y="40" width="1108" height="550" fill="none" stroke="#f7f1df" stroke-width="2" />
+  <text x="76" y="79" fill="#f4f04f" font-family="monospace" font-size="19" font-weight="700" letter-spacing="2">INDUSTRY NEXT / INTERN READ 001 / 2026—2036</text>
+  <text x="74" y="169" fill="#f7f1df" font-family="Arial Black, sans-serif" font-size="78" font-weight="900" letter-spacing="-5">YOUR FIRST</text>
+  <text x="74" y="247" fill="#f7f1df" font-family="Arial Black, sans-serif" font-size="78" font-weight="900" letter-spacing="-5">DECADE IS</text>
+  <text x="74" y="325" fill="#f7f1df" font-family="Arial Black, sans-serif" font-size="78" font-weight="900" letter-spacing="-5">A POSITION.</text>
+  <rect x="77" y="377" width="358" height="72" fill="#75d5ff" stroke="#10121d" stroke-width="3" />
+  <text x="96" y="420" fill="#10121d" font-family="monospace" font-size="21" font-weight="700">01 / BUILD MARGIN</text>
+  <rect x="400" y="429" width="358" height="72" fill="#ff7db8" stroke="#10121d" stroke-width="3" transform="rotate(-1 400 429)" />
+  <text x="422" y="473" fill="#10121d" font-family="monospace" font-size="21" font-weight="700">03 / COMPOUND SKILL</text>
+  <rect x="724" y="375" width="358" height="72" fill="#f4f04f" stroke="#10121d" stroke-width="3" transform="rotate(1 724 375)" />
+  <text x="746" y="419" fill="#10121d" font-family="monospace" font-size="21" font-weight="700">06 / OWN SOMETHING</text>
+  <rect x="756" y="483" width="368" height="73" fill="#ff8a29" stroke="#10121d" stroke-width="3" />
+  <text x="778" y="527" fill="#10121d" font-family="monospace" font-size="21" font-weight="700">10 / HELP IT LAST</text>
+  <line x1="435" y1="413" x2="758" y2="465" stroke="#f04438" stroke-width="10" />
+  <circle cx="435" cy="413" r="13" fill="#f04438" />
+  <circle cx="758" cy="465" r="13" fill="#f04438" />
+  <rect x="885" y="75" width="230" height="86" fill="#273bd5" stroke="#f7f1df" stroke-width="2" transform="rotate(4 885 75)" />
+  <text x="917" y="111" fill="#f7f1df" font-family="monospace" font-size="17" font-weight="700">MARGIN → SKILL</text>
+  <text x="917" y="137" fill="#f7f1df" font-family="monospace" font-size="17" font-weight="700">→ OWNERSHIP</text>
+</svg>

@@ -1,0 +1,79 @@
+{
+  "schema": "industrynext.intern-read/v1",
+  "id": "industrynext.intern-read/001",
+  "title": "Your First Decade Is a Position",
+  "subtitle": "A field guide for building financial agency from 2026 to 2036.",
+  "published": "2026-08-01",
+  "canonical": "https://www.industrynext.xyz/intern-read/001/",
+  "audience": "A college graduate entering the 2026 economy and learning to navigate money, work, AI, and ownership.",
+  "authors": [
+    { "name": "Michael Hoydich", "role": "concept and editorial direction" },
+    { "name": "Codex", "role": "research, editorial development, interaction design, and implementation" }
+  ],
+  "thesis": "The first decade of a career is not mainly a portfolio-selection problem. It is a sequence for building margin, compounding systems, portable skill, durable ownership, and the capacity to help useful institutions last.",
+  "three_machines": [
+    { "name": "Margin", "definition": "Income not already promised to essential commitments.", "output": "Options" },
+    { "name": "Compounding", "definition": "Small financial and professional systems that keep working after payday.", "output": "Momentum" },
+    { "name": "Ownership", "definition": "A claim on value that can outlive one job.", "output": "Agency" }
+  ],
+  "order_of_operations": [
+    "Know monthly take-home pay, essential monthly cost, required debt payments, and reachable cash.",
+    "Keep required payments and the insurance floor intact.",
+    "Build a starter cash buffer sized to the reader's actual risks.",
+    "Inspect expensive debt by balance, interest rate, minimum payment, and consequence.",
+    "Read employer contributions, vesting, eligibility, and fees before acting.",
+    "Automate a survivable contribution and understand long-horizon risk, diversification, and cost."
+  ],
+  "decade_map": [
+    { "period": "Days 0–90", "objective": "Make the invisible visible.", "proof": "One-page money map" },
+    { "period": "Year 1", "objective": "Stabilize without going numb.", "proof": "A system that runs on a bad week" },
+    { "period": "Years 2–3", "objective": "Make income less fragile.", "proof": "Public proof that travels without a job title" },
+    { "period": "Years 4–6", "objective": "Turn growth into ownership.", "proof": "One owned asset each year" },
+    { "period": "Years 7–10", "objective": "Help something useful last.", "proof": "A small institution with a reason to exist" }
+  ],
+  "model": {
+    "type": "educational_scenario",
+    "horizon_years": 10,
+    "defaults": {
+      "annual_gross_pay_usd": 72000,
+      "take_home_share": 0.74,
+      "essential_monthly_costs_usd": 3000,
+      "required_monthly_debt_payments_usd": 300,
+      "reachable_cash_usd": 3000,
+      "personal_monthly_ownership_contribution_usd": 500,
+      "employer_monthly_contribution_usd": 200,
+      "annual_contribution_growth": 0.04,
+      "illustrative_annual_return": 0.05
+    },
+    "default_outputs": {
+      "monthly_unassigned_margin_usd": 640,
+      "reachable_runway_months": 1,
+      "ten_year_personal_deposits_usd": 72037,
+      "ten_year_employer_deposits_usd": 28815,
+      "ten_year_modeled_growth_usd": 26851,
+      "ten_year_illustrative_ownership_usd": 127703
+    },
+    "not_modeled": [
+      "inflation",
+      "taxes",
+      "fees",
+      "debt interest",
+      "vesting",
+      "withdrawals",
+      "job gaps",
+      "market losses",
+      "benefit changes",
+      "account eligibility"
+    ]
+  },
+  "disclaimer": "Educational editorial only. It is not individualized financial, tax, legal, or investment advice. Investment returns are uncertain and may be negative. U.S. tax, credit, retirement, and student-loan sources are jurisdiction-specific and can change.",
+  "official_sources": [
+    "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+    "https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/understand-your-credit-score/",
+    "https://www.investor.gov/introduction-investing",
+    "https://www.investor.gov/introduction-investing/getting-started/understanding-fees",
+    "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-401k-and-profit-sharing-plan-contribution-limits",
+    "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits",
+    "https://studentaid.gov/loan-simulator/"
+  ]
+}

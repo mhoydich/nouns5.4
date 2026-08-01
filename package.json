@@ -21,6 +21,7 @@
     "verify:issue-001": "node ./scripts/verify-issue-001.mjs",
     "verify:issue-002": "node ./scripts/verify-issue-002.mjs",
     "verify:credit-card-games": "node ./scripts/verify-credit-card-games.mjs",
+    "verify:intern-read-001": "node ./scripts/verify-intern-read-001.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
