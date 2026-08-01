@@ -65,6 +65,19 @@ a { color: inherit; }
 .file-note { align-self: end; margin: auto 0 0; padding-top: 25px; font: 500 .56rem/1.45 var(--mono); text-align: right; transform: rotate(-2deg); }
 .hero-tape { position: absolute; z-index: 7; right: -3vw; bottom: 25px; padding: 9px 20px; border-top: var(--line); border-bottom: var(--line); background: var(--orange); font: 500 .56rem/1 var(--mono); letter-spacing: .12em; transform: rotate(-2deg); }
 
+.terms { padding: 100px var(--page-pad) 120px; border-bottom: var(--line); background: var(--pink); }
+.terms-heading { display: grid; grid-template-columns: .55fr 1.45fr; gap: clamp(35px, 6vw, 100px); align-items: end; margin-bottom: 65px; }
+.terms h2 { margin: 0; font-size: clamp(3.8rem, 7.2vw, 8.2rem); line-height: .76; letter-spacing: -.095em; }
+.terms h2 em { color: var(--blue); font-style: normal; }
+.terms-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: var(--line); border-left: var(--line); }
+.terms-grid article { min-height: 320px; display: flex; flex-direction: column; padding: 24px; border-right: var(--line); border-bottom: var(--line); background: var(--paper); }
+.terms-grid article:nth-child(2) { background: var(--acid); }
+.terms-grid article:nth-child(3) { background: var(--cyan); }
+.terms-grid article:nth-child(4) { background: var(--ink); color: #fff; }
+.terms-grid span { font: 500 .57rem/1.25 var(--mono); letter-spacing: .08em; }
+.terms-grid strong { margin: auto 0 22px; font-size: clamp(2.1rem, 3.8vw, 4.3rem); line-height: .85; letter-spacing: -.075em; }
+.terms-grid p { margin: 0; padding-top: 16px; border-top: 1px solid currentColor; font: 400 .64rem/1.55 var(--mono); }
+
 .assignment { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(50px, 8vw, 140px); padding: 110px var(--page-pad) 125px; border-bottom: var(--line); background: var(--paper); }
 .section-lead h2, .hands h2, .scoreboard h2, .rhythm h2, .fit h2 { margin: 20px 0 0; font-size: clamp(4rem, 7.5vw, 8.6rem); line-height: .76; letter-spacing: -.095em; }
 .section-lead h2 em { color: var(--blue); font-style: normal; }
@@ -138,6 +151,7 @@ a { color: inherit; }
 @media (max-width: 1050px) {
   .role-hero { grid-template-columns: 1fr; padding-top: 90px; }
   .record-file { justify-self: center; width: min(80%, 600px); margin-top: 35px; }
+  .terms-grid { grid-template-columns: 1fr 1fr; }
   .hands header, .scoreboard-head { grid-template-columns: 1fr; }
   .fader-grid { grid-template-columns: repeat(3, 1fr); }
   .fader-grid li:nth-child(4), .fader-grid li:nth-child(5) { min-height: 480px; }
@@ -166,6 +180,12 @@ a { color: inherit; }
   .record { width: 70%; }
   .record-file dl div { grid-template-columns: 78px 1fr; font-size: .53rem; }
   .hero-tape { right: -24vw; bottom: 18px; font-size: .48rem; }
+  .terms { padding-top: 74px; padding-bottom: 88px; }
+  .terms-heading { grid-template-columns: 1fr; margin-bottom: 42px; }
+  .terms h2 { font-size: 17vw; }
+  .terms-grid { grid-template-columns: 1fr; }
+  .terms-grid article { min-height: 255px; padding: 22px; }
+  .terms-grid strong { font-size: 2.8rem; }
   .assignment, .rhythm { grid-template-columns: 1fr; padding-top: 74px; padding-bottom: 88px; }
   .section-lead h2, .hands h2, .scoreboard h2, .rhythm h2, .fit h2 { font-size: 17vw; }
   .assignment-copy .big-copy { margin-top: 32px; font-size: 1.75rem; }

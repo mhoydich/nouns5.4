@@ -15,6 +15,7 @@
     "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",
     "verify:desk": "node ./scripts/verify-desk.mjs",
     "verify:product-desk": "node ./scripts/verify-product-desk.mjs",
+    "verify:tag-open-build": "node ./scripts/verify-tag-open-build.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
