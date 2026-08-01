@@ -69,11 +69,11 @@ assert.ok(data.board.some((item) => item.id === "industry-next-task-desk"));
 assert.ok(data.board.some((item) => item.id === "industry-next-work-market"));
 
 assert.match(home, /href="\/product\/"/);
-assert.match(home, /The work has[\s\S]*a desk now/);
-assert.match(home, /Playlist role/);
-assert.match(home, /Halation · Rally/);
-assert.match(home, /Task Desk · private by default/);
-assert.match(home, /Jobs · first tasks · orgs · reward rails/);
+assert.match(home, /OPERATE/);
+assert.match(home, /Product Desk/);
+assert.match(home, /Task Desk/);
+assert.match(home, /A public studio[\s\S]*needs named leads/);
+assert.match(home, /Open jobs, their first bounded tasks/);
 assert.match(services, /href="\/product\/"/);
 assert.match(next, /href="\/product\/"/);
 assert.match(taskDesk, /href="\/product\/"/);

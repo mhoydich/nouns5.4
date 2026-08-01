@@ -35,8 +35,8 @@ assert.match(css, /\.metric-board/);
 assert.match(css, /@media \(max-width: 700px\)/);
 assert.match(css, /prefers-reduced-motion: reduce/);
 assert.match(css, /prefers-contrast: more/);
-assert.match(homeCss, /\.role-door/);
-assert.match(homeCss, /\.role-beacon/);
+assert.match(homeCss, /\.call-playlist/);
+assert.match(homeCss, /\.record/);
 
 assert.equal(data.id, "industry-next-role-001");
 assert.equal(data.status, "open");
@@ -53,9 +53,9 @@ assert.equal(data.compensation.revenue_guaranteed, false);
 assert.ok(data.non_negotiables.some((item) => item.includes("no bots")));
 
 assert.match(home, /href="\/roles\/playlist-editor\/"/);
-assert.match(home, /PLAYLIST[\s\S]*EDITOR/);
-assert.match(home, /role-beacon/);
-assert.match(home, /GUARANTEED CASH: \$0/);
+assert.match(home, /Playlist Editor \+ Listener Growth Lead/);
+assert.match(home, /call-playlist/);
+assert.match(home, /NO GUARANTEED CASH/);
 assert.match(headers, /\/playlist-editor\.json[\s\S]*Content-Type: application\/json/);
 assert.match(sitemap, /industrynext\.xyz\/roles\/playlist-editor\//);
 
