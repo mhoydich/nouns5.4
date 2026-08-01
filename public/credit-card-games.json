@@ -1,0 +1,61 @@
+{
+  "schema": "industrynext.editorial/v1",
+  "slug": "credit-card-games",
+  "title": "Credit Card Games",
+  "subtitle": "Money becomes a multiplayer medium.",
+  "published": "2026-07-31",
+  "canonical": "https://www.industrynext.xyz/editorial/credit-card-games/",
+  "authors": [
+    { "name": "Michael Hoydich", "role": "concept and editorial direction" },
+    { "name": "Codex", "role": "editorial development and implementation" },
+    { "name": "Midjourney", "role": "companion image generation" }
+  ],
+  "thesis": "Every confirmed contribution makes one beautiful public move; enough moves unlock a specific real-world outcome.",
+  "launch_game": {
+    "name": "Light the Block",
+    "board": "100 dark windows",
+    "move": "One fixed contribution illuminates one window and adds an optional three-word dedication.",
+    "completion": "The hundredth confirmed move unlocks a named performance, dinner, print run, or public object."
+  },
+  "edition_01": [
+    "Light the Block",
+    "Keep It Alive",
+    "The Long Table",
+    "Choose the Weather",
+    "One Hundred Hands",
+    "Build a Fire",
+    "Pass the Light",
+    "The Last Move Starts the Show"
+  ],
+  "base_case_model": {
+    "note": "Scenario, not forecast or investment valuation.",
+    "active_organizers": 40000,
+    "games_per_organizer_per_year": 5,
+    "average_contribution_volume_per_game_usd": 5000,
+    "annual_contribution_volume_usd": 1000000000,
+    "platform_take_rate": 0.06,
+    "transaction_revenue_usd": 60000000,
+    "paid_studios": 20000,
+    "studio_revenue_per_year_usd": 1200,
+    "studio_revenue_usd": 24000000,
+    "enterprise_editions": 200,
+    "enterprise_annual_value_usd": 100000,
+    "enterprise_revenue_usd": 20000000,
+    "total_platform_revenue_usd": 104000000,
+    "illustrative_revenue_multiple": 9.6,
+    "illustrative_company_value_usd": 998400000
+  },
+  "non_negotiables": [
+    "One confirmed contribution creates one disclosed move.",
+    "No random financial prize or pay-to-win dominance.",
+    "Anonymous participation remains complete.",
+    "Raw payment-card details stay with the payment provider.",
+    "Refunded and disputed funds remain distinct from confirmed moves.",
+    "Every promised outcome receives a public completion receipt."
+  ],
+  "sources": [
+    "https://stripe.com/newsroom/news/stripe-2025-update",
+    "https://help.kickstarter.com/hc/en-us/articles/115005066433-What-forms-of-payment-can-I-use-to-make-a-pledge",
+    "https://docs.stripe.com/payments/checkout/custom-success-page"
+  ]
+}

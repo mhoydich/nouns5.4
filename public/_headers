@@ -88,6 +88,13 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/editorial/credit-card-games/*
+  Cache-Control: public, max-age=300
+
+/credit-card-games.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /api/made
   Cache-Control: no-store
 

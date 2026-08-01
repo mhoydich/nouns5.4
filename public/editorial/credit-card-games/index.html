@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Credit Card Games turns small contributions into visible moves in shared public worlds—and models the path from one lit window to a billion-dollar platform."
+    />
+    <meta name="theme-color" content="#101b4b" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="Credit Card Games — Money Becomes a Multiplayer Medium" />
+    <meta
+      property="og:description"
+      content="What if checkout did not end the experience? What if it made the room move?"
+    />
+    <meta property="og:url" content="https://www.industrynext.xyz/editorial/credit-card-games/" />
+    <meta
+      property="og:image"
+      content="https://www.industrynext.xyz/editorial/credit-card-games/images/credit-card-games-hero.jpg"
+    />
+    <meta property="og:image:width" content="1800" />
+    <meta property="og:image:height" content="1007" />
+    <meta
+      property="og:image:alt"
+      content="An illuminated civic building whose rooms come alive as people contribute together"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Credit Card Games — Money Becomes a Multiplayer Medium" />
+    <meta
+      name="twitter:description"
+      content="A public arcade where every small contribution makes a visible move."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.industrynext.xyz/editorial/credit-card-games/images/credit-card-games-hero.jpg"
+    />
+    <link rel="canonical" href="https://www.industrynext.xyz/editorial/credit-card-games/" />
+    <link rel="alternate" type="application/json" href="/credit-card-games.json" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Credit Card Games | Industry Next</title>
+    <link rel="stylesheet" href="/editorial/credit-card-games/styles.css?v=20260731" />
+    <script src="/editorial/credit-card-games/model.js?v=20260731" defer></script>
+  </head>
+  <body>
+    <header class="ccg-topbar">
+      <a class="ccg-brand" href="/">INDUSTRY NEXT</a>
+      <div class="ccg-issue">FIELD NOTE 001 / JULY 31, 2026</div>
+      <nav aria-label="Article navigation">
+        <a href="#games">The games</a>
+        <a href="#modeler">$1B modeler</a>
+        <a href="/credit-card-games.json">JSON</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <header class="ccg-hero">
+          <div class="ccg-hero-copy">
+            <p class="ccg-kicker">CREDIT CARD GAMES / A NEW PUBLIC ARCADE</p>
+            <h1>Money becomes a multiplayer medium.</h1>
+            <p class="ccg-deck">
+              What if checkout did not end the experience? What if five dollars lit a window,
+              planted a garden, opened a seat, added a note, or kept a public performance alive?
+            </p>
+            <div class="ccg-byline">
+              <span>Concept and editorial direction: Michael Hoydich</span>
+              <span>Made with Codex + Midjourney</span>
+              <span>12 minute read + live model</span>
+            </div>
+          </div>
+
+          <figure class="ccg-hero-art">
+            <img
+              src="/editorial/credit-card-games/images/credit-card-games-hero.jpg"
+              alt="A public building at blue hour with many glowing rooms connected by collective activity"
+              width="1800"
+              height="1007"
+            />
+            <figcaption>
+              LIGHT THE BLOCK / Every confirmed contribution turns on one room. The hundredth
+              starts the show. Midjourney study, 2026.
+            </figcaption>
+          </figure>
+        </header>
+
+        <section class="ccg-opening ccg-rule" aria-labelledby="opening-title">
+          <div class="ccg-section-mark">01 / THE PROVOCATION</div>
+          <div class="ccg-opening-copy">
+            <h2 id="opening-title">A payment should make the room move.</h2>
+            <p class="ccg-lede">
+              The internet has made payment nearly frictionless and emotionally invisible. We tap,
+              authorize, receive a receipt, and disappear. Credit Card Games starts with a stranger
+              proposition: <strong>the contribution is the move.</strong>
+            </p>
+            <p>
+              A player puts in a small, clearly priced amount. The payment does not vanish behind a
+              confirmation screen. It changes a shared public world. A window comes on. A chair
+              unfolds. A flower opens. A band gains another minute. Everybody watching sees it
+              happen at the same time.
+            </p>
+            <p>
+              This is neither a casino nor a prettier donation form. There is no financial prize,
+              chance mechanic, mystery box, or whale who gets to erase the crowd. It is a category
+              between multiplayer play, crowdfunding, public art, and creator software: a place
+              where many modest acts accumulate into one extraordinary event.
+            </p>
+          </div>
+          <aside class="ccg-pullquote">
+            <p>THE MOVE IS A CONTRIBUTION.</p>
+            <p>THE SCORE IS SOMETHING REAL.</p>
+          </aside>
+        </section>
+
+        <section class="ccg-demo" aria-labelledby="demo-title">
+          <div class="ccg-demo-copy">
+            <p class="ccg-kicker">LIGHT THE BLOCK / NON-PAYMENT PREVIEW</p>
+            <h2 id="demo-title">One hundred dark rooms. One public outcome.</h2>
+            <p>
+              In the live game, each confirmed $5 move would light one window and attach a
+              three-word dedication. The final window unlocks a commissioned performance, dinner,
+              print run, or public object announced before play begins.
+            </p>
+            <button id="preview-move" type="button">PREVIEW ONE $5 MOVE</button>
+            <p class="ccg-demo-note">Preview only. No card form, charge, or stored payment information.</p>
+          </div>
+          <div class="ccg-building" aria-label="A preview grid of 100 windows; 17 begin illuminated">
+            <div id="window-grid" class="ccg-window-grid"></div>
+            <div class="ccg-building-status">
+              <span><strong id="window-count">17</strong> / 100 windows</span>
+              <span id="window-message" aria-live="polite">83 moves until the building wakes up.</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="games" class="ccg-games ccg-rule" aria-labelledby="games-title">
+          <div class="ccg-section-mark">02 / EDITION 01</div>
+          <div class="ccg-section-intro">
+            <p class="ccg-kicker">EVERYONE PUTS IN</p>
+            <h2 id="games-title">Eight ways a contribution can behave.</h2>
+            <p>
+              The game is not the cause pasted onto the page. The game is the exact relationship
+              between a confirmed contribution, a visible public change, and a promised outcome.
+            </p>
+          </div>
+
+          <div class="ccg-game-list">
+            <article>
+              <span>01 / FINITE CO-OP</span>
+              <h3>Light the Block</h3>
+              <p>Every move illuminates one room. Complete the building to begin the performance.</p>
+              <strong>Emotion: anticipation</strong>
+            </article>
+            <article>
+              <span>02 / TIME EXTENSION</span>
+              <h3>Keep It Alive</h3>
+              <p>Each move adds time and a sound layer. If the pulse reaches zero, the session closes forever.</p>
+              <strong>Emotion: collective rescue</strong>
+            </article>
+            <article>
+              <span>03 / SOCIAL OBJECT</span>
+              <h3>The Long Table</h3>
+              <p>Each move adds an equal seat and answer. At the target, the pool produces a real shared meal.</p>
+              <strong>Emotion: belonging</strong>
+            </article>
+            <article>
+              <span>04 / EXPRESSIVE FACTION</span>
+              <h3>Choose the Weather</h3>
+              <p>Sun, rain, fog, and wind reshape one artwork. The final atmosphere directs its release.</p>
+              <strong>Emotion: playful allegiance</strong>
+            </article>
+            <article>
+              <span>05 / DISTRIBUTED AUTHORSHIP</span>
+              <h3>One Hundred Hands</h3>
+              <p>Each contributor makes one bounded gesture. The finished work needs all one hundred.</p>
+              <strong>Emotion: authorship</strong>
+            </article>
+            <article>
+              <span>06 / SEQUENTIAL BUILD</span>
+              <h3>Build a Fire</h3>
+              <p>Wood, flame, chairs, songs, food, and stories arrive in order until the commons is ready.</p>
+              <strong>Emotion: warmth</strong>
+            </article>
+            <article>
+              <span>07 / GIFT RELAY</span>
+              <h3>Pass the Light</h3>
+              <p>One contribution makes a move and prepays a bounded free move for the next visitor.</p>
+              <strong>Emotion: generosity</strong>
+            </article>
+            <article>
+              <span>08 / SHARED UNLOCK</span>
+              <h3>The Last Move Starts the Show</h3>
+              <p>Assemble a stage piece by piece. The final move reveals the release to every contributor.</p>
+              <strong>Emotion: suspense</strong>
+            </article>
+          </div>
+        </section>
+
+        <figure class="ccg-wide-art">
+          <img
+            src="/editorial/credit-card-games/images/credit-card-games-table.jpg"
+            alt="An impossibly long communal table extending through many civic rooms at night"
+            width="1800"
+            height="1200"
+            loading="lazy"
+          />
+          <figcaption>
+            THE LONG TABLE / A contribution does not buy a better seat. It makes another equal seat possible.
+          </figcaption>
+        </figure>
+
+        <section class="ccg-contract ccg-rule" aria-labelledby="contract-title">
+          <div class="ccg-section-mark">03 / THE TRUST LAYER</div>
+          <div class="ccg-section-intro">
+            <p class="ccg-kicker">THE CONTRIBUTION CONTRACT</p>
+            <h2 id="contract-title">Wonder needs a boring, legible ledger.</h2>
+            <p>
+              Before a card appears, every game states the move, amount, target, beneficiary,
+              deadline, outcome, and what happens if the target is missed. “Contribution” is never
+              used as camouflage: if it is a purchase, creator payment, pre-order, or participation
+              fee, the game says so.
+            </p>
+          </div>
+          <div class="ccg-contract-grid">
+            <article><span>YOUR MOVE</span><p>The exact public state that changes.</p></article>
+            <article><span>YOUR AMOUNT</span><p>The price, fees, and tax treatment.</p></article>
+            <article><span>THE GOAL</span><p>Confirmed moves or contribution volume required.</p></article>
+            <article><span>THE OUTCOME</span><p>The specific real thing that completion unlocks.</p></article>
+            <article><span>THE BENEFICIARY</span><p>Who receives money and in what capacity.</p></article>
+            <article><span>IF IT FALLS SHORT</span><p>Refund, extension, scaled result, or named alternative.</p></article>
+          </div>
+          <div class="ccg-system-line" aria-label="Contribution system sequence">
+            <span>CHOOSE A MOVE</span><i>→</i><span>HOSTED CHECKOUT</span><i>→</i>
+            <span>CONFIRMED EVENT</span><i>→</i><span>ONE LEDGER MOVE</span><i>→</i>
+            <span>EVERY SCREEN CHANGES</span>
+          </div>
+        </section>
+
+        <section class="ccg-thesis" aria-labelledby="thesis-title">
+          <figure>
+            <img
+              src="/editorial/credit-card-games/images/credit-card-games-machine.jpg"
+              alt="A transparent room-sized machine translating small payments into civic light and sound"
+              width="1800"
+              height="1007"
+              loading="lazy"
+            />
+            <figcaption>THE CONTRIBUTION ENGINE / The front is magic. The ledger is exact.</figcaption>
+          </figure>
+          <div>
+            <p class="ccg-kicker">THE PLATFORM THESIS</p>
+            <h2 id="thesis-title">The billion-dollar version is not one hit game.</h2>
+            <p>
+              It is a system that lets thousands of artists, schools, venues, neighborhoods,
+              publishers, musicians, organizers, and brands build their own contribution worlds.
+              Credit Card Games supplies the live state, templates, receipts, payment-confirmation
+              logic, fulfillment record, and beautiful public ending.
+            </p>
+            <p>
+              Crowdfunding taught people to back an outcome with a card. Multiplayer games taught
+              them to expect a world to respond immediately. Creator software taught them to build
+              without a platform engineer. Credit Card Games is where those expectations meet.
+            </p>
+            <p>
+              The moat is not card processing. It is the library of proven contribution mechanics,
+              the public history of completed outcomes, and the distribution loop created when
+              every player leaves with a beautiful receipt of the move they made.
+            </p>
+          </div>
+        </section>
+
+        <section id="modeler" class="ccg-modeler" aria-labelledby="modeler-title">
+          <div class="ccg-modeler-head">
+            <div>
+              <p class="ccg-kicker">THE BILLION DOLLAR MODELER</p>
+              <h2 id="modeler-title">Make the claim answer to the drivers.</h2>
+            </div>
+            <p>
+              Default case: 40,000 organizers each run five games a year, with $5,000 flowing
+              through an average game. That is $1B in annual contribution volume—not $1B extracted
+              from contributors.
+            </p>
+          </div>
+
+          <div class="ccg-model-layout">
+            <form class="ccg-controls" aria-label="Billion-dollar scenario assumptions">
+              <label>
+                <span>Active organizers <output id="organizers-value">40,000</output></span>
+                <input id="organizers" aria-label="Active organizers" type="range" min="1000" max="100000" step="1000" value="40000" />
+              </label>
+              <label>
+                <span>Games per organizer <output id="games-value">5</output></span>
+                <input id="games-per-organizer" aria-label="Games per organizer" type="range" min="1" max="12" step="1" value="5" />
+              </label>
+              <label>
+                <span>Average volume per game <output id="volume-value">$5,000</output></span>
+                <input id="volume-per-game" aria-label="Average volume per game" type="range" min="1000" max="50000" step="1000" value="5000" />
+              </label>
+              <label>
+                <span>Platform take rate <output id="take-rate-value">6.0%</output></span>
+                <input id="take-rate" aria-label="Platform take rate" type="range" min="2" max="10" step="0.5" value="6" />
+              </label>
+              <label>
+                <span>Paid studios <output id="studios-value">20,000</output></span>
+                <input id="paid-studios" aria-label="Paid studios" type="range" min="0" max="80000" step="1000" value="20000" />
+              </label>
+              <label>
+                <span>Studio revenue / year <output id="studio-arpa-value">$1,200</output></span>
+                <input id="studio-arpa" aria-label="Studio revenue per year" type="range" min="300" max="5000" step="100" value="1200" />
+              </label>
+              <label>
+                <span>Enterprise editions <output id="enterprise-value">200</output></span>
+                <input id="enterprise-accounts" aria-label="Enterprise editions" type="range" min="0" max="1000" step="25" value="200" />
+              </label>
+              <label>
+                <span>Enterprise annual value <output id="enterprise-acv-value">$100,000</output></span>
+                <input id="enterprise-acv" aria-label="Enterprise annual value" type="range" min="25000" max="500000" step="25000" value="100000" />
+              </label>
+              <label>
+                <span>Revenue multiple <output id="multiple-value">9.6×</output></span>
+                <input id="revenue-multiple" aria-label="Revenue multiple" type="range" min="4" max="15" step="0.1" value="9.6" />
+              </label>
+            </form>
+
+            <div class="ccg-model-output">
+              <div class="ccg-number ccg-number-primary">
+                <span>ANNUAL CONTRIBUTION VOLUME</span>
+                <strong id="gmv-output">$1.00B</strong>
+                <p id="moves-output">200,000 games per year</p>
+              </div>
+              <div class="ccg-number-grid">
+                <div class="ccg-number">
+                  <span>PLATFORM REVENUE</span>
+                  <strong id="revenue-output">$104.0M</strong>
+                </div>
+                <div class="ccg-number">
+                  <span>IMPLIED COMPANY VALUE</span>
+                  <strong id="value-output">$998.4M</strong>
+                </div>
+              </div>
+              <div class="ccg-revenue-mix" aria-label="Modeled annual revenue mix">
+                <div>
+                  <span>Move fees</span>
+                  <i id="fees-bar"></i>
+                  <strong id="fees-output">$60.0M</strong>
+                </div>
+                <div>
+                  <span>Studio software</span>
+                  <i id="software-bar"></i>
+                  <strong id="software-output">$24.0M</strong>
+                </div>
+                <div>
+                  <span>Enterprise editions</span>
+                  <i id="enterprise-bar"></i>
+                  <strong id="enterprise-output">$20.0M</strong>
+                </div>
+              </div>
+              <p class="ccg-model-note">
+                Scenario model, not a forecast or investment valuation. The multiple is an explicit
+                assumption; payment-processing expense, taxes, refunds, chargebacks, revenue share,
+                and operating costs are not modeled here.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ccg-path ccg-rule" aria-labelledby="path-title">
+          <div class="ccg-section-mark">04 / THE PATH</div>
+          <div class="ccg-section-intro">
+            <p class="ccg-kicker">ONE WINDOW TO ONE BILLION</p>
+            <h2 id="path-title">Four proofs, in order.</h2>
+          </div>
+          <ol>
+            <li>
+              <span>PROOF 01 / $5K–$100K VOLUME</span>
+              <h3>Can one room feel electric?</h3>
+              <p>
+                Ship Light the Block. Prove strangers understand it, contribute, stay to watch,
+                share their room, and trust the final receipt. The first goal is not scale. It is a
+                finished night people describe to someone else.
+              </p>
+            </li>
+            <li>
+              <span>PROOF 02 / $1M–$10M VOLUME</span>
+              <h3>Can creators make their own worlds?</h3>
+              <p>
+                Productize four mechanics: finite build, time extension, collective authorship,
+                and shared unlock. Charge for Studio only after organizers repeat without a custom
+                production team.
+              </p>
+            </li>
+            <li>
+              <span>PROOF 03 / $10M–$100M VOLUME</span>
+              <h3>Can trust become distribution?</h3>
+              <p>
+                Publish outcome receipts, fulfillment histories, contribution contracts, and
+                reusable identities. Let a player in one finished game discover the next game from
+                someone they already helped.
+              </p>
+            </li>
+            <li>
+              <span>PROOF 04 / $100M–$1B VOLUME</span>
+              <h3>Can the format become infrastructure?</h3>
+              <p>
+                Expand through cultural institutions, schools, cities, publishers, global creator
+                networks, and carefully chosen brands. Local visual worlds stay different; the
+                ledger, templates, safety limits, and completion receipts become the platform.
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <figure class="ccg-wide-art ccg-network-art">
+          <img
+            src="/editorial/credit-card-games/images/credit-card-games-network.jpg"
+            alt="A nighttime atlas of thousands of human-scale contribution worlds connected by light"
+            width="1800"
+            height="1007"
+            loading="lazy"
+          />
+          <figcaption>
+            THE PUBLIC ARCADE / $1B is not one enormous campaign. It is a great many believable rooms.
+          </figcaption>
+        </figure>
+
+        <section class="ccg-principles" aria-labelledby="principles-title">
+          <div>
+            <p class="ccg-kicker">NON-NEGOTIABLES</p>
+            <h2 id="principles-title">Scale the invitation, not the extraction.</h2>
+          </div>
+          <ul>
+            <li>One confirmed contribution creates one disclosed move.</li>
+            <li>No random financial prize or pay-to-win dominance.</li>
+            <li>Anonymous participation remains beautiful and complete.</li>
+            <li>Raw card details stay with the payment provider.</li>
+            <li>Refunded and disputed funds remain distinct from confirmed moves.</li>
+            <li>Every promised outcome receives a public completion receipt.</li>
+          </ul>
+        </section>
+
+        <footer class="ccg-footer">
+          <div>
+            <p class="ccg-kicker">THE PITCH IN ONE BREATH</p>
+            <p class="ccg-final-line">
+              Credit Card Games turns checkout into a collective act: every contribution makes one
+              beautiful public move, and when enough people play, something real begins.
+            </p>
+          </div>
+          <div class="ccg-sources">
+            <p class="ccg-kicker">NOTES + SOURCES</p>
+            <ol>
+              <li>
+                Stripe reports that businesses on its platform generated $1.9T in 2025 volume. The
+                point: $1B in game volume is not a payment-infrastructure breakthrough; it is a
+                product, trust, and distribution challenge.
+                <a href="https://stripe.com/newsroom/news/stripe-2025-update">Stripe 2025 update ↗</a>
+              </li>
+              <li>
+                Kickstarter demonstrates an established contribution pattern in which people
+                pledge by card and are charged only if a project reaches its goal.
+                <a href="https://help.kickstarter.com/hc/en-us/articles/115005066433-What-forms-of-payment-can-I-use-to-make-a-pledge">Kickstarter payments ↗</a>
+              </li>
+              <li>
+                A production build should use server-confirmed payment events; the player returning
+                to a success page is not, by itself, a reliable fulfillment signal.
+                <a href="https://docs.stripe.com/payments/checkout/custom-success-page">Stripe Checkout fulfillment ↗</a>
+              </li>
+            </ol>
+            <p>
+              Editorial concept, artwork direction, and scenario model published July 31, 2026.
+              Financial outputs are illustrative and do not constitute investment advice.
+            </p>
+          </div>
+          <div class="ccg-footer-links">
+            <a href="/">Return to Industry Next</a>
+            <a href="/jam/">Enter the live jam</a>
+            <a href="/credit-card-games.json">Read the machine version</a>
+          </div>
+  <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="small internet institutions tone bloom pointcast rally nouns cc0 art culture community" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+        </footer>
+      </article>
+    </main>
+  <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>

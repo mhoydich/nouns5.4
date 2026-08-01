@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-07-31",
+  "generator": "Midjourney V8",
+  "account": "mhoydich",
+  "selection_note": "Four studies were selected from four-image Midjourney batches for the Industry Next Credit Card Games editorial.",
+  "images": [
+    {
+      "file": "credit-card-games-hero.jpg",
+      "job_id": "1fe64d6b-42c1-4dd6-b370-5b892b9decc3",
+      "selected_index": 0,
+      "display_dimensions": "1800x1007",
+      "original_dimensions": "2944x1648",
+      "original_file": "source-art/credit-card-games/1fe64d6b-42c1-4dd6-b370-5b892b9decc3-0.jpg",
+      "prompt": "CREDIT CARD GAMES, a monumental cooperative public arcade at blue hour, cutaway view of a vast modernist civic building with one hundred windows gradually illuminated by small contributions, each room contains a tiny distinct public act: musician, garden, long table, print shop, radio studio, neighborhood kitchen, people as warm silhouettes, payment becomes visible collective cause and effect, 1984 municipal annual report meets radical contemporary architecture magazine and luminous public art installation, ultramarine night, amber windows, signal orange, moss green, brushed aluminum and paper grain, intelligent optimistic art direction, cinematic architectural section, no casino, no gambling, no credit card logos, no readable text, no watermark --ar 16:9 --raw --stylize 450"
+    },
+    {
+      "file": "credit-card-games-table.jpg",
+      "job_id": "ba7735e3-44dd-4f6b-ad8e-bc73a89e5d0e",
+      "selected_index": 2,
+      "display_dimensions": "1800x1200",
+      "original_dimensions": "2688x1792",
+      "original_file": "source-art/credit-card-games/ba7735e3-44dd-4f6b-ad8e-bc73a89e5d0e-2.jpg",
+      "prompt": "THE LONG TABLE, an impossible communal table built one contribution at a time, extending from a neighborhood dining room through an art school, print shop, garden, train platform and out into the city at night, every new seat glows as somebody joins, diverse people seen naturally from near and far, feast meets public infrastructure, architectural collage for an ambitious independent magazine, Saul Bass civic graphics without text meets Lina Bo Bardi social space and contemporary installation art, ultramarine, tomato red, butter yellow, moss green, warm practical light, paper grain, generous and surprising, no brands, no logos, no readable text, no watermark --ar 3:2 --raw --stylize 550"
+    },
+    {
+      "file": "credit-card-games-machine.jpg",
+      "job_id": "ea7faa88-b5d5-4d60-9152-c07009ee485f",
+      "selected_index": 1,
+      "display_dimensions": "1800x1007",
+      "original_dimensions": "2944x1648",
+      "original_file": "source-art/credit-card-games/ea7faa88-b5d5-4d60-9152-c07009ee485f-1.jpg",
+      "prompt": "CREDIT CARD GAMES contribution engine, a beautiful room-sized transparent civic machine that turns many small card contributions into light, sound, flowers and public objects, brushed aluminum payment pedestals feed glowing colored lines into an open mechanical ledger, ordinary people participate together around it, museum installation and municipal control room, no cashier, no commerce stock photography, 1970s systems diagram made physical meets 2026 art biennial, cobalt blue, warm cream, red-orange, electric chartreuse, analog meters, receipt paper, immaculate editorial photography, humane and uncanny, no casino, no gambling, no logos, no readable text, no watermark --ar 16:9 --raw --stylize 500"
+    },
+    {
+      "file": "credit-card-games-network.jpg",
+      "job_id": "34972e09-f1f9-4d4c-a97e-c3162a5091b4",
+      "selected_index": 3,
+      "display_dimensions": "1800x1007",
+      "original_dimensions": "2944x1648",
+      "original_file": "source-art/credit-card-games/34972e09-f1f9-4d4c-a97e-c3162a5091b4-3.jpg",
+      "prompt": "THE BILLION DOLLAR PUBLIC ARCADE, a vast nighttime aerial atlas of thousands of small cooperative game worlds connected by luminous transparent payment rails, gardens, performance rooms, towers, radio stations, communal tables and public artworks, each node visibly human-scale while the network feels planetary, receipts and contribution ledgers become rivers of light, visionary business system rendered as cultural infrastructure rather than corporate empire, 1980s Japanese technology annual plus radical architecture magazine plus sophisticated contemporary data art, deep blue field, amber, safety orange, jade, magenta accents, exact composition, majestic and credible, no casino, no gambling, no cryptocurrency symbols, no logos, no readable text, no watermark --ar 16:9 --raw --stylize 600"
+    }
+  ]
+}

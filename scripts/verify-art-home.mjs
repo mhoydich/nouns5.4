@@ -21,6 +21,7 @@ assert.match(home, /href="\/services\/"/);
 assert.match(home, /Skip to the work/);
 assert.match(home, /WORKING MAGAZINE \/ ISSUE 002/);
 assert.match(home, /href="\/issues\/002\/"/);
+assert.match(home, /href="\/editorial\/credit-card-games\/"/);
 assert.match(home, /EVERYONE HAS SOME TIME/);
 assert.match(home, /href="\/issues\/002\/#enjoyable-hour"/);
 assert.match(home, /The future[\s\S]*should come[\s\S]*with <em>handles/);
