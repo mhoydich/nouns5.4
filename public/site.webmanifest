@@ -7,6 +7,14 @@
   "display": "standalone",
   "background_color": "#f5f0e6",
   "theme_color": "#eeff41",
+  "shortcuts": [
+    {
+      "name": "Open The Desk",
+      "short_name": "Desk",
+      "description": "Open the local Industry Next task desk.",
+      "url": "/desk/"
+    }
+  ],
   "icons": [
     {
       "src": "/favicon.svg",

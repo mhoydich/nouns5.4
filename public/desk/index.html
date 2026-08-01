@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Assign the work, move it through the room, and stamp a private task snapshot on Tezos Mainnet." />
+    <meta name="theme-color" content="#eeff41" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="The Desk — Industry Next" />
+    <meta property="og:description" content="A device-local task assigner and manager with wallet-approved Tezos proof stamps." />
+    <meta property="og:url" content="https://www.industrynext.xyz/desk/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/desk/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Industry Next task cards arranged across an acid yellow work desk with a red Tezos proof stamp." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Desk — Industry Next" />
+    <meta name="twitter:description" content="Assign it. Move it. Finish it. Stamp the receipt on Tezos." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/desk/og.png" />
+    <link rel="canonical" href="https://www.industrynext.xyz/desk/" />
+    <link rel="alternate" type="application/json" href="/desk.json" title="The Desk — machine-readable product contract" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>The Desk | Industry Next</title>
+    <link rel="stylesheet" href="/desk/desk.css?v=20260731a" />
+  </head>
+  <body>
+    <a class="skip-link" href="#desk-main">Skip to the task board</a>
+
+    <header class="site-head">
+      <a class="wordmark" href="/" aria-label="Industry Next, home"><span>INDUSTRY</span><span>NEXT</span></a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/make/">Make</a>
+        <a href="/made/">Made</a>
+        <a href="/desk/" aria-current="page">Desk</a>
+        <a href="/services/">Services</a>
+        <a href="/next/">Next ↗</a>
+      </nav>
+    </header>
+
+    <main id="desk-main" class="desk-shell">
+      <section class="desk-intro" aria-labelledby="desk-title">
+        <div class="binder-spine" aria-hidden="true"></div>
+        <div class="intro-copy">
+          <p class="eyebrow">WORK DESK / DEVICE 01 / PRIVATE BY DEFAULT</p>
+          <h1 id="desk-title">Assign it.<br />Move it.<br /><em>Leave proof.</em></h1>
+          <p class="intro-deck">
+            A small operating room for Industry Next work. Tasks stay in this browser. When a result matters,
+            seal only its cryptographic fingerprint on Tezos Mainnet.
+          </p>
+          <div class="intro-actions">
+            <button class="button button-dark" id="new-task-button" type="button">New task <span aria-hidden="true">＋</span></button>
+            <button class="text-button" id="export-board-button" type="button">Export local board</button>
+            <label class="text-button import-label" for="import-board-input">Import board</label>
+            <input id="import-board-input" type="file" accept="application/json,.json" hidden />
+          </div>
+        </div>
+        <div class="intro-folder" aria-hidden="true">
+          <div class="folder-tab">THE USEFUL BIT</div>
+          <p>ONE TASK / ONE OWNER / ONE NEXT MOVE</p>
+          <ol>
+            <li><span>01</span>NAME IT</li>
+            <li><span>02</span>MOVE IT</li>
+            <li><span>03</span>CHECK IT</li>
+            <li><span>04</span>STAMP IT</li>
+          </ol>
+          <div class="folder-stamp">LOCAL<br />UNTIL<br />STAMPED</div>
+        </div>
+      </section>
+
+      <section class="manager" aria-labelledby="manager-title">
+        <div class="manager-head">
+          <div>
+            <p class="section-index">01 / MANAGER'S GLANCE</p>
+            <h2 id="manager-title">What needs a push?</h2>
+          </div>
+          <p id="board-saved-status" class="save-status" role="status">Saved on this device.</p>
+        </div>
+        <div class="stat-grid" id="stat-grid" aria-label="Task totals"></div>
+      </section>
+
+      <section class="stamp-room" aria-labelledby="stamp-room-title">
+        <div class="stamp-copy">
+          <p class="section-index">02 / TEZOS PROOF DESK</p>
+          <h2 id="stamp-room-title">Stamp the receipt,<br />not the private work.</h2>
+          <p>
+            The desk turns a task snapshot into a SHA-256 fingerprint. Your wallet publishes that 64-character
+            fingerprint to the public TzStamp contract; titles, notes, assignees, and files remain here.
+          </p>
+          <p class="stamp-boundary"><strong>MAINNET · WALLET APPROVAL · NETWORK FEE · 0 ꜩ TRANSFER · NO TOKEN</strong></p>
+        </div>
+        <div class="wallet-card">
+          <div class="wallet-card-top">
+            <span class="network-light" aria-hidden="true"></span>
+            <span>TEZOS MAINNET</span>
+          </div>
+          <strong id="wallet-address">No wallet connected</strong>
+          <p id="wallet-status" role="status">Connect only when you are ready to stamp a task.</p>
+          <div class="wallet-actions">
+            <button class="button button-acid" id="wallet-button" type="button">Connect wallet</button>
+            <button class="text-button" id="wallet-disconnect-button" type="button" hidden>Disconnect</button>
+          </div>
+          <a class="contract-link" href="https://tzkt.io/KT1AtaeG5PhuFyyivbfPZRUBkVMiqyxpo2cH" target="_blank" rel="noreferrer">Inspect the public stamp contract ↗</a>
+        </div>
+      </section>
+
+      <section class="task-workspace" aria-labelledby="board-title">
+        <div class="board-toolbar">
+          <div>
+            <p class="section-index">03 / THE ACTIVE BINDER</p>
+            <h2 id="board-title">Move the work.</h2>
+          </div>
+          <div class="filters" aria-label="Board filters">
+            <label>Find <input id="search-filter" type="search" placeholder="Task, project, person" /></label>
+            <label>Project <select id="project-filter"><option value="all">All projects</option></select></label>
+            <label>Owner <select id="assignee-filter"><option value="all">Everyone</option></select></label>
+            <button class="filter-clear" id="clear-filters" type="button">Clear</button>
+          </div>
+        </div>
+
+        <form id="quick-add-form" class="quick-add">
+          <label for="quick-title">Catch the next thing</label>
+          <input id="quick-title" name="title" required maxlength="140" placeholder="What needs to move?" />
+          <input name="assignee" maxlength="48" placeholder="Owner" aria-label="Owner" />
+          <select name="priority" aria-label="Priority">
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+            <option value="urgent">Urgent</option>
+            <option value="low">Low</option>
+          </select>
+          <button class="button button-dark" type="submit">Add to inbox ＋</button>
+        </form>
+
+        <div class="board" id="task-board" aria-live="polite"></div>
+        <p id="empty-filter-state" class="empty-state" hidden>No task matches this view. Clear the filters or catch a new one.</p>
+      </section>
+
+      <section class="receipt-shelf" aria-labelledby="receipt-title">
+        <div class="receipt-head">
+          <div>
+            <p class="section-index">04 / RECEIPT SHELF</p>
+            <h2 id="receipt-title">Proof you can carry.</h2>
+          </div>
+          <p>Receipts stay local until you download or share them.</p>
+        </div>
+        <div id="receipt-list" class="receipt-list"></div>
+      </section>
+    </main>
+
+    <dialog id="task-dialog" class="desk-dialog">
+      <form id="task-form" method="dialog">
+        <div class="dialog-head">
+          <div><p class="section-index">TASK FILE</p><h2 id="task-dialog-title">New task</h2></div>
+          <button class="dialog-close" value="cancel" aria-label="Close task editor">×</button>
+        </div>
+        <input type="hidden" name="id" />
+        <label class="field field-wide">Task <input name="title" required maxlength="140" autocomplete="off" /></label>
+        <div class="field-grid">
+          <label class="field">Project <input name="project" maxlength="60" list="project-options" /></label>
+          <label class="field">Owner <input name="assignee" maxlength="48" list="assignee-options" /></label>
+          <label class="field">Status
+            <select name="status">
+              <option value="inbox">Inbox</option><option value="next">Next</option><option value="doing">Doing</option><option value="review">Review</option><option value="done">Done</option>
+            </select>
+          </label>
+          <label class="field">Priority
+            <select name="priority">
+              <option value="urgent">Urgent</option><option value="high">High</option><option value="normal">Normal</option><option value="low">Low</option>
+            </select>
+          </label>
+          <label class="field">Due <input name="due" type="date" /></label>
+          <label class="field">Effort
+            <select name="effort"><option value="S">Small</option><option value="M">Medium</option><option value="L">Large</option></select>
+          </label>
+        </div>
+        <label class="field field-wide">Notes <textarea name="notes" rows="5" maxlength="4000" placeholder="Context, links, dependencies, the useful detail…"></textarea></label>
+        <label class="field field-wide">Done looks like <textarea name="acceptance" rows="3" maxlength="1000" placeholder="The observable check that closes the task."></textarea></label>
+        <div class="dialog-actions">
+          <button id="delete-task-button" class="danger-button" type="button" hidden>Delete task</button>
+          <span></span>
+          <button class="text-button" value="cancel">Cancel</button>
+          <button class="button button-dark" id="save-task-button" type="submit">Save task</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="stamp-dialog" class="desk-dialog stamp-dialog">
+      <form method="dialog">
+        <div class="dialog-head">
+          <div><p class="section-index">TEZOS STAMP</p><h2>Seal this version?</h2></div>
+          <button class="dialog-close" value="cancel" aria-label="Close stamp dialog">×</button>
+        </div>
+        <div id="stamp-preview" class="stamp-preview"></div>
+        <div class="privacy-note">
+          <strong>WHAT BECOMES PUBLIC</strong>
+          <p>One SHA-256 fingerprint, your wallet address, the contract address, the operation time, and the network fee.</p>
+          <strong>WHAT STAYS LOCAL</strong>
+          <p>The task title, notes, owner, dates, and acceptance check. Keep the downloaded receipt to verify them later.</p>
+        </div>
+        <p id="stamp-dialog-status" class="dialog-status" role="status"></p>
+        <div class="dialog-actions">
+          <button class="text-button" value="cancel">Not yet</button>
+          <button class="button button-stamp" id="confirm-stamp-button" type="button">Approve Mainnet stamp</button>
+        </div>
+      </form>
+    </dialog>
+
+    <datalist id="project-options"></datalist>
+    <datalist id="assignee-options"></datalist>
+
+    <template id="task-card-template">
+      <article class="task-card" draggable="true">
+        <div class="task-card-top"><span class="priority-mark"></span><span class="task-project"></span><button class="edit-task" type="button" aria-label="Edit task">•••</button></div>
+        <h3></h3>
+        <p class="task-notes"></p>
+        <div class="task-meta"><span class="task-owner"></span><span class="task-due"></span><span class="task-effort"></span></div>
+        <div class="task-check"></div>
+        <div class="task-card-actions">
+          <button class="move-left" type="button" aria-label="Move task left">←</button>
+          <button class="stamp-task" type="button">Stamp</button>
+          <button class="move-right" type="button" aria-label="Move task right">→</button>
+        </div>
+      </article>
+    </template>
+
+    <footer class="site-footer">
+      <p>INDUSTRY NEXT / THE DESK / LOCAL WORK, PUBLIC RECEIPTS</p>
+      <nav aria-label="Footer"><a href="/">Home</a><a href="/services/">Services</a><a href="/desk.json">Desk JSON</a><a href="https://docs.tezos.com/using/dapps" target="_blank" rel="noreferrer">Tezos safety ↗</a></nav>
+      <p class="footer-note">Check every wallet request before approving it. A Tezos stamp is permanent; a task is allowed to keep changing.</p>
+  <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="small internet institutions tone bloom pointcast rally nouns cc0 art culture community" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+    </footer>
+
+    <script type="module" src="/desk.js?v=20260731a"></script>
+  <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>
