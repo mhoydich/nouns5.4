@@ -7,10 +7,15 @@ import {
 } from "./market-auth-core.js";
 
 const cards = [...document.querySelectorAll("[data-kind]")];
+const opportunityCards = [...document.querySelectorAll("[data-opportunity]")];
 const filters = [...document.querySelectorAll("[data-filter]")];
+const viewButtons = [...document.querySelectorAll("[data-view]")];
 const search = document.querySelector("#market-search");
 const status = document.querySelector("#market-status");
 const empty = document.querySelector("#empty-market");
+const opportunityBoard = document.querySelector("#opportunity-board");
+const registry = document.querySelector("#market-registry");
+const reset = document.querySelector("#market-reset");
 
 const AUTH_STORAGE_KEY = "industrynext.market.tezos-auth.v1";
 const TEZOS_RPC = "https://tezos-mainnet.octez.io";
@@ -26,10 +31,12 @@ const authElements = {
 };
 
 let activeKind = "all";
+let activeView = "opportunities";
 let authBusy = false;
 let authSession = null;
 let tezosSdkPromise;
 let wallet;
+let highlightTimer;
 
 function readStoredAuthSession() {
   try {
@@ -59,16 +66,35 @@ function updateBoard() {
   const query = search.value.trim().toLowerCase();
   let visible = 0;
 
-  cards.forEach((card) => {
-    const kindMatch = activeKind === "all" || card.dataset.kind === activeKind;
-    const searchMatch = !query || card.dataset.search.includes(query);
-    card.hidden = !(kindMatch && searchMatch);
-    if (!card.hidden) visible += 1;
-  });
+  opportunityBoard.hidden = activeView !== "opportunities";
+  registry.hidden = activeView !== "registry";
 
-  const label = activeKind === "all" ? "market objects" : `${activeKind} objects`;
-  status.textContent = `Showing ${visible} ${label}${query ? ` matching “${query}”` : ""}.`;
+  if (activeView === "opportunities") {
+    opportunityCards.forEach((card) => {
+      card.hidden = Boolean(query && !card.dataset.search.includes(query));
+      if (!card.hidden) visible += 1;
+    });
+    status.textContent = query
+      ? `Showing ${visible} active opportunit${visible === 1 ? "y" : "ies"} matching “${query}”.`
+      : "Showing 4 open roles and 1 bounded field task.";
+  } else {
+    cards.forEach((card) => {
+      const kindMatch = activeKind === "all" || card.dataset.kind === activeKind;
+      const searchMatch = !query || card.dataset.search.includes(query);
+      card.hidden = !(kindMatch && searchMatch);
+      if (!card.hidden) visible += 1;
+    });
+    const label = activeKind === "all" ? "market object" : `${activeKind} object`;
+    status.textContent = `Showing ${visible} ${label}${visible === 1 ? "" : "s"}${query ? ` matching “${query}”` : ""}.`;
+  }
+
   empty.hidden = visible !== 0;
+}
+
+function setView(view) {
+  activeView = view;
+  viewButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.view === view)));
+  updateBoard();
 }
 
 function setFilter(kind) {
@@ -78,14 +104,38 @@ function setFilter(kind) {
 }
 
 filters.forEach((button) => button.addEventListener("click", () => setFilter(button.dataset.filter)));
-document.querySelectorAll("[data-jump-filter]").forEach((button) => {
+viewButtons.forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
+document.querySelectorAll("[data-market-target]").forEach((button) => {
   button.addEventListener("click", () => {
     search.value = "";
-    setFilter(button.dataset.jumpFilter);
-    document.querySelector("#market-board").scrollIntoView({ behavior: "smooth", block: "start" });
+    setFilter("all");
+    setView("registry");
+    const target = document.querySelector(`[data-market-id="${button.dataset.marketTarget}"]`);
+    if (!target) return;
+    window.clearTimeout(highlightTimer);
+    cards.forEach((card) => card.classList.remove("is-highlighted"));
+    target.classList.add("is-highlighted");
+    const label = target.querySelector(".registry-id span")?.textContent || "linked record";
+    status.textContent = `Opened ${label} in the full registry.`;
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    highlightTimer = window.setTimeout(() => target.classList.remove("is-highlighted"), 2600);
   });
 });
 search.addEventListener("input", updateBoard);
+reset.addEventListener("click", () => {
+  search.value = "";
+  setFilter("all");
+  setView("opportunities");
+  search.focus();
+});
+
+for (const [selector, detailsSelector] of [["a[href=\"#tezos-auth\"]", "#tezos-auth"], ["a[href=\"#post-work\"]", "#post-work"]]) {
+  document.querySelector(selector)?.addEventListener("click", () => {
+    document.querySelector(detailsSelector).open = true;
+  });
+}
+
+updateBoard();
 
 const taskBriefs = {
   halation: {

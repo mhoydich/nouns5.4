@@ -23,7 +23,7 @@
     <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>Work Market | Industry Next</title>
-    <link rel="stylesheet" href="/market/market.css?v=20260731b" />
+    <link rel="stylesheet" href="/market/market.css?v=20260731c" />
   </head>
   <body>
     <a class="skip-link" href="#market-board">Skip to the market board</a>
@@ -71,7 +71,12 @@
         <div class="hero-ticket" aria-hidden="true"><b>IN</b><span>MARKET<br />001</span></div>
       </section>
 
-      <section id="tezos-auth" class="auth-desk" aria-labelledby="auth-title">
+      <details id="tezos-auth" class="auth-desk">
+        <summary>
+          <span><b>OPTIONAL IDENTITY</b> Attach a 20-minute Tezos wallet proof to a local draft.</span>
+          <strong>Open Tezos sign-in <i aria-hidden="true">＋</i></strong>
+        </summary>
+        <div class="auth-layout">
         <div class="auth-copy">
           <p class="section-index">AUTH / TEZOS MAINNET / OPTIONAL</p>
           <h2 id="auth-title">Prove the wallet.<br /><em>Keep the power narrow.</em></h2>
@@ -103,11 +108,12 @@
             qualify an applicant, appoint a lead, or authorize Industry Next to publish or pay.
           </p>
         </div>
-      </section>
+        </div>
+      </details>
 
       <section class="market-strip" aria-label="Current public market totals">
         <p><strong>4</strong><span>OPEN JOBS</span></p>
-        <p><strong>4</strong><span>FIRST TASKS</span></p>
+        <p><strong>5</strong><span>FIRST TASKS</span></p>
         <p><strong>1</strong><span>FUNDED CREDIT RAIL</span></p>
         <p><strong>0</strong><span>ESCROW CONTRACTS</span></p>
       </section>
@@ -115,208 +121,139 @@
       <section id="market-board" class="market-board" aria-labelledby="board-title">
         <div class="board-head">
           <div>
-            <p class="section-index">01 / LIVE MARKET MAP</p>
-            <h2 id="board-title">See the whole deal.</h2>
+            <p class="section-index">01 / LIVE OPPORTUNITIES</p>
+            <h2 id="board-title">Five ways in.</h2>
           </div>
-          <p>
-            Cards are linked, not flattened. A job can point to its first task; a task can point
-            back to the organization and reward terms that make it real.
-          </p>
+          <p>Start with an open role or a bounded field task. Every path keeps the outcome, first proof, accepting organization, and support terms readable.</p>
         </div>
 
-        <div class="board-tools">
-          <div class="kind-filters" role="group" aria-label="Filter market objects">
-            <button type="button" data-filter="all" aria-pressed="true">All <span>12</span></button>
-            <button type="button" data-filter="job" aria-pressed="false">Jobs <span>4</span></button>
-            <button type="button" data-filter="task" aria-pressed="false">Tasks <span>4</span></button>
-            <button type="button" data-filter="organization" aria-pressed="false">Organizations <span>1</span></button>
-            <button type="button" data-filter="token" aria-pressed="false">Tokens <span>3</span></button>
+        <div class="market-console">
+          <div class="view-switch" role="group" aria-label="Choose market view">
+            <button type="button" data-view="opportunities" aria-pressed="true">Opportunities <span>5</span></button>
+            <button type="button" data-view="registry" aria-pressed="false">Full registry <span>13</span></button>
           </div>
-          <label class="market-search">Find <input id="market-search" type="search" placeholder="Halation, credits, editor…" /></label>
+          <label class="market-search"><span>Search market</span><input id="market-search" type="search" placeholder="Try “social”, “music”, or “credits”" /></label>
+          <button class="market-reset" id="market-reset" type="button">Reset</button>
         </div>
-        <p id="market-status" class="market-status" aria-live="polite">Showing all 12 market objects.</p>
+        <p id="market-status" class="market-status" aria-live="polite">Showing 4 open roles and 1 bounded field task.</p>
 
-        <div class="market-grid">
-          <article class="market-card card-job card-featured" data-kind="job" data-search="halation lead image diary industry next ai credits product editorial community open">
-            <div class="card-tab"><span>JOB / 001</span><b>OPEN</b></div>
-            <p class="card-kicker">FUNDED WITH AI CREDITS</p>
-            <h3>Halation<br />Lead</h3>
-            <p class="card-outcome">Own the image diary, publish with it, and build its first small circle.</p>
-            <dl>
-              <div><dt>ORG</dt><dd>Industry Next</dd></div>
-              <div><dt>FIRST TASK</dt><dd>Run the first 30-day operating loop</dd></div>
-              <div><dt>REWARD</dt><dd>AI credits · funded · allocation in written kickoff</dd></div>
-              <div><dt>ACCEPTED BY</dt><dd>Industry Next founder</dd></div>
-            </dl>
-            <div class="relation-row"><button type="button" data-jump-filter="task">→ TASK / 004</button><button type="button" data-jump-filter="token">→ TOKEN / 008</button></div>
-            <a class="card-action" href="mailto:mh@pointcast.xyz?subject=I%20want%20to%20lead%20Halation&amp;body=Name%3A%0A%0AWhy%20Halation%3A%0A%0AWhat%20I%20would%20lead%3A%0A%0AWhat%20I%20would%20ship%20first%3A">Raise your hand <span aria-hidden="true">↗</span></a>
+        <div id="opportunity-board" class="opportunity-board">
+          <article class="opportunity-card opportunity-halation" data-opportunity data-search="halation lead image diary editorial community ai credits funded publish first 30 days">
+            <header><span>JOB / 001</span><b>OPEN · FUNDED SUPPORT</b></header>
+            <div class="opportunity-title"><p>IMAGE + COMMUNITY</p><h3>Halation<br />Lead</h3><p>Own the image diary, publish with it, and build its first small circle.</p></div>
+            <div class="opportunity-path">
+              <section><span>01 / OUTCOME OWNER</span><strong>Industry Next lead</strong><p>Set the rhythm, invite the circle, and make the continue / revise / close call.</p></section>
+              <section><span>02 / FIRST PROOF</span><strong>Run the first 30-day loop</strong><p>Public work, real invitations, and a written decision.</p><button type="button" data-market-target="halation-first-30-days">Inspect TASK / 004</button></section>
+              <section><span>03 / SUPPORT + TERMS</span><strong>AI credits · funded</strong><p>Allocation is written before use. Credits are support—not cash, salary, or transferable value.</p><button type="button" data-market-target="ai-credits">Inspect TOKEN / 008</button></section>
+            </div>
+            <footer><span>ACCEPTED BY / INDUSTRY NEXT FOUNDER</span><a href="mailto:mh@pointcast.xyz?subject=I%20want%20to%20lead%20Halation&amp;body=Name%3A%0A%0AWhy%20Halation%3A%0A%0AWhat%20I%20would%20lead%3A%0A%0AWhat%20I%20would%20ship%20first%3A">Raise your hand <b aria-hidden="true">↗</b></a></footer>
           </article>
 
-          <article class="market-card card-job" data-kind="job" data-search="playlist editor listener growth music culture industry next written agreement open spotify zero cash project revenue share">
-            <div class="card-tab"><span>JOB / 002</span><b>OPEN</b></div>
-            <p class="card-kicker">MUSIC + CULTURE</p>
-            <h3>Playlist<br />Editor</h3>
-            <p class="card-outcome">Create authored listening worlds and help good music earn real, repeat listening.</p>
-            <dl>
-              <div><dt>ORG</dt><dd>Industry Next</dd></div>
-              <div><dt>FIRST TASK</dt><dd>Pitch three songs in sequence</dd></div>
-              <div><dt>REWARD</dt><dd>$0 guaranteed cash · potential project revenue share</dd></div>
-              <div><dt>TERMS</dt><dd>Share, scope, ownership, and payout written before work</dd></div>
-              <div><dt>BOUNDARY</dt><dd>No bots, fake streams, or payola</dd></div>
-            </dl>
-            <div class="relation-row"><button type="button" data-jump-filter="task">→ TASK / 005</button><button type="button" data-jump-filter="organization">→ ORG / 007</button></div>
-            <a class="card-action" href="/roles/playlist-editor/">Open the full role <span aria-hidden="true">↗</span></a>
+          <article class="opportunity-card opportunity-playlist" data-opportunity data-search="playlist editor listener growth music culture three songs sequence written terms revenue share zero cash">
+            <header><span>JOB / 002</span><b>OPEN · MUSIC + CULTURE</b></header>
+            <div class="opportunity-title"><p>TASTE + LISTENER GROWTH</p><h3>Playlist<br />Editor</h3><p>Create authored listening worlds and help good music earn real, repeat listening.</p></div>
+            <div class="opportunity-path">
+              <section><span>01 / OUTCOME OWNER</span><strong>Playlist editor + growth lead</strong><p>Shape the world, publish the sequence, and learn what earns a return listen.</p></section>
+              <section><span>02 / FIRST PROOF</span><strong>Sequence three songs</strong><p>Three links, one order, one short editorial reason. No free commercial production.</p><button type="button" data-market-target="playlist-three-song-sequence">Inspect TASK / 005</button></section>
+              <section><span>03 / SUPPORT + TERMS</span><strong>$0 guaranteed cash</strong><p>Potential project revenue share. Scope, ownership, payout, and permitted use must be written first.</p><button type="button" data-market-target="industry-next">Inspect ORG / 007</button></section>
+            </div>
+            <footer><span>BOUNDARY / NO BOTS · FAKE STREAMS · PAYOLA</span><a href="/roles/playlist-editor/">Open full role <b aria-hidden="true">↗</b></a></footer>
           </article>
 
-          <article class="market-card card-job" data-kind="job" data-search="tag lead creative technologist product builder mobile group chat social relay open build industry next ai model tool credits four weeks">
-            <div class="card-tab"><span>JOB / 003</span><b>OPEN BUILD</b></div>
-            <p class="card-kicker">FOUR WEEKS · ONE PUBLIC FINISH</p>
-            <h3>TAG<br />Build Lead</h3>
-            <p class="card-outcome">Make a tiny social relay playable, test it with three live groups, and leave a public release plus technical handoff.</p>
-            <dl>
-              <div><dt>ORG</dt><dd>Industry Next</dd></div>
-              <div><dt>FIRST TASK</dt><dd>Build the first playable week</dd></div>
-              <div><dt>REWARD</dt><dd>AI model + tool credits provided</dd></div>
-              <div><dt>TERMS</dt><dd>Cash costs and paid services need a separate agreement</dd></div>
-            </dl>
-            <div class="relation-row"><button type="button" data-jump-filter="task">→ TASK / 006</button><button type="button" data-jump-filter="token">→ TOKEN / 008</button></div>
-            <a class="card-action" href="/next/tag/">Open the build brief <span aria-hidden="true">↗</span></a>
+          <article class="opportunity-card opportunity-tag" data-opportunity data-search="tag build lead creative technologist product mobile group chat social relay four weeks ai tool credits playable">
+            <header><span>JOB / 003</span><b>OPEN · FOUR WEEKS</b></header>
+            <div class="opportunity-title"><p>SMALL SOCIAL RELAY</p><h3>TAG<br />Build Lead</h3><p>Make the relay playable, test it with three live groups, and leave a public release plus technical handoff.</p></div>
+            <div class="opportunity-path">
+              <section><span>01 / OUTCOME OWNER</span><strong>Creative technologist</strong><p>Own one small loop from tag to proof to pass to recap.</p></section>
+              <section><span>02 / FIRST PROOF</span><strong>Make the relay restartable</strong><p>A mobile web room completes one working handoff with a real group.</p><button type="button" data-market-target="tag-first-playable-week">Inspect TASK / 006</button></section>
+              <section><span>03 / SUPPORT + TERMS</span><strong>AI model + tool credits</strong><p>Provided for the build. Cash costs and paid services require a separate written agreement.</p><button type="button" data-market-target="ai-credits">Inspect TOKEN / 008</button></section>
+            </div>
+            <footer><span>FINISH / PUBLIC RELEASE + HANDOFF</span><a href="/next/tag/">Open build brief <b aria-hidden="true">↗</b></a></footer>
           </article>
 
-          <article class="market-card card-job" data-kind="job" data-search="small social systems builder group chat ritual group state roles memory place playable publishing ai credits four weeks industry next open">
-            <div class="card-tab"><span>JOB / 011</span><b>OPEN ROLE</b></div>
-            <p class="card-kicker">ONE BUILDER · ONE WEDGE · FOUR WEEKS</p>
-            <h3>Small Social<br />Systems Builder</h3>
-            <p class="card-outcome">Choose one underbuilt social behavior, make it playable with a real group, and publish the system for the next builder to fork.</p>
-            <dl>
-              <div><dt>ORG</dt><dd>Industry Next</dd></div>
-              <div><dt>FIRST TASK</dt><dd>Ship one ritual with one real group in seven days</dd></div>
-              <div><dt>REWARD</dt><dd>AI model + tool credits provided</dd></div>
-              <div><dt>TERMS</dt><dd>Cash, ownership, and contractor terms require a separate written agreement</dd></div>
-            </dl>
-            <div class="relation-row"><button type="button" data-jump-filter="task">→ TASK / 012</button><button type="button" data-jump-filter="token">→ TOKEN / 008</button></div>
-            <a class="card-action" href="/builders/001/">Open Builder 001 <span aria-hidden="true">↗</span></a>
+          <article class="opportunity-card opportunity-social" data-opportunity data-search="small social systems builder group chat ritual roles memory place playable publishing four weeks seven days ai credits">
+            <header><span>JOB / 011</span><b>OPEN · BUILDER 001</b></header>
+            <div class="opportunity-title"><p>ONE BUILDER · ONE WEDGE</p><h3>Small Social<br />Systems Builder</h3><p>Choose one underbuilt social behavior, make it playable with a real group, and publish the system for the next builder to fork.</p></div>
+            <div class="opportunity-path">
+              <section><span>01 / OUTCOME OWNER</span><strong>Small-system builder</strong><p>Pick the real group first; choose a wedge only after the social need is visible.</p></section>
+              <section><span>02 / FIRST PROOF</span><strong>Ship one ritual in seven days</strong><p>One group completes one live loop and can say whether it should restart.</p><button type="button" data-market-target="small-social-systems-first-ritual">Inspect TASK / 012</button></section>
+              <section><span>03 / SUPPORT + TERMS</span><strong>AI model + tool credits</strong><p>Provided for four weeks. Cash, ownership, and contractor terms require a separate agreement.</p><button type="button" data-market-target="ai-credits">Inspect TOKEN / 008</button></section>
+            </div>
+            <footer><span>FINISH / PLAYABLE SYSTEM + FIELD NOTE</span><a href="/builders/001/">Open Builder 001 <b aria-hidden="true">↗</b></a></footer>
           </article>
 
-          <article class="market-card card-task" data-kind="task" data-search="halation first 30 days publish invite learn image diary ai credits task scoped">
-            <div class="card-tab"><span>TASK / 004</span><b>FIRST MISSION</b></div>
-            <p class="card-kicker">PUBLISH · INVITE · LEARN</p>
-            <h3>Run the first<br />30-day loop</h3>
-            <p class="card-outcome">Choose a rhythm, publish real pages, invite a small circle, and leave a continue / revise / close recommendation.</p>
+          <article class="field-task-card" data-opportunity data-search="door audit repair broken public invitation interface working magazine issue 001 field task three claims 60 minutes unpaid editorial">
+            <header><span>TASK / 013 · WORKING MAGAZINE</span><b>OPEN · THREE CLAIMS</b></header>
+            <div class="field-task-copy">
+              <p>BOUNDED FIELD TASK / NO RESUME / NO IMPLIED PAY</p>
+              <h3>Repair one broken door.</h3>
+              <p>Rewrite one vague public invitation with WHO, FIRST MOVE, TERMS, and YES.</p>
+            </div>
             <dl>
-              <div><dt>PARENT</dt><dd>Halation Lead</dd></div>
-              <div><dt>DONE LOOKS LIKE</dt><dd>Public work, real invitations, and a written decision</dd></div>
-              <div><dt>REWARD</dt><dd>Inside the funded lead brief; not a separate bounty</dd></div>
-            </dl>
-            <button class="card-action copy-brief" type="button" data-copy-brief="halation">Copy task brief <span aria-hidden="true">＋</span></button>
-          </article>
-
-          <article class="market-card card-task" data-kind="task" data-search="playlist editor three songs sequence proof music listener growth task application unpaid candidate labor">
-            <div class="card-tab"><span>TASK / 005</span><b>APPLICATION PROOF</b></div>
-            <p class="card-kicker">NO RESUME THEATER</p>
-            <h3>Sequence<br />three songs</h3>
-            <p class="card-outcome">Choose three songs in order and explain why they belong together. A compact proof of taste, not free production work.</p>
-            <dl>
-              <div><dt>PARENT</dt><dd>Playlist Editor + Listener Growth Lead</dd></div>
-              <div><dt>DONE LOOKS LIKE</dt><dd>Three links, one sequence, a short editorial reason</dd></div>
-              <div><dt>REWARD</dt><dd>Application proof · no commercial use without agreement</dd></div>
-            </dl>
-            <a class="card-action" href="mailto:mh@pointcast.xyz?subject=Role%20001%20%E2%80%94%20Playlist%20Editor%20%2B%20Listener%20Growth%20Lead&amp;body=Name%3A%0A%0AThree%20songs%20in%20order%3A%0A1.%20%0A2.%20%0A3.%20%0A%0AWhy%20they%20belong%20together%3A">Send the sequence <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-task" data-kind="task" data-search="tag first playable week mobile web group chat shareable room link social relay prototype ai credits task">
-            <div class="card-tab"><span>TASK / 006</span><b>FIRST PLAYABLE WEEK</b></div>
-            <p class="card-kicker">ONE PERSON · ONE PROMPT · ONE CLOCK</p>
-            <h3>Make the relay<br />restartable</h3>
-            <p class="card-outcome">Prototype the tag, dare, proof, pass, and recap loop as a mobile web room a group can choose to restart.</p>
-            <dl>
-              <div><dt>PARENT</dt><dd>TAG Build Lead</dd></div>
-              <div><dt>DONE LOOKS LIKE</dt><dd>A working handoff tested with the first real group</dd></div>
-              <div><dt>REWARD</dt><dd>Inside the provided AI-credit build budget</dd></div>
-            </dl>
-            <a class="card-action" href="/next/tag/#apply">Raise your hand <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-task" data-kind="task" data-search="small social systems first ritual seven days real group field note prototype ai credits builder task">
-            <div class="card-tab"><span>TASK / 012</span><b>SEVEN-DAY PROOF</b></div>
-            <p class="card-kicker">START WITH PEOPLE</p>
-            <h3>Ship one ritual<br />with one group</h3>
-            <p class="card-outcome">Choose the real group first, then run one clickable or facilitated ritual and leave a one-page field note about the handoff.</p>
-            <dl>
-              <div><dt>PARENT</dt><dd>Small Social Systems Builder</dd></div>
-              <div><dt>DONE LOOKS LIKE</dt><dd>One group completes one live loop and can say whether it should restart</dd></div>
-              <div><dt>REWARD</dt><dd>Inside the provided AI-credit build budget</dd></div>
-            </dl>
-            <a class="card-action" href="/builders/001/#apply">Raise your hand <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-task" data-kind="task" data-search="door audit issue 001 invitation interface field task editorial unpaid three claims repair public opportunity">
-            <div class="card-tab"><span>TASK / 013</span><b>OPEN / THREE CLAIMS</b></div>
-            <p class="card-kicker">WORKING MAGAZINE / FIELD TASK 001</p>
-            <h3>Repair one<br />broken door</h3>
-            <p class="card-outcome">Rewrite one vague public invitation with WHO, FIRST MOVE, TERMS, and YES.</p>
-            <dl>
-              <div><dt>DONE LOOKS LIKE</dt><dd>One public source link + one complete rewritten door</dd></div>
+              <div><dt>DONE LOOKS LIKE</dt><dd>One source link + one complete rewritten door</dd></div>
               <div><dt>TIMEBOX</dt><dd>60 minutes after claim confirmation</dd></div>
-              <div><dt>REWARD</dt><dd>$0 · unpaid editorial field exercise · contributor retains rights</dd></div>
+              <div><dt>REWARD</dt><dd>$0 · unpaid editorial exercise · contributor retains rights</dd></div>
             </dl>
-            <a class="card-action" href="/issues/001/#field-task">Read terms + claim <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-org" data-kind="organization" data-search="industry next organization publisher buyer founder human acceptance jobs tasks market">
-            <div class="card-tab"><span>ORG / 007</span><b>ACTIVE</b></div>
-            <p class="card-kicker">PUBLISHER OF RECORD</p>
-            <h3>Industry<br />Next</h3>
-            <p class="card-outcome">Frames the work, names the acceptance check, funds what it posts, and keeps consequential approval human.</p>
-            <dl>
-              <div><dt>POSTS</dt><dd>Jobs, bounded tasks, and reward terms</dd></div>
-              <div><dt>ACCEPTS</dt><dd>Named founder or accountable project lead</dd></div>
-              <div><dt>DOES NOT DO</dt><dd>Automatic hiring, implied compensation, or surprise wallet calls</dd></div>
-            </dl>
-            <a class="card-action" href="/product/">Inspect the operating desk <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-token token-active" data-kind="token" data-search="ai credits funded operating budget nontransferable not cash cryptocurrency reward active token">
-            <div class="card-tab"><span>TOKEN / 008</span><b>ACTIVE RAIL</b></div>
-            <p class="card-kicker">FUNDED SUPPORT</p>
-            <h3>AI<br />Credits</h3>
-            <p class="card-outcome">A bounded operating budget for approved AI tools used to build and run the work.</p>
-            <dl>
-              <div><dt>ACTIVE ON</dt><dd>Halation Lead · TAG Open Build · Builder 001</dd></div>
-              <div><dt>QUANTITY</dt><dd>Set in the written kickoff before use</dd></div>
-              <div><dt>NOT</dt><dd>Cash, cryptocurrency, transferable value, or salary</dd></div>
-            </dl>
-            <p class="rail-note">A funded rail is support. It is not a substitute for employment or contractor terms.</p>
-          </article>
-
-          <article class="market-card card-token" data-kind="token" data-search="xtz tezos optional settlement rail wallet approval amount no active listings token crypto">
-            <div class="card-tab"><span>TOKEN / 009</span><b>AVAILABLE / INACTIVE</b></div>
-            <p class="card-kicker">WALLET-CONTROLLED SETTLEMENT</p>
-            <h3>XTZ</h3>
-            <p class="card-outcome">A possible settlement rail only when a future listing names an amount, acceptance rule, wallet, and written terms.</p>
-            <dl>
-              <div><dt>ACTIVE LISTINGS</dt><dd>None</dd></div>
-              <div><dt>REQUIRES</dt><dd>Explicit wallet approval and network fee</dd></div>
-              <div><dt>MARKET STATUS</dt><dd>No escrow or automatic payout contract</dd></div>
-            </dl>
-            <a class="card-action" href="https://docs.tezos.com/using/dapps" target="_blank" rel="noreferrer">Read Tezos wallet safety <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="market-card card-token token-proof" data-kind="token" data-search="tzstamp proof stamp tezos receipt zero token transfer not compensation desk sha-256">
-            <div class="card-tab"><span>TOKEN / 010</span><b>PROOF / NOT PAY</b></div>
-            <p class="card-kicker">RECEIPT RAIL</p>
-            <h3>TzStamp<br />Proof</h3>
-            <p class="card-outcome">The Desk can publish a task fingerprint to Tezos. That creates a receipt, not compensation.</p>
-            <dl>
-              <div><dt>TRANSFER</dt><dd>0 ꜩ</dd></div>
-              <div><dt>PUBLIC</dt><dd>SHA-256 fingerprint and operation metadata</dd></div>
-              <div><dt>PRIVATE</dt><dd>Task title, notes, owner, and acceptance check</dd></div>
-            </dl>
-            <a class="card-action" href="/desk/">Open the proof Desk <span aria-hidden="true">↗</span></a>
+            <a href="/issues/001/#field-task">Read terms + claim <span aria-hidden="true">↗</span></a>
           </article>
         </div>
 
-        <p id="empty-market" class="empty-market" hidden>No market object matches this view. Try another tab or clear the search.</p>
+        <section id="market-registry" class="market-registry" aria-labelledby="registry-title" hidden>
+          <div class="registry-head">
+            <div><p class="section-index">REGISTRY / 13 LINKED OBJECTS</p><h3 id="registry-title">The whole market, compact.</h3></div>
+            <div class="kind-filters" role="group" aria-label="Filter market objects">
+              <button type="button" data-filter="all" aria-pressed="true">All <span>13</span></button>
+              <button type="button" data-filter="job" aria-pressed="false">Jobs <span>4</span></button>
+              <button type="button" data-filter="task" aria-pressed="false">Tasks <span>5</span></button>
+              <button type="button" data-filter="organization" aria-pressed="false">Org <span>1</span></button>
+              <button type="button" data-filter="token" aria-pressed="false">Rails <span>3</span></button>
+            </div>
+          </div>
+
+          <div class="market-grid">
+            <article class="market-card card-job" data-market-id="halation-lead" data-kind="job" data-search="halation lead image diary ai credits open">
+              <div class="registry-id"><span>JOB / 001</span><b>OPEN</b></div><div class="registry-copy"><h4>Halation Lead</h4><p>Own the image diary and build its first small circle.</p></div><dl><div><dt>FIRST PROOF</dt><dd>30-day loop</dd></div><div><dt>SUPPORT</dt><dd>AI credits · funded</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="halation-first-30-days">TASK / 004</button><a href="mailto:mh@pointcast.xyz?subject=I%20want%20to%20lead%20Halation">Raise hand ↗</a></div>
+            </article>
+            <article class="market-card card-job" data-market-id="playlist-editor-listener-growth" data-kind="job" data-search="playlist editor listener growth music sequence revenue share open">
+              <div class="registry-id"><span>JOB / 002</span><b>OPEN</b></div><div class="registry-copy"><h4>Playlist Editor</h4><p>Build authored listening worlds and repeat listening.</p></div><dl><div><dt>FIRST PROOF</dt><dd>Three-song sequence</dd></div><div><dt>TERMS</dt><dd>$0 cash guaranteed</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="playlist-three-song-sequence">TASK / 005</button><a href="/roles/playlist-editor/">Full role ↗</a></div>
+            </article>
+            <article class="market-card card-job" data-market-id="tag-open-build-lead" data-kind="job" data-search="tag build lead mobile social relay four weeks ai credits open">
+              <div class="registry-id"><span>JOB / 003</span><b>OPEN BUILD</b></div><div class="registry-copy"><h4>TAG Build Lead</h4><p>Make a tiny social relay playable with three groups.</p></div><dl><div><dt>FIRST PROOF</dt><dd>Playable week</dd></div><div><dt>SUPPORT</dt><dd>AI tool credits</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="tag-first-playable-week">TASK / 006</button><a href="/next/tag/">Build brief ↗</a></div>
+            </article>
+            <article class="market-card card-job" data-market-id="small-social-systems-builder" data-kind="job" data-search="small social systems builder group ritual four weeks ai credits open">
+              <div class="registry-id"><span>JOB / 011</span><b>OPEN ROLE</b></div><div class="registry-copy"><h4>Small Social Systems Builder</h4><p>Make one underbuilt social behavior playable.</p></div><dl><div><dt>FIRST PROOF</dt><dd>Seven-day ritual</dd></div><div><dt>SUPPORT</dt><dd>AI tool credits</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="small-social-systems-first-ritual">TASK / 012</button><a href="/builders/001/">Builder 001 ↗</a></div>
+            </article>
+            <article class="market-card card-task" data-market-id="halation-first-30-days" data-kind="task" data-search="halation first 30 days publish invite learn task">
+              <div class="registry-id"><span>TASK / 004</span><b>FIRST MISSION</b></div><div class="registry-copy"><h4>Run the first 30-day loop</h4><p>Publish, invite, learn, and leave a written decision.</p></div><dl><div><dt>PARENT</dt><dd>Halation Lead</dd></div><div><dt>DONE</dt><dd>Public evidence</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="halation-lead">JOB / 001</button><button class="copy-brief" type="button" data-copy-brief="halation">Copy brief ＋</button></div>
+            </article>
+            <article class="market-card card-task" data-market-id="playlist-three-song-sequence" data-kind="task" data-search="playlist three songs sequence application proof music task">
+              <div class="registry-id"><span>TASK / 005</span><b>APPLICATION PROOF</b></div><div class="registry-copy"><h4>Sequence three songs</h4><p>Three links, one order, one short editorial reason.</p></div><dl><div><dt>PARENT</dt><dd>Playlist Editor</dd></div><div><dt>USE</dt><dd>No commercial use</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="playlist-editor-listener-growth">JOB / 002</button><a href="mailto:mh@pointcast.xyz?subject=Playlist%20Editor%20sequence">Send sequence ↗</a></div>
+            </article>
+            <article class="market-card card-task" data-market-id="tag-first-playable-week" data-kind="task" data-search="tag first playable week mobile web room relay task">
+              <div class="registry-id"><span>TASK / 006</span><b>FIRST PLAYABLE WEEK</b></div><div class="registry-copy"><h4>Make the relay restartable</h4><p>One real group completes one working handoff.</p></div><dl><div><dt>PARENT</dt><dd>TAG Build Lead</dd></div><div><dt>DONE</dt><dd>Working mobile loop</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="tag-open-build-lead">JOB / 003</button><a href="/next/tag/#apply">Raise hand ↗</a></div>
+            </article>
+            <article class="market-card card-task" data-market-id="small-social-systems-first-ritual" data-kind="task" data-search="small social systems first ritual seven days real group field note task">
+              <div class="registry-id"><span>TASK / 012</span><b>SEVEN-DAY PROOF</b></div><div class="registry-copy"><h4>Ship one ritual with one group</h4><p>Run one live loop and leave a one-page field note.</p></div><dl><div><dt>PARENT</dt><dd>Social Systems Builder</dd></div><div><dt>DONE</dt><dd>Group can restart</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="small-social-systems-builder">JOB / 011</button><a href="/builders/001/#apply">Raise hand ↗</a></div>
+            </article>
+            <article class="market-card card-task" data-market-id="door-audit-001" data-kind="task" data-search="door audit issue 001 invitation interface field task editorial unpaid three claims repair public opportunity">
+              <div class="registry-id"><span>TASK / 013</span><b>THREE CLAIMS</b></div><div class="registry-copy"><h4>Repair one broken door</h4><p>Rewrite one vague invitation with a complete public door.</p></div><dl><div><dt>TIMEBOX</dt><dd>60 minutes</dd></div><div><dt>REWARD</dt><dd>$0 · rights retained</dd></div></dl><div class="registry-actions"><a href="/issues/001/#field-task">Terms + claim ↗</a></div>
+            </article>
+            <article class="market-card card-org" data-market-id="industry-next" data-kind="organization" data-search="industry next organization publisher buyer founder acceptance">
+              <div class="registry-id"><span>ORG / 007</span><b>ACTIVE</b></div><div class="registry-copy"><h4>Industry Next</h4><p>Frames the work, funds what it posts, and keeps acceptance human.</p></div><dl><div><dt>POSTS</dt><dd>Jobs + tasks</dd></div><div><dt>DOES NOT</dt><dd>Auto-hire or settle</dd></div></dl><div class="registry-actions"><a href="/product/">Operating desk ↗</a></div>
+            </article>
+            <article class="market-card card-token token-active" data-market-id="ai-credits" data-kind="token" data-search="ai credits funded support budget nontransferable not cash token active">
+              <div class="registry-id"><span>TOKEN / 008</span><b>ACTIVE RAIL</b></div><div class="registry-copy"><h4>AI Credits</h4><p>Bounded support for approved AI tools used in the work.</p></div><dl><div><dt>QUANTITY</dt><dd>Written before use</dd></div><div><dt>NOT</dt><dd>Cash or salary</dd></div></dl><div class="registry-actions"><button type="button" data-market-target="halation-lead">3 active roles</button></div>
+            </article>
+            <article class="market-card card-token" data-market-id="xtz" data-kind="token" data-search="xtz tezos optional settlement wallet approval no active listings token">
+              <div class="registry-id"><span>TOKEN / 009</span><b>INACTIVE</b></div><div class="registry-copy"><h4>XTZ</h4><p>A possible future rail only when amount and acceptance are explicit.</p></div><dl><div><dt>ACTIVE</dt><dd>None</dd></div><div><dt>ESCROW</dt><dd>None</dd></div></dl><div class="registry-actions"><a href="https://docs.tezos.com/using/dapps" target="_blank" rel="noreferrer">Wallet safety ↗</a></div>
+            </article>
+            <article class="market-card card-token token-proof" data-market-id="tzstamp-proof" data-kind="token" data-search="tzstamp proof tezos receipt zero transfer not compensation sha-256">
+              <div class="registry-id"><span>TOKEN / 010</span><b>PROOF / NOT PAY</b></div><div class="registry-copy"><h4>TzStamp Proof</h4><p>A task fingerprint receipt—not compensation.</p></div><dl><div><dt>TRANSFER</dt><dd>0 ꜩ</dd></div><div><dt>PUBLIC</dt><dd>SHA-256 + op</dd></div></dl><div class="registry-actions"><a href="/desk/">Proof desk ↗</a></div>
+            </article>
+          </div>
+        </section>
+
+        <p id="empty-market" class="empty-market" hidden>No market object matches this view. Clear the search or reset the market.</p>
       </section>
 
       <section class="rules" aria-labelledby="rules-title">
@@ -332,7 +269,12 @@
         </ol>
       </section>
 
-      <section id="post-work" class="post-work" aria-labelledby="post-title">
+      <details id="post-work" class="post-work">
+        <summary>
+          <span><b>03 / LISTING DESK</b> Have work to post?</span>
+          <strong>Draft a local listing <i aria-hidden="true">＋</i></strong>
+        </summary>
+        <div class="post-work-layout">
         <div class="post-copy">
           <p class="section-index">03 / LISTING DESK</p>
           <h2 id="post-title">Post the whole<br />deal—or wait.</h2>
@@ -362,7 +304,8 @@
           <button id="copy-draft" class="copy-draft" type="button" hidden>Copy listing JSON</button>
           <p id="form-status" class="form-status" role="status">Local only. Tezos identity is optional.</p>
         </form>
-      </section>
+        </div>
+      </details>
     </main>
 
     <footer class="site-footer">
@@ -372,7 +315,7 @@
       <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="work market jobs tasks organizations ai credits tezos industry next small internet institutions" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
     </footer>
 
-    <script type="module" src="/market.js?v=20260731b"></script>
+    <script type="module" src="/market.js?v=20260731c"></script>
     <script async src="https://pointcast.xyz/open-ad-network.js"></script>
   </body>
 </html>
