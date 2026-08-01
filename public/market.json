@@ -1,0 +1,164 @@
+{
+  "id": "industrynext.work-market/v1",
+  "schema_version": 1,
+  "name": "Industry Next Work Market",
+  "canonical_url": "https://www.industrynext.xyz/market/",
+  "updated_at": "2026-07-31T23:40:00-07:00",
+  "summary": "A public board connecting jobs, first tasks, accountable organizations, and explicit token or credit reward terms.",
+  "market_rules": {
+    "listing_is_agreement": false,
+    "wallet_connection_required_to_browse": false,
+    "account_required_to_browse": false,
+    "escrow_contract": false,
+    "automatic_settlement": false,
+    "written_terms_required_before_work": true,
+    "human_acceptance_required": true,
+    "candidate_commercial_work_without_agreement": false
+  },
+  "counts": {
+    "open_jobs": 3,
+    "first_tasks": 3,
+    "organizations": 1,
+    "reward_and_proof_rails": 3,
+    "funded_credit_rails": 1,
+    "active_xtz_listings": 0
+  },
+  "organizations": [
+    {
+      "id": "industry-next",
+      "name": "Industry Next",
+      "role": "publisher of record",
+      "acceptance": "A named founder or accountable project lead accepts work.",
+      "automatic_hiring": false,
+      "automatic_settlement": false,
+      "url": "https://www.industrynext.xyz/product/"
+    }
+  ],
+  "reward_rails": [
+    {
+      "id": "ai-credits",
+      "name": "AI Credits",
+      "kind": "operating credit",
+      "status": "active",
+      "active_on": ["halation-lead", "tag-open-build-lead"],
+      "quantity": null,
+      "quantity_terms": "Set in a written kickoff before use.",
+      "cash": false,
+      "cryptocurrency": false,
+      "transferable": false,
+      "salary": false
+    },
+    {
+      "id": "xtz",
+      "name": "XTZ",
+      "kind": "possible wallet-controlled settlement rail",
+      "status": "available but inactive",
+      "active_listings": [],
+      "wallet_approval_required": true,
+      "network_fee": true,
+      "escrowed": false,
+      "automatic_settlement": false
+    },
+    {
+      "id": "tzstamp-proof",
+      "name": "TzStamp Proof",
+      "kind": "receipt rail",
+      "status": "active on The Desk",
+      "compensation": false,
+      "transfer_amount_tez": 0,
+      "url": "https://www.industrynext.xyz/desk/"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "halation-lead",
+      "kind": "job",
+      "status": "open",
+      "title": "Halation Lead",
+      "organization_id": "industry-next",
+      "outcome": "Own the image diary, publish with it, and build its first small circle.",
+      "first_task_id": "halation-first-30-days",
+      "reward": {
+        "rail_id": "ai-credits",
+        "status": "funded",
+        "amount": null,
+        "amount_terms": "Allocation is set in a written kickoff before use.",
+        "separate_employment_or_contractor_terms_required": true
+      },
+      "accepted_by": "Industry Next founder",
+      "application_url": "mailto:mh@pointcast.xyz?subject=I%20want%20to%20lead%20Halation"
+    },
+    {
+      "id": "playlist-editor-listener-growth",
+      "kind": "job",
+      "status": "open",
+      "title": "Playlist Editor + Listener Growth Lead",
+      "organization_id": "industry-next",
+      "outcome": "Create authored listening worlds and help good music earn real, repeat listening.",
+      "first_task_id": "playlist-three-song-sequence",
+      "reward": {
+        "rail_id": null,
+        "status": "disclosed",
+        "guaranteed_cash_usd": 0,
+        "potential_upside": "project-specific revenue share",
+        "revenue_guaranteed": false,
+        "amount_terms": "Scope, share percentage, eligible revenue, credit, ownership, reporting, payout timing, and exit terms are agreed in writing before work begins.",
+        "separate_employment_or_contractor_terms_required": true
+      },
+      "accepted_by": "Industry Next founder",
+      "application_url": "https://www.industrynext.xyz/roles/playlist-editor/"
+    },
+    {
+      "id": "tag-open-build-lead",
+      "kind": "job",
+      "status": "open",
+      "title": "TAG Build Lead",
+      "organization_id": "industry-next",
+      "outcome": "Make a tiny social relay playable, test it with three live groups, and leave a public release plus technical handoff.",
+      "first_task_id": "tag-first-playable-week",
+      "duration_weeks": 4,
+      "reward": {
+        "rail_id": "ai-credits",
+        "status": "provided",
+        "amount": null,
+        "amount_terms": "Credits cover AI model and tool usage. Cash costs and paid services require a separate agreement before work begins.",
+        "separate_employment_or_contractor_terms_required": true
+      },
+      "accepted_by": "Industry Next founder",
+      "application_url": "https://www.industrynext.xyz/next/tag/#apply"
+    },
+    {
+      "id": "halation-first-30-days",
+      "kind": "task",
+      "status": "first mission",
+      "title": "Run Halation's first 30-day operating loop",
+      "organization_id": "industry-next",
+      "parent_job_id": "halation-lead",
+      "outcome": "Publish, invite, learn, and recommend continue, revise, or close.",
+      "acceptance": "Public work, real invitations, a short evidence trail, and a written decision.",
+      "reward": "Inside the funded lead brief; not a separate bounty."
+    },
+    {
+      "id": "playlist-three-song-sequence",
+      "kind": "task",
+      "status": "application proof",
+      "title": "Sequence three songs",
+      "organization_id": "industry-next",
+      "parent_job_id": "playlist-editor-listener-growth",
+      "outcome": "Show editorial taste with three songs in order and a short reason they belong together.",
+      "acceptance": "Three links, one sequence, and a short editorial reason.",
+      "reward": "Application proof; no commercial use without agreement."
+    },
+    {
+      "id": "tag-first-playable-week",
+      "kind": "task",
+      "status": "first mission",
+      "title": "Make the TAG relay restartable",
+      "organization_id": "industry-next",
+      "parent_job_id": "tag-open-build-lead",
+      "outcome": "Prototype the tag, dare, proof, pass, and recap loop as a mobile web room a group can choose to restart.",
+      "acceptance": "A working handoff tested with the first real group.",
+      "reward": "Inside the provided AI-credit build budget."
+    }
+  ]
+}

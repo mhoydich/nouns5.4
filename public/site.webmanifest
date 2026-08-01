@@ -13,6 +13,12 @@
       "short_name": "Desk",
       "description": "Open the local Industry Next task desk.",
       "url": "/desk/"
+    },
+    {
+      "name": "Open Work Market",
+      "short_name": "Market",
+      "description": "Browse Industry Next jobs, tasks, organizations, and reward rails.",
+      "url": "/market/"
     }
   ],
   "icons": [

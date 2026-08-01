@@ -141,6 +141,16 @@
       "lead_boundary": "Each workstream keeps its own accountable lead.",
       "next_decision": "Keep the board current and make stale status obvious.",
       "url": "https://www.industrynext.xyz/product/"
+    },
+    {
+      "id": "industry-next-work-market",
+      "name": "Work Market",
+      "state": "shipped",
+      "outcome": "Connect every public job to a first task, an accountable organization, and explicit reward terms.",
+      "verified_state": "Public filterable board, machine-readable market contract, and local-only listing draft are live",
+      "lead_boundary": "The posting organization funds the offer and names the human acceptance point.",
+      "next_decision": "Keep listings current and close anything whose terms cannot be made legible.",
+      "url": "https://www.industrynext.xyz/market/"
     }
   ]
 }
