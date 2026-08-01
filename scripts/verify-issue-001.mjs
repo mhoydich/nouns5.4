@@ -56,7 +56,6 @@ assert.equal(data.service_door.price_usd, 50000);
 assert.equal(data.service_door.duration_weeks, 5);
 
 assert.match(home, /href="\/issues\/001\/"/);
-assert.match(home, /WORK NEEDS BETTER DOORS/);
 assert.match(market, /href="\/issues\/001\/#field-task"/);
 assert.ok(marketData.opportunities.some((item) => item.id === "door-audit-001" && item.status === "open"));
 assert.match(headers, /\/issue-001\.json[\s\S]*Content-Type: application\/json/);

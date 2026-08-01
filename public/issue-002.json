@@ -1,0 +1,40 @@
+{
+  "id": "industrynext.issue/002",
+  "schema_version": 1,
+  "issue_number": 2,
+  "title": "Everyone Has Some Time",
+  "subtitle": "Notes toward the enjoyable contributor",
+  "canonical_url": "https://www.industrynext.xyz/issues/002/",
+  "published_at": "2026-07-31",
+  "summary": "A collective should not ask for all of you. It should make whatever time you freely offer useful, visible, and enjoyable.",
+  "thesis": "Belonging is not a timesheet. Time is offered, never presumed, and every contribution should have a stated size, a visible finish, and a guilt-free way to stop.",
+  "nuance": "Not everyone has spare time. Everyone has a relationship to time. A decent collective respects it.",
+  "contribution_sizes": [
+    { "minutes": 15, "verb": "notice", "output": "one useful signal" },
+    { "minutes": 30, "verb": "welcome", "output": "one kinder entrance" },
+    { "minutes": 60, "verb": "make", "output": "one finished fragment" },
+    { "minutes": null, "verb": "rest", "output": "a human who can return" }
+  ],
+  "collective_protocol": [
+    { "id": "time-is-offered", "promise": "No assumed availability, response debt, attendance theater, or inherited urgency." },
+    { "id": "small-counts", "promise": "A contribution finishes at its stated size." },
+    { "id": "enjoyment-is-evidence", "promise": "Pleasure, learning, friendship, and surprise are legitimate outcomes." },
+    { "id": "credit-stays-visible", "promise": "The artifact keeps the contributor's name, terms, and context." },
+    { "id": "return-is-normal", "promise": "Leaving creates no shame and re-entry begins from the present." }
+  ],
+  "enjoyable_hour": {
+    "id": "enjoyable-hour-001",
+    "status": "open",
+    "available_places": 8,
+    "timebox_minutes": 60,
+    "scores": ["notice", "welcome", "connect", "remix"],
+    "start_rule": "Do not begin before Industry Next confirms the place.",
+    "stop_rule": "Stop after sixty minutes. Stopping is part of the task.",
+    "compensation": { "cash_usd": 0, "kind": "voluntary editorial field experiment", "employment": false, "commercial_production": false, "audition": false },
+    "ownership": "The contributor keeps their artifact. Sharing is optional and requires written approval and visible credit.",
+    "access": { "account_required": false, "wallet_required": false, "meeting_required": false, "resume_required": false, "previous_contribution_required": false },
+    "response_window_business_days": 5,
+    "claim_url": "mailto:mh@pointcast.xyz?subject=Claim%20Field%20Task%20002%20%E2%80%94%20The%20Enjoyable%20Hour"
+  },
+  "return_loop": ["enter", "offer", "rest", "return"]
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "name": "Industry Next Work Market",
   "canonical_url": "https://www.industrynext.xyz/market/",
-  "updated_at": "2026-07-31T23:59:00-07:00",
+  "updated_at": "2026-07-31T23:59:59-07:00",
   "summary": "A public board connecting jobs, first tasks, accountable organizations, and explicit token or credit reward terms.",
   "authentication": {
     "network": "mainnet",
@@ -36,7 +36,7 @@
   },
   "counts": {
     "open_jobs": 4,
-    "first_tasks": 5,
+    "first_tasks": 6,
     "organizations": 1,
     "reward_and_proof_rails": 3,
     "funded_credit_rails": 1,
@@ -221,6 +221,19 @@
       "timebox_minutes": 60,
       "reward": "Unpaid editorial field exercise; contributor retains rights and publication requires written approval.",
       "claim_url": "https://www.industrynext.xyz/issues/001/#field-task"
+    },
+    {
+      "id": "enjoyable-hour-001",
+      "kind": "task",
+      "status": "open",
+      "title": "Offer one enjoyable hour",
+      "organization_id": "industry-next",
+      "outcome": "Choose one contribution score, stop after sixty minutes, and leave only what was enjoyable to make.",
+      "acceptance": "One confirmed place, one completed Notice, Welcome, Connect, or Remix score, and an optional artifact share.",
+      "available_places": 8,
+      "timebox_minutes": 60,
+      "reward": "Unpaid voluntary editorial field experiment; contributor retains ownership and sharing is optional.",
+      "claim_url": "https://www.industrynext.xyz/issues/002/#enjoyable-hour"
     }
   ]
 }

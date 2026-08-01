@@ -84,6 +84,10 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/issue-002.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /api/made
   Cache-Control: no-store
 
