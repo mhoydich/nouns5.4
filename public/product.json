@@ -1,0 +1,146 @@
+{
+  "id": "industrynext.product-desk/v1",
+  "schema_version": 1,
+  "name": "Industry Next Product Desk",
+  "canonical_url": "https://www.industrynext.xyz/product/",
+  "updated_at": "2026-07-31T22:31:26-07:00",
+  "role": {
+    "name": "Product Manager",
+    "status": "active operating function",
+    "mission": "Turn signals into decisions and shipped proofs without taking the work away from its accountable leads.",
+    "owns": [
+      "outcomes, priorities, backlog, and cadence",
+      "decision briefs, evidence, and open questions",
+      "dependencies, blockers, handoffs, and receipts",
+      "stop, continue, and scale recommendations",
+      "a current public view of the work"
+    ],
+    "does_not_own": [
+      "creative, product, technical, or editorial judgment inside a lead's domain",
+      "money, equity, hiring, legal commitments, or external promises",
+      "authority implied by title rather than assigned by a lead or founder"
+    ]
+  },
+  "compensation": {
+    "cash_before_trigger_usd": 0,
+    "paid_engagement_triggers": [
+      "Industry Next closes a financing",
+      "Industry Next begins collecting revenue"
+    ],
+    "terms": "A trigger begins a compensation conversation. Scope, rate, equity, classification, and effective date require a separate written agreement.",
+    "retroactive_salary_promised": false,
+    "automatic_equity_promised": false,
+    "unpaid_candidate_labor_expected": false,
+    "notice": "This operating charter is not an employment offer."
+  },
+  "governance": {
+    "rule": "Own the system. Yield the work.",
+    "lead_authority": "The accountable lead owns the consequential call within their product, creative, technical, editorial, or client domain.",
+    "founder_authority": "The founder resolves portfolio priority, money, equity, hiring, legal and reputation questions, external commitments, and conflicts between leads.",
+    "yield_protocol": [
+      "ask the accountable lead for the call",
+      "record the decision and evidence without rewriting the lead's voice",
+      "re-plan scope, dependencies, and timing around the call",
+      "escalate only when money, legal risk, public safety, or two lead domains conflict",
+      "never use process, urgency, or consensus theater to overrule craft"
+    ]
+  },
+  "cadence": [
+    { "when": "Monday", "action": "Name one outcome, one lead, and one next decision for every active workstream." },
+    { "when": "Wednesday", "action": "Resolve blockers, expose drift, and return domain calls to the lead." },
+    { "when": "Friday", "action": "Record what changed, shipped, was learned, and stops." },
+    { "when": "Monthly", "action": "Continue, revise, archive, or promote each project using verified behavior." }
+  ],
+  "board": [
+    {
+      "id": "tone-bloom-first-100",
+      "name": "Tone Bloom",
+      "state": "now",
+      "outcome": "Reach the first 100 activated devices and learn when people genuinely return.",
+      "verified_state": "5 of 100 activated devices as of 2026-07-31; aggregate feedback capture live",
+      "lead_boundary": "Tone Bloom product lead owns the experience.",
+      "next_decision": "Read the 24-hour launch lift before choosing product improvement or wider distribution.",
+      "url": "https://tonebloom.xyz/"
+    },
+    {
+      "id": "industry-next-services",
+      "name": "Industry Next Services",
+      "state": "now",
+      "outcome": "Turn the five-week Starter Kit into one qualified, consequential conversation.",
+      "verified_state": "$50,000 fixed fee; five weeks; one shipped proof",
+      "lead_boundary": "Services lead owns fit, scope, price, and the client promise.",
+      "next_decision": "Keep outreach small, named, evidence-led, and qualification-first.",
+      "url": "https://www.industrynext.xyz/services/"
+    },
+    {
+      "id": "pointcast-publishing",
+      "name": "PointCast",
+      "state": "now",
+      "outcome": "Protect the daily public cadence while making releases easier to find, verify, and reuse.",
+      "verified_state": "human page, machine twin, and public receipt are the release contract",
+      "lead_boundary": "Editorial lead owns voice, thesis, and the final public call.",
+      "next_decision": "Surface dependencies without flattening the authored voice.",
+      "url": "https://pointcast.xyz/now"
+    },
+    {
+      "id": "playlist-editor-listener-growth",
+      "name": "Playlist Editor + Listener Growth Lead",
+      "state": "now",
+      "outcome": "Find the lead who can turn authored Spotify rooms into real, repeat listening.",
+      "verified_state": "Role 001 is open with an evidence-first application and an anti-manipulation boundary",
+      "lead_boundary": "The appointed music lead owns taste, sequence, artist trust, and the final edit.",
+      "next_decision": "Define the first 30-day proof and keep selection evidence-first.",
+      "url": "https://www.industrynext.xyz/roles/playlist-editor/"
+    },
+    {
+      "id": "halation-lead-request",
+      "name": "Halation",
+      "state": "watch",
+      "outcome": "Name a committed lead for the image diary, then let that person shape its next public proof.",
+      "verified_state": "Lead request is public; AI credits are offered as operating support",
+      "lead_boundary": "No PM expansion until a Halation lead accepts ownership.",
+      "next_decision": "Make the ownership request visible and prepare a clean handoff.",
+      "url": "https://halation-diary.mhoydich.chatgpt.site/"
+    },
+    {
+      "id": "rally-shared-presence",
+      "name": "Rally",
+      "state": "watch",
+      "outcome": "Prove one low-friction invitation that gives a few people a reason to arrive together.",
+      "verified_state": "lead and first shared moment not yet named",
+      "lead_boundary": "No build expands until an accountable lead accepts the call.",
+      "next_decision": "Name the lead and the first shared moment.",
+      "url": "https://pointcast.xyz/drum-room"
+    },
+    {
+      "id": "open-studio-002",
+      "name": "Open Studio 002",
+      "state": "next",
+      "outcome": "Decide whether the current brief earns another edition, a new owner, or a clean archive.",
+      "verified_state": "decision should use published responses and repeated participation, not page views alone",
+      "lead_boundary": "Studio lead owns the brief and its creative standard.",
+      "next_decision": "Bring a continue, revise, or close recommendation to the lead.",
+      "url": "https://www.industrynext.xyz/studio/002/"
+    },
+    {
+      "id": "industry-next-task-desk",
+      "name": "The Desk",
+      "state": "shipped",
+      "outcome": "Give accountable leads a device-local place to assign, move, check, and export their work.",
+      "verified_state": "Browser-local task workflow and export are live; optional Tezos Mainnet stamping requires wallet approval and publishes only a SHA-256 fingerprint",
+      "lead_boundary": "The task owner accepts the result; the wallet owner approves any Tezos action.",
+      "next_decision": "Use the tool where it reduces ambiguity without turning local activity into public status.",
+      "url": "https://www.industrynext.xyz/desk/"
+    },
+    {
+      "id": "industry-next-product-desk",
+      "name": "Product Desk",
+      "state": "shipped",
+      "outcome": "Install a visible role, board, decision protocol, compensation gate, and weekly rhythm.",
+      "verified_state": "public charter and machine-readable operating state",
+      "lead_boundary": "Each workstream keeps its own accountable lead.",
+      "next_decision": "Keep the board current and make stale status obvious.",
+      "url": "https://www.industrynext.xyz/product/"
+    }
+  ]
+}
