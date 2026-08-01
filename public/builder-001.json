@@ -1,0 +1,50 @@
+{
+  "schema": "industrynext.builder-brief/v1",
+  "id": "industrynext.builder-001.small-social-systems",
+  "status": "open",
+  "title": "Builder 001 — Small Social Systems",
+  "canonical_url": "https://www.industrynext.xyz/builders/001/",
+  "thesis": "The social graph is already full. Build the missing ritual.",
+  "position": "Small social systems give existing groups lightweight structure—roles, shared state, time, handoffs, consent, and memory—without turning the group into an audience.",
+  "relationship_to_tag": "TAG is one wedge: a social relay. Builder 001 may begin with TAG or choose an adjacent small-social-system white space.",
+  "edge_signals": [
+    {"name":"Apple iMessage apps","signal":"Games, media, and collaboration can live inside a conversation.","url":"https://developer.apple.com/imessage/"},
+    {"name":"Discord Activities","signal":"A channel or DM can become a shared multiplayer web application.","url":"https://docs.discord.com/developers/platform/activities"},
+    {"name":"Telegram Mini Apps","signal":"A web application can inherit chat context for cooperative and multiplayer use.","url":"https://core.telegram.org/bots/webapps"},
+    {"name":"Spotify Messages and Jam","signal":"A message can hand off into a synchronized shared music queue.","url":"https://newsroom.spotify.com/2026-01-07/listening-activity-request-to-jam-messages-updates/"},
+    {"name":"Locket","signal":"A bounded close-friend circle can create ambient presence and private recaps.","url":"https://apps.apple.com/us/app/locket-widget/id1600525061"},
+    {"name":"Partiful","signal":"An invitation can become a temporary social object with coordination, conversation, and shared memory.","url":"https://info.partiful.com/"}
+  ],
+  "inference": "Existing platforms prove individual surfaces. The underbuilt layer is a portable, group-owned ritual that can move across chat, web, place, media, and memory without rebuilding a social graph.",
+  "white_spaces": [
+    {"id":"ritual-layer","title":"Protocols, not destinations","test":"Can the group explain and restart the rules without the builder?"},
+    {"id":"group-state","title":"One live thing everyone can feel","test":"Does unfinished shared state pull someone back?"},
+    {"id":"elastic-presence","title":"Alive together, tolerant of absence","test":"Can a round survive a two-hour gap?"},
+    {"id":"afterlife","title":"The recap is the reward","test":"Does the group reshare what it made?"},
+    {"id":"rotating-roles","title":"Identity as a temporary job","test":"Do quieter people gain a clean entrance?"},
+    {"id":"portable-room","title":"One link across incompatible chats","test":"Does it work before account creation?"},
+    {"id":"local-first-safety","title":"Consent is a feature surface","test":"Can someone leave without social punishment?"},
+    {"id":"place-layer","title":"Let geography write the prompt","test":"Could this round happen only here?"},
+    {"id":"playable-publishing","title":"Release a behavior like an edition","test":"Is the pack recognizable as an author's voice?"},
+    {"id":"ai-backstage","title":"Producer, not synthetic friend","test":"Is the group—not the model—the main character?"}
+  ],
+  "ecosystem_layers": ["people","rotating roles","ritual","surface","memory","economy"],
+  "tangents": ["family and care","music","creative teams","events","campus and neighborhood","wearables and ambient hardware","civic relay","playable editions"],
+  "builder_role": {
+    "count": 1,
+    "duration_weeks": 4,
+    "first_proof_days": 7,
+    "mission": "Choose one underbuilt social behavior and make it playable with one real group.",
+    "final_deliverables": ["working mobile proof","three live group tests","field notes","source or forkable kit","public continue-revise-close decision"],
+    "support": ["AI model and tool credits","creative direction","initial testers","editorial launch"],
+    "terms": "AI credits are bounded operating support, not cash compensation. Cash costs, paid services, employment, contractor arrangements, ownership, and revenue share require a separate written agreement before work begins."
+  },
+  "boundaries": ["no new follower graph","no infinite feed","no behavioral ad profile","no silent relationship score","no mandatory wallet","no growth loop that punishes opting out"],
+  "apply": {
+    "email": "mh@pointcast.xyz",
+    "subject": "BUILDER 001",
+    "requested": ["one thing shipped","chosen white space and why","real group to start with","seven-day prototype","four-week availability"],
+    "privacy": "The application form stores drafts only in the applicant's browser and opens a prepared email. It uploads no application data."
+  },
+  "published_by": "Industry Next"
+}

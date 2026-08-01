@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Builder 001 — Small Social Systems</title>
+  <desc id="desc">A bright Industry Next field map cover with cards, arrows, and the phrase The social graph is already full. Build the missing ritual.</desc>
+  <rect width="1200" height="630" fill="#f4ff43"/>
+  <path d="M0 0h32v630H0z" fill="#ff563f" stroke="#111" stroke-width="4"/>
+  <g opacity=".1" stroke="#111"><path d="M32 55h1168M32 110h1168M32 165h1168M32 220h1168M32 275h1168M32 330h1168M32 385h1168M32 440h1168M32 495h1168M32 550h1168"/><path d="M87 0v630M142 0v630M197 0v630M252 0v630M307 0v630M362 0v630M417 0v630M472 0v630M527 0v630M582 0v630M637 0v630M692 0v630M747 0v630M802 0v630M857 0v630M912 0v630M967 0v630M1022 0v630M1077 0v630M1132 0v630"/></g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#111">
+    <text x="74" y="72" font-family="monospace" font-size="20" font-weight="700" letter-spacing="4">INDUSTRY NEXT / BUILDER 001 / OPEN</text>
+    <text x="70" y="220" font-size="130" font-weight="900" letter-spacing="-10">SMALL</text>
+    <text x="70" y="348" font-size="130" font-weight="900" letter-spacing="-10">SOCIAL</text>
+    <text x="70" y="478" font-size="130" font-weight="900" letter-spacing="-10" fill="#7258ff">SYSTEMS</text>
+    <text x="74" y="555" font-family="monospace" font-size="24" font-weight="700">THE SOCIAL GRAPH IS ALREADY FULL.</text>
+    <text x="74" y="590" font-family="monospace" font-size="24" font-weight="700">BUILD THE MISSING RITUAL.</text>
+  </g>
+  <g transform="translate(805 94) rotate(2)">
+    <rect x="18" y="20" width="315" height="390" fill="#111"/>
+    <rect x="9" y="10" width="315" height="390" fill="#59f4e8" stroke="#111" stroke-width="4"/>
+    <rect width="315" height="390" fill="#fffdf5" stroke="#111" stroke-width="4"/>
+    <rect x="150" y="-42" width="165" height="44" fill="#ff86c8" stroke="#111" stroke-width="4"/>
+    <text x="166" y="-15" font-family="monospace" font-size="15" font-weight="700">ONE BUILDER</text>
+    <text x="28" y="48" font-family="monospace" font-size="14" font-weight="700">ONE GROUP / SEVEN DAYS</text>
+    <path d="M28 70h258M28 142h258M28 214h258M28 286h258" stroke="#111" stroke-width="2"/>
+    <text x="28" y="112" font-family="Arial" font-size="30" font-weight="900">RITUAL</text>
+    <text x="28" y="184" font-family="Arial" font-size="30" font-weight="900">STATE</text>
+    <text x="28" y="256" font-family="Arial" font-size="30" font-weight="900">MEMORY</text>
+    <text x="28" y="328" font-family="Arial" font-size="30" font-weight="900">PLACE</text>
+    <circle cx="260" cy="346" r="34" fill="#f4ff43" stroke="#111" stroke-width="3"/>
+    <path d="M246 346h28m-10-10 10 10-10 10" fill="none" stroke="#111" stroke-width="4"/>
+  </g>
+</svg>

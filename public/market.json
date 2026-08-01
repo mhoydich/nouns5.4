@@ -3,7 +3,7 @@
   "schema_version": 1,
   "name": "Industry Next Work Market",
   "canonical_url": "https://www.industrynext.xyz/market/",
-  "updated_at": "2026-07-31T23:40:00-07:00",
+  "updated_at": "2026-07-31T23:55:00-07:00",
   "summary": "A public board connecting jobs, first tasks, accountable organizations, and explicit token or credit reward terms.",
   "market_rules": {
     "listing_is_agreement": false,
@@ -16,8 +16,8 @@
     "candidate_commercial_work_without_agreement": false
   },
   "counts": {
-    "open_jobs": 3,
-    "first_tasks": 3,
+    "open_jobs": 4,
+    "first_tasks": 4,
     "organizations": 1,
     "reward_and_proof_rails": 3,
     "funded_credit_rails": 1,
@@ -40,7 +40,7 @@
       "name": "AI Credits",
       "kind": "operating credit",
       "status": "active",
-      "active_on": ["halation-lead", "tag-open-build-lead"],
+      "active_on": ["halation-lead", "tag-open-build-lead", "small-social-systems-builder"],
       "quantity": null,
       "quantity_terms": "Set in a written kickoff before use.",
       "cash": false,
@@ -128,6 +128,25 @@
       "application_url": "https://www.industrynext.xyz/next/tag/#apply"
     },
     {
+      "id": "small-social-systems-builder",
+      "kind": "job",
+      "status": "open",
+      "title": "Small Social Systems Builder",
+      "organization_id": "industry-next",
+      "outcome": "Choose one underbuilt social behavior, make it playable with a real group, and publish the system for the next builder to fork.",
+      "first_task_id": "small-social-systems-first-ritual",
+      "duration_weeks": 4,
+      "reward": {
+        "rail_id": "ai-credits",
+        "status": "provided",
+        "amount": null,
+        "amount_terms": "AI credits are bounded operating support. Cash, ownership, paid services, employment, and contractor terms require a separate written agreement before work begins.",
+        "separate_employment_or_contractor_terms_required": true
+      },
+      "accepted_by": "Industry Next founder",
+      "application_url": "https://www.industrynext.xyz/builders/001/#apply"
+    },
+    {
       "id": "halation-first-30-days",
       "kind": "task",
       "status": "first mission",
@@ -158,6 +177,17 @@
       "parent_job_id": "tag-open-build-lead",
       "outcome": "Prototype the tag, dare, proof, pass, and recap loop as a mobile web room a group can choose to restart.",
       "acceptance": "A working handoff tested with the first real group.",
+      "reward": "Inside the provided AI-credit build budget."
+    },
+    {
+      "id": "small-social-systems-first-ritual",
+      "kind": "task",
+      "status": "first mission",
+      "title": "Ship one ritual with one real group",
+      "organization_id": "industry-next",
+      "parent_job_id": "small-social-systems-builder",
+      "outcome": "Choose the real group first, run one clickable or facilitated ritual, and leave a one-page field note about the handoff.",
+      "acceptance": "One group completes one live loop and can say whether it should restart.",
       "reward": "Inside the provided AI-credit build budget."
     }
   ]

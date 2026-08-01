@@ -17,6 +17,7 @@
     "verify:product-desk": "node ./scripts/verify-product-desk.mjs",
     "verify:tag-open-build": "node ./scripts/verify-tag-open-build.mjs",
     "verify:market": "node ./scripts/verify-market.mjs",
+    "verify:builder-001": "node ./scripts/verify-builder-001.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
