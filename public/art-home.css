@@ -402,8 +402,8 @@ img, canvas { display: block; max-width: 100%; }
 }
 .signal-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2.2vw, 34px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(42px, 5vw, 76px) clamp(18px, 2.2vw, 34px);
   align-items: start;
 }
 .signal-card {
@@ -453,6 +453,33 @@ img, canvas { display: block; max-width: 100%; }
   letter-spacing: .08em;
   text-align: center;
   transform: rotate(45deg);
+}
+.signal-card-halation {
+  --card-accent: var(--orange);
+  isolation: isolate;
+  margin-top: 28px;
+  transform: rotate(.8deg);
+  background:
+    radial-gradient(circle at 80% 18%, rgba(255,255,255,.88) 0 5%, rgba(255,244,193,.46) 6% 16%, transparent 30%),
+    linear-gradient(155deg, rgba(255,241,213,.86) 0 36%, rgba(255,184,128,.88) 59%, rgba(176,72,122,.8) 100%),
+    var(--paper);
+}
+.signal-card-halation::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 18px;
+  border: 1px solid rgba(17,17,17,.24);
+  background:
+    repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 18px) 0 0 / 100% 6px no-repeat,
+    repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 18px) 0 100% / 100% 6px no-repeat;
+  opacity: .28;
+  pointer-events: none;
+}
+.signal-card-halation > * { position: relative; z-index: 1; }
+.signal-card-halation h3 {
+  font-size: clamp(3.4rem, 5.4vw, 6.4rem);
+  letter-spacing: -.085em;
 }
 .signal-tab {
   position: absolute;
@@ -846,7 +873,7 @@ img, canvas { display: block; max-width: 100%; }
   .hero-footnote { bottom: 16px; }
   .manifesto-copy { width: 76%; }
   .signal-grid { grid-template-columns: 1fr 1fr; }
-  .signal-card-rally { grid-column: 1 / -1; width: min(70%, 620px); justify-self: center; }
+  .signal-card-rally { grid-column: auto; width: auto; justify-self: stretch; }
   .services-door { grid-template-columns: 1fr; }
   .services-starter-card { width: min(84%, 680px); justify-self: center; }
   .studio-brief-home { grid-template-columns:1fr; }
@@ -900,13 +927,15 @@ img, canvas { display: block; max-width: 100%; }
   .signal-grid { grid-template-columns: 1fr; gap: 62px; }
   .signal-card,
   .signal-card-pointcast,
-  .signal-card-rally {
+  .signal-card-rally,
+  .signal-card-halation {
     width: 100%;
     min-height: 510px;
     margin-top: 0;
     transform: none;
   }
   .signal-card h3 { font-size: 21vw; }
+  .signal-card-halation h3 { font-size: 18vw; }
   .signal-card-rally { grid-column: auto; }
   .services-door { min-height: 840px; padding-top: 72px; padding-bottom: 92px; }
   .services-door::before { bottom: -2vw; font-size: 34vw; }
