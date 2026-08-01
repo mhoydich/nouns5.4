@@ -62,7 +62,7 @@ assert.equal(data.enjoyable_hour.response_window_business_days, 5);
 assert.deepEqual(data.return_loop, ["enter", "offer", "rest", "return"]);
 
 assert.match(home, /href="\/issues\/002\/"/);
-assert.match(home, /EVERYONE HAS SOME TIME/);
+assert.match(home, /Everyone Has Some Time/);
 assert.match(market, /href="\/issues\/002\/#enjoyable-hour"/);
 assert.ok(marketData.opportunities.some((item) => item.id === "enjoyable-hour-001" && item.status === "open"));
 assert.match(headers, /\/issue-002\.json[\s\S]*Content-Type: application\/json/);
