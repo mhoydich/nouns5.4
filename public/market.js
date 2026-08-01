@@ -170,7 +170,7 @@ function updateBoard() {
       card.hidden = Boolean(query && !card.dataset.search.includes(query));
       if (!card.hidden) visible += 1;
     });
-    status.textContent = query ? `Showing ${visible} active opportunit${visible === 1 ? "y" : "ies"} matching \u201C${query}\u201D.` : "Showing 4 open roles and 1 bounded field task.";
+    status.textContent = query ? `Showing ${visible} active opportunit${visible === 1 ? "y" : "ies"} matching \u201C${query}\u201D.` : "Showing 4 open roles and 2 bounded field tasks.";
   } else {
     cards.forEach((card) => {
       const kindMatch = activeKind === "all" || card.dataset.kind === activeKind;

@@ -76,7 +76,7 @@ function updateBoard() {
     });
     status.textContent = query
       ? `Showing ${visible} active opportunit${visible === 1 ? "y" : "ies"} matching “${query}”.`
-      : "Showing 4 open roles and 1 bounded field task.";
+      : "Showing 4 open roles and 2 bounded field tasks.";
   } else {
     cards.forEach((card) => {
       const kindMatch = activeKind === "all" || card.dataset.kind === activeKind;

@@ -97,6 +97,7 @@ assert.match(script, /scrollIntoView/);
 assert.match(script, /data-market-id/);
 assert.match(script, /Opened.*full registry/);
 assert.match(script, /activeView/);
+assert.match(script, /Showing 4 open roles and 2 bounded field tasks\./);
 assert.match(script, /requestSignPayload/);
 assert.match(script, /sessionStorage/);
 assert.match(script, /verifyTezosSignature/);
