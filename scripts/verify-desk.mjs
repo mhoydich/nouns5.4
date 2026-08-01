@@ -3,10 +3,15 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import {
   TASK_STATUSES,
+  TASK_TEMPLATES,
   boardStats,
   buildStampEnvelope,
   createStarterTasks,
+  createTaskFromTemplate,
+  managerBrief,
   moveTask,
+  ownerLoad,
+  taskMarkdown,
   verifyReceipt,
 } from "../src/task-desk-core.js";
 
@@ -25,6 +30,13 @@ const tasks = createStarterTasks();
 assert.equal(tasks.length, 4);
 assert.equal(boardStats(tasks, []).total, 4);
 assert.equal(moveTask(tasks[0], 1).status, "doing");
+assert.equal(TASK_TEMPLATES.length, 4);
+const ritual = createTaskFromTemplate("ship-release", { assignee: "Lead" });
+assert.equal(ritual.assignee, "Lead");
+assert.equal(ritual.checklist.length, 5);
+assert.match(taskMarkdown(ritual), /## Checklist/);
+assert.equal(managerBrief([ritual]).unassigned.length, 0);
+assert.equal(ownerLoad([ritual])[0].owner, "Lead");
 
 const stamp = await buildStampEnvelope(tasks[0], "2026-07-31T12:00:00.000Z");
 assert.match(stamp.taskHash, /^[a-f0-9]{64}$/);
@@ -34,6 +46,8 @@ assert.equal((await verifyReceipt({ ...stamp })).valid, true);
 
 assert.match(html, /Private by default|PRIVATE BY DEFAULT/i);
 assert.match(html, /Stamp the receipt/i);
+assert.match(html, /Open a ritual/i);
+assert.match(html, /Copy handoff/i);
 assert.match(html, /0 ꜩ TRANSFER/);
 assert.match(html, /\/desk\.json/);
 assert.match(html, /\/desk\/og\.png/);
@@ -41,6 +55,8 @@ assert.match(css, /@media \(max-width: 580px\)/);
 assert.match(builtScript, /KT1AtaeG5PhuFyyivbfPZRUBkVMiqyxpo2cH/);
 assert.match(builtScript, /tezos-mainnet\.octez\.io/);
 assert.equal(deskContract.storage.tasks, "browser-local");
+assert.match(deskContract.schema, /v2$/);
+assert.ok(deskContract.capabilities.includes("start editable release, outreach, review, and receipt rituals"));
 assert.equal(deskContract.tezos_stamp.amount_tez, 0);
 assert.equal(deskContract.tezos_stamp.wallet_approval, true);
 assert.equal(deskContract.tezos_stamp.token_minted, false);

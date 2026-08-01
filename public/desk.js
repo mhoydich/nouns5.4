@@ -26,6 +26,15 @@ var cleanDate = (value) => {
   const next = clean(value, 10);
   return /^\d{4}-\d{2}-\d{2}$/.test(next) ? next : "";
 };
+var cleanTags = (value) => {
+  const values = Array.isArray(value) ? value : String(value ?? "").split(",");
+  return [...new Set(values.map((tag) => clean(tag, 24).toLowerCase()).filter(Boolean))].slice(0, 8);
+};
+var cleanChecklist = (value) => (Array.isArray(value) ? value : []).map((item, index) => ({
+  id: clean(item?.id, 80) || `check-${index}-${crypto.randomUUID()}`,
+  text: clean(typeof item === "string" ? item : item?.text, 180),
+  done: Boolean(typeof item === "object" && item?.done)
+})).filter((item) => item.text).slice(0, 20);
 function normalizeTask(task = {}) {
   const createdAt = Number.isFinite(Number(task.createdAt)) ? Number(task.createdAt) : Date.now();
   const updatedAt = Number.isFinite(Number(task.updatedAt)) ? Number(task.updatedAt) : createdAt;
@@ -42,14 +51,23 @@ function normalizeTask(task = {}) {
     effort: ["S", "M", "L"].includes(task.effort) ? task.effort : "M",
     notes: clean(task.notes, 4e3),
     acceptance: clean(task.acceptance, 1e3),
+    blockedReason: clean(task.blockedReason, 500),
+    tags: cleanTags(task.tags),
+    checklist: cleanChecklist(task.checklist),
     createdAt,
     updatedAt
   };
 }
+function dateKey(date = /* @__PURE__ */ new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
 function localDate(daysFromNow) {
   const date = /* @__PURE__ */ new Date();
   date.setDate(date.getDate() + daysFromNow);
-  return date.toISOString().slice(0, 10);
+  return dateKey(date);
 }
 function createStarterTasks() {
   const now = Date.now();
@@ -112,6 +130,101 @@ function createStarterTasks() {
     }
   ].map(normalizeTask);
 }
+var TASK_TEMPLATES = [
+  {
+    id: "ship-release",
+    label: "Ship a release",
+    title: "Ship and verify the next public release",
+    project: "Industry Next",
+    priority: "high",
+    effort: "M",
+    notes: "Keep the authored idea intact. Publish the exact intended surface, then verify the canonical route and its public proof.",
+    acceptance: "The canonical route, share image, machine twin, and primary interaction have each been checked.",
+    dueOffset: 2,
+    tags: ["release", "public-proof"],
+    checklist: [
+      "Confirm the accountable lead and final call",
+      "Build and test the intended surface",
+      "Publish the exact release",
+      "Verify the canonical route on phone and desktop",
+      "Leave a public receipt"
+    ]
+  },
+  {
+    id: "run-outreach",
+    label: "Run outreach",
+    title: "Send the next evidence-led outreach round",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "M",
+    notes: "Keep the list small, named, and relevant. Lead with the useful proof instead of a broad pitch.",
+    acceptance: "Every message has a clear recipient, one relevant proof, and a bounded next step.",
+    dueOffset: 3,
+    tags: ["outreach", "growth"],
+    checklist: [
+      "Name the audience and qualification rule",
+      "Choose the proof worth sending",
+      "Write the short note",
+      "Send the bounded round",
+      "Record replies and the next decision"
+    ]
+  },
+  {
+    id: "review-surface",
+    label: "Review a surface",
+    title: "Review the live surface as a visitor",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "S",
+    notes: "Approach it cold. Check whether the first touch, useful action, and return path make sense before reading instructions.",
+    acceptance: "The lead has a concise continue, repair, or close recommendation backed by direct checks.",
+    dueOffset: 1,
+    tags: ["review", "quality"],
+    checklist: [
+      "Open the canonical route cold",
+      "Check the primary action on a phone",
+      "Check the primary action on desktop",
+      "Test important links and assets",
+      "Write the recommendation"
+    ]
+  },
+  {
+    id: "leave-receipt",
+    label: "Leave a receipt",
+    title: "Leave a verifiable receipt for finished work",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "S",
+    notes: "Say what shipped, where it lives, who made the consequential call, and how another person can check it.",
+    acceptance: "A stranger can independently find and verify the result.",
+    dueOffset: 0,
+    tags: ["receipt", "public-proof"],
+    checklist: [
+      "Name the shipped object",
+      "Link the canonical location",
+      "Record the verification checks",
+      "Download or stamp the final receipt"
+    ]
+  }
+];
+function createTaskFromTemplate(templateId, overrides = {}) {
+  const template = TASK_TEMPLATES.find((item) => item.id === templateId);
+  if (!template) throw new Error("Unknown task ritual.");
+  const now = Date.now();
+  const due = /* @__PURE__ */ new Date();
+  due.setDate(due.getDate() + template.dueOffset);
+  return normalizeTask({
+    ...template,
+    id: crypto.randomUUID(),
+    assignee: "Unassigned",
+    status: "inbox",
+    due: dateKey(due),
+    checklist: template.checklist.map((text) => ({ id: crypto.randomUUID(), text, done: false })),
+    createdAt: now,
+    updatedAt: now,
+    ...overrides
+  });
+}
 function canonicalStringify(value) {
   if (Array.isArray(value)) {
     return `[${value.map(canonicalStringify).join(",")}]`;
@@ -123,7 +236,7 @@ function canonicalStringify(value) {
 }
 function taskSnapshot(task) {
   const normalized = normalizeTask(task);
-  return {
+  const snapshot = {
     acceptance: normalized.acceptance,
     assignee: normalized.assignee,
     createdAt: new Date(normalized.createdAt).toISOString(),
@@ -138,6 +251,12 @@ function taskSnapshot(task) {
     title: normalized.title,
     updatedAt: new Date(normalized.updatedAt).toISOString()
   };
+  if (normalized.blockedReason) snapshot.blockedReason = normalized.blockedReason;
+  if (normalized.tags.length) snapshot.tags = normalized.tags;
+  if (normalized.checklist.length) {
+    snapshot.checklist = normalized.checklist.map(({ text, done }) => ({ text, done }));
+  }
+  return snapshot;
 }
 async function sha256Hex(value) {
   const bytes = new TextEncoder().encode(typeof value === "string" ? value : canonicalStringify(value));
@@ -180,7 +299,7 @@ function sortTasks(tasks) {
   });
 }
 function boardStats(tasks, receipts = []) {
-  const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+  const today = dateKey();
   const stampedTaskIds = new Set(receipts.map((receipt) => receipt.taskId));
   return {
     total: tasks.length,
@@ -188,8 +307,54 @@ function boardStats(tasks, receipts = []) {
     doing: tasks.filter((task) => task.status === "doing").length,
     done: tasks.filter((task) => task.status === "done").length,
     overdue: tasks.filter((task) => task.status !== "done" && task.due && task.due < today).length,
+    dueToday: tasks.filter((task) => task.status !== "done" && task.due === today).length,
+    blocked: tasks.filter((task) => task.status !== "done" && task.blockedReason).length,
+    unassigned: tasks.filter((task) => task.status !== "done" && task.assignee.toLowerCase() === "unassigned").length,
     stamped: tasks.filter((task) => stampedTaskIds.has(task.id)).length
   };
+}
+function managerBrief(tasks, today = dateKey()) {
+  const active = sortTasks(tasks.filter((task) => task.status !== "done"));
+  const take = (predicate) => active.filter(predicate);
+  return {
+    due: take((task) => Boolean(task.due && task.due <= today)),
+    blocked: take((task) => Boolean(task.blockedReason)),
+    unassigned: take((task) => task.assignee.toLowerCase() === "unassigned"),
+    review: take((task) => task.status === "review")
+  };
+}
+function ownerLoad(tasks) {
+  const owners = /* @__PURE__ */ new Map();
+  for (const task of tasks.filter((item) => item.status !== "done")) {
+    const current = owners.get(task.assignee) || { owner: task.assignee, active: 0, doing: 0, review: 0 };
+    current.active += 1;
+    if (task.status === "doing") current.doing += 1;
+    if (task.status === "review") current.review += 1;
+    owners.set(task.assignee, current);
+  }
+  return [...owners.values()].sort((left, right) => right.active - left.active || left.owner.localeCompare(right.owner));
+}
+function taskMarkdown(task) {
+  const normalized = normalizeTask(task);
+  const lines = [
+    `# ${normalized.title}`,
+    "",
+    `- Project: ${normalized.project}`,
+    `- Owner: ${normalized.assignee}`,
+    `- Status: ${STATUS_LABELS[normalized.status]}`,
+    `- Priority: ${normalized.priority}`,
+    `- Due: ${normalized.due || "Not set"}`,
+    `- Effort: ${normalized.effort}`
+  ];
+  if (normalized.tags.length) lines.push(`- Tags: ${normalized.tags.map((tag) => `#${tag}`).join(" ")}`);
+  if (normalized.blockedReason) lines.push(`- Blocked by: ${normalized.blockedReason}`);
+  if (normalized.notes) lines.push("", "## Context", "", normalized.notes);
+  if (normalized.checklist.length) {
+    lines.push("", "## Checklist", "", ...normalized.checklist.map((item) => `- [${item.done ? "x" : " "}] ${item.text}`));
+  }
+  if (normalized.acceptance) lines.push("", "## Done looks like", "", normalized.acceptance);
+  lines.push("", `Desk ID: ${normalized.id}`, "");
+  return lines.join("\n");
 }
 function moveTask(task, direction) {
   const current = TASK_STATUSES.indexOf(task.status);
@@ -211,15 +376,20 @@ var elements = {
   board: document.querySelector("#task-board"),
   clearFilters: document.querySelector("#clear-filters"),
   confirmStamp: document.querySelector("#confirm-stamp-button"),
+  copyBrief: document.querySelector("#copy-brief-button"),
   deleteTask: document.querySelector("#delete-task-button"),
+  duplicateTask: document.querySelector("#duplicate-task-button"),
   emptyState: document.querySelector("#empty-filter-state"),
   exportBoard: document.querySelector("#export-board-button"),
   importBoard: document.querySelector("#import-board-input"),
+  managerBrief: document.querySelector("#manager-brief-grid"),
   newTask: document.querySelector("#new-task-button"),
+  ownerLoad: document.querySelector("#owner-load-list"),
   projectFilter: document.querySelector("#project-filter"),
   projectOptions: document.querySelector("#project-options"),
   quickAdd: document.querySelector("#quick-add-form"),
   receiptList: document.querySelector("#receipt-list"),
+  ritualList: document.querySelector("#ritual-list"),
   savedStatus: document.querySelector("#board-saved-status"),
   searchFilter: document.querySelector("#search-filter"),
   stampDialog: document.querySelector("#stamp-dialog"),
@@ -238,7 +408,7 @@ var elements = {
 var defaultState = () => ({
   tasks: createStarterTasks(),
   receipts: [],
-  version: 1
+  version: 2
 });
 function loadState() {
   try {
@@ -247,7 +417,7 @@ function loadState() {
     return {
       tasks: parsed.tasks.map(normalizeTask),
       receipts: parsed.receipts.filter((receipt) => receipt && typeof receipt === "object").slice(0, 100),
-      version: 1
+      version: 2
     };
   } catch {
     return defaultState();
@@ -282,7 +452,16 @@ function taskMatches(task, filters) {
   if (filters.project !== "all" && task.project !== filters.project) return false;
   if (filters.assignee !== "all" && task.assignee !== filters.assignee) return false;
   if (!filters.search) return true;
-  return [task.title, task.project, task.assignee, task.notes, task.acceptance].join(" ").toLowerCase().includes(filters.search);
+  return [
+    task.title,
+    task.project,
+    task.assignee,
+    task.notes,
+    task.acceptance,
+    task.blockedReason,
+    task.tags.join(" "),
+    task.checklist.map((item) => item.text).join(" ")
+  ].join(" ").toLowerCase().includes(filters.search);
 }
 function uniqueValues(key) {
   return [...new Set(state.tasks.map((task) => task[key]).filter(Boolean))].sort((left, right) => left.localeCompare(right));
@@ -312,10 +491,10 @@ function renderStats() {
   const data = [
     ["active", "Active", stats.active],
     ["doing", "Doing now", stats.doing],
-    ["done", "Finished", stats.done],
-    ["overdue", "Overdue", stats.overdue],
-    ["stamped", "Stamped", stats.stamped],
-    ["total", "All tasks", stats.total]
+    ["overdue", "Due now", stats.overdue + stats.dueToday],
+    ["blocked", "Blocked", stats.blocked],
+    ["unassigned", "Unassigned", stats.unassigned],
+    ["stamped", "Stamped", stats.stamped]
   ];
   elements.statGrid.replaceChildren(...data.map(([key, label, value]) => {
     const card = document.createElement("article");
@@ -329,9 +508,80 @@ function renderStats() {
     return card;
   }));
 }
+function renderManagerBrief() {
+  const brief = managerBrief(state.tasks);
+  const lanes = [
+    ["DO", brief.due, "Nothing due now."],
+    ["UNBLOCK", brief.blocked, "No blockers named."],
+    ["ASSIGN", brief.unassigned, "Every active task has an owner."],
+    ["CLOSE", brief.review, "Nothing waiting for a call."]
+  ];
+  elements.managerBrief.replaceChildren(...lanes.map(([label, tasks, emptyLabel]) => {
+    const lane = document.createElement("section");
+    lane.className = "brief-lane";
+    const header = document.createElement("header");
+    const title = document.createElement("h4");
+    title.textContent = label;
+    const count = document.createElement("span");
+    count.textContent = tasks.length;
+    header.append(title, count);
+    lane.append(header);
+    if (!tasks.length) {
+      const empty = document.createElement("p");
+      empty.className = "brief-empty";
+      empty.textContent = emptyLabel;
+      lane.append(empty);
+    } else {
+      lane.append(...tasks.slice(0, 4).map((task) => {
+        const button = document.createElement("button");
+        button.className = "brief-task";
+        button.type = "button";
+        button.textContent = task.title;
+        button.addEventListener("click", () => openTaskDialog(task));
+        return button;
+      }));
+    }
+    return lane;
+  }));
+  const loads = ownerLoad(state.tasks);
+  if (!loads.length) {
+    const empty = document.createElement("p");
+    empty.className = "owner-empty";
+    empty.textContent = "No active tasks yet.";
+    elements.ownerLoad.replaceChildren(empty);
+    return;
+  }
+  elements.ownerLoad.replaceChildren(...loads.map((load) => {
+    const row = document.createElement("div");
+    row.className = "owner-row";
+    row.dataset.owner = load.owner.toLowerCase();
+    const owner = document.createElement("strong");
+    owner.textContent = load.owner;
+    const detail = document.createElement("span");
+    detail.textContent = `${load.active} active \xB7 ${load.doing} doing \xB7 ${load.review} review`;
+    row.append(owner, detail);
+    return row;
+  }));
+}
+function renderRituals() {
+  elements.ritualList.replaceChildren(...TASK_TEMPLATES.map((template, index) => {
+    const button = document.createElement("button");
+    button.className = "ritual-button";
+    button.type = "button";
+    const number = document.createElement("span");
+    number.textContent = `RITUAL 0${index + 1}`;
+    button.append(number, document.createTextNode(template.label));
+    button.addEventListener("click", () => openTaskDialog(createTaskFromTemplate(template.id), { newTask: true }));
+    return button;
+  }));
+}
 function formatDue(value) {
   if (!value) return "No due date";
   return new Intl.DateTimeFormat(void 0, { month: "short", day: "numeric" }).format(/* @__PURE__ */ new Date(`${value}T12:00:00`));
+}
+function todayKey() {
+  const date = /* @__PURE__ */ new Date();
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 function latestReceipt(taskId) {
   return state.receipts.find((receipt) => receipt.taskId === taskId) || null;
@@ -344,19 +594,49 @@ function updateTask(nextTask, message = "Task saved locally.") {
 function createTaskCard(task) {
   const card = elements.taskTemplate.content.firstElementChild.cloneNode(true);
   const statusIndex = TASK_STATUSES.indexOf(task.status);
-  const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+  const today = todayKey();
   const receipt = latestReceipt(task.id);
   card.dataset.taskId = task.id;
   card.dataset.priority = task.priority;
   card.classList.toggle("is-stamped", Boolean(receipt));
+  card.classList.toggle("is-blocked", Boolean(task.blockedReason));
   card.querySelector(".task-project").textContent = task.project;
   card.querySelector("h3").textContent = task.title;
+  card.querySelector(".task-blocker").textContent = task.blockedReason ? `BLOCKED \xB7 ${task.blockedReason}` : "";
   card.querySelector(".task-notes").textContent = task.notes;
   card.querySelector(".task-owner").textContent = task.assignee;
   card.querySelector(".task-effort").textContent = `${task.effort} effort`;
   const due = card.querySelector(".task-due");
   due.textContent = formatDue(task.due);
   due.classList.toggle("is-overdue", Boolean(task.due && task.due < today && task.status !== "done"));
+  const tags = card.querySelector(".task-tags");
+  tags.append(...task.tags.map((tag) => {
+    const item = document.createElement("span");
+    item.textContent = `#${tag}`;
+    return item;
+  }));
+  const checklist = card.querySelector(".task-checklist");
+  const visibleChecks = task.checklist.slice(0, 5);
+  checklist.append(...visibleChecks.map((item) => {
+    const button = document.createElement("button");
+    button.className = "checklist-item";
+    button.classList.toggle("is-done", item.done);
+    button.type = "button";
+    button.textContent = item.text;
+    button.setAttribute("aria-pressed", String(item.done));
+    button.addEventListener("click", () => updateTask({
+      ...task,
+      checklist: task.checklist.map((check) => check.id === item.id ? { ...check, done: !check.done } : check),
+      updatedAt: Date.now()
+    }, item.done ? "Checklist item reopened." : "Checklist item finished."));
+    return button;
+  }));
+  if (task.checklist.length) {
+    const progress = document.createElement("p");
+    progress.className = "checklist-progress";
+    progress.textContent = `${task.checklist.filter((item) => item.done).length}/${task.checklist.length} checks${task.checklist.length > visibleChecks.length ? " \xB7 open task for all" : ""}`;
+    checklist.append(progress);
+  }
   card.querySelector(".task-check").textContent = task.acceptance ? `\u2713 ${task.acceptance}` : "";
   card.querySelector(".move-left").disabled = statusIndex === 0;
   card.querySelector(".move-right").disabled = statusIndex === TASK_STATUSES.length - 1;
@@ -431,6 +711,29 @@ function downloadJson(filename, value) {
   anchor.click();
   setTimeout(() => URL.revokeObjectURL(url), 1e3);
 }
+function downloadMarkdown(filename, value) {
+  const blob = new Blob([value], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1e3);
+}
+function taskFilename(task) {
+  const slug = task.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "task";
+  return `${slug}-handoff.md`;
+}
+async function copyTaskBrief(task) {
+  const markdown = taskMarkdown(task);
+  try {
+    await navigator.clipboard.writeText(markdown);
+    saveState("Task handoff copied as Markdown.");
+  } catch {
+    downloadMarkdown(taskFilename(task), markdown);
+    saveState("Clipboard unavailable. Markdown handoff downloaded.");
+  }
+}
 async function verifyLocalReceipt(receipt, output) {
   output.textContent = "Checking local hashes\u2026";
   const result = await verifyReceipt(receipt);
@@ -485,15 +788,23 @@ function renderReceipts() {
 function render() {
   renderFilterOptions();
   renderStats();
+  renderManagerBrief();
+  renderRituals();
   renderBoard();
   renderReceipts();
 }
-function openTaskDialog(task = null) {
+function checklistText(items = []) {
+  return items.map((item) => `${item.done ? "[x]" : "[ ]"} ${item.text}`).join("\n");
+}
+function openTaskDialog(task = null, options = {}) {
   elements.taskForm.reset();
   const form = elements.taskForm.elements;
-  elements.taskDialogTitle.textContent = task ? "Edit task" : "New task";
-  elements.deleteTask.hidden = !task;
-  form.id.value = task?.id || "";
+  const isNew = !task || options.newTask;
+  elements.taskDialogTitle.textContent = options.newTask ? "New ritual" : task ? "Edit task" : "New task";
+  elements.deleteTask.hidden = isNew;
+  elements.duplicateTask.hidden = isNew;
+  elements.copyBrief.hidden = isNew;
+  form.id.value = isNew ? "" : task.id;
   form.title.value = task?.title || "";
   form.project.value = task?.project || "Industry Next";
   form.assignee.value = task?.assignee || "Mike";
@@ -501,10 +812,25 @@ function openTaskDialog(task = null) {
   form.priority.value = task?.priority || "normal";
   form.due.value = task?.due || "";
   form.effort.value = task?.effort || "M";
+  form.blockedReason.value = task?.blockedReason || "";
+  form.tags.value = task?.tags?.join(", ") || "";
   form.notes.value = task?.notes || "";
+  form.checklist.value = checklistText(task?.checklist);
   form.acceptance.value = task?.acceptance || "";
   elements.taskDialog.showModal();
   requestAnimationFrame(() => form.title.focus());
+}
+function parseChecklist(value, previousItems = []) {
+  return String(value ?? "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean).slice(0, 20).map((line) => {
+    const match = line.match(/^\[(x| )\]\s*(.+)$/i);
+    const text = (match?.[2] || line).trim().slice(0, 180);
+    const previous = previousItems.find((item) => item.text === text);
+    return {
+      id: previous?.id || crypto.randomUUID(),
+      text,
+      done: match ? match[1].toLowerCase() === "x" : Boolean(previous?.done)
+    };
+  });
 }
 function taskFromForm() {
   const data = new FormData(elements.taskForm);
@@ -519,7 +845,10 @@ function taskFromForm() {
     priority: data.get("priority"),
     due: data.get("due"),
     effort: data.get("effort"),
+    blockedReason: data.get("blockedReason"),
+    tags: data.get("tags"),
     notes: data.get("notes"),
+    checklist: parseChecklist(data.get("checklist"), previous?.checklist),
     acceptance: data.get("acceptance"),
     createdAt: previous?.createdAt || Date.now(),
     updatedAt: Date.now()
@@ -674,8 +1003,8 @@ async function confirmStamp() {
   }
 }
 function exportBoard() {
-  downloadJson(`industrynext-desk-${(/* @__PURE__ */ new Date()).toISOString().slice(0, 10)}.json`, {
-    schema: "industrynext.task-board/v1",
+  downloadJson(`industrynext-desk-${todayKey()}.json`, {
+    schema: "industrynext.task-board/v2",
     generatedAt: (/* @__PURE__ */ new Date()).toISOString(),
     tasks: state.tasks,
     receipts: state.receipts
@@ -689,7 +1018,7 @@ async function importBoard(file) {
     const nextTasks = parsed.tasks.map(normalizeTask).slice(0, 500);
     const nextReceipts = Array.isArray(parsed.receipts) ? parsed.receipts.slice(0, 100) : [];
     if (!confirm(`Replace this device's ${state.tasks.length} tasks with ${nextTasks.length} imported tasks?`)) return;
-    state = { tasks: nextTasks, receipts: nextReceipts, version: 1 };
+    state = { tasks: nextTasks, receipts: nextReceipts, version: 2 };
     saveState("Imported board saved locally.");
     render();
   } catch (error) {
@@ -705,6 +1034,31 @@ elements.taskForm.addEventListener("submit", (event) => {
   const exists = state.tasks.some((item) => item.id === task.id);
   state.tasks = exists ? state.tasks.map((item) => item.id === task.id ? task : item) : [task, ...state.tasks];
   saveState(exists ? "Task updated locally." : "Task added to the inbox.");
+  elements.taskDialog.close();
+  render();
+});
+elements.copyBrief.addEventListener("click", () => {
+  const id = String(elements.taskForm.elements.id.value || "");
+  const task = state.tasks.find((item) => item.id === id);
+  if (task) copyTaskBrief(task);
+});
+elements.duplicateTask.addEventListener("click", () => {
+  const id = String(elements.taskForm.elements.id.value || "");
+  const task = state.tasks.find((item) => item.id === id);
+  if (!task) return;
+  const now = Date.now();
+  const duplicate = normalizeTask({
+    ...task,
+    id: crypto.randomUUID(),
+    title: `${task.title} / copy`,
+    status: "inbox",
+    blockedReason: "",
+    checklist: task.checklist.map((item) => ({ id: crypto.randomUUID(), text: item.text, done: false })),
+    createdAt: now,
+    updatedAt: now
+  });
+  state.tasks.unshift(duplicate);
+  saveState("Task duplicated into the inbox.");
   elements.taskDialog.close();
   render();
 });

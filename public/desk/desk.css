@@ -272,7 +272,46 @@ a { color: inherit; }
 .stat-card span { font: 500 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .stat-card strong { font-size: clamp(2.2rem, 4vw, 4.4rem); letter-spacing: -.08em; line-height: .8; }
 .stat-card[data-stat="overdue"] { background: var(--pink); }
+.stat-card[data-stat="blocked"] { color: #fff; background: var(--red); }
+.stat-card[data-stat="unassigned"] { background: var(--orange); }
 .stat-card[data-stat="stamped"] { background: var(--cyan); }
+
+.manager-brief {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, .45fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+.brief-panel,
+.owner-load { border: var(--line); background: #fff; }
+.brief-head,
+.owner-load-head { padding: 22px; border-bottom: var(--line); }
+.brief-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+.brief-head h3,
+.owner-load h3,
+.rituals h3 { margin: 8px 0 0; font-size: clamp(1.6rem, 3vw, 3rem); line-height: .9; letter-spacing: -.065em; }
+.brief-head > p { max-width: 220px; margin: 0; color: var(--muted); font: 400 .63rem/1.45 var(--mono); }
+.brief-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.brief-lane { min-height: 230px; padding: 17px; border-right: 1px solid var(--ink); }
+.brief-lane:last-child { border-right: 0; }
+.brief-lane:nth-child(1) { background: #fff5db; }
+.brief-lane:nth-child(2) { background: #ffe6ed; }
+.brief-lane:nth-child(3) { background: #dff8ff; }
+.brief-lane:nth-child(4) { background: #e8ffe9; }
+.brief-lane header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
+.brief-lane h4 { margin: 0; font: 500 .66rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.brief-lane header span { min-width: 25px; min-height: 25px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 50%; background: #fff; font: 500 .58rem/1 var(--mono); }
+.brief-task { width: 100%; padding: 9px 0; border: 0; border-top: 1px solid rgba(17,17,17,.32); color: var(--ink); background: transparent; font-size: .72rem; font-weight: 750; line-height: 1.2; letter-spacing: -.02em; text-align: left; }
+.brief-task:hover,
+.brief-task:focus-visible { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.brief-empty { margin: 0; color: var(--muted); font: 400 .62rem/1.45 var(--mono); }
+.owner-load-list { display: grid; }
+.owner-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 15px 18px; border-bottom: 1px solid var(--ink); }
+.owner-row:last-child { border-bottom: 0; }
+.owner-row strong { overflow: hidden; font-size: .82rem; text-overflow: ellipsis; white-space: nowrap; }
+.owner-row span { font: 500 .6rem/1.3 var(--mono); text-align: right; }
+.owner-row[data-owner="unassigned"] { background: var(--orange); }
+.owner-empty { margin: 0; padding: 22px; color: var(--muted); font: 400 .65rem/1.5 var(--mono); }
 
 .stamp-room {
   display: grid;
@@ -350,6 +389,24 @@ a { color: inherit; }
 .quick-add select { padding: 9px 11px; }
 .quick-add .button { min-height: 42px; box-shadow: none; }
 
+.rituals {
+  display: grid;
+  grid-template-columns: minmax(250px, .55fr) minmax(0, 1.45fr);
+  gap: 18px;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: var(--line);
+  background: var(--paper);
+  box-shadow: 7px 7px 0 var(--blue);
+}
+.rituals-copy p:last-child { max-width: 330px; margin: 13px 0 0; color: var(--muted); font: 400 .63rem/1.5 var(--mono); }
+.ritual-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--ink); }
+.ritual-button { min-height: 105px; display: grid; align-content: space-between; gap: 12px; padding: 14px; border: 0; border-right: 1px solid var(--ink); color: var(--ink); background: #fff; font-size: .87rem; font-weight: 800; line-height: 1.1; letter-spacing: -.025em; text-align: left; }
+.ritual-button:last-child { border-right: 0; }
+.ritual-button span { font: 500 .55rem/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.ritual-button:hover,
+.ritual-button:focus-visible { color: #fff; background: var(--ink); }
+
 .board {
   display: grid;
   grid-template-columns: repeat(5, minmax(230px, 1fr));
@@ -392,14 +449,27 @@ a { color: inherit; }
 .task-card[data-priority="urgent"] .priority-mark { background: var(--red); }
 .task-card[data-priority="high"] .priority-mark { background: var(--orange); }
 .task-card[data-priority="low"] .priority-mark { background: var(--cyan); }
+.task-card.is-blocked { box-shadow: 5px 5px 0 var(--red); }
 .task-project { overflow: hidden; font: 500 .57rem/1 var(--mono); letter-spacing: .04em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .edit-task { padding: 0 2px; border: 0; background: transparent; font: 700 .76rem/1 var(--mono); }
 .task-card h3 { margin: 0; font-size: 1rem; line-height: 1.18; letter-spacing: -.035em; }
 .task-notes { display: -webkit-box; overflow: hidden; margin: 0; color: var(--muted); font: 400 .65rem/1.45 var(--mono); -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .task-notes:empty { display: none; }
+.task-blocker { display: none; padding: 8px; color: #fff; background: var(--red); font: 500 .58rem/1.4 var(--mono); }
+.task-blocker:not(:empty) { display: block; }
 .task-meta { display: flex; flex-wrap: wrap; gap: 5px; }
 .task-meta span { padding: 5px 6px; border: 1px solid rgba(17,17,17,.32); background: #f6f1e8; font: 500 .54rem/1 var(--mono); text-transform: uppercase; }
 .task-due.is-overdue { color: #fff; background: var(--red); }
+.task-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.task-tags:empty { display: none; }
+.task-tags span { padding: 3px 5px; color: #fff; background: var(--blue); font: 500 .51rem/1 var(--mono); }
+.task-checklist { display: grid; gap: 4px; }
+.task-checklist:empty { display: none; }
+.checklist-item { display: grid; grid-template-columns: 19px 1fr; align-items: start; gap: 6px; padding: 0; border: 0; color: var(--ink); background: transparent; font: 400 .58rem/1.35 var(--mono); text-align: left; }
+.checklist-item::before { content: ""; width: 15px; height: 15px; display: block; border: 1px solid var(--ink); background: #fff; }
+.checklist-item.is-done { color: var(--muted); text-decoration: line-through; }
+.checklist-item.is-done::before { content: "✓"; display: grid; place-items: center; color: #fff; background: var(--green); font-size: .62rem; text-decoration: none; }
+.checklist-progress { margin: 2px 0 0; color: var(--muted); font: 500 .52rem/1 var(--mono); }
 .task-check { display: none; padding: 8px; border-left: 3px solid var(--green); background: #e4faee; font: 400 .59rem/1.4 var(--mono); }
 .task-check:not(:empty) { display: block; }
 .task-card-actions { display: grid; grid-template-columns: 32px 1fr 32px; gap: 7px; }
@@ -484,6 +554,11 @@ a { color: inherit; }
   .quick-add { grid-template-columns: auto 1fr 130px auto; }
   .quick-add input[name="assignee"] { display: none; }
   .receipt-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .manager-brief { grid-template-columns: 1fr; }
+  .brief-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brief-lane:nth-child(2) { border-right: 0; }
+  .brief-lane:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+  .rituals { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 820px) {
@@ -503,6 +578,9 @@ a { color: inherit; }
   .filters input { width: 100%; }
   .quick-add { grid-template-columns: 1fr 130px auto; }
   .quick-add > label { grid-column: 1 / -1; padding: 3px 0; }
+  .ritual-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ritual-button:nth-child(2) { border-right: 0; }
+  .ritual-button:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
 }
 
 @media (max-width: 580px) {
@@ -534,6 +612,13 @@ a { color: inherit; }
   .dialog-actions { flex-wrap: wrap; }
   .dialog-actions > span { display: none; }
   .dialog-actions .danger-button { margin-right: auto; }
+  .brief-head { align-items: start; flex-direction: column; }
+  .brief-grid { grid-template-columns: 1fr; }
+  .brief-lane:nth-child(n) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--ink); }
+  .brief-lane:last-child { border-bottom: 0; }
+  .ritual-list { grid-template-columns: 1fr; }
+  .ritual-button:nth-child(n) { min-height: 75px; border-right: 0; border-bottom: 1px solid var(--ink); }
+  .ritual-button:last-child { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

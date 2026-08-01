@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Assign the work, move it through the room, and stamp a private task snapshot on Tezos Mainnet." />
+    <meta name="description" content="Assign the work, run repeatable rituals, carry a clean handoff, and stamp a private task snapshot on Tezos Mainnet." />
     <meta name="theme-color" content="#eeff41" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Industry Next" />
@@ -23,7 +23,7 @@
     <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>The Desk | Industry Next</title>
-    <link rel="stylesheet" href="/desk/desk.css?v=20260731a" />
+    <link rel="stylesheet" href="/desk/desk.css?v=20260801a" />
   </head>
   <body>
     <a class="skip-link" href="#desk-main">Skip to the task board</a>
@@ -78,6 +78,19 @@
           <p id="board-saved-status" class="save-status" role="status">Saved on this device.</p>
         </div>
         <div class="stat-grid" id="stat-grid" aria-label="Task totals"></div>
+        <div class="manager-brief">
+          <div class="brief-panel">
+            <div class="brief-head">
+              <div><p class="section-index">TODAY / FOUR QUESTIONS</p><h3>Do. Unblock. Assign. Close.</h3></div>
+              <p>Open a task directly from the brief.</p>
+            </div>
+            <div class="brief-grid" id="manager-brief-grid"></div>
+          </div>
+          <aside class="owner-load" aria-labelledby="owner-load-title">
+            <div class="owner-load-head"><p class="section-index">OWNER LOAD</p><h3 id="owner-load-title">Who is carrying what?</h3></div>
+            <div class="owner-load-list" id="owner-load-list"></div>
+          </aside>
+        </div>
       </section>
 
       <section class="stamp-room" aria-labelledby="stamp-room-title">
@@ -118,6 +131,15 @@
             <button class="filter-clear" id="clear-filters" type="button">Clear</button>
           </div>
         </div>
+
+        <section class="rituals" aria-labelledby="rituals-title">
+          <div class="rituals-copy">
+            <p class="section-index">REPEATABLE WORK / START WITH A PATTERN</p>
+            <h3 id="rituals-title">Open a ritual.</h3>
+            <p>Each one starts as a private, editable task with a working checklist.</p>
+          </div>
+          <div class="ritual-list" id="ritual-list"></div>
+        </section>
 
         <form id="quick-add-form" class="quick-add">
           <label for="quick-title">Catch the next thing</label>
@@ -174,10 +196,15 @@
             <select name="effort"><option value="S">Small</option><option value="M">Medium</option><option value="L">Large</option></select>
           </label>
         </div>
+        <label class="field field-wide">Blocked by <input name="blockedReason" maxlength="500" placeholder="Leave blank when the task can move." /></label>
+        <label class="field field-wide">Tags <input name="tags" maxlength="220" placeholder="release, review, public-proof" /></label>
         <label class="field field-wide">Notes <textarea name="notes" rows="5" maxlength="4000" placeholder="Context, links, dependencies, the useful detail…"></textarea></label>
+        <label class="field field-wide">Checklist <textarea name="checklist" rows="6" maxlength="4000" placeholder="One line per check. Use [x] for finished items."></textarea></label>
         <label class="field field-wide">Done looks like <textarea name="acceptance" rows="3" maxlength="1000" placeholder="The observable check that closes the task."></textarea></label>
         <div class="dialog-actions">
           <button id="delete-task-button" class="danger-button" type="button" hidden>Delete task</button>
+          <button id="duplicate-task-button" class="text-button" type="button" hidden>Duplicate</button>
+          <button id="copy-brief-button" class="text-button" type="button" hidden>Copy handoff</button>
           <span></span>
           <button class="text-button" value="cancel">Cancel</button>
           <button class="button button-dark" id="save-task-button" type="submit">Save task</button>
@@ -196,7 +223,7 @@
           <strong>WHAT BECOMES PUBLIC</strong>
           <p>One SHA-256 fingerprint, your wallet address, the contract address, the operation time, and the network fee.</p>
           <strong>WHAT STAYS LOCAL</strong>
-          <p>The task title, notes, owner, dates, and acceptance check. Keep the downloaded receipt to verify them later.</p>
+          <p>The task title, notes, owner, dates, blockers, tags, checklist, and acceptance check. Keep the downloaded receipt to verify them later.</p>
         </div>
         <p id="stamp-dialog-status" class="dialog-status" role="status"></p>
         <div class="dialog-actions">
@@ -213,8 +240,11 @@
       <article class="task-card" draggable="true">
         <div class="task-card-top"><span class="priority-mark"></span><span class="task-project"></span><button class="edit-task" type="button" aria-label="Edit task">•••</button></div>
         <h3></h3>
+        <div class="task-blocker"></div>
         <p class="task-notes"></p>
         <div class="task-meta"><span class="task-owner"></span><span class="task-due"></span><span class="task-effort"></span></div>
+        <div class="task-tags"></div>
+        <div class="task-checklist"></div>
         <div class="task-check"></div>
         <div class="task-card-actions">
           <button class="move-left" type="button" aria-label="Move task left">←</button>
@@ -231,7 +261,7 @@
   <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="small internet institutions tone bloom pointcast rally nouns cc0 art culture community" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
     </footer>
 
-    <script type="module" src="/desk.js?v=20260731a"></script>
+    <script type="module" src="/desk.js?v=20260801a"></script>
   <script async src="https://pointcast.xyz/open-ad-network.js"></script>
   </body>
 </html>

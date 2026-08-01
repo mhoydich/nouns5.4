@@ -1,8 +1,8 @@
 {
-  "schema": "industrynext.product/v1",
+  "schema": "industrynext.product/v2",
   "name": "The Desk",
   "url": "https://www.industrynext.xyz/desk/",
-  "description": "A device-local task assigner and manager with wallet-approved Tezos Mainnet proof stamps.",
+  "description": "A device-local task assigner, manager, ritual runner, and portable handoff desk with wallet-approved Tezos Mainnet proof stamps.",
   "storage": {
     "tasks": "browser-local",
     "receipts": "browser-local and downloadable",
@@ -12,7 +12,12 @@
   "workflow": ["inbox", "next", "doing", "review", "done"],
   "capabilities": [
     "create and edit tasks",
-    "assign owner, project, status, priority, due date, effort, notes, and acceptance check",
+    "assign owner, project, status, priority, due date, effort, blockers, tags, notes, checklist, and acceptance check",
+    "surface due, blocked, unassigned, and review work in a manager brief",
+    "show active load by owner",
+    "start editable release, outreach, review, and receipt rituals",
+    "toggle task checklists directly from the board",
+    "duplicate tasks and copy or download a Markdown handoff",
     "move tasks by buttons or drag and drop",
     "filter by text, project, and owner",
     "export and import the local board",
@@ -30,6 +35,6 @@
     "network_fee": true,
     "token_minted": false,
     "public_data": ["SHA-256 fingerprint", "wallet address", "operation metadata"],
-    "private_data": ["task title", "notes", "assignee", "dates", "acceptance check"]
+    "private_data": ["task title", "notes", "assignee", "dates", "blockers", "tags", "checklist", "acceptance check"]
   }
 }

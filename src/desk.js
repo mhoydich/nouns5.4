@@ -1,13 +1,18 @@
 import {
   STATUS_LABELS,
+  TASK_TEMPLATES,
   TASK_STATUSES,
   boardStats,
   buildStampEnvelope,
   createStarterTasks,
+  createTaskFromTemplate,
+  managerBrief,
   moveTask,
   normalizeTask,
+  ownerLoad,
   sha256Hex,
   sortTasks,
+  taskMarkdown,
   taskSnapshot,
   verifyReceipt,
 } from "./task-desk-core.js";
@@ -26,15 +31,20 @@ const elements = {
   board: document.querySelector("#task-board"),
   clearFilters: document.querySelector("#clear-filters"),
   confirmStamp: document.querySelector("#confirm-stamp-button"),
+  copyBrief: document.querySelector("#copy-brief-button"),
   deleteTask: document.querySelector("#delete-task-button"),
+  duplicateTask: document.querySelector("#duplicate-task-button"),
   emptyState: document.querySelector("#empty-filter-state"),
   exportBoard: document.querySelector("#export-board-button"),
   importBoard: document.querySelector("#import-board-input"),
+  managerBrief: document.querySelector("#manager-brief-grid"),
   newTask: document.querySelector("#new-task-button"),
+  ownerLoad: document.querySelector("#owner-load-list"),
   projectFilter: document.querySelector("#project-filter"),
   projectOptions: document.querySelector("#project-options"),
   quickAdd: document.querySelector("#quick-add-form"),
   receiptList: document.querySelector("#receipt-list"),
+  ritualList: document.querySelector("#ritual-list"),
   savedStatus: document.querySelector("#board-saved-status"),
   searchFilter: document.querySelector("#search-filter"),
   stampDialog: document.querySelector("#stamp-dialog"),
@@ -54,7 +64,7 @@ const elements = {
 const defaultState = () => ({
   tasks: createStarterTasks(),
   receipts: [],
-  version: 1,
+  version: 2,
 });
 
 function loadState() {
@@ -64,7 +74,7 @@ function loadState() {
     return {
       tasks: parsed.tasks.map(normalizeTask),
       receipts: parsed.receipts.filter((receipt) => receipt && typeof receipt === "object").slice(0, 100),
-      version: 1,
+      version: 2,
     };
   } catch {
     return defaultState();
@@ -107,7 +117,16 @@ function taskMatches(task, filters) {
   if (filters.project !== "all" && task.project !== filters.project) return false;
   if (filters.assignee !== "all" && task.assignee !== filters.assignee) return false;
   if (!filters.search) return true;
-  return [task.title, task.project, task.assignee, task.notes, task.acceptance]
+  return [
+    task.title,
+    task.project,
+    task.assignee,
+    task.notes,
+    task.acceptance,
+    task.blockedReason,
+    task.tags.join(" "),
+    task.checklist.map((item) => item.text).join(" "),
+  ]
     .join(" ")
     .toLowerCase()
     .includes(filters.search);
@@ -146,10 +165,10 @@ function renderStats() {
   const data = [
     ["active", "Active", stats.active],
     ["doing", "Doing now", stats.doing],
-    ["done", "Finished", stats.done],
-    ["overdue", "Overdue", stats.overdue],
+    ["overdue", "Due now", stats.overdue + stats.dueToday],
+    ["blocked", "Blocked", stats.blocked],
+    ["unassigned", "Unassigned", stats.unassigned],
     ["stamped", "Stamped", stats.stamped],
-    ["total", "All tasks", stats.total],
   ];
   elements.statGrid.replaceChildren(...data.map(([key, label, value]) => {
     const card = document.createElement("article");
@@ -164,10 +183,85 @@ function renderStats() {
   }));
 }
 
+function renderManagerBrief() {
+  const brief = managerBrief(state.tasks);
+  const lanes = [
+    ["DO", brief.due, "Nothing due now."],
+    ["UNBLOCK", brief.blocked, "No blockers named."],
+    ["ASSIGN", brief.unassigned, "Every active task has an owner."],
+    ["CLOSE", brief.review, "Nothing waiting for a call."],
+  ];
+  elements.managerBrief.replaceChildren(...lanes.map(([label, tasks, emptyLabel]) => {
+    const lane = document.createElement("section");
+    lane.className = "brief-lane";
+    const header = document.createElement("header");
+    const title = document.createElement("h4");
+    title.textContent = label;
+    const count = document.createElement("span");
+    count.textContent = tasks.length;
+    header.append(title, count);
+    lane.append(header);
+    if (!tasks.length) {
+      const empty = document.createElement("p");
+      empty.className = "brief-empty";
+      empty.textContent = emptyLabel;
+      lane.append(empty);
+    } else {
+      lane.append(...tasks.slice(0, 4).map((task) => {
+        const button = document.createElement("button");
+        button.className = "brief-task";
+        button.type = "button";
+        button.textContent = task.title;
+        button.addEventListener("click", () => openTaskDialog(task));
+        return button;
+      }));
+    }
+    return lane;
+  }));
+
+  const loads = ownerLoad(state.tasks);
+  if (!loads.length) {
+    const empty = document.createElement("p");
+    empty.className = "owner-empty";
+    empty.textContent = "No active tasks yet.";
+    elements.ownerLoad.replaceChildren(empty);
+    return;
+  }
+  elements.ownerLoad.replaceChildren(...loads.map((load) => {
+    const row = document.createElement("div");
+    row.className = "owner-row";
+    row.dataset.owner = load.owner.toLowerCase();
+    const owner = document.createElement("strong");
+    owner.textContent = load.owner;
+    const detail = document.createElement("span");
+    detail.textContent = `${load.active} active · ${load.doing} doing · ${load.review} review`;
+    row.append(owner, detail);
+    return row;
+  }));
+}
+
+function renderRituals() {
+  elements.ritualList.replaceChildren(...TASK_TEMPLATES.map((template, index) => {
+    const button = document.createElement("button");
+    button.className = "ritual-button";
+    button.type = "button";
+    const number = document.createElement("span");
+    number.textContent = `RITUAL 0${index + 1}`;
+    button.append(number, document.createTextNode(template.label));
+    button.addEventListener("click", () => openTaskDialog(createTaskFromTemplate(template.id), { newTask: true }));
+    return button;
+  }));
+}
+
 function formatDue(value) {
   if (!value) return "No due date";
   return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" })
     .format(new Date(`${value}T12:00:00`));
+}
+
+function todayKey() {
+  const date = new Date();
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
 function latestReceipt(taskId) {
@@ -183,19 +277,49 @@ function updateTask(nextTask, message = "Task saved locally.") {
 function createTaskCard(task) {
   const card = elements.taskTemplate.content.firstElementChild.cloneNode(true);
   const statusIndex = TASK_STATUSES.indexOf(task.status);
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKey();
   const receipt = latestReceipt(task.id);
   card.dataset.taskId = task.id;
   card.dataset.priority = task.priority;
   card.classList.toggle("is-stamped", Boolean(receipt));
+  card.classList.toggle("is-blocked", Boolean(task.blockedReason));
   card.querySelector(".task-project").textContent = task.project;
   card.querySelector("h3").textContent = task.title;
+  card.querySelector(".task-blocker").textContent = task.blockedReason ? `BLOCKED · ${task.blockedReason}` : "";
   card.querySelector(".task-notes").textContent = task.notes;
   card.querySelector(".task-owner").textContent = task.assignee;
   card.querySelector(".task-effort").textContent = `${task.effort} effort`;
   const due = card.querySelector(".task-due");
   due.textContent = formatDue(task.due);
   due.classList.toggle("is-overdue", Boolean(task.due && task.due < today && task.status !== "done"));
+  const tags = card.querySelector(".task-tags");
+  tags.append(...task.tags.map((tag) => {
+    const item = document.createElement("span");
+    item.textContent = `#${tag}`;
+    return item;
+  }));
+  const checklist = card.querySelector(".task-checklist");
+  const visibleChecks = task.checklist.slice(0, 5);
+  checklist.append(...visibleChecks.map((item) => {
+    const button = document.createElement("button");
+    button.className = "checklist-item";
+    button.classList.toggle("is-done", item.done);
+    button.type = "button";
+    button.textContent = item.text;
+    button.setAttribute("aria-pressed", String(item.done));
+    button.addEventListener("click", () => updateTask({
+      ...task,
+      checklist: task.checklist.map((check) => check.id === item.id ? { ...check, done: !check.done } : check),
+      updatedAt: Date.now(),
+    }, item.done ? "Checklist item reopened." : "Checklist item finished."));
+    return button;
+  }));
+  if (task.checklist.length) {
+    const progress = document.createElement("p");
+    progress.className = "checklist-progress";
+    progress.textContent = `${task.checklist.filter((item) => item.done).length}/${task.checklist.length} checks${task.checklist.length > visibleChecks.length ? " · open task for all" : ""}`;
+    checklist.append(progress);
+  }
   card.querySelector(".task-check").textContent = task.acceptance ? `✓ ${task.acceptance}` : "";
   card.querySelector(".move-left").disabled = statusIndex === 0;
   card.querySelector(".move-right").disabled = statusIndex === TASK_STATUSES.length - 1;
@@ -275,6 +399,32 @@ function downloadJson(filename, value) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+function downloadMarkdown(filename, value) {
+  const blob = new Blob([value], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function taskFilename(task) {
+  const slug = task.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "task";
+  return `${slug}-handoff.md`;
+}
+
+async function copyTaskBrief(task) {
+  const markdown = taskMarkdown(task);
+  try {
+    await navigator.clipboard.writeText(markdown);
+    saveState("Task handoff copied as Markdown.");
+  } catch {
+    downloadMarkdown(taskFilename(task), markdown);
+    saveState("Clipboard unavailable. Markdown handoff downloaded.");
+  }
+}
+
 async function verifyLocalReceipt(receipt, output) {
   output.textContent = "Checking local hashes…";
   const result = await verifyReceipt(receipt);
@@ -333,16 +483,25 @@ function renderReceipts() {
 function render() {
   renderFilterOptions();
   renderStats();
+  renderManagerBrief();
+  renderRituals();
   renderBoard();
   renderReceipts();
 }
 
-function openTaskDialog(task = null) {
+function checklistText(items = []) {
+  return items.map((item) => `${item.done ? "[x]" : "[ ]"} ${item.text}`).join("\n");
+}
+
+function openTaskDialog(task = null, options = {}) {
   elements.taskForm.reset();
   const form = elements.taskForm.elements;
-  elements.taskDialogTitle.textContent = task ? "Edit task" : "New task";
-  elements.deleteTask.hidden = !task;
-  form.id.value = task?.id || "";
+  const isNew = !task || options.newTask;
+  elements.taskDialogTitle.textContent = options.newTask ? "New ritual" : task ? "Edit task" : "New task";
+  elements.deleteTask.hidden = isNew;
+  elements.duplicateTask.hidden = isNew;
+  elements.copyBrief.hidden = isNew;
+  form.id.value = isNew ? "" : task.id;
   form.title.value = task?.title || "";
   form.project.value = task?.project || "Industry Next";
   form.assignee.value = task?.assignee || "Mike";
@@ -350,10 +509,31 @@ function openTaskDialog(task = null) {
   form.priority.value = task?.priority || "normal";
   form.due.value = task?.due || "";
   form.effort.value = task?.effort || "M";
+  form.blockedReason.value = task?.blockedReason || "";
+  form.tags.value = task?.tags?.join(", ") || "";
   form.notes.value = task?.notes || "";
+  form.checklist.value = checklistText(task?.checklist);
   form.acceptance.value = task?.acceptance || "";
   elements.taskDialog.showModal();
   requestAnimationFrame(() => form.title.focus());
+}
+
+function parseChecklist(value, previousItems = []) {
+  return String(value ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .slice(0, 20)
+    .map((line) => {
+      const match = line.match(/^\[(x| )\]\s*(.+)$/i);
+      const text = (match?.[2] || line).trim().slice(0, 180);
+      const previous = previousItems.find((item) => item.text === text);
+      return {
+        id: previous?.id || crypto.randomUUID(),
+        text,
+        done: match ? match[1].toLowerCase() === "x" : Boolean(previous?.done),
+      };
+    });
 }
 
 function taskFromForm() {
@@ -369,7 +549,10 @@ function taskFromForm() {
     priority: data.get("priority"),
     due: data.get("due"),
     effort: data.get("effort"),
+    blockedReason: data.get("blockedReason"),
+    tags: data.get("tags"),
     notes: data.get("notes"),
+    checklist: parseChecklist(data.get("checklist"), previous?.checklist),
     acceptance: data.get("acceptance"),
     createdAt: previous?.createdAt || Date.now(),
     updatedAt: Date.now(),
@@ -553,8 +736,8 @@ async function confirmStamp() {
 }
 
 function exportBoard() {
-  downloadJson(`industrynext-desk-${new Date().toISOString().slice(0, 10)}.json`, {
-    schema: "industrynext.task-board/v1",
+  downloadJson(`industrynext-desk-${todayKey()}.json`, {
+    schema: "industrynext.task-board/v2",
     generatedAt: new Date().toISOString(),
     tasks: state.tasks,
     receipts: state.receipts,
@@ -569,7 +752,7 @@ async function importBoard(file) {
     const nextTasks = parsed.tasks.map(normalizeTask).slice(0, 500);
     const nextReceipts = Array.isArray(parsed.receipts) ? parsed.receipts.slice(0, 100) : [];
     if (!confirm(`Replace this device's ${state.tasks.length} tasks with ${nextTasks.length} imported tasks?`)) return;
-    state = { tasks: nextTasks, receipts: nextReceipts, version: 1 };
+    state = { tasks: nextTasks, receipts: nextReceipts, version: 2 };
     saveState("Imported board saved locally.");
     render();
   } catch (error) {
@@ -586,6 +769,33 @@ elements.taskForm.addEventListener("submit", (event) => {
   const exists = state.tasks.some((item) => item.id === task.id);
   state.tasks = exists ? state.tasks.map((item) => item.id === task.id ? task : item) : [task, ...state.tasks];
   saveState(exists ? "Task updated locally." : "Task added to the inbox.");
+  elements.taskDialog.close();
+  render();
+});
+
+elements.copyBrief.addEventListener("click", () => {
+  const id = String(elements.taskForm.elements.id.value || "");
+  const task = state.tasks.find((item) => item.id === id);
+  if (task) copyTaskBrief(task);
+});
+
+elements.duplicateTask.addEventListener("click", () => {
+  const id = String(elements.taskForm.elements.id.value || "");
+  const task = state.tasks.find((item) => item.id === id);
+  if (!task) return;
+  const now = Date.now();
+  const duplicate = normalizeTask({
+    ...task,
+    id: crypto.randomUUID(),
+    title: `${task.title} / copy`,
+    status: "inbox",
+    blockedReason: "",
+    checklist: task.checklist.map((item) => ({ id: crypto.randomUUID(), text: item.text, done: false })),
+    createdAt: now,
+    updatedAt: now,
+  });
+  state.tasks.unshift(duplicate);
+  saveState("Task duplicated into the inbox.");
   elements.taskDialog.close();
   render();
 });

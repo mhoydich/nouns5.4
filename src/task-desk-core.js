@@ -25,6 +25,20 @@ const cleanDate = (value) => {
   return /^\d{4}-\d{2}-\d{2}$/.test(next) ? next : "";
 };
 
+const cleanTags = (value) => {
+  const values = Array.isArray(value) ? value : String(value ?? "").split(",");
+  return [...new Set(values.map((tag) => clean(tag, 24).toLowerCase()).filter(Boolean))].slice(0, 8);
+};
+
+const cleanChecklist = (value) => (Array.isArray(value) ? value : [])
+  .map((item, index) => ({
+    id: clean(item?.id, 80) || `check-${index}-${crypto.randomUUID()}`,
+    text: clean(typeof item === "string" ? item : item?.text, 180),
+    done: Boolean(typeof item === "object" && item?.done),
+  }))
+  .filter((item) => item.text)
+  .slice(0, 20);
+
 export function normalizeTask(task = {}) {
   const createdAt = Number.isFinite(Number(task.createdAt)) ? Number(task.createdAt) : Date.now();
   const updatedAt = Number.isFinite(Number(task.updatedAt)) ? Number(task.updatedAt) : createdAt;
@@ -42,15 +56,25 @@ export function normalizeTask(task = {}) {
     effort: ["S", "M", "L"].includes(task.effort) ? task.effort : "M",
     notes: clean(task.notes, 4000),
     acceptance: clean(task.acceptance, 1000),
+    blockedReason: clean(task.blockedReason, 500),
+    tags: cleanTags(task.tags),
+    checklist: cleanChecklist(task.checklist),
     createdAt,
     updatedAt,
   };
 }
 
+function dateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function localDate(daysFromNow) {
   const date = new Date();
   date.setDate(date.getDate() + daysFromNow);
-  return date.toISOString().slice(0, 10);
+  return dateKey(date);
 }
 
 export function createStarterTasks() {
@@ -115,6 +139,103 @@ export function createStarterTasks() {
   ].map(normalizeTask);
 }
 
+export const TASK_TEMPLATES = [
+  {
+    id: "ship-release",
+    label: "Ship a release",
+    title: "Ship and verify the next public release",
+    project: "Industry Next",
+    priority: "high",
+    effort: "M",
+    notes: "Keep the authored idea intact. Publish the exact intended surface, then verify the canonical route and its public proof.",
+    acceptance: "The canonical route, share image, machine twin, and primary interaction have each been checked.",
+    dueOffset: 2,
+    tags: ["release", "public-proof"],
+    checklist: [
+      "Confirm the accountable lead and final call",
+      "Build and test the intended surface",
+      "Publish the exact release",
+      "Verify the canonical route on phone and desktop",
+      "Leave a public receipt",
+    ],
+  },
+  {
+    id: "run-outreach",
+    label: "Run outreach",
+    title: "Send the next evidence-led outreach round",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "M",
+    notes: "Keep the list small, named, and relevant. Lead with the useful proof instead of a broad pitch.",
+    acceptance: "Every message has a clear recipient, one relevant proof, and a bounded next step.",
+    dueOffset: 3,
+    tags: ["outreach", "growth"],
+    checklist: [
+      "Name the audience and qualification rule",
+      "Choose the proof worth sending",
+      "Write the short note",
+      "Send the bounded round",
+      "Record replies and the next decision",
+    ],
+  },
+  {
+    id: "review-surface",
+    label: "Review a surface",
+    title: "Review the live surface as a visitor",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "S",
+    notes: "Approach it cold. Check whether the first touch, useful action, and return path make sense before reading instructions.",
+    acceptance: "The lead has a concise continue, repair, or close recommendation backed by direct checks.",
+    dueOffset: 1,
+    tags: ["review", "quality"],
+    checklist: [
+      "Open the canonical route cold",
+      "Check the primary action on a phone",
+      "Check the primary action on desktop",
+      "Test important links and assets",
+      "Write the recommendation",
+    ],
+  },
+  {
+    id: "leave-receipt",
+    label: "Leave a receipt",
+    title: "Leave a verifiable receipt for finished work",
+    project: "Industry Next",
+    priority: "normal",
+    effort: "S",
+    notes: "Say what shipped, where it lives, who made the consequential call, and how another person can check it.",
+    acceptance: "A stranger can independently find and verify the result.",
+    dueOffset: 0,
+    tags: ["receipt", "public-proof"],
+    checklist: [
+      "Name the shipped object",
+      "Link the canonical location",
+      "Record the verification checks",
+      "Download or stamp the final receipt",
+    ],
+  },
+];
+
+export function createTaskFromTemplate(templateId, overrides = {}) {
+  const template = TASK_TEMPLATES.find((item) => item.id === templateId);
+  if (!template) throw new Error("Unknown task ritual.");
+  const now = Date.now();
+  const due = new Date();
+  due.setDate(due.getDate() + template.dueOffset);
+  return normalizeTask({
+    ...template,
+    id: crypto.randomUUID(),
+    assignee: "Unassigned",
+    status: "inbox",
+    due: dateKey(due),
+    checklist: template.checklist.map((text) => ({ id: crypto.randomUUID(), text, done: false })),
+    createdAt: now,
+    updatedAt: now,
+    ...overrides,
+  });
+}
+
 export function canonicalStringify(value) {
   if (Array.isArray(value)) {
     return `[${value.map(canonicalStringify).join(",")}]`;
@@ -127,7 +248,7 @@ export function canonicalStringify(value) {
 
 export function taskSnapshot(task) {
   const normalized = normalizeTask(task);
-  return {
+  const snapshot = {
     acceptance: normalized.acceptance,
     assignee: normalized.assignee,
     createdAt: new Date(normalized.createdAt).toISOString(),
@@ -142,6 +263,12 @@ export function taskSnapshot(task) {
     title: normalized.title,
     updatedAt: new Date(normalized.updatedAt).toISOString(),
   };
+  if (normalized.blockedReason) snapshot.blockedReason = normalized.blockedReason;
+  if (normalized.tags.length) snapshot.tags = normalized.tags;
+  if (normalized.checklist.length) {
+    snapshot.checklist = normalized.checklist.map(({ text, done }) => ({ text, done }));
+  }
+  return snapshot;
 }
 
 export async function sha256Hex(value) {
@@ -189,7 +316,7 @@ export function sortTasks(tasks) {
 }
 
 export function boardStats(tasks, receipts = []) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = dateKey();
   const stampedTaskIds = new Set(receipts.map((receipt) => receipt.taskId));
   return {
     total: tasks.length,
@@ -197,8 +324,57 @@ export function boardStats(tasks, receipts = []) {
     doing: tasks.filter((task) => task.status === "doing").length,
     done: tasks.filter((task) => task.status === "done").length,
     overdue: tasks.filter((task) => task.status !== "done" && task.due && task.due < today).length,
+    dueToday: tasks.filter((task) => task.status !== "done" && task.due === today).length,
+    blocked: tasks.filter((task) => task.status !== "done" && task.blockedReason).length,
+    unassigned: tasks.filter((task) => task.status !== "done" && task.assignee.toLowerCase() === "unassigned").length,
     stamped: tasks.filter((task) => stampedTaskIds.has(task.id)).length,
   };
+}
+
+export function managerBrief(tasks, today = dateKey()) {
+  const active = sortTasks(tasks.filter((task) => task.status !== "done"));
+  const take = (predicate) => active.filter(predicate);
+  return {
+    due: take((task) => Boolean(task.due && task.due <= today)),
+    blocked: take((task) => Boolean(task.blockedReason)),
+    unassigned: take((task) => task.assignee.toLowerCase() === "unassigned"),
+    review: take((task) => task.status === "review"),
+  };
+}
+
+export function ownerLoad(tasks) {
+  const owners = new Map();
+  for (const task of tasks.filter((item) => item.status !== "done")) {
+    const current = owners.get(task.assignee) || { owner: task.assignee, active: 0, doing: 0, review: 0 };
+    current.active += 1;
+    if (task.status === "doing") current.doing += 1;
+    if (task.status === "review") current.review += 1;
+    owners.set(task.assignee, current);
+  }
+  return [...owners.values()].sort((left, right) => right.active - left.active || left.owner.localeCompare(right.owner));
+}
+
+export function taskMarkdown(task) {
+  const normalized = normalizeTask(task);
+  const lines = [
+    `# ${normalized.title}`,
+    "",
+    `- Project: ${normalized.project}`,
+    `- Owner: ${normalized.assignee}`,
+    `- Status: ${STATUS_LABELS[normalized.status]}`,
+    `- Priority: ${normalized.priority}`,
+    `- Due: ${normalized.due || "Not set"}`,
+    `- Effort: ${normalized.effort}`,
+  ];
+  if (normalized.tags.length) lines.push(`- Tags: ${normalized.tags.map((tag) => `#${tag}`).join(" ")}`);
+  if (normalized.blockedReason) lines.push(`- Blocked by: ${normalized.blockedReason}`);
+  if (normalized.notes) lines.push("", "## Context", "", normalized.notes);
+  if (normalized.checklist.length) {
+    lines.push("", "## Checklist", "", ...normalized.checklist.map((item) => `- [${item.done ? "x" : " "}] ${item.text}`));
+  }
+  if (normalized.acceptance) lines.push("", "## Done looks like", "", normalized.acceptance);
+  lines.push("", `Desk ID: ${normalized.id}`, "");
+  return lines.join("\n");
 }
 
 export function moveTask(task, direction) {

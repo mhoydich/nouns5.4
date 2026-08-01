@@ -3,7 +3,7 @@
   "schema_version": 1,
   "name": "Industry Next Product Desk",
   "canonical_url": "https://www.industrynext.xyz/product/",
-  "updated_at": "2026-07-31T22:31:26-07:00",
+  "updated_at": "2026-07-31T22:47:43-07:00",
   "role": {
     "name": "Product Manager",
     "status": "active operating function",
@@ -126,10 +126,10 @@
       "id": "industry-next-task-desk",
       "name": "The Desk",
       "state": "shipped",
-      "outcome": "Give accountable leads a device-local place to assign, move, check, and export their work.",
-      "verified_state": "Browser-local task workflow and export are live; optional Tezos Mainnet stamping requires wallet approval and publishes only a SHA-256 fingerprint",
+      "outcome": "Give accountable leads a device-local place to assign, unblock, repeat, hand off, and prove their work.",
+      "verified_state": "Manager brief, owner load, working rituals, Markdown handoffs, local export, and optional wallet-approved Tezos Mainnet fingerprint stamping are live",
       "lead_boundary": "The task owner accepts the result; the wallet owner approves any Tezos action.",
-      "next_decision": "Use the tool where it reduces ambiguity without turning local activity into public status.",
+      "next_decision": "Use the ritual that fits, then carry a clean handoff to the accountable lead.",
       "url": "https://www.industrynext.xyz/desk/"
     },
     {
