@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "id": "IN-TC-001",
+  "title": "Top Coder / Ticket 001 / The Messy Queue",
+  "canonicalUrl": "https://www.industrynext.xyz/top-coder/",
+  "status": "open",
+  "published": "2026-08-01",
+  "thesis": "Proof before pedigree.",
+  "task": {
+    "function": "repairQueue(records)",
+    "output": "An ordered array of release IDs.",
+    "contract": [
+      "Keep only the highest numeric revision for each ID.",
+      "Remove an ID when its current record is cancelled.",
+      "Order by descending priority, then ascending createdAt.",
+      "Do not mutate the input array or records."
+    ],
+    "checks": 7,
+    "language": "JavaScript"
+  },
+  "score": {
+    "correctness": 70,
+    "changeNote": 20,
+    "completeProofSeal": 10,
+    "topCoderThreshold": 90,
+    "speedBonus": false
+  },
+  "privacy": {
+    "accountRequired": false,
+    "walletRequired": false,
+    "codeUploaded": false,
+    "draftStorage": "device-local",
+    "evaluation": "disposable sandboxed iframe with network blocked by Content Security Policy"
+  },
+  "boundary": "This is a local proof on one bounded JavaScript repair, not a global rank, identity verification, or hiring oracle.",
+  "contact": "mh@pointcast.xyz"
+}

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Top Coder is a small browser challenge from Industry Next: repair one real system, run sealed checks, and leave with a portable proof receipt." />
+    <meta name="theme-color" content="#dfff3f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="Top Coder — Proof before pedigree" />
+    <meta property="og:description" content="One small system. Seven checks. A proof receipt you can take with you." />
+    <meta property="og:url" content="https://www.industrynext.xyz/top-coder/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/top-coder/og.svg" />
+    <meta property="og:image:alt" content="Top Coder in bright green type on a blue and black code field." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Top Coder — Proof before pedigree" />
+    <meta name="twitter:description" content="Repair the queue. Run seven checks. Carry the proof." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/top-coder/og.svg" />
+    <link rel="canonical" href="https://www.industrynext.xyz/top-coder/" />
+    <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
+    <title>Top Coder — Industry Next</title>
+    <link rel="stylesheet" href="/top-coder/top-coder.css?v=20260801a" />
+  </head>
+  <body>
+    <a class="skip-link" href="#challenge">Skip to the challenge</a>
+
+    <header class="site-head">
+      <a class="wordmark" href="/" aria-label="Industry Next, home"><span>INDUSTRY</span><span>NEXT</span></a>
+      <nav aria-label="Primary">
+        <a class="nav-active" href="/top-coder/" aria-current="page">Top Coder</a>
+        <a href="/market/">Work Market</a>
+        <a href="/builders/001/">Builder 001</a>
+        <a href="/intern-read/001/">Intern Read</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="binder-holes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero-copy">
+          <p class="eyebrow">INDUSTRY NEXT / OPEN PROOF 001 / RUNS IN YOUR BROWSER</p>
+          <h1 id="page-title"><span>TOP</span><span>CODER</span></h1>
+          <p class="hero-thesis">Proof before pedigree.</p>
+          <p class="hero-deck">One small system is broken. Repair it, pass seven checks, explain the move, and leave with a portable receipt. No account. No résumé theater. No speed bonus.</p>
+          <a class="start-button" href="#challenge">Open ticket 001 <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-terminal" aria-label="Challenge at a glance">
+          <div class="terminal-bar"><span>TOP_CODER.EXE</span><span>LOCAL / READY</span></div>
+          <div class="terminal-screen" aria-hidden="true">
+            <p><b>01</b> READ THE CONTRACT</p>
+            <p><b>02</b> REPAIR THE QUEUE</p>
+            <p><b>03</b> RUN 7 CHECKS</p>
+            <p><b>04</b> EXPLAIN THE MOVE</p>
+            <p><b>05</b> CARRY THE PROOF<span class="cursor">_</span></p>
+          </div>
+          <dl>
+            <div><dt>TIME LIMIT</dt><dd>None</dd></div>
+            <div><dt>UPLOADS</dt><dd>None</dd></div>
+            <div><dt>TOP CODER</dt><dd>90+</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="principles" aria-label="Top Coder principles">
+        <article><span>01 / CORRECT</span><strong>Make the contract true.</strong><p>All seven checks matter, including immutability and the ugly edge cases.</p></article>
+        <article><span>02 / LEGIBLE</span><strong>Leave the next person a handle.</strong><p>A short change note is part of the work. Code without a reason is unfinished proof.</p></article>
+        <article><span>03 / HONEST</span><strong>Know what one ticket cannot prove.</strong><p>This is a signal of care on one bounded task—not a universal rank or a hiring oracle.</p></article>
+      </section>
+
+      <section id="challenge" class="challenge" aria-labelledby="challenge-title">
+        <header class="challenge-head">
+          <div>
+            <p class="section-index">TICKET 001 / THE MESSY QUEUE</p>
+            <h2 id="challenge-title">Repair the<br /><em>release order.</em></h2>
+          </div>
+          <div class="challenge-status" data-challenge-status="ready">
+            <span id="run-state">READY</span>
+            <strong id="score-display">00</strong>
+            <small>POINTS / 100</small>
+          </div>
+        </header>
+
+        <div class="workbench">
+          <aside class="ticket" aria-labelledby="contract-title">
+            <div class="ticket-tab">CONTRACT.JS</div>
+            <h3 id="contract-title">Write <code>repairQueue(records)</code>.</h3>
+            <p>Return an array of release IDs that follows four rules:</p>
+            <ol>
+              <li><b>Current:</b> for each <code>id</code>, keep only the record with the highest numeric <code>revision</code>.</li>
+              <li><b>Active:</b> remove an ID when its current record has <code>cancelled: true</code>.</li>
+              <li><b>Ordered:</b> higher <code>priority</code> first; ties use the earliest <code>createdAt</code>.</li>
+              <li><b>Careful:</b> do not mutate the input array or its records.</li>
+            </ol>
+            <details>
+              <summary>Open three hints <span>No point penalty</span></summary>
+              <p>Use a <code>Map</code> keyed by ID. Replace its value only when a larger revision arrives. Filter the current values, sort a new array, then map to IDs.</p>
+            </details>
+            <div class="example">
+              <span>EXAMPLE</span>
+              <code>[{ id: "beta", revision: 1, priority: 5 },<br /> { id: "alpha", revision: 2, priority: 8 }]<br />→ ["alpha", "beta"]</code>
+            </div>
+          </aside>
+
+          <div class="editor-shell">
+            <div class="editor-bar"><span>YOUR_REPAIR.JS</span><span id="draft-state">LOCAL DRAFT</span></div>
+            <label class="sr-only" for="solution">JavaScript solution</label>
+            <textarea id="solution" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="sandbox-note">function repairQueue(records) {
+  // Return the ordered array of IDs.
+
+}</textarea>
+            <div class="change-note">
+              <label for="note"><span>CHANGE NOTE</span><small>What invariant does your repair protect?</small></label>
+              <textarea id="note" rows="3" maxlength="280" placeholder="I keep only the highest revision before filtering and sorting, so stale updates cannot re-enter the queue."></textarea>
+            </div>
+            <p id="sandbox-note" class="sandbox-note">Your code never leaves this page. Checks run in a disposable, network-blocked browser sandbox; your draft is stored only on this device.</p>
+            <div class="editor-actions">
+              <button id="run-checks" class="primary-button" type="button">Run seven checks <span aria-hidden="true">▶</span></button>
+              <button id="reset-code" class="secondary-button" type="button">Reset draft</button>
+            </div>
+          </div>
+        </div>
+
+        <section class="checks" aria-labelledby="checks-title">
+          <div class="checks-title-row"><h3 id="checks-title">Proof checks</h3><p id="checks-summary" role="status" aria-live="polite">Waiting for your first run.</p></div>
+          <ol id="checks-list">
+            <li data-check="empty"><i aria-hidden="true"></i><span><b>EMPTY IN / EMPTY OUT</b><small>Handles the quiet case.</small></span><em>WAITING</em></li>
+            <li data-check="latest"><i aria-hidden="true"></i><span><b>LATEST REVISION WINS</b><small>Stale updates cannot lead.</small></span><em>WAITING</em></li>
+            <li data-check="cancelled"><i aria-hidden="true"></i><span><b>CURRENT CANCELLATION HOLDS</b><small>Deleted work stays deleted.</small></span><em>WAITING</em></li>
+            <li data-check="priority"><i aria-hidden="true"></i><span><b>PRIORITY DESCENDS</b><small>The urgent work goes first.</small></span><em>WAITING</em></li>
+            <li data-check="time"><i aria-hidden="true"></i><span><b>EARLIEST BREAKS A TIE</b><small>Equal priority stays predictable.</small></span><em>WAITING</em></li>
+            <li data-check="duplicate"><i aria-hidden="true"></i><span><b>STALE PRIORITY CANNOT LEAK</b><small>A previous revision cannot distort order.</small></span><em>WAITING</em></li>
+            <li data-check="immutable"><i aria-hidden="true"></i><span><b>INPUT REMAINS INTACT</b><small>The caller keeps what it passed.</small></span><em>WAITING</em></li>
+          </ol>
+        </section>
+      </section>
+
+      <section id="receipt" class="receipt-section" aria-labelledby="receipt-title">
+        <div class="receipt-copy">
+          <p class="section-index">YOUR PORTABLE PROOF</p>
+          <h2 id="receipt-title">Carry the<br /><em>receipt.</em></h2>
+          <p>The result is local and self-issued. Copy it into a portfolio, an application, a pull request, or a conversation. The receipt says exactly what happened—and what did not.</p>
+          <div class="score-contract">
+            <div><span>70</span><p>Seven correctness checks</p></div>
+            <div><span>20</span><p>Legible change note</p></div>
+            <div><span>10</span><p>Complete proof seal</p></div>
+          </div>
+        </div>
+        <article class="proof-card" id="proof-card" data-proof-state="empty">
+          <div class="proof-top"><span>INDUSTRY NEXT / TOP CODER</span><span id="proof-id">PROOF ————</span></div>
+          <div class="proof-grade"><strong id="proof-score">00</strong><span>/ 100</span></div>
+          <p id="proof-label">RUN THE TICKET</p>
+          <dl>
+            <div><dt>CHALLENGE</dt><dd>Ticket 001 / The Messy Queue</dd></div>
+            <div><dt>CHECKS</dt><dd id="proof-checks">0 of 7 passed</dd></div>
+            <div><dt>NOTE</dt><dd id="proof-note">Waiting for a change note.</dd></div>
+            <div><dt>BOUNDARY</dt><dd>Local browser proof / not a global rank</dd></div>
+          </dl>
+          <div class="proof-actions">
+            <button id="copy-proof" type="button" disabled>Copy proof receipt</button>
+            <a id="raise-hand" href="mailto:mh@pointcast.xyz?subject=TOP%20CODER%20/%20TICKET%20001">Raise your hand <span aria-hidden="true">↗</span></a>
+          </div>
+          <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section class="boundary" aria-labelledby="boundary-title">
+        <p class="section-index">THE HONEST BOUNDARY</p>
+        <h2 id="boundary-title">A sharp signal.<br />Not a totalizing score.</h2>
+        <div>
+          <article><span>THIS CAN SIGNAL</span><p>Reading a contract, handling stale state, writing deterministic JavaScript, preserving input, and explaining a repair.</p></article>
+          <article><span>THIS CANNOT PROVE</span><p>How someone collaborates over months, learns a new system, handles production pressure, or fits every engineering role.</p></article>
+          <article><span>THE NEXT MOVE</span><p>Bring the receipt and one shipped thing. Talk through the tradeoffs. Then do a small real task together.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><a class="footer-mark" href="/">INDUSTRY<br />NEXT</a><p>Small public instruments for finding what people can actually make.</p></div>
+      <nav aria-label="Top Coder resources"><a href="/top-coder.json">Machine brief</a><a href="/market/">Work Market</a><a href="/builders/001/">Builder 001</a><a href="https://github.com/mhoydich/nouns5.4">Source</a></nav>
+      <p>TOP CODER 001 / PROOF BEFORE PEDIGREE / NO ACCOUNT / NO UPLOAD / NO GLOBAL RANK</p>
+      <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="top coder coding challenge software engineering proof before pedigree javascript builder open work" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+    </footer>
+
+    <script type="module" src="/top-coder/top-coder.js?v=20260801a"></script>
+    <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>

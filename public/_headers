@@ -109,6 +109,13 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/top-coder/*
+  Cache-Control: public, max-age=300
+
+/top-coder.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /api/made
   Cache-Control: no-store
 

@@ -23,6 +23,7 @@
     "verify:credit-card-games": "node ./scripts/verify-credit-card-games.mjs",
     "verify:intern-read-001": "node ./scripts/verify-intern-read-001.mjs",
     "verify:early-career": "node ./scripts/verify-early-career.mjs",
+    "verify:top-coder": "node ./scripts/verify-top-coder.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",

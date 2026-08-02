@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Top Coder</title>
+  <desc id="desc">Top Coder in acid green type on a blue and black code field.</desc>
+  <rect width="1200" height="630" fill="#111111"/>
+  <path d="M0 52h1200M0 104h1200M0 156h1200M0 208h1200M0 260h1200M0 312h1200M0 364h1200M0 416h1200M0 468h1200M0 520h1200M0 572h1200M52 0v630M104 0v630M156 0v630M208 0v630M260 0v630M312 0v630M364 0v630M416 0v630M468 0v630M520 0v630M572 0v630M624 0v630M676 0v630M728 0v630M780 0v630M832 0v630M884 0v630M936 0v630M988 0v630M1040 0v630M1092 0v630M1144 0v630" stroke="#3d39ff" stroke-width="2" opacity=".5"/>
+  <rect x="65" y="52" width="1070" height="526" fill="#3d39ff" stroke="#dfff3f" stroke-width="5"/>
+  <rect x="88" y="75" width="1024" height="480" fill="#111111" stroke="#ff5ac8" stroke-width="5"/>
+  <text x="112" y="122" fill="#ff5ac8" font-family="monospace" font-size="24" font-weight="700">INDUSTRY NEXT / OPEN PROOF 001</text>
+  <text x="100" y="310" fill="#dfff3f" font-family="Arial, sans-serif" font-size="202" font-weight="900" letter-spacing="-18">TOP</text>
+  <text x="100" y="478" fill="#dfff3f" font-family="Arial, sans-serif" font-size="202" font-weight="900" letter-spacing="-18">CODER</text>
+  <text x="835" y="516" fill="#fffef8" font-family="monospace" font-size="25" font-weight="700">PROOF BEFORE PEDIGREE_</text>
+</svg>
