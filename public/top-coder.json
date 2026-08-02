@@ -5,6 +5,7 @@
   "canonicalUrl": "https://www.industrynext.xyz/top-coder/",
   "status": "open",
   "published": "2026-08-01",
+  "updated": "2026-08-02",
   "thesis": "Proof before pedigree.",
   "task": {
     "function": "repairQueue(records)",
@@ -31,6 +32,20 @@
     "codeUploaded": false,
     "draftStorage": "device-local",
     "evaluation": "disposable sandboxed iframe with network blocked by Content Security Policy"
+  },
+  "series": {
+    "name": "Top Coder Local Proof Book",
+    "storage": "device-local",
+    "tickets": [
+      {
+        "id": "IN-TC-001",
+        "url": "https://www.industrynext.xyz/top-coder/"
+      },
+      {
+        "id": "IN-TC-002",
+        "url": "https://www.industrynext.xyz/top-coder/002/"
+      }
+    ]
   },
   "boundary": "This is a local proof on one bounded JavaScript repair, not a global rank, identity verification, or hiring oracle.",
   "contact": "mh@pointcast.xyz"

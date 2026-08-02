@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "id": "IN-TC-002",
+  "title": "Top Coder / Ticket 002 / The Promise Pool",
+  "canonicalUrl": "https://www.industrynext.xyz/top-coder/002/",
+  "status": "open",
+  "published": "2026-08-02",
+  "thesis": "Control the rush. Keep the order.",
+  "task": {
+    "function": "mapWithLimit(items, limit, worker)",
+    "output": "A promise for an input-ordered array of worker results.",
+    "inputAssumption": "limit is a positive integer",
+    "contract": [
+      "Never have more than limit worker calls active.",
+      "Call worker(item, index) once for every item.",
+      "Resolve results in input order even when workers finish out of order.",
+      "Reject with the original error, stop starting new work, and do not mutate the input."
+    ],
+    "checks": 7,
+    "language": "JavaScript"
+  },
+  "score": {
+    "correctness": 70,
+    "changeNote": 20,
+    "completeProofSeal": 10,
+    "topCoderThreshold": 90,
+    "speedBonus": false
+  },
+  "privacy": {
+    "accountRequired": false,
+    "walletRequired": false,
+    "codeUploaded": false,
+    "proofBook": "device-local",
+    "draftStorage": "device-local",
+    "evaluation": "disposable sandboxed iframe and worker with network blocked by Content Security Policy"
+  },
+  "series": {
+    "name": "Top Coder Local Proof Book",
+    "previous": "https://www.industrynext.xyz/top-coder/",
+    "tickets": 2
+  },
+  "boundary": "This is a local proof on one bounded asynchronous JavaScript task, not a global rank, identity verification, or hiring oracle.",
+  "contact": "mh@pointcast.xyz"
+}

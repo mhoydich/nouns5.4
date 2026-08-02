@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Top Coder is a small browser challenge from Industry Next: repair one real system, run sealed checks, and leave with a portable proof receipt." />
+    <meta name="description" content="Top Coder is a browser challenge desk from Industry Next: repair small systems, run sealed checks, and collect portable proof receipts." />
     <meta name="theme-color" content="#dfff3f" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Industry Next" />
     <meta property="og:title" content="Top Coder — Proof before pedigree" />
-    <meta property="og:description" content="One small system. Seven checks. A proof receipt you can take with you." />
+    <meta property="og:description" content="Two small systems. Fourteen checks. A device-local Proof Book you can take with you." />
     <meta property="og:url" content="https://www.industrynext.xyz/top-coder/" />
     <meta property="og:image" content="https://www.industrynext.xyz/top-coder/og.svg" />
     <meta property="og:image:alt" content="Top Coder in bright green type on a blue and black code field." />
@@ -19,7 +19,7 @@
     <link rel="canonical" href="https://www.industrynext.xyz/top-coder/" />
     <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
     <title>Top Coder — Industry Next</title>
-    <link rel="stylesheet" href="/top-coder/top-coder.css?v=20260801a" />
+    <link rel="stylesheet" href="/top-coder/top-coder.css?v=20260802a" />
   </head>
   <body>
     <a class="skip-link" href="#challenge">Skip to the challenge</a>
@@ -65,6 +65,22 @@
         <article><span>01 / CORRECT</span><strong>Make the contract true.</strong><p>All seven checks matter, including immutability and the ugly edge cases.</p></article>
         <article><span>02 / LEGIBLE</span><strong>Leave the next person a handle.</strong><p>A short change note is part of the work. Code without a reason is unfinished proof.</p></article>
         <article><span>03 / HONEST</span><strong>Know what one ticket cannot prove.</strong><p>This is a signal of care on one bounded task—not a universal rank or a hiring oracle.</p></article>
+      </section>
+
+      <section class="proof-book" aria-labelledby="proof-book-title">
+        <header class="proof-book-head">
+          <div><p class="section-index">THE LOCAL PROOF BOOK / TWO TICKETS</p><h2 id="proof-book-title">Build a small<br /><em>body of proof.</em></h2></div>
+          <strong><span data-proof-count>0</span><small>/ 2 SEALED</small></strong>
+        </header>
+        <div class="proof-book-grid">
+          <a data-proof-slot="IN-TC-001" href="/top-coder/">
+            <span>TICKET 001 / STATE + ORDER</span><b>The Messy Queue</b><p>Reconcile revisions, cancellation, priority, and time without mutating the caller.</p><em data-proof-slot-state>OPEN HERE</em>
+          </a>
+          <a data-proof-slot="IN-TC-002" href="/top-coder/002/">
+            <span>TICKET 002 / ASYNC + CONCURRENCY</span><b>The Promise Pool</b><p>Keep parallel work moving without losing order, exceeding capacity, or swallowing failure.</p><em data-proof-slot-state>OPEN</em>
+          </a>
+        </div>
+        <div class="proof-book-actions"><p data-proof-book-status role="status" aria-live="polite">0 sealed. 2 still open.</p><button data-copy-proof-book type="button" disabled>Copy Proof Book</button><button data-clear-proof-book type="button">Clear local receipts</button></div>
       </section>
 
       <section id="challenge" class="challenge" aria-labelledby="challenge-title">
@@ -176,12 +192,12 @@
 
     <footer class="site-footer">
       <div><a class="footer-mark" href="/">INDUSTRY<br />NEXT</a><p>Small public instruments for finding what people can actually make.</p></div>
-      <nav aria-label="Top Coder resources"><a href="/top-coder.json">Machine brief</a><a href="/market/">Work Market</a><a href="/builders/001/">Builder 001</a><a href="https://github.com/mhoydich/nouns5.4">Source</a></nav>
-      <p>TOP CODER 001 / PROOF BEFORE PEDIGREE / NO ACCOUNT / NO UPLOAD / NO GLOBAL RANK</p>
+      <nav aria-label="Top Coder resources"><a href="/top-coder/002/">Ticket 002</a><a href="/top-coder.json">Ticket 001 JSON</a><a href="/top-coder-002.json">Ticket 002 JSON</a><a href="/market/">Work Market</a><a href="https://github.com/mhoydich/nouns5.4">Source</a></nav>
+      <p>TOP CODER 001–002 / PROOF BEFORE PEDIGREE / NO ACCOUNT / NO UPLOAD / NO GLOBAL RANK</p>
       <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="top coder coding challenge software engineering proof before pedigree javascript builder open work" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
     </footer>
 
-    <script type="module" src="/top-coder/top-coder.js?v=20260801a"></script>
+    <script type="module" src="/top-coder/top-coder.js?v=20260802a"></script>
     <script async src="https://pointcast.xyz/open-ad-network.js"></script>
   </body>
 </html>

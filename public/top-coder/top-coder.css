@@ -64,8 +64,33 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-vis
 .principles strong { display: block; margin: 55px 0 20px; font-size: clamp(1.5rem, 2.3vw, 2.5rem); line-height: .97; letter-spacing: -.055em; }
 .principles p { margin: 0; }
 
+.proof-book { padding: 95px var(--pad) 105px; border-bottom: var(--line); background: var(--ink); color: var(--white); }
+.proof-book-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; margin-bottom: 46px; }
+.proof-book-head h2 { margin: 16px 0 0; font-size: clamp(3.4rem, 7vw, 7.6rem); font-weight: 900; line-height: .77; letter-spacing: -.085em; }
+.proof-book-head h2 em { color: var(--acid); font-style: normal; }
+.proof-book-head > strong { display: flex; align-items: end; min-width: 180px; color: var(--acid); font: 900 clamp(5rem, 9vw, 9rem)/.67 var(--sans); letter-spacing: -.1em; }
+.proof-book-head > strong small { width: 70px; margin: 0 0 7px 12px; color: var(--white); font: 600 .58rem/1.25 var(--mono); letter-spacing: .03em; }
+.proof-book-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--white); }
+.proof-book-grid a { position: relative; display: flex; flex-direction: column; min-height: 310px; padding: 30px; border-right: 1px solid var(--white); background: #202020; color: var(--white); text-decoration: none; }
+.proof-book-grid a:last-child { border-right: 0; }
+.proof-book-grid a:hover, .proof-book-grid a:focus-visible { background: var(--blue); }
+.proof-book-grid a.is-current::before { content: "YOU ARE HERE"; position: absolute; top: 0; right: 0; padding: 8px 10px; background: var(--pink); color: var(--ink); font: 700 .52rem/1 var(--mono); }
+.proof-book-grid a[data-proof-state="sealed"] { background: var(--acid); color: var(--ink); }
+.proof-book-grid a[data-proof-state="sealed"]::after { content: "✓"; position: absolute; right: 22px; bottom: 14px; font: 900 6rem/.75 var(--sans); }
+.proof-book-grid a > span { font: 700 .58rem/1.25 var(--mono); letter-spacing: .04em; }
+.proof-book-grid a > b { margin: 54px 0 17px; font-size: clamp(2rem, 3.4vw, 4rem); line-height: .88; letter-spacing: -.065em; }
+.proof-book-grid a > p { max-width: 540px; margin: 0; font: 500 .67rem/1.55 var(--mono); }
+.proof-book-grid a > em { margin-top: auto; padding-top: 34px; color: var(--acid); font: 700 .62rem/1 var(--mono); font-style: normal; }
+.proof-book-grid a[data-proof-state="sealed"] > em { color: var(--ink); }
+.proof-book-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-top: 22px; }
+.proof-book-actions p { margin: 0 auto 0 0; font: 500 .6rem/1.45 var(--mono); }
+.proof-book-actions button { padding: 13px 15px; border: 1px solid var(--acid); border-radius: 0; background: transparent; color: var(--acid); cursor: pointer; font: 700 .57rem/1 var(--mono); text-transform: uppercase; }
+.proof-book-actions button:hover { background: var(--acid); color: var(--ink); }
+.proof-book-actions button:disabled { cursor: not-allowed; opacity: .35; }
+
 .challenge { padding: 100px var(--pad) 120px; border-bottom: var(--line); background: var(--blue); color: var(--white); }
 .challenge-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 50px; margin-bottom: 55px; }
+.challenge-head > * { min-width: 0; }
 .challenge h2, .receipt-copy h2, .boundary h2 { margin: 15px 0 0; font-size: clamp(4.2rem, 8vw, 9rem); font-weight: 900; line-height: .76; letter-spacing: -.09em; }
 .challenge h2 em, .receipt-copy h2 em { color: var(--acid); font-style: normal; }
 .challenge-status { display: grid; min-width: 210px; padding: 20px; border: 1px solid var(--white); background: var(--ink); box-shadow: 9px 9px 0 var(--pink); }
@@ -149,6 +174,17 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-vis
 .boundary article span { font: 700 .58rem/1 var(--mono); }
 .boundary article p { margin: 75px 0 0; font: 500 .7rem/1.65 var(--mono); }
 
+.ticket-002 .hero { background: var(--pink); }
+.ticket-002 .hero h1 span:last-child { color: var(--acid); text-shadow: 7px 7px 0 var(--blue), 14px 14px 0 var(--ink); }
+.ticket-002 .start-button { box-shadow: 7px 7px 0 var(--acid); }
+.ticket-002 .hero-terminal { box-shadow: 16px 17px 0 var(--acid), 30px 31px 0 var(--blue); }
+.ticket-002 .challenge { background: #171f5e; }
+.ticket-002 .ticket { background: var(--pink); }
+.ticket-002 .ticket-tab { background: var(--acid); }
+.ticket-002 .proof-card { box-shadow: 13px 14px 0 var(--ink), 25px 26px 0 var(--pink); }
+.ticket-002 .proof-card[data-proof-state="top"] { box-shadow: 13px 14px 0 var(--blue), 25px 26px 0 var(--ink); }
+.ticket-002 .boundary { background: var(--acid); }
+
 .site-footer { display: grid; grid-template-columns: 1fr .55fr; gap: 55px; padding: 70px var(--pad) 36px; background: var(--ink); color: var(--white); }
 .footer-mark { display: inline-block; color: var(--acid); text-decoration: none; font-size: 2.2rem; font-weight: 900; line-height: .78; letter-spacing: -.08em; }
 .site-footer > div:first-child p { max-width: 440px; font: 400 .68rem/1.55 var(--mono); }
@@ -166,6 +202,7 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-vis
   .principles article { min-height: 220px; border-right: 0; border-bottom: var(--line); }
   .principles article:last-child { border-bottom: 0; }
   .principles strong { margin-top: 35px; }
+  .proof-book-head { grid-template-columns: 1fr; align-items: start; }
   .workbench, .receipt-section { grid-template-columns: 1fr; }
   .ticket { min-height: auto; }
   .receipt-copy { max-width: 760px; }
@@ -188,6 +225,15 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-vis
   .challenge { padding-top: 75px; padding-bottom: 85px; }
   .challenge-head { grid-template-columns: 1fr; align-items: start; }
   .challenge h2, .receipt-copy h2, .boundary h2 { font-size: clamp(4rem, 19vw, 6rem); }
+  .ticket-002 .challenge h2 { font-size: clamp(3.2rem, 16vw, 5.4rem); }
+  .proof-book { padding-top: 75px; padding-bottom: 85px; }
+  .proof-book-head h2 { font-size: clamp(3.6rem, 18vw, 5.8rem); }
+  .proof-book-head > strong { font-size: 6rem; }
+  .proof-book-grid { grid-template-columns: 1fr; }
+  .proof-book-grid a { min-height: 285px; border-right: 0; border-bottom: 1px solid var(--white); }
+  .proof-book-grid a:last-child { border-bottom: 0; }
+  .proof-book-actions { align-items: stretch; flex-direction: column; }
+  .proof-book-actions p { margin: 0 0 8px; }
   .challenge-status { min-width: 185px; }
   .workbench { margin: 0 -8px; }
   .ticket { padding: 48px 22px 28px; }
@@ -205,6 +251,10 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-vis
   .score-contract div:last-child { border: 0; }
   .proof-card { margin-left: -4px; box-shadow: 8px 9px 0 var(--ink), 16px 18px 0 var(--blue); }
   .proof-card[data-proof-state="top"] { box-shadow: 8px 9px 0 var(--pink), 16px 18px 0 var(--ink); }
+  .ticket-002 .hero h1 span:last-child { text-shadow: 4px 4px 0 var(--blue), 8px 8px 0 var(--ink); }
+  .ticket-002 .hero-terminal { box-shadow: 9px 10px 0 var(--acid), 18px 19px 0 var(--blue); }
+  .ticket-002 .proof-card { box-shadow: 8px 9px 0 var(--ink), 16px 18px 0 var(--pink); }
+  .ticket-002 .proof-card[data-proof-state="top"] { box-shadow: 8px 9px 0 var(--blue), 16px 18px 0 var(--ink); }
   .proof-top { align-items: flex-start; flex-direction: column; }
   .proof-grade strong { font-size: clamp(6.5rem, 31vw, 10rem); }
   .proof-card dl div { grid-template-columns: 1fr; gap: 7px; }

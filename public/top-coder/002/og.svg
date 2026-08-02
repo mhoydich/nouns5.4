@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Top Coder 002 / The Promise Pool</title>
+  <desc id="desc">Top Coder Ticket 002 in acid green and pink on a black promise pool diagram.</desc>
+  <rect width="1200" height="630" fill="#111111"/>
+  <path d="M0 63h1200M0 126h1200M0 189h1200M0 252h1200M0 315h1200M0 378h1200M0 441h1200M0 504h1200M0 567h1200M60 0v630M120 0v630M180 0v630M240 0v630M300 0v630M360 0v630M420 0v630M480 0v630M540 0v630M600 0v630M660 0v630M720 0v630M780 0v630M840 0v630M900 0v630M960 0v630M1020 0v630M1080 0v630M1140 0v630" stroke="#ff5ac8" stroke-width="2" opacity=".34"/>
+  <rect x="58" y="48" width="1084" height="534" fill="#ff5ac8" stroke="#dfff3f" stroke-width="5"/>
+  <rect x="82" y="72" width="1036" height="486" fill="#111111" stroke="#3d39ff" stroke-width="5"/>
+  <text x="108" y="120" fill="#ff5ac8" font-family="monospace" font-size="24" font-weight="700">INDUSTRY NEXT / OPEN PROOF 002</text>
+  <text x="96" y="302" fill="#dfff3f" font-family="Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-18">TOP</text>
+  <text x="96" y="468" fill="#dfff3f" font-family="Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-18">CODER</text>
+  <g fill="none" stroke="#ff5ac8" stroke-width="5"><path d="M782 176h96v70h80v72h83"/><path d="M782 246h110v72"/><path d="M782 318h80v73h179"/></g>
+  <g fill="#dfff3f" stroke="#111111" stroke-width="4"><circle cx="782" cy="176" r="15"/><circle cx="782" cy="246" r="15"/><circle cx="782" cy="318" r="15"/><circle cx="1041" cy="318" r="15"/><circle cx="1041" cy="391" r="15"/></g>
+  <text x="732" y="508" fill="#fffef8" font-family="monospace" font-size="24" font-weight="700">BOUND THE RUSH / KEEP THE ORDER_</text>
+</svg>

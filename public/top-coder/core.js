@@ -1,13 +1,12 @@
-export const CHALLENGE_ID = "IN-TC-001";
 export const CHECK_COUNT = 7;
 export const TOP_CODER_THRESHOLD = 90;
 
-export function scoreProof(results, note = "") {
+export function scoreProof(results, note = "", checkCount = CHECK_COUNT) {
   const passed = Array.isArray(results) ? results.filter((result) => result?.passed === true).length : 0;
-  const correctness = Math.min(CHECK_COUNT, passed) * 10;
+  const correctness = Math.min(checkCount, passed) * 10;
   const trimmedNote = String(note).trim();
   const clarity = trimmedNote.length >= 18 ? 20 : trimmedNote.length >= 1 ? 10 : 0;
-  const seal = passed === CHECK_COUNT ? 10 : 0;
+  const seal = passed === checkCount ? 10 : 0;
   return { passed, correctness, clarity, seal, total: correctness + clarity + seal };
 }
 
