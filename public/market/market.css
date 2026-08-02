@@ -692,6 +692,24 @@ body { overflow-x: hidden; }
 .market-card.is-highlighted { outline: 6px solid var(--purple); outline-offset: 4px; }
 .empty-market { margin: 26px 0 0; }
 
+.tumblr-relay-door {
+  display: grid;
+  grid-template-columns: .85fr 1.05fr auto;
+  gap: clamp(24px, 4vw, 70px);
+  align-items: center;
+  margin: 58px 0 10px;
+  padding: 30px;
+  border: var(--line);
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 8px 9px 0 var(--pink), 17px 19px 0 var(--ink);
+}
+.tumblr-relay-door p { margin: 0; font-size: .62rem; line-height: 1.6; }
+.tumblr-relay-door > div p { margin-bottom: 8px; color: var(--acid); font-size: .51rem; letter-spacing: .08em; }
+.tumblr-relay-door h3 { margin: 0; font: 400 clamp(2rem, 3.6vw, 4rem)/.86 var(--sans); letter-spacing: -.065em; }
+.tumblr-relay-door > a { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 16px; border: var(--line); background: var(--acid); color: var(--ink); font-size: .55rem; text-decoration: none; text-transform: uppercase; }
+.tumblr-relay-door > a:hover,.tumblr-relay-door > a:focus-visible { background: var(--ink); color: var(--acid); outline-color: var(--acid); }
+
 .rules { padding-top: 90px; padding-bottom: 105px; }
 .rules h2 { font-size: clamp(3.8rem, 6.6vw, 7.1rem); }
 
@@ -700,6 +718,8 @@ body { overflow-x: hidden; }
 .post-copy { position: sticky; top: 30px; }
 
 @media (max-width: 1080px) {
+  .tumblr-relay-door { grid-template-columns: 1fr 1fr; }
+  .tumblr-relay-door > a { grid-column: 1 / -1; }
   .auth-layout { grid-template-columns: 1fr; }
   .opportunity-card { grid-template-columns: minmax(230px, .6fr) 1.4fr; }
   .opportunity-path { grid-template-columns: 1fr; }
@@ -718,6 +738,8 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 760px) {
+  .tumblr-relay-door { display: block; margin-top: 45px; padding: 21px; box-shadow: 6px 7px 0 var(--pink), 13px 14px 0 var(--ink); }
+  .tumblr-relay-door > p { margin: 20px 0; }
   .market-hero { padding-top: 58px; padding-bottom: 82px; }
   .market-hero h1 { font-size: 17.3vw; }
   .terms-folder { margin-top: 88px; }

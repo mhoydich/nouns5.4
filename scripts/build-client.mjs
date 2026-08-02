@@ -16,6 +16,8 @@ await build({
     resolve(rootDir, "src/tezos-client.js"),
     resolve(rootDir, "src/desk.js"),
     resolve(rootDir, "src/market.js"),
+    resolve(rootDir, "src/market-apply.js"),
+    resolve(rootDir, "src/tumblr-talent.js"),
   ],
   outdir: publicDir,
   bundle: true,

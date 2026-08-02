@@ -63,6 +63,12 @@
 /market/*
   Cache-Control: public, max-age=300
 
+/market/apply/*
+  Cache-Control: no-store
+
+/market/tumblr/*
+  Cache-Control: public, max-age=300
+
 /market.js
   Cache-Control: public, max-age=300
 
@@ -118,6 +124,11 @@
 
 /api/made
   Cache-Control: no-store
+
+/api/market-applications
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
 
 /data/*
   Cache-Control: public, max-age=3600

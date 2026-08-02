@@ -3,8 +3,18 @@
   "schema_version": 1,
   "name": "Industry Next Work Market",
   "canonical_url": "https://www.industrynext.xyz/market/",
-  "updated_at": "2026-07-31T23:59:59-07:00",
+  "updated_at": "2026-08-01T12:00:00-07:00",
   "summary": "A public board connecting jobs, first tasks, accountable organizations, and explicit token or credit reward terms.",
+  "launch": {
+    "id": "market-launch-001",
+    "application_url": "https://www.industrynext.xyz/market/apply/",
+    "tumblr_talent_relay_url": "https://www.industrynext.xyz/market/tumblr/",
+    "review_begins": "2026-08-08",
+    "response_promise_hours": 48,
+    "private_retention_days": 90,
+    "public_profile_permission": "separate review and approval required",
+    "tumblr_tags": ["internet people 001", "industry next", "digital skills", "tumblr talent relay"]
+  },
   "authentication": {
     "network": "mainnet",
     "provider": "Beacon",
@@ -105,7 +115,7 @@
         "separate_employment_or_contractor_terms_required": true
       },
       "accepted_by": "Industry Next founder",
-      "application_url": "mailto:mh@pointcast.xyz?subject=I%20want%20to%20lead%20Halation"
+      "application_url": "https://www.industrynext.xyz/market/apply/?role=halation-lead"
     },
     {
       "id": "playlist-editor-listener-growth",
@@ -125,7 +135,7 @@
         "separate_employment_or_contractor_terms_required": true
       },
       "accepted_by": "Industry Next founder",
-      "application_url": "https://www.industrynext.xyz/roles/playlist-editor/"
+      "application_url": "https://www.industrynext.xyz/market/apply/?role=playlist-editor-listener-growth"
     },
     {
       "id": "tag-open-build-lead",
@@ -144,7 +154,7 @@
         "separate_employment_or_contractor_terms_required": true
       },
       "accepted_by": "Industry Next founder",
-      "application_url": "https://www.industrynext.xyz/next/tag/#apply"
+      "application_url": "https://www.industrynext.xyz/market/apply/?role=tag-open-build-lead"
     },
     {
       "id": "small-social-systems-builder",
@@ -163,7 +173,7 @@
         "separate_employment_or_contractor_terms_required": true
       },
       "accepted_by": "Industry Next founder",
-      "application_url": "https://www.industrynext.xyz/builders/001/#apply"
+      "application_url": "https://www.industrynext.xyz/market/apply/?role=small-social-systems-builder"
     },
     {
       "id": "halation-first-30-days",

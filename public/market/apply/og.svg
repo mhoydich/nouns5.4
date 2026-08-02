@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Raise Your Hand 001 — Industry Next</title><desc id="desc">A bright graph-paper application card inviting builders to name a seven-day move instead of sending a résumé.</desc>
+  <defs><pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#111" stroke-opacity=".1"/></pattern></defs>
+  <rect width="1200" height="630" fill="#eeff41"/><rect width="1200" height="630" fill="url(#grid)"/><rect width="30" height="630" fill="#ff513f" stroke="#111" stroke-width="3"/>
+  <circle cx="15" cy="145" r="7" fill="#f6f0df" stroke="#111" stroke-width="3"/><circle cx="15" cy="485" r="7" fill="#f6f0df" stroke="#111" stroke-width="3"/>
+  <text x="78" y="86" font-family="monospace" font-size="18" font-weight="700" letter-spacing="3">MARKET LAUNCH 001 / INDUSTRY NEXT</text>
+  <text x="72" y="250" font-family="Arial Black,Arial,sans-serif" font-size="110" font-weight="900" letter-spacing="-8">RAISE YOUR</text><text x="72" y="355" font-family="Arial Black,Arial,sans-serif" font-size="110" font-weight="900" letter-spacing="-8">HAND.</text>
+  <text x="72" y="458" fill="#7559ff" font-family="Arial Black,Arial,sans-serif" font-size="92" font-weight="900" letter-spacing="-7">NOT YOUR RÉSUMÉ.</text>
+  <rect x="70" y="520" width="760" height="62" fill="#111"/><text x="95" y="559" fill="#eeff41" font-family="monospace" font-size="19" font-weight="700">ONE ROLE · ONE GROUP · ONE SEVEN-DAY MOVE</text>
+  <g transform="translate(930 80) rotate(5)"><rect width="195" height="90" fill="#ff87c8" stroke="#111" stroke-width="3"/><text x="22" y="42" font-family="Arial Black,Arial" font-size="31">IN</text><text x="83" y="34" font-family="monospace" font-size="13">APPLICATION</text><text x="83" y="55" font-family="monospace" font-size="13">DOOR 001</text></g>
+</svg>
