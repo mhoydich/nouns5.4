@@ -27,6 +27,12 @@
       "url": "/early-career/"
     },
     {
+      "name": "AI for Industry",
+      "short_name": "AI Series",
+      "description": "Ten practical AI receipts for recent graduates.",
+      "url": "/early-career/ai-for-industry/"
+    },
+    {
       "name": "Tumblr Talent Relay",
       "short_name": "Relay",
       "description": "Turn a strange digital skill into a visible talent signal.",

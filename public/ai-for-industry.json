@@ -1,0 +1,104 @@
+{
+  "schema": "industrynext.ai-for-industry/v1",
+  "id": "industrynext.early-career/ai-for-industry-010",
+  "title": "AI for Industry — 10 Receipts for Recent Graduates",
+  "canonical": "https://www.industrynext.xyz/early-career/ai-for-industry/",
+  "published": "2026-08-02",
+  "audience": ["recent graduates", "interns", "early-career builders", "career switchers"],
+  "principle": "Do not study AI in the abstract. Study a real system, change one bounded loop, and leave proof somebody can inspect.",
+  "parts": [
+    {
+      "number": 1,
+      "id": "find-the-live-wire",
+      "title": "Find a Problem with a Pulse",
+      "tools": ["observation", "working brief compiler"],
+      "receipt": "One-page problem brief with owner, current loop, measurable change, constraints, and finish line"
+    },
+    {
+      "number": 2,
+      "id": "direct-the-coding-agent",
+      "title": "Put Fable and Sol on the Same Brief",
+      "tools": ["Claude Fable 5", "GPT-5.6 Sol", "coding agent", "Git branches", "tests"],
+      "receipt": "Two-agent comparison using the same brief, separate branches, the same tests, and a human merge decision"
+    },
+    {
+      "number": 3,
+      "id": "make-the-interface",
+      "title": "Make the Smallest Thing People Can Touch",
+      "tools": ["HTML", "CSS", "JavaScript", "automated test", "browser"],
+      "receipt": "Working prototype with a complete path, failure state, automated check, mobile pass, and observer note"
+    },
+    {
+      "number": 4,
+      "id": "touch-the-api",
+      "title": "Touch One Real API",
+      "tools": ["official API documentation", "HTTP", "test credentials", "integration test"],
+      "receipt": "API contract with a source link, redacted request and response, error behavior, and integration test"
+    },
+    {
+      "number": 5,
+      "id": "connect-the-work",
+      "title": "Connect the Work Without Connecting Everything",
+      "tools": ["API", "connector", "MCP", "webhook", "approval gate"],
+      "receipt": "One reversible, least-privilege connector flow with an audit note"
+    },
+    {
+      "number": 6,
+      "id": "direct-moving-image",
+      "title": "Direct Moving Image",
+      "tools": ["Seedance", "Veo", "Runway", "shot board", "reference images"],
+      "receipt": "Two-engine, five-shot study with the same references, evaluation, generation log, and rights note"
+    },
+    {
+      "number": 7,
+      "id": "edit-the-evidence",
+      "title": "The Generated Clip Is Raw Footage",
+      "tools": ["Premiere", "Resolve", "Final Cut", "CapCut", "captions", "provenance"],
+      "receipt": "Human-edited 20 to 30 second cut with mixed sound, captions, provenance, master, and delivery export"
+    },
+    {
+      "number": 8,
+      "id": "make-money-move",
+      "title": "Make Money Move Safely in Test Mode",
+      "tools": ["Stripe Checkout", "test mode", "signed webhook", "idempotency"],
+      "receipt": "Test payment receipt covering hosted Checkout, confirmation, fulfillment, state changes, and refund"
+    },
+    {
+      "number": 9,
+      "id": "make-the-phone-ring",
+      "title": "Make the Phone Ring with Consent",
+      "tools": ["Twilio", "verified test number", "webhook validation", "STOP flow"],
+      "receipt": "Consent-safe messaging or voice test with one verified recipient and delivery-state evidence"
+    },
+    {
+      "number": 10,
+      "id": "ship-the-whole-loop",
+      "title": "Ship the Whole Loop",
+      "tools": ["GitHub", "pull request", "tests", "Cloudflare Pages", "canonical verification"],
+      "receipt": "Public-safe launch receipt with problem, decisions, tests, canonical URL, limits, and rollback"
+    }
+  ],
+  "tool_boundaries": {
+    "worksheet_inputs_uploaded": false,
+    "progress_uploaded": false,
+    "progress_storage": "device localStorage only",
+    "live_payment_required": false,
+    "live_message_required": false,
+    "production_credentials_required": false,
+    "human_approval_required_before": ["send", "publish", "payment", "destructive write", "production deployment"]
+  },
+  "official_sources_checked": "2026-08-02",
+  "official_sources": [
+    "https://www.anthropic.com/claude/fable",
+    "https://learn.chatgpt.com/docs/models",
+    "https://learn.chatgpt.com/docs/extend/mcp",
+    "https://seed.bytedance.com/en/seedance",
+    "https://deepmind.google/technologies/veo/",
+    "https://runwayml.com/research/introducing-runway-gen-4",
+    "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/overview.html",
+    "https://docs.stripe.com/payments/checkout/quickstarts",
+    "https://www.twilio.com/docs/usage/webhooks/webhooks-overview",
+    "https://docs.github.com/en/get-started",
+    "https://developers.cloudflare.com/pages/"
+  ]
+}

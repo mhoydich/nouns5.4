@@ -8,6 +8,15 @@
   "principle": "Read the whole deal. Make one useful thing. Leave proof someone else can inspect.",
   "resources": [
     {
+      "id": "ai-for-industry-010",
+      "title": "AI for Industry — 10 Receipts for Recent Graduates",
+      "kind": "ten-part field series and device-local workbench",
+      "url": "https://www.industrynext.xyz/early-career/ai-for-industry/",
+      "machine_readable": "https://www.industrynext.xyz/ai-for-industry.json",
+      "output": "Ten inspectable receipts across coding agents, video, APIs, connectors, payments, messaging, and deployment",
+      "transmits_worksheet_inputs": false
+    },
+    {
       "id": "intern-read-001",
       "title": "Your First Decade Is a Position",
       "kind": "field guide and local model",

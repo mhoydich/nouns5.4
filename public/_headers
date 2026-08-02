@@ -115,6 +115,10 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/ai-for-industry.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /top-coder/*
   Cache-Control: public, max-age=300
 

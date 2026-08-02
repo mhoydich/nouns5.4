@@ -37,7 +37,7 @@ assert.match(home, /id="current"/);
 assert.equal((home.match(/data-home-file=/g) || []).length, 3);
 assert.match(home, /Start where[\s\S]*your energy is/);
 assert.match(home, /You Need a First Receipt/);
-assert.match(home, /6 RESOURCE DOORS/);
+assert.match(home, /7 DOORS · 10-PART AI SERIES/);
 assert.match(home, /6 FIRST TASKS/);
 assert.match(home, /14 ENTRIES/);
 assert.match(home, /What is working[\s\S]*right now/);
