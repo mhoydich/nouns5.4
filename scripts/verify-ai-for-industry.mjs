@@ -84,6 +84,7 @@ assert.match(css, /@media print/);
 assert.match(script, /industrynext\.ai-for-industry\.progress\.v1/);
 assert.match(script, /window\.localStorage\.setItem/);
 assert.match(script, /new FormData\(briefForm\)/);
+assert.match(script, /querySelectorAll\("textarea\[name\], input\[name\]"\)/);
 assert.match(script, /navigator\.clipboard/);
 assert.match(script, /textContent/);
 assert.doesNotMatch(script, /innerHTML|fetch\s*\(|document\.cookie|sessionStorage/);

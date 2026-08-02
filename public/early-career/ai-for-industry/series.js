@@ -56,7 +56,7 @@ resetProgress.addEventListener("click", () => {
 });
 
 const briefForm = document.querySelector("#brief-form");
-const briefFields = [...briefForm.querySelectorAll("textarea, input")];
+const briefFields = [...briefForm.querySelectorAll("textarea[name], input[name]")];
 const briefReadiness = document.querySelector("#brief-readiness");
 const briefOutput = document.querySelector("#brief-output");
 const briefOutputWrap = document.querySelector("#brief-output-wrap");
