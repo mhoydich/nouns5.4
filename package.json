@@ -22,6 +22,7 @@
     "verify:issue-001": "node ./scripts/verify-issue-001.mjs",
     "verify:issue-002": "node ./scripts/verify-issue-002.mjs",
     "verify:credit-card-games": "node ./scripts/verify-credit-card-games.mjs",
+    "verify:tone-bloom-field-review": "node ./scripts/verify-tone-bloom-field-review.mjs",
     "verify:intern-read-001": "node ./scripts/verify-intern-read-001.mjs",
     "verify:early-career": "node ./scripts/verify-early-career.mjs",
     "verify:ai-for-industry": "node ./scripts/verify-ai-for-industry.mjs",

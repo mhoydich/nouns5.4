@@ -1,0 +1,31 @@
+{
+  "schema": "industrynext.editorial.v1",
+  "slug": "tone-bloom-field-review",
+  "title": "Tone Bloom Is a Laboratory for Play",
+  "deck": "Forty-nine sound rooms and a simple question: what can grow when the internet stops behaving like a feed and starts behaving like an instrument?",
+  "published": "2026-08-03",
+  "author": "Michael Hoydich",
+  "editorial_assistance": "Codex, GPT-5.6 Sol, extra-high reasoning",
+  "canonical_url": "https://www.industrynext.xyz/editorial/tone-bloom-field-review/",
+  "field_review_url": "https://tonebloom.xyz/about/field-review",
+  "catalog_url": "https://tonebloom.xyz/blooms",
+  "current_room_count": 49,
+  "research_lines": [
+    { "range": "01-07", "name": "Attention" },
+    { "range": "08-15", "name": "Movement" },
+    { "range": "16-24", "name": "Image as score" },
+    { "range": "25-32", "name": "Sequence and relay" },
+    { "range": "33-42", "name": "Air and presence" },
+    { "range": "43-49", "name": "Question and coast" }
+  ],
+  "contribution_doors": [
+    { "id": "01", "name": "Ten-minute field pass", "receipt": "Three observations" },
+    { "id": "02", "name": "Sound behavior tuning", "receipt": "Before and after capture" },
+    { "id": "03", "name": "New gesture prototype", "receipt": "Playable study" },
+    { "id": "04", "name": "Coherent source family", "receipt": "12-40 sources and rights note" },
+    { "id": "05", "name": "Local listening session", "receipt": "One-page field log" },
+    { "id": "06", "name": "Access and distribution review", "receipt": "Prioritized fix list" }
+  ],
+  "contribution_contract": "Agree on scope, finish line, review date, public credit, publication rights, and compensation when applicable before substantive work begins.",
+  "contact": "mh@pointcast.xyz"
+}
