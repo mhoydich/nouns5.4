@@ -25,6 +25,7 @@ const CELESTRAK_BASE = "https://celestrak.org/NORAD/elements/gp.php";
 const MIN_ELEVATION_DEGREES = 10;
 const SEARCH_HOURS = 48;
 const STEP_SECONDS = 30;
+const SOURCE_TIMEOUT_MILLISECONDS = 6500;
 
 function compassPoint(azimuthDegrees) {
   const points = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
@@ -125,6 +126,9 @@ export async function buildSkyPassFeed({ fetchImpl = fetch, now = new Date() } =
       const sourceUrl = celestrakUrl(satellite.catalogId);
       const response = await fetchImpl(sourceUrl, {
         headers: { Accept: "text/plain" },
+        signal: typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function"
+          ? AbortSignal.timeout(SOURCE_TIMEOUT_MILLISECONDS)
+          : undefined,
       });
       if (!response.ok) throw new Error(`CelesTrak ${satellite.catalogId} returned ${response.status}.`);
       const tle = parseTle(await response.text(), satellite.label);

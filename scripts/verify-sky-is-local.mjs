@@ -70,6 +70,8 @@ assert.match(headers, /\/api\/sky-pass[\s\S]*s-maxage=21600/);
 assert.match(sitemap, /industrynext\.xyz\/sky-is-local\//);
 assert.match(sitemap, /industrynext\.xyz\/sky-is-local\.json/);
 assert.match(apiSource, /buildSkyPassFeed/);
+assert.match(apiSource, /caches\.default/);
+assert.match(apiSource, /edgeCache\.put/);
 assert.match(apiSource, /status: 503/);
 assert.match(og, /The Sky Is Local/);
 assert.match(og, /LIVE ORBITS \/ REHEARSED SOUND \/ RECEIVE-ONLY FIRST/);
