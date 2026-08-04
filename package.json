@@ -13,6 +13,7 @@
     "verify:permission-lab": "node ./scripts/verify-permission-lab.mjs",
     "verify:services": "node ./scripts/verify-services.mjs",
     "verify:hardware": "node ./scripts/verify-hardware.mjs",
+    "verify:sky-is-local": "node ./scripts/verify-sky-is-local.mjs",
     "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",
     "verify:desk": "node ./scripts/verify-desk.mjs",
     "verify:product-desk": "node ./scripts/verify-product-desk.mjs",
@@ -48,6 +49,7 @@
     "@tezos-x/octez.connect-types": "^4.8.3",
     "buffer": "^6.0.3",
     "process": "^0.11.10",
+    "satellite.js": "^7.1.0",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.5"
   },

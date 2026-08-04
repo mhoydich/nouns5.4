@@ -1,0 +1,38 @@
+{
+  "schema_version": "industrynext.sky-score.v1",
+  "title": "The Sky Is Local — Satellite Picnic",
+  "publisher": "Industry Next",
+  "published": "2026-08-03",
+  "canonical_url": "https://www.industrynext.xyz/sky-is-local/",
+  "live_data": "/api/sky-pass",
+  "observer": {
+    "name": "El Segundo, California",
+    "latitude": 33.9192,
+    "longitude": -118.4165,
+    "location_request": false
+  },
+  "instrument": {
+    "status": "rehearsal",
+    "sound_source": "local browser synthesis after a user gesture",
+    "radio_connected": false,
+    "persistence": "none"
+  },
+  "roles": [
+    { "time": "15 minutes", "name": "Star scout", "output": "one clear invitation" },
+    { "time": "30 minutes", "name": "Picnic signal", "output": "a place to land" },
+    { "time": "60 minutes", "name": "Receiver friend", "output": "one honest receipt" },
+    { "time": "rest", "name": "Look up", "output": "being there counts" }
+  ],
+  "boundaries": [
+    "A modeled pass is not confirmed radio reception or an optical visibility forecast.",
+    "The browser instrument is a simulated rehearsal and receives no radio signal.",
+    "Receive-only comes before any transmission experiment.",
+    "This page never requests or stores the visitor's location."
+  ],
+  "sources": [
+    "https://celestrak.org/NORAD/documentation/gp-data-formats.php",
+    "https://github.com/shashwatak/satellite-js",
+    "https://tinygs.com/",
+    "https://docs.satnogs.org/projects/satnogs-kit/en/latest/introduction.html"
+  ]
+}

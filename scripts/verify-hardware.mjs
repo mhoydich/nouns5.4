@@ -37,6 +37,8 @@ assert.match(html, /data-placement="footer"/);
 assert.match(html, /https:\/\/meshtastic\.org\//);
 assert.match(html, /https:\/\/satnogs\.org\//);
 assert.match(html, /https:\/\/gitlab\.com\/librerouter/);
+assert.match(html, /FIELD TEST 001 \/ NEW \/ PLAYABLE/);
+assert.match(html, /href="\/sky-is-local\/">Play the Satellite Picnic/);
 
 assert.equal(data.schema_version, "industrynext.hardware.v1");
 assert.equal(data.layers.length, 4);
@@ -44,11 +46,13 @@ assert.equal(data.projects.length, 9);
 assert.deepEqual(new Set(data.projects.map((project) => project.category)), new Set(["communication", "directional", "orbit", "entertainment"]));
 assert.ok(data.projects.every((project) => project.sources.length > 0));
 assert.ok(data.projects.every((project) => project.limit.length > 10));
+assert.equal(data.field_tests[0].id, "sky-is-local");
 assert.match(data.safety, /certified emergency infrastructure/);
 
 assert.match(home, /href="\/hardware\/"/);
 assert.match(home, /Build the[\s\S]*local <em>signal/);
 assert.match(home, /9 PROJECTS \/ 4 SIGNAL LAYERS/);
+assert.match(home, /href="\/sky-is-local\/">Play the Satellite Picnic/);
 assert.match(favicon, /<title>Industry Next satellite dish<\/title>/);
 assert.match(favicon, /satellite dish/i);
 assert.match(favicon, /#EEFF41/);

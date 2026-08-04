@@ -37,6 +37,16 @@
       "examples": ["TinyGS", "SatNOGS"]
     }
   ],
+  "field_tests": [
+    {
+      "id": "sky-is-local",
+      "name": "The Sky Is Local — Satellite Picnic",
+      "url": "https://www.industrynext.xyz/sky-is-local/",
+      "live_data": "https://www.industrynext.xyz/api/sky-pass",
+      "status": "browser rehearsal with live modeled passes",
+      "boundary": "No radio receiver is connected; the instrument is simulated and receive-only hardware comes next."
+    }
+  ],
   "projects": [
     {
       "id": "pocket-relay",

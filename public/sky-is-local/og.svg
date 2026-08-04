@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The Sky Is Local — Satellite Picnic</title>
+  <desc id="desc">A small satellite crosses a blue night sky above a neon picnic blanket, two people, and a receive-only dish.</desc>
+  <rect width="1200" height="630" fill="#111735"/>
+  <path d="M0 0H1200M0 70H1200M0 140H1200M0 210H1200M0 280H1200M0 350H1200M0 420H1200M0 490H1200M0 560H1200M0 630H1200M0 0V630M70 0V630M140 0V630M210 0V630M280 0V630M350 0V630M420 0V630M490 0V630M560 0V630M630 0V630M700 0V630M770 0V630M840 0V630M910 0V630M980 0V630M1050 0V630M1120 0V630M1190 0V630" stroke="#fff" opacity=".045"/>
+  <circle cx="1080" cy="74" r="5" fill="#edff45"/><circle cx="795" cy="96" r="4" fill="#68e4db"/><circle cx="998" cy="241" r="4" fill="#f15b98"/><circle cx="663" cy="54" r="3" fill="#fffdf7"/>
+  <path d="M635 344C735 72 1013 34 1145 222" fill="none" stroke="#fffdf7" stroke-width="4" stroke-dasharray="13 15"/>
+  <g transform="translate(965 80) rotate(18)" stroke="#fffdf7" stroke-width="5">
+    <rect x="-25" y="-16" width="50" height="32" fill="#f15b98"/><rect x="-82" y="-12" width="46" height="24" fill="#68e4db"/><rect x="36" y="-12" width="46" height="24" fill="#edff45"/>
+  </g>
+  <path d="M0 513Q510 355 1200 505V630H0Z" fill="#07091a"/>
+  <path d="M656 531L847 459L1063 535L858 608Z" fill="#f36c37" stroke="#fffdf7" stroke-width="5"/>
+  <path d="M716 509L927 582M786 483L997 557M756 494L755 568M848 463L849 605M940 491L939 578" fill="none" stroke="#101010" stroke-width="5"/>
+  <circle cx="664" cy="454" r="28" fill="#68e4db" stroke="#fffdf7" stroke-width="5"/><path d="M664 482V558M628 515H701" stroke="#fffdf7" stroke-width="8"/>
+  <circle cx="1072" cy="468" r="28" fill="#edff45" stroke="#fffdf7" stroke-width="5"/><path d="M1072 496V563M1038 529H1107" stroke="#fffdf7" stroke-width="8"/>
+  <path d="M507 443C514 512 566 561 632 566C625 499 574 450 507 443Z" fill="#3855ef" stroke="#fffdf7" stroke-width="6"/><path d="M565 510L621 454M563 513L534 576M510 579H565" fill="none" stroke="#fffdf7" stroke-width="8"/>
+  <text x="55" y="85" fill="#edff45" font-family="ui-monospace,monospace" font-size="20" letter-spacing="4">INDUSTRY NEXT / SKY SCORE 001</text>
+  <text x="48" y="230" fill="#fffdf7" font-family="Arial,sans-serif" font-size="112" font-weight="900" letter-spacing="-9">THE SKY</text>
+  <text x="48" y="330" fill="#fffdf7" font-family="Arial,sans-serif" font-size="112" font-weight="900" letter-spacing="-9">IS <tspan fill="#edff45">LOCAL.</tspan></text>
+  <text x="55" y="395" fill="#68e4db" font-family="ui-monospace,monospace" font-size="19" letter-spacing="2">LIVE ORBITS / REHEARSED SOUND / RECEIVE-ONLY FIRST</text>
+  <rect x="54" y="435" width="460" height="57" fill="#edff45" stroke="#fffdf7" stroke-width="4"/><text x="77" y="471" fill="#101010" font-family="ui-monospace,monospace" font-size="18" font-weight="700" letter-spacing="2">BRING WHAT TIME YOU HAVE ↗</text>
+</svg>

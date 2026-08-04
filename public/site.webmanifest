@@ -9,6 +9,12 @@
   "theme_color": "#eeff41",
   "shortcuts": [
     {
+      "name": "The Sky Is Local",
+      "short_name": "Sky Picnic",
+      "description": "Live modeled satellite passes and a playful browser instrument for a local sky picnic.",
+      "url": "/sky-is-local/"
+    },
+    {
       "name": "Build Local Signals",
       "short_name": "Hardware",
       "description": "Open projects for local mesh communication, neighborhood media, radio, and satellite listening.",

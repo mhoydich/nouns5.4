@@ -23,6 +23,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.industrynext.xyz/sky-is-local/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.industrynext.xyz/sky-is-local.json</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.industrynext.xyz/issues/001/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>

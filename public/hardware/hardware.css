@@ -195,6 +195,28 @@ button { color: inherit; font: inherit; }
 .console-readout span { padding: 7px 6px; border-right: 1px solid var(--white); font: 500 .43rem/1.25 var(--mono); text-align: center; }
 .console-readout span:last-child { border-right: 0; }
 
+.sky-field-test { display: grid; grid-template-columns: minmax(320px,.75fr) minmax(460px,1.25fr); gap: clamp(45px,7vw,105px); align-items: center; padding: 92px var(--page-pad) 105px; border-bottom: var(--line); background: var(--blue); color: var(--white); }
+.sky-field-copy h2 { margin: 18px 0 27px; font-size: clamp(4.5rem,8vw,9rem); line-height: .73; letter-spacing: -.1em; }
+.sky-field-copy h2 em { color: var(--acid); font-style: normal; }
+.sky-field-copy > p:not(.section-index) { max-width: 610px; margin: 0 0 30px; font: 400 .75rem/1.65 var(--mono); }
+.sky-field-copy .button-acid { background: var(--acid); color: var(--ink); }
+.sky-field-copy small { display: block; margin-top: 28px; font: 500 .5rem/1.4 var(--mono); letter-spacing: .07em; }
+.sky-field-object { position: relative; display: block; min-height: 580px; overflow: hidden; border: 2px solid var(--white); background: #111735; color: var(--white); text-decoration: none; box-shadow: 14px 16px 0 var(--pink),27px 31px 0 var(--acid); transform: rotate(1deg); transition: transform .18s ease; }
+.sky-field-object:hover, .sky-field-object:focus-visible { transform: rotate(0deg) translate(4px,4px); }
+.sky-field-object > span, .sky-field-object > b { position: absolute; z-index: 3; left: 16px; padding: 8px 10px; border: 1px solid var(--white); background: #07091a; font: 500 .5rem/1.3 var(--mono); letter-spacing: .07em; }
+.sky-field-object > span { top: 15px; }
+.sky-field-object > b { right: 16px; bottom: 15px; }
+.sky-field-object > strong { position: absolute; z-index: 3; left: 22px; top: 120px; font: 900 clamp(2.4rem,4vw,4.7rem)/.78 var(--sans); letter-spacing: -.075em; }
+.sky-field-object > strong em { color: var(--acid); font-style: normal; }
+.sky-field-object svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.field-orbit, .field-line { fill: none; stroke: var(--white); stroke-width: 4; }
+.field-orbit { stroke-dasharray: 11 12; }
+.field-satellite rect { fill: var(--acid); stroke: var(--white); stroke-width: 4; }
+.field-satellite rect:first-child { fill: var(--pink); }
+.field-ground { fill: #07091a; }
+.field-blanket { fill: var(--orange); stroke: var(--white); stroke-width: 4; }
+.field-dish { fill: var(--blue); stroke: var(--white); stroke-width: 5; }
+
 .layers { padding: 100px var(--page-pad) 112px; border-bottom: var(--line); background: var(--paper); }
 .section-head { display: grid; grid-template-columns: 1.3fr .7fr; column-gap: 54px; align-items: end; margin-bottom: 48px; }
 .section-head .section-index { grid-column: 1 / -1; margin-bottom: 15px; }
@@ -327,7 +349,8 @@ button { color: inherit; font: inherit; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-copy { padding-top: 15px; }
   .dish-console { width: min(86%, 720px); justify-self: center; }
-  .section-head, .builds-head, .sources-head, .start-small { grid-template-columns: 1fr; }
+  .sky-field-object { width: min(86%, 720px); justify-self: center; }
+  .section-head, .builds-head, .sources-head, .start-small, .sky-field-test { grid-template-columns: 1fr; }
   .section-head > p:last-child, .builds-head > p, .sources-head > p:last-child { margin-top: 24px; }
   .build-wide { grid-column: auto; min-height: 600px; }
   .build-card dl { grid-template-columns: 1fr; }
@@ -357,8 +380,9 @@ button { color: inherit; font: inherit; }
   .console-readout { grid-template-columns: repeat(2, 1fr); }
   .console-readout span:nth-child(2) { border-right: 0; }
   .console-readout span:nth-child(-n+2) { border-bottom: 1px solid var(--white); }
-  .layers, .builds, .recipes, .start-small, .sources { padding-top: 72px; padding-bottom: 82px; }
-  .section-head h2, .builds-head h2, .sources-head h2, .start-copy h2 { font-size: clamp(4rem, 18vw, 6rem); }
+  .layers, .builds, .recipes, .start-small, .sources, .sky-field-test { padding-top: 72px; padding-bottom: 82px; }
+  .section-head h2, .builds-head h2, .sources-head h2, .start-copy h2, .sky-field-copy h2 { font-size: clamp(4rem, 18vw, 6rem); }
+  .sky-field-object { width: calc(100% - 26px); min-height: 500px; box-shadow: 9px 11px 0 var(--pink),17px 21px 0 var(--acid); }
   .layer-grid, .build-grid, .recipe-grid, .source-grid { grid-template-columns: 1fr; }
   .layer { min-height: 360px; }
   .honesty-strip, .safety-note { grid-template-columns: 1fr; }
