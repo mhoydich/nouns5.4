@@ -1,0 +1,74 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const html = await readFile(new URL("../public/hardware/index.html", import.meta.url), "utf8");
+const css = await readFile(new URL("../public/hardware/hardware.css", import.meta.url), "utf8");
+const script = await readFile(new URL("../public/hardware/hardware.js", import.meta.url), "utf8");
+const data = JSON.parse(await readFile(new URL("../public/hardware.json", import.meta.url), "utf8"));
+const home = await readFile(new URL("../public/index.html", import.meta.url), "utf8");
+const favicon = await readFile(new URL("../public/favicon.svg", import.meta.url), "utf8");
+const brandedFavicon = await readFile(new URL("../public/industry-next-icon.svg", import.meta.url), "utf8");
+const manifest = JSON.parse(await readFile(new URL("../public/site.webmanifest", import.meta.url), "utf8"));
+const headers = await readFile(new URL("../public/_headers", import.meta.url), "utf8");
+const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+
+assert.match(html, /<h1 id="hero-title">Build the[\s\S]*local <em>signal\.<\/em>/);
+assert.match(html, /DISH CONSOLE \/ RX-005/);
+assert.match(html, /THE DISH IS AN EAR/);
+assert.match(html, /Four different[\s\S]*kinds of <em>near/);
+assert.match(html, /A sculptural dish, a LoRa mesh, a Wi-Fi link, and certified satellite internet backhaul are four separate systems/);
+assert.equal((html.match(/class="build-card/g) || []).length, 9);
+assert.equal((html.match(/data-filter=/g) || []).length, 5);
+assert.match(html, /Pocket Relay/);
+assert.match(html, /Field Telephone/);
+assert.match(html, /Three Roofs/);
+assert.match(html, /Orbit Ear/);
+assert.match(html, /Satellite Desk/);
+assert.match(html, /Offline Library/);
+assert.match(html, /Block TV/);
+assert.match(html, /Neighborhood Jukebox/);
+assert.match(html, /Radio Window/);
+assert.match(html, /not voice, video, or guaranteed emergency service/i);
+assert.match(html, /not one device’s radius/i);
+assert.match(html, /rights-cleared collection/i);
+assert.match(html, /Do not describe a hobby network as certified emergency infrastructure/);
+assert.match(html, /rel="alternate" type="application\/json" href="\/hardware\.json"/);
+assert.match(html, /data-placement="footer"/);
+assert.match(html, /https:\/\/meshtastic\.org\//);
+assert.match(html, /https:\/\/satnogs\.org\//);
+assert.match(html, /https:\/\/gitlab\.com\/librerouter/);
+
+assert.equal(data.schema_version, "industrynext.hardware.v1");
+assert.equal(data.layers.length, 4);
+assert.equal(data.projects.length, 9);
+assert.deepEqual(new Set(data.projects.map((project) => project.category)), new Set(["communication", "directional", "orbit", "entertainment"]));
+assert.ok(data.projects.every((project) => project.sources.length > 0));
+assert.ok(data.projects.every((project) => project.limit.length > 10));
+assert.match(data.safety, /certified emergency infrastructure/);
+
+assert.match(home, /href="\/hardware\/"/);
+assert.match(home, /Build the[\s\S]*local <em>signal/);
+assert.match(home, /9 PROJECTS \/ 4 SIGNAL LAYERS/);
+assert.match(favicon, /<title>Industry Next satellite dish<\/title>/);
+assert.match(favicon, /satellite dish/i);
+assert.match(favicon, /#EEFF41/);
+assert.match(favicon, /#59F4E8/);
+assert.equal(brandedFavicon, favicon);
+assert.equal(manifest.icons[0].src, "/industry-next-icon.svg");
+assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === "/hardware/"));
+assert.match(headers, /\/hardware\.json[\s\S]*application\/json/);
+assert.match(sitemap, /industrynext\.xyz\/hardware\//);
+assert.match(sitemap, /industrynext\.xyz\/hardware\.json/);
+
+assert.match(css, /\.dish-console/);
+assert.match(css, /\.build-grid/);
+assert.match(css, /\.recipe-grid/);
+assert.match(css, /@media \(max-width: 700px\)/);
+assert.match(css, /prefers-reduced-motion: reduce/);
+assert.match(css, /prefers-contrast: more/);
+assert.match(script, /aria-pressed/);
+assert.match(script, /card\.hidden/);
+assert.match(script, /Math\.random/);
+assert.doesNotMatch(script, /innerHTML/);
+
+console.log("Hardware field guide verification passed: satellite-dish identity, nine honest build directions, four signal layers, filters, machine-readable data, homepage doorway, discovery, and safety boundaries.");

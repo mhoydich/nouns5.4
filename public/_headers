@@ -36,6 +36,13 @@
 /services.json
   Content-Type: application/json; charset=utf-8
 
+/hardware/*
+  Cache-Control: public, max-age=300
+
+/hardware.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /roles/*
   Cache-Control: public, max-age=300
 

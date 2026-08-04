@@ -12,6 +12,7 @@
     "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
     "verify:permission-lab": "node ./scripts/verify-permission-lab.mjs",
     "verify:services": "node ./scripts/verify-services.mjs",
+    "verify:hardware": "node ./scripts/verify-hardware.mjs",
     "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",
     "verify:desk": "node ./scripts/verify-desk.mjs",
     "verify:product-desk": "node ./scripts/verify-product-desk.mjs",

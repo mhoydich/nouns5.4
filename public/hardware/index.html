@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Build the local signal: an Industry Next field guide to open mesh communication, directional links, neighborhood media, radio, and satellite listening."
+    />
+    <meta name="theme-color" content="#ff6b24" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="Build the Local Signal — Industry Next" />
+    <meta
+      property="og:description"
+      content="Nine open projects for communication, directional experiments, neighborhood entertainment, and listening to orbit."
+    />
+    <meta property="og:url" content="https://www.industrynext.xyz/hardware/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/hardware/og.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A colorful satellite dish connecting three local nodes under the words Build the Local Signal." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Build the Local Signal — Industry Next" />
+    <meta name="twitter:description" content="Open hardware and software for local communication, media, radio, and orbit." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/hardware/og.svg" />
+    <link rel="canonical" href="https://www.industrynext.xyz/hardware/" />
+    <link rel="alternate" type="application/json" href="/hardware.json" title="Build the Local Signal — machine-readable field guide" />
+    <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Build the Local Signal | Industry Next</title>
+    <link rel="stylesheet" href="/hardware/hardware.css?v=20260803a" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Build the Local Signal",
+        "url": "https://www.industrynext.xyz/hardware/",
+        "description": "A curated field guide to open projects for local communication, mesh networking, neighborhood media, radio reception, and satellite ground stations.",
+        "isAccessibleForFree": true,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Industry Next",
+          "url": "https://www.industrynext.xyz/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the field guide</a>
+
+    <header class="site-head">
+      <a class="wordmark" href="/" aria-label="Industry Next, home">
+        <span>INDUSTRY</span><span>NEXT</span>
+      </a>
+      <nav class="site-nav" aria-label="Hardware field guide">
+        <a href="#layers">Signal layers</a>
+        <a href="#builds">Builds</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#sources">Source shelf</a>
+        <a href="/">Home</a>
+      </nav>
+    </header>
+
+    <div class="signal-tape" aria-label="Field guide principles">
+      <span>OPEN WHEN POSSIBLE</span>
+      <span>LOCAL BY DEFAULT</span>
+      <span>RANGE IS MEASURED, NOT PROMISED</span>
+      <span>RECEIVE BEFORE TRANSMIT</span>
+    </div>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="binder-spine" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">INDUSTRY NEXT / FIELD OBJECT 005 / AUGUST 2026</p>
+          <h1 id="hero-title">Build the<br />local <em>signal.</em></h1>
+          <p class="hero-deck">
+            Open projects for talking across a field, linking two windows, hosting a block’s
+            own movies and music, and listening to small machines moving through the sky.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#builds">Choose a build <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#start-small">Start with one table</a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>9</dt><dd>build directions</dd></div>
+            <div><dt>4</dt><dd>signal layers</dd></div>
+            <div><dt>0</dt><dd>cloud required for the local layer</dd></div>
+          </dl>
+        </div>
+
+        <div class="dish-console" aria-label="Local signal layers: pocket radio, roof links, local media, and satellite reception">
+          <div class="console-bar"><span>DISH CONSOLE / RX-005</span><span>LOCAL / RECEIVE</span></div>
+          <div class="dish-stage" aria-hidden="true">
+            <span class="orbit-label">LOW EARTH ORBIT</span>
+            <svg viewBox="0 0 560 520">
+              <path class="wave wave-1" d="M338 117A91 91 0 0 1 412 190" />
+              <path class="wave wave-2" d="M360 66A146 146 0 0 1 463 168" />
+              <path class="wave wave-3" d="M376 14A202 202 0 0 1 515 153" />
+              <path class="dish" d="M80 107C90 279 226 415 398 425C387 253 252 118 80 107Z" />
+              <path class="arm" d="M211 294L355 150" />
+              <circle class="feed" cx="359" cy="146" r="23" />
+              <path class="mast" d="M207 300L133 438M65 444H211" />
+              <path class="ground-link" d="M49 481H500" />
+              <circle class="ground-node node-1" cx="49" cy="481" r="12" />
+              <circle class="ground-node node-2" cx="275" cy="481" r="12" />
+              <circle class="ground-node node-3" cx="500" cy="481" r="12" />
+              <path class="node-wave" d="M66 465Q161 398 258 465M292 465Q390 398 483 465" />
+            </svg>
+            <div class="console-readout">
+              <span>TEXT / TELEMETRY</span><span>LOCAL WI-FI</span><span>MEDIA / LIBRARY</span><span>SPACE / RX</span>
+            </div>
+          </div>
+          <div class="console-note">
+            <strong>THE DISH IS AN EAR.</strong>
+            <span>A satellite ground station listens. It is not internet backhaul.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="layers" class="layers" aria-labelledby="layers-title">
+        <header class="section-head">
+          <p class="section-index">01 / KEEP THE LAYERS HONEST</p>
+          <h2 id="layers-title">Four different<br />kinds of <em>near.</em></h2>
+          <p>A mesh is not one magic radio. It is several useful layers that can meet without pretending to be the same thing.</p>
+        </header>
+
+        <div class="layer-grid">
+          <article class="layer layer-lora">
+            <span>01 / POCKET</span>
+            <h3>Low-rate radio</h3>
+            <p>Short messages, positions, sensor readings, and tiny packets. Long reach; very little bandwidth.</p>
+            <b>LoRa · Meshtastic · RNode</b>
+          </article>
+          <article class="layer layer-link">
+            <span>02 / BETWEEN PLACES</span>
+            <h3>Roof + window links</h3>
+            <p>Wi-Fi-class connections between known points. Line of sight, mounting, and local spectrum rules matter.</p>
+            <b>OpenWrt · 802.11s · LibreRouter</b>
+          </article>
+          <article class="layer layer-local">
+            <span>03 / ON THE BLOCK</span>
+            <h3>Local compute</h3>
+            <p>A small computer serves movies, music, live video, maps, books, games, and bulletin boards nearby.</p>
+            <b>Kiwix · Owncast · Jellyfin</b>
+          </article>
+          <article class="layer layer-orbit">
+            <span>04 / LOOK UP</span>
+            <h3>Satellite ears</h3>
+            <p>Receive and decode signals from orbit. Start receive-only; transmitting can require licenses and coordination.</p>
+            <b>TinyGS · SatNOGS</b>
+          </article>
+        </div>
+
+        <aside class="honesty-strip">
+          <strong>NOT THE SAME THING:</strong>
+          <span>A sculptural dish, a LoRa mesh, a Wi-Fi link, and certified satellite internet backhaul are four separate systems.</span>
+        </aside>
+      </section>
+
+      <section id="builds" class="builds" aria-labelledby="builds-title">
+        <header class="builds-head">
+          <div>
+            <p class="section-index">02 / NINE DIRECTIONS</p>
+            <h2 id="builds-title">What do you<br />want to make?</h2>
+          </div>
+          <p>Filter by the feeling you want. Every card names the open layer and the honest limit.</p>
+        </header>
+
+        <div class="filter-bar" aria-label="Filter build directions">
+          <button type="button" data-filter="all" aria-pressed="true">All nine</button>
+          <button type="button" data-filter="communication" aria-pressed="false">Communication</button>
+          <button type="button" data-filter="directional" aria-pressed="false">Directional</button>
+          <button type="button" data-filter="entertainment" aria-pressed="false">Entertainment</button>
+          <button type="button" data-filter="orbit" aria-pressed="false">Orbit + listening</button>
+          <button id="pick-build" class="pick-build" type="button">Pick one for me ↗</button>
+        </div>
+        <p id="project-count" class="project-count" aria-live="polite">Showing all 9 build directions.</p>
+
+        <div class="build-grid">
+          <article class="build-card build-cyan" data-kind="communication" tabindex="-1">
+            <div class="card-top"><span>BUILD 01 / AFTERNOON</span><span>OPEN SOFTWARE</span></div>
+            <p class="card-kicker">COMMUNICATION / NO CELL TOWER</p>
+            <h3>Pocket Relay</h3>
+            <p class="card-deck">Three small LoRa boards become a low-power text and telemetry mesh for a walk, event, or neighborhood check-in.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Short text, location, sensor packets</dd></div>
+              <div><dt>NEEDS</dt><dd>3 supported boards + phones</dd></div>
+              <div><dt>LIMIT</dt><dd>Not voice, video, or guaranteed emergency service</dd></div>
+            </dl>
+            <a href="https://meshtastic.org/">Build with Meshtastic <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-pink" data-kind="communication" tabindex="-1">
+            <div class="card-top"><span>BUILD 02 / WEEKEND</span><span>OPEN RADIO SYSTEM</span></div>
+            <p class="card-kicker">COMMUNICATION / MAKE THE RADIO</p>
+            <h3>Field Telephone</h3>
+            <p class="card-deck">Turn common LoRa development boards into RNodes, then use Reticulum for an encrypted local network with no central address authority.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Messages, files, local network experiments</dd></div>
+              <div><dt>NEEDS</dt><dd>2+ compatible boards + hosts</dd></div>
+              <div><dt>LIMIT</dt><dd>Low data rate; band rules vary by place</dd></div>
+            </dl>
+            <div class="card-links">
+              <a href="https://unsigned.io/rnode/">Make an RNode ↗</a>
+              <a href="https://reticulum.network/">Read Reticulum ↗</a>
+            </div>
+          </article>
+
+          <article class="build-card build-acid build-wide" data-kind="directional" tabindex="-1">
+            <div class="card-top"><span>BUILD 03 / TWO WINDOWS, THEN THREE ROOFS</span><span>OPEN HARDWARE + FIRMWARE</span></div>
+            <p class="card-kicker">DIRECTIONAL / COMMUNITY NETWORK</p>
+            <h3>Three Roofs</h3>
+            <p class="card-deck">Start with a measured two-point link. Add a third node only after the first path works. Serve a local page before adding internet backhaul.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Local intranet between buildings</dd></div>
+              <div><dt>NEEDS</dt><dd>Permission, safe mounts, line of sight</dd></div>
+              <div><dt>LIMIT</dt><dd>“25 miles” is a staged network horizon—not one device’s radius</dd></div>
+            </dl>
+            <div class="card-links">
+              <a href="https://gitlab.com/librerouter">Open LibreRouter hardware ↗</a>
+              <a href="https://openwrt.org/docs/guide-user/network/wifi/mesh/802-11s">Study OpenWrt 802.11s ↗</a>
+            </div>
+          </article>
+
+          <article class="build-card build-blue" data-kind="orbit" tabindex="-1">
+            <div class="card-top"><span>BUILD 04 / AFTERNOON</span><span>OPEN SOFTWARE</span></div>
+            <p class="card-kicker">ORBIT / FIRST SATELLITE EAR</p>
+            <h3>Orbit Ear</h3>
+            <p class="card-deck">Flash a supported ESP32 LoRa board, point an antenna upward, and join a collaborative network receiving small satellites.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Receive LoRa satellite telemetry</dd></div>
+              <div><dt>NEEDS</dt><dd>Compatible board + antenna + Wi-Fi</dd></div>
+              <div><dt>LIMIT</dt><dd>Receive project; passes and frequencies vary</dd></div>
+            </dl>
+            <a href="https://tinygs.com/">Start with TinyGS <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-orange" data-kind="orbit" tabindex="-1">
+            <div class="card-top"><span>BUILD 05 / DEEP WEEKEND</span><span>OPEN HARDWARE + SOFTWARE</span></div>
+            <p class="card-kicker">ORBIT / ROTOR + RECEIVER</p>
+            <h3>Satellite Desk</h3>
+            <p class="card-deck">Build a modular ground station that schedules observations, tracks low-Earth-orbit satellites, and contributes reception to a public network.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Track, receive, decode, contribute observations</dd></div>
+              <div><dt>NEEDS</dt><dd>Receiver, antennas, controller, clear sky</dd></div>
+              <div><dt>LIMIT</dt><dd>More RF, mechanics, and calibration than TinyGS</dd></div>
+            </dl>
+            <a href="https://satnogs.org/">Open the SatNOGS build docs <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-paper" data-kind="entertainment" tabindex="-1">
+            <div class="card-top"><span>BUILD 06 / AFTERNOON</span><span>FREE SOFTWARE</span></div>
+            <p class="card-kicker">KNOWLEDGE / LOCAL WI-FI</p>
+            <h3>Offline Library</h3>
+            <p class="card-deck">A Raspberry Pi creates its own Wi-Fi network and serves an intentionally chosen shelf of books, maps, manuals, and reference material.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Library, repair café, classroom, road kit</dd></div>
+              <div><dt>NEEDS</dt><dd>Supported Pi + storage + selected ZIMs</dd></div>
+              <div><dt>LIMIT</dt><dd>Content must be refreshed intentionally</dd></div>
+            </dl>
+            <a href="https://get.kiwix.org/en/solutions/hotspots/">Build a Kiwix Hotspot <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-pink" data-kind="entertainment" tabindex="-1">
+            <div class="card-top"><span>BUILD 07 / EVENING</span><span>OPEN SOFTWARE</span></div>
+            <p class="card-kicker">LIVE MEDIA / ONE CAMERA</p>
+            <h3>Block TV</h3>
+            <p class="card-deck">Run one live video channel and chat from a small local server. Point OBS at it, then invite nearby browsers over your own network.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Performance, council, game, porch camera</dd></div>
+              <div><dt>NEEDS</dt><dd>Computer + Owncast + local network</dd></div>
+              <div><dt>LIMIT</dt><dd>Video needs far more bandwidth than LoRa</dd></div>
+            </dl>
+            <a href="https://github.com/owncast/owncast">Broadcast with Owncast <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-cyan" data-kind="entertainment" tabindex="-1">
+            <div class="card-top"><span>BUILD 08 / EVENING</span><span>FREE SOFTWARE</span></div>
+            <p class="card-kicker">MEDIA / SHARED SHELF</p>
+            <h3>Neighborhood Jukebox</h3>
+            <p class="card-deck">Serve a rights-cleared collection of local music, movies, photos, and recordings to phones and projectors on the same network.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Listening room, movie night, oral history</dd></div>
+              <div><dt>NEEDS</dt><dd>Server + storage + media you may share</dd></div>
+              <div><dt>LIMIT</dt><dd>Respect copyright, privacy, and contributor consent</dd></div>
+            </dl>
+            <a href="https://jellyfin.org/">Host it with Jellyfin <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="build-card build-black build-wide" data-kind="orbit" tabindex="-1">
+            <div class="card-top"><span>BUILD 09 / WEEKEND</span><span>OPEN SOFTWARE / COMMODITY RECEIVER</span></div>
+            <p class="card-kicker">LISTENING / SHARED RADIO WINDOW</p>
+            <h3>Radio Window</h3>
+            <p class="card-deck">Put a software-defined receiver somewhere electrically quiet, attach the right antenna, and let several local browsers listen at once.</p>
+            <dl>
+              <div><dt>USE</dt><dd>Shortwave, amateur, air, weather, satellite reception</dd></div>
+              <div><dt>NEEDS</dt><dd>SDR receiver + antenna + local server</dd></div>
+              <div><dt>LIMIT</dt><dd>Receive-only is the clean start; protect private communications</dd></div>
+            </dl>
+            <a href="https://www.openwebrx.de/about.php">Open a window with OpenWebRX <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section id="recipes" class="recipes" aria-labelledby="recipes-title">
+        <header class="section-head section-head-light">
+          <p class="section-index">03 / COMBINE THE LAYERS</p>
+          <h2 id="recipes-title">A network needs<br />a reason to <em>exist.</em></h2>
+          <p>Hardware is the floor. A shared local thing—music, maps, messages, a game, the sky—is what brings people back.</p>
+        </header>
+
+        <div class="recipe-grid">
+          <article>
+            <span>RECIPE A / FRIDAY NIGHT</span>
+            <h3>Night Market TV</h3>
+            <p>OpenWrt local Wi-Fi + Owncast + one camera + one projector.</p>
+            <b>OUTPUT: A LIVE BLOCK CHANNEL</b>
+          </article>
+          <article>
+            <span>RECIPE B / WALKING CLUB</span>
+            <h3>Street Signal</h3>
+            <p>Three Meshtastic nodes + a printed meeting map + agreed check-in language.</p>
+            <b>OUTPUT: A TINY SOCIAL PROTOCOL</b>
+          </article>
+          <article>
+            <span>RECIPE C / CLEAR EVENING</span>
+            <h3>Satellite Picnic</h3>
+            <p>TinyGS + pass predictions + a speaker or light driven by received packets.</p>
+            <b>OUTPUT: ORBIT AS LOCAL THEATER</b>
+          </article>
+          <article>
+            <span>RECIPE D / LIBRARY TABLE</span>
+            <h3>Suitcase Internet</h3>
+            <p>Kiwix + local stories + repair manuals + a simple page listing who maintains the shelf.</p>
+            <b>OUTPUT: A PLACE THAT REMEMBERS</b>
+          </article>
+        </div>
+      </section>
+
+      <section id="start-small" class="start-small" aria-labelledby="start-small-title">
+        <div class="start-copy">
+          <p class="section-index">04 / START SMALL ENOUGH TO FINISH</p>
+          <h2 id="start-small-title">One table.<br />Two windows.<br /><em>Three roofs.</em></h2>
+        </div>
+        <ol class="start-steps">
+          <li><span>01</span><div><strong>One table</strong><p>Host one local page or offline library. Let five people use it. Write down what they came for.</p></div></li>
+          <li><span>02</span><div><strong>Two windows</strong><p>Measure one link between known places. Log line of sight, signal, power, weather, and permission.</p></div></li>
+          <li><span>03</span><div><strong>Three roofs</strong><p>Add a redundant path and a second useful service. Name a maintainer before naming a coverage area.</p></div></li>
+        </ol>
+        <aside class="safety-note">
+          <strong>BEFORE YOU MOUNT OR TRANSMIT</strong>
+          <p>Check local radio rules, antenna and roof permissions, safe mounting, grounding, weather exposure, power, privacy, and content rights. Do not describe a hobby network as certified emergency infrastructure.</p>
+        </aside>
+      </section>
+
+      <section id="sources" class="sources" aria-labelledby="sources-title">
+        <header class="sources-head">
+          <p class="section-index">05 / SOURCE SHELF / PRIMARY PROJECTS</p>
+          <h2 id="sources-title">Follow the people<br />building the tools.</h2>
+          <p>Compatibility, licensing, radio rules, and releases change. These links go to each project’s own documentation or source.</p>
+        </header>
+        <div class="source-grid">
+          <a href="https://meshtastic.org/"><span>01</span><strong>Meshtastic</strong><small>OFF-GRID LORA MESH</small></a>
+          <a href="https://unsigned.io/rnode/"><span>02</span><strong>RNode</strong><small>OPEN DIGITAL RADIO</small></a>
+          <a href="https://reticulum.network/"><span>03</span><strong>Reticulum</strong><small>CRYPTOGRAPHIC NETWORK STACK</small></a>
+          <a href="https://gitlab.com/librerouter"><span>04</span><strong>LibreRouter</strong><small>OPEN COMMUNITY ROUTER</small></a>
+          <a href="https://openwrt.org/docs/guide-user/network/wifi/mesh/802-11s"><span>05</span><strong>OpenWrt 802.11s</strong><small>WI-FI MESH GUIDE</small></a>
+          <a href="https://tinygs.com/"><span>06</span><strong>TinyGS</strong><small>LORA SATELLITE STATION</small></a>
+          <a href="https://satnogs.org/"><span>07</span><strong>SatNOGS</strong><small>OPEN GROUND STATIONS</small></a>
+          <a href="https://get.kiwix.org/en/solutions/hotspots/"><span>08</span><strong>Kiwix Hotspot</strong><small>OFFLINE KNOWLEDGE</small></a>
+          <a href="https://github.com/owncast/owncast"><span>09</span><strong>Owncast</strong><small>LOCAL LIVE VIDEO</small></a>
+          <a href="https://jellyfin.org/"><span>10</span><strong>Jellyfin</strong><small>FREE MEDIA SYSTEM</small></a>
+          <a href="https://www.openwebrx.de/about.php"><span>11</span><strong>OpenWebRX</strong><small>SHARED RADIO RECEIVER</small></a>
+          <a href="/hardware.json"><span>12</span><strong>Field guide JSON</strong><small>MACHINE-READABLE EDITION</small></a>
+        </div>
+        <p class="source-note">Curated 03 August 2026. Inclusion is not endorsement or a claim that every compatible board has open hardware files. Read each project’s current license and supported-hardware list before buying or building.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="wordmark footer-mark" href="/"><span>INDUSTRY</span><span>NEXT</span></a>
+        <p>Build close enough to learn from. Publish enough that someone else can continue.</p>
+      </div>
+      <nav aria-label="Explore Industry Next">
+        <strong>EXPLORE</strong>
+        <a href="/">Home</a>
+        <a href="/issues/002/">Current issue</a>
+        <a href="/early-career/">Starting Line</a>
+        <a href="/market/">Work Market</a>
+        <a href="/services/">Services</a>
+      </nav>
+      <nav aria-label="Build and inspect">
+        <strong>BUILD + INSPECT</strong>
+        <a href="/hardware/">Open hardware</a>
+        <a href="/hardware.json">Field guide JSON</a>
+        <a href="/make/">Make</a>
+        <a href="/made/">Made</a>
+        <a href="https://github.com/mhoydich/nouns5.4">Source</a>
+      </nav>
+      <p class="footer-note">FIELD OBJECT 005 / THE DISH IS AN INVITATION / THE NETWORK IS PEOPLE</p>
+      <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="open hardware mesh network satellite radio local media communication entertainment community" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+    </footer>
+
+    <script type="module" src="/hardware/hardware.js?v=20260803a"></script>
+    <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>

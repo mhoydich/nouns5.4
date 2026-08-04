@@ -420,6 +420,94 @@ button { font: inherit; }
 .rally-rings i:nth-child(3) { inset: 32%; }
 .rally-rings span { font: 900 1.3rem/1 var(--sans); }
 
+.signals-window {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(430px, 1.18fr);
+  gap: clamp(54px, 8vw, 130px);
+  align-items: center;
+  overflow: hidden;
+  padding: 104px var(--page-pad) 122px;
+  border-bottom: var(--line);
+  background:
+    linear-gradient(rgba(16,16,16,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,16,16,.055) 1px, transparent 1px),
+    var(--orange);
+  background-size: 31px 31px;
+}
+.signals-window::after {
+  content: "LOCAL";
+  position: absolute;
+  z-index: -1;
+  left: -2vw;
+  bottom: -3.2vw;
+  color: rgba(16,16,16,.07);
+  font: 900 clamp(9rem, 24vw, 28rem)/.7 var(--sans);
+  letter-spacing: -.11em;
+}
+.signals-copy { position: relative; z-index: 2; }
+.signals-copy h2 {
+  margin: 18px 0 32px;
+  font-size: clamp(4.6rem, 8vw, 9rem);
+  font-weight: 900;
+  line-height: .75;
+  letter-spacing: -.095em;
+}
+.signals-copy h2 em { color: var(--blue); font-style: normal; }
+.signals-copy > p:last-of-type {
+  max-width: 520px;
+  margin: 0;
+  font: 400 .8rem/1.65 var(--mono);
+}
+.signals-actions { display: grid; gap: 22px; justify-items: start; margin-top: 32px; }
+.signals-actions > span { font: 500 .54rem/1.5 var(--mono); letter-spacing: .08em; }
+.signals-object {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  min-height: 610px;
+  padding: 24px;
+  border: var(--line);
+  background: var(--ink);
+  color: var(--white);
+  text-decoration: none;
+  box-shadow: 14px 16px 0 var(--cyan), 27px 31px 0 var(--blue);
+  transform: rotate(1deg);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.signals-object:hover, .signals-object:focus-visible {
+  transform: translate(5px, 6px) rotate(0);
+  box-shadow: 8px 9px 0 var(--cyan), 16px 19px 0 var(--blue);
+}
+.signals-object-label {
+  position: absolute;
+  left: 20px;
+  top: -30px;
+  padding: 9px 12px;
+  border: var(--line);
+  border-bottom: 0;
+  background: var(--cyan);
+  color: var(--ink);
+  font: 500 .55rem/1 var(--mono);
+  letter-spacing: .08em;
+}
+.signals-object svg { grid-column: 1 / -1; width: min(100%, 560px); margin: 0 auto -8px; overflow: visible; }
+.signals-object strong { max-width: 28ch; font: 800 clamp(1.15rem, 2vw, 2rem)/1 var(--sans); letter-spacing: -.05em; }
+.signals-object > b { font: 500 .55rem/1.4 var(--mono); text-align: right; }
+.signal-ring { fill: none; stroke-linecap: square; stroke-width: 10; }
+.ring-one { stroke: var(--pink); }
+.ring-two { stroke: var(--cyan); }
+.ring-three { stroke: var(--acid); }
+.signal-dish { fill: var(--acid); stroke: var(--white); stroke-width: 3; }
+.signal-arm, .signal-mast, .signal-ground { fill: none; stroke: var(--white); stroke-width: 10; }
+.signal-feed { fill: var(--pink); stroke: var(--white); stroke-width: 4; }
+.signal-node { stroke: var(--white); stroke-width: 3; }
+.node-a { fill: var(--pink); }
+.node-b { fill: var(--cyan); }
+.node-c { fill: var(--acid); }
+
 .market-window {
   position: relative;
   isolation: isolate;
@@ -645,6 +733,8 @@ button { font: inherit; }
   .section-head { grid-template-columns: 1fr; }
   .section-head > p:last-child { margin-top: 25px; }
   .proof-ledger { grid-template-columns: 1fr; }
+  .signals-window { grid-template-columns: 1fr; }
+  .signals-object { width: min(88%, 760px); justify-self: center; }
   .project-tone { grid-row: auto; min-height: 590px; }
   .project-pointcast, .project-rally { min-height: 380px; }
   .market-window { grid-template-columns: 1fr; }
@@ -687,7 +777,7 @@ button { font: inherit; }
   .time-marker-30, .time-marker-60 { right: 10px; }
   .time-marker-15, .time-marker-30 { top: 10px; }
   .time-marker-rest { bottom: 10px; }
-  .current-files, .proof, .market-window, .open-calls, .entrances, .worktable { padding-top: 70px; padding-bottom: 80px; }
+  .current-files, .proof, .signals-window, .market-window, .open-calls, .entrances, .worktable { padding-top: 70px; padding-bottom: 80px; }
   .current-grid { gap: 44px; }
   .current-card { min-height: 450px; padding: 24px 21px; }
   .current-card h3 { font-size: clamp(3.4rem, 16vw, 5.3rem); overflow-wrap: anywhere; }
@@ -699,6 +789,11 @@ button { font: inherit; }
   .project h3 { font-size: clamp(4rem, 17vw, 6rem); }
   .tone-object { right: -12%; bottom: -6%; width: 60%; opacity: .28; }
   .project-pointcast, .project-rally { min-height: 340px; padding: 24px; }
+  .signals-window { gap: 58px; }
+  .signals-copy h2 { font-size: clamp(4rem, 18vw, 6.3rem); }
+  .signals-object { width: calc(100% - 22px); min-height: 490px; padding: 18px; box-shadow: 8px 10px 0 var(--cyan), 16px 20px 0 var(--blue); }
+  .signals-object strong { max-width: 19ch; }
+  .signals-object > b { max-width: 120px; }
   .market-window { gap: 64px; }
   .market-copy h2 { font-size: clamp(4rem, 18vw, 6.3rem); }
   .market-board { width: calc(100% - 22px); min-height: 510px; box-shadow: 8px 10px 0 var(--blue), 16px 20px 0 var(--ink); }

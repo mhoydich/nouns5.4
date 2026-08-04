@@ -1,0 +1,30 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Build the Local Signal</title>
+  <rect width="1200" height="630" fill="#F36C37" />
+  <path d="M0 0H1200V630H0V0Z" fill="url(#grid)" opacity="0.18" />
+  <rect x="52" y="44" width="278" height="46" fill="#F3EFE6" stroke="#101010" stroke-width="4" />
+  <text x="72" y="75" fill="#101010" font-family="monospace" font-size="20" font-weight="700">INDUSTRY NEXT / FIELD 005</text>
+  <text x="50" y="212" fill="#101010" font-family="Arial, sans-serif" font-size="106" font-weight="900" letter-spacing="-9">BUILD THE</text>
+  <text x="50" y="319" fill="#3855EF" font-family="Arial, sans-serif" font-size="118" font-weight="900" letter-spacing="-10">LOCAL SIGNAL.</text>
+  <text x="58" y="384" fill="#101010" font-family="monospace" font-size="22">COMMUNICATION / DIRECTION / ENTERTAINMENT / ORBIT</text>
+  <rect x="54" y="434" width="472" height="105" fill="#EDFF45" stroke="#101010" stroke-width="4" />
+  <text x="78" y="478" fill="#101010" font-family="monospace" font-size="22" font-weight="700">9 OPEN BUILD DIRECTIONS</text>
+  <text x="78" y="513" fill="#101010" font-family="monospace" font-size="18">THE DISH IS AN EAR. THE NETWORK IS PEOPLE.</text>
+  <rect x="716" y="55" width="424" height="520" fill="#101010" stroke="#101010" stroke-width="4" />
+  <path d="M931 145A76 76 0 0 1 993 207" stroke="#F15B98" stroke-width="14" />
+  <path d="M947 103A119 119 0 0 1 1035 190" stroke="#68E4DB" stroke-width="14" />
+  <path d="M964 64A160 160 0 0 1 1076 174" stroke="#EDFF45" stroke-width="14" />
+  <path d="M757 162C768 319 893 444 1050 455C1040 297 915 172 757 162Z" fill="#EDFF45" stroke="#FFFDF7" stroke-width="5" />
+  <path d="M877 334L1009 202" stroke="#FFFDF7" stroke-width="15" />
+  <circle cx="1014" cy="197" r="22" fill="#F15B98" stroke="#FFFDF7" stroke-width="5" />
+  <path d="M872 340L803 481M757 487H847" stroke="#FFFDF7" stroke-width="15" />
+  <path d="M755 529H1102" stroke="#68E4DB" stroke-width="6" />
+  <circle cx="755" cy="529" r="14" fill="#F15B98" stroke="#FFFDF7" stroke-width="4" />
+  <circle cx="928" cy="529" r="14" fill="#68E4DB" stroke="#FFFDF7" stroke-width="4" />
+  <circle cx="1102" cy="529" r="14" fill="#EDFF45" stroke="#FFFDF7" stroke-width="4" />
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" stroke="#101010" stroke-width="2" />
+    </pattern>
+  </defs>
+</svg>

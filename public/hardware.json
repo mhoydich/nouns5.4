@@ -1,0 +1,142 @@
+{
+  "schema_version": "industrynext.hardware.v1",
+  "title": "Build the Local Signal",
+  "publisher": "Industry Next",
+  "published": "2026-08-03",
+  "canonical_url": "https://www.industrynext.xyz/hardware/",
+  "principles": [
+    "open when possible",
+    "local by default",
+    "range is measured, not promised",
+    "receive before transmit",
+    "name a maintainer before naming a coverage area"
+  ],
+  "layers": [
+    {
+      "id": "pocket-radio",
+      "name": "Low-rate radio",
+      "purpose": "Short messages, positions, sensor readings, and tiny packets",
+      "examples": ["Meshtastic", "RNode"]
+    },
+    {
+      "id": "directional-link",
+      "name": "Roof and window links",
+      "purpose": "Wi-Fi-class connections between known points",
+      "examples": ["OpenWrt 802.11s", "LibreRouter"]
+    },
+    {
+      "id": "local-compute",
+      "name": "Local compute",
+      "purpose": "Nearby media, libraries, games, maps, and bulletin boards",
+      "examples": ["Kiwix", "Owncast", "Jellyfin"]
+    },
+    {
+      "id": "satellite-reception",
+      "name": "Satellite ears",
+      "purpose": "Receive and decode signals from orbit",
+      "examples": ["TinyGS", "SatNOGS"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "pocket-relay",
+      "name": "Pocket Relay",
+      "category": "communication",
+      "effort": "afternoon",
+      "openness": "open software on supported commodity boards",
+      "use": "short text, location, and sensor packets",
+      "needs": "three supported boards and phones",
+      "limit": "not voice, video, or guaranteed emergency service",
+      "sources": ["https://meshtastic.org/"]
+    },
+    {
+      "id": "field-telephone",
+      "name": "Field Telephone",
+      "category": "communication",
+      "effort": "weekend",
+      "openness": "open radio system and open network stack",
+      "use": "messages, files, and local network experiments",
+      "needs": "two or more compatible boards and hosts",
+      "limit": "low data rate; band rules vary by place",
+      "sources": ["https://unsigned.io/rnode/", "https://reticulum.network/"]
+    },
+    {
+      "id": "three-roofs",
+      "name": "Three Roofs",
+      "category": "directional",
+      "effort": "two windows, then three roofs",
+      "openness": "open router hardware, firmware, and mesh software",
+      "use": "a local intranet between buildings",
+      "needs": "permission, safe mounts, and line of sight",
+      "limit": "a regional radius is a staged network horizon, not one device range",
+      "sources": ["https://gitlab.com/librerouter", "https://openwrt.org/docs/guide-user/network/wifi/mesh/802-11s"]
+    },
+    {
+      "id": "orbit-ear",
+      "name": "Orbit Ear",
+      "category": "orbit",
+      "effort": "afternoon",
+      "openness": "open software on commodity LoRa boards",
+      "use": "receive LoRa satellite telemetry",
+      "needs": "a compatible board, antenna, and Wi-Fi",
+      "limit": "receive project; passes and frequencies vary",
+      "sources": ["https://tinygs.com/"]
+    },
+    {
+      "id": "satellite-desk",
+      "name": "Satellite Desk",
+      "category": "orbit",
+      "effort": "deep weekend",
+      "openness": "open hardware and software",
+      "use": "track, receive, decode, and contribute observations",
+      "needs": "receiver, antennas, controller, and clear sky",
+      "limit": "requires more RF, mechanics, and calibration than TinyGS",
+      "sources": ["https://satnogs.org/"]
+    },
+    {
+      "id": "offline-library",
+      "name": "Offline Library",
+      "category": "entertainment",
+      "effort": "afternoon",
+      "openness": "free software on supported Raspberry Pi hardware",
+      "use": "a local library, repair cafe, classroom, or road kit",
+      "needs": "a supported Pi, storage, and selected ZIM files",
+      "limit": "content must be refreshed intentionally",
+      "sources": ["https://get.kiwix.org/en/solutions/hotspots/"]
+    },
+    {
+      "id": "block-tv",
+      "name": "Block TV",
+      "category": "entertainment",
+      "effort": "evening",
+      "openness": "open software on a local computer",
+      "use": "a performance, meeting, game, or porch camera",
+      "needs": "a computer, Owncast, and a local network",
+      "limit": "video requires much more bandwidth than LoRa",
+      "sources": ["https://github.com/owncast/owncast"]
+    },
+    {
+      "id": "neighborhood-jukebox",
+      "name": "Neighborhood Jukebox",
+      "category": "entertainment",
+      "effort": "evening",
+      "openness": "free software on a local computer",
+      "use": "a listening room, movie night, or oral history shelf",
+      "needs": "a server, storage, and media you may share",
+      "limit": "respect copyright, privacy, and contributor consent",
+      "sources": ["https://jellyfin.org/"]
+    },
+    {
+      "id": "radio-window",
+      "name": "Radio Window",
+      "category": "orbit",
+      "effort": "weekend",
+      "openness": "open software with a commodity receiver",
+      "use": "shared shortwave, amateur, air, weather, or satellite reception",
+      "needs": "an SDR receiver, antenna, and local server",
+      "limit": "receive-only is the clean start; protect private communications",
+      "sources": ["https://www.openwebrx.de/about.php"]
+    }
+  ],
+  "safety": "Check local radio rules, permissions, safe mounting, grounding, weather exposure, power, privacy, and content rights. Do not represent a hobby network as certified emergency infrastructure."
+}

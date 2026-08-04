@@ -9,6 +9,12 @@
   "theme_color": "#eeff41",
   "shortcuts": [
     {
+      "name": "Build Local Signals",
+      "short_name": "Hardware",
+      "description": "Open projects for local mesh communication, neighborhood media, radio, and satellite listening.",
+      "url": "/hardware/"
+    },
+    {
       "name": "Open The Desk",
       "short_name": "Desk",
       "description": "Open the local Industry Next task desk.",
