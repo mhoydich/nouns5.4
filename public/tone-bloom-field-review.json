@@ -2,21 +2,21 @@
   "schema": "industrynext.editorial.v1",
   "slug": "tone-bloom-field-review",
   "title": "Tone Bloom Is a Laboratory for Play",
-  "deck": "Forty-nine sound rooms and a simple question: what can grow when the internet stops behaving like a feed and starts behaving like an instrument?",
+  "deck": "Fifty-two sound rooms and a simple question: what can grow when the internet stops behaving like a feed and starts behaving like an instrument?",
   "published": "2026-08-03",
   "author": "Michael Hoydich",
   "editorial_assistance": "Codex, GPT-5.6 Sol, extra-high reasoning",
   "canonical_url": "https://www.industrynext.xyz/editorial/tone-bloom-field-review/",
   "field_review_url": "https://tonebloom.xyz/about/field-review",
   "catalog_url": "https://tonebloom.xyz/blooms",
-  "current_room_count": 49,
+  "current_room_count": 52,
   "research_lines": [
     { "range": "01-07", "name": "Attention" },
     { "range": "08-15", "name": "Movement" },
     { "range": "16-24", "name": "Image as score" },
     { "range": "25-32", "name": "Sequence and relay" },
     { "range": "33-42", "name": "Air and presence" },
-    { "range": "43-49", "name": "Question and coast" }
+    { "range": "43-52", "name": "Question, coast, and work after dark" }
   ],
   "contribution_doors": [
     { "id": "01", "name": "Ten-minute field pass", "receipt": "Three observations" },

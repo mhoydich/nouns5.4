@@ -9,7 +9,7 @@ const record = JSON.parse(await readFile("public/tone-bloom-field-review.json", 
 const social = await stat("public/editorial/tone-bloom-field-review/tone-bloom-field-review-og.png");
 
 assert.match(page, /Tone Bloom is a laboratory for play\./i);
-assert.match(page, /Forty-nine sound rooms/i);
+assert.match(page, /Fifty-two sound rooms/i);
 assert.match(page, /Six useful doors into Tone Bloom/i);
 assert.match(page, /not a request for speculative unpaid labor/i);
 assert.match(page, /https:\/\/tonebloom\.xyz\/about\/field-review/);
@@ -21,7 +21,7 @@ assert.match(css, /prefers-reduced-motion/);
 assert.match(home, /\/editorial\/tone-bloom-field-review\//);
 assert.match(sitemap, /\/editorial\/tone-bloom-field-review\//);
 assert.match(sitemap, /\/tone-bloom-field-review\.json/);
-assert.equal(record.current_room_count, 49);
+assert.equal(record.current_room_count, 52);
 assert.equal(record.research_lines.length, 6);
 assert.equal(record.contribution_doors.length, 6);
 assert.ok(social.size > 100_000, "social card should be a substantial image");
