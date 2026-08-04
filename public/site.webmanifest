@@ -39,6 +39,12 @@
       "url": "/early-career/ai-for-industry/"
     },
     {
+      "name": "AI Service Desk",
+      "short_name": "AI Desk",
+      "description": "Official AI service links organized by the receipt a student or recent graduate wants to make.",
+      "url": "/early-career/ai-field-kit/"
+    },
+    {
       "name": "Tumblr Talent Relay",
       "short_name": "Relay",
       "description": "Turn a strange digital skill into a visible talent signal.",

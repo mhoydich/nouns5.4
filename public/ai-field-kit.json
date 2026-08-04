@@ -1,0 +1,83 @@
+{
+  "schema": "industrynext.ai-service-desk/v1",
+  "id": "industrynext.early-career/ai-service-desk-003",
+  "title": "AI Service Desk — Pick a Receipt",
+  "canonical": "https://www.industrynext.xyz/early-career/ai-field-kit/",
+  "published": "2026-08-03",
+  "audience": ["college students", "recent graduates", "early-career builders", "faculty", "career centers"],
+  "principle": "Do not collect tools. Choose a receipt, then choose the smallest official-tool stack that can help you make it.",
+  "affiliate_compensation": false,
+  "directory_rules": [
+    "Official product, documentation, or education-program links only.",
+    "Access labels are navigation lenses, not pricing or eligibility promises.",
+    "Check current pricing, access, regional availability, data terms, and student eligibility at the source.",
+    "Use public-safe test data, test modes, verified recipients, preview deployments, and hard spend limits first.",
+    "Keep the brief, sources, code, edit decisions, and receipt portable if a paid service disappears."
+  ],
+  "access_lenses": {
+    "start-free": "The official source currently presents a free starting path or generally free product entry; limits and terms may change.",
+    "open": "An open standard, open ecosystem, or locally available tool; individual assets, models, and licenses still require review.",
+    "student": "A verified-student program with changing eligibility and offers; recent graduates may not qualify.",
+    "metered": "Usage, credits, test mode, plan access, or API billing may apply. Set a limit before use."
+  },
+  "mission_stacks": [
+    {"id":"site","title":"Ship a useful website","tools":["Codex","GitHub","Cloudflare Pages","PostHog"],"receipt":"A live URL, a README, one test, and a three-sentence before/after."},
+    {"id":"code","title":"Make a coding proof","tools":["Codex","Claude Code","GitHub","Cursor"],"receipt":"Two clean branches, the same tests, a diff review, and your chosen merge."},
+    {"id":"research","title":"Publish a sourced brief","tools":["Perplexity","NotebookLM","Zotero","GitHub"],"receipt":"A two-page brief, linked sources, an uncertainty box, and a bibliography."},
+    {"id":"video","title":"Finish a 30-second film","tools":["Seedance","Google Flow + Veo","Runway","DaVinci Resolve"],"receipt":"A shot brief, three engine takes, a take sheet, and one finished cut."},
+    {"id":"automation","title":"Repair a boring handoff","tools":["Model Context Protocol","Postman","Pipedream","GitHub"],"receipt":"A disabled workflow map, test payload, execution log, and owner note."},
+    {"id":"payment","title":"Build a test checkout","tools":["Stripe Checkout","Postman","Codex","Cloudflare Pages"],"receipt":"A test checkout, signed event, idempotent fulfillment record, and cancellation path."},
+    {"id":"message","title":"Send one safe message","tools":["Twilio","Pipedream","Postman","GitHub"],"receipt":"A consent record, self-sent message, delivery log, failure case, and opt-out copy."},
+    {"id":"api","title":"Build an AI API demo","tools":["OpenAI API","Postman","Supabase","Cloudflare Pages"],"receipt":"A redacted contract, safe sample input, structured output, failing test, and usage note."}
+  ],
+  "services": [
+    {"id":"chatgpt","name":"ChatGPT","category":"think","access":"start-free","official_url":"https://chatgpt.com/","first_receipt":"A one-page brief with claims marked for checking","watch":"Private, client, or regulated material"},
+    {"id":"claude","name":"Claude","category":"think","access":"start-free","official_url":"https://claude.ai/","first_receipt":"An assumptions table tied to source pages","watch":"Uploads you do not have permission to share"},
+    {"id":"notebooklm","name":"NotebookLM","category":"think","access":"start-free","official_url":"https://notebooklm.google/","first_receipt":"A cited FAQ from five approved sources","watch":"Source quality still determines answer quality"},
+    {"id":"perplexity","name":"Perplexity","category":"think","access":"start-free","official_url":"https://www.perplexity.ai/","first_receipt":"A source trail with three primary links","watch":"A citation is a lead, not automatic proof"},
+    {"id":"zotero","name":"Zotero","category":"think","access":"open","official_url":"https://www.zotero.org/","first_receipt":"A portable collection with annotated sources","watch":"Generated bibliographies still need review"},
+    {"id":"hugging-face","name":"Hugging Face","category":"think","access":"open","official_url":"https://huggingface.co/models","first_receipt":"A model comparison with license and limitation notes","watch":"License, provenance, and deployment requirements"},
+    {"id":"codex","name":"Codex","category":"code","access":"metered","official_url":"https://openai.com/codex/","first_receipt":"A small merged change with test output","watch":"Network, secrets, approvals, and broad edits"},
+    {"id":"claude-code","name":"Claude Code","category":"code","access":"metered","official_url":"https://docs.anthropic.com/en/docs/claude-code/overview","first_receipt":"A two-agent comparison on separate branches","watch":"Do not confuse confidence with verification"},
+    {"id":"cursor","name":"Cursor","category":"code","access":"start-free","official_url":"https://www.cursor.com/","first_receipt":"A reviewed commit, not a pasted code block","watch":"Privacy mode and project data settings"},
+    {"id":"github-copilot","name":"GitHub Copilot","category":"code","access":"start-free","official_url":"https://github.com/features/copilot","first_receipt":"A pull request with human review notes","watch":"Student availability can change"},
+    {"id":"replit-agent","name":"Replit Agent","category":"code","access":"start-free","official_url":"https://replit.com/products/agent","first_receipt":"A remixable prototype and a limit note","watch":"Usage billing and generated infrastructure"},
+    {"id":"figma-make","name":"Figma Make","category":"code","access":"start-free","official_url":"https://www.figma.com/make/","first_receipt":"A shared prototype plus observer notes","watch":"A polished screen is not proven behavior"},
+    {"id":"seedance","name":"Seedance","category":"make","access":"metered","official_url":"https://seed.bytedance.com/en/seedance2_0","first_receipt":"Three takes from one locked shot brief","watch":"Rights, likeness, music, and access region"},
+    {"id":"google-flow","name":"Google Flow + Veo","category":"make","access":"start-free","official_url":"https://labs.google/fx/tools/flow","first_receipt":"A scene with prompt, inputs, and edit notes","watch":"Credits, region, watermark, and plan terms"},
+    {"id":"runway","name":"Runway","category":"make","access":"metered","official_url":"https://runwayml.com/","first_receipt":"A take sheet showing keep, reject, and why","watch":"Do not spend credits before locking the shot"},
+    {"id":"adobe-firefly","name":"Adobe Firefly","category":"make","access":"start-free","official_url":"https://www.adobe.com/products/firefly.html","first_receipt":"An asset sheet with provenance notes","watch":"Plan, credit, and usage terms by feature"},
+    {"id":"midjourney","name":"Midjourney","category":"make","access":"metered","official_url":"https://www.midjourney.com/","first_receipt":"A six-frame direction board with decisions","watch":"Account privacy and image-use terms"},
+    {"id":"elevenlabs","name":"ElevenLabs","category":"make","access":"start-free","official_url":"https://elevenlabs.io/","first_receipt":"A 20-second narrated cut with consent note","watch":"Voice rights, disclosure, and impersonation"},
+    {"id":"descript","name":"Descript","category":"make","access":"start-free","official_url":"https://www.descript.com/","first_receipt":"A captioned interview cut and transcript","watch":"Consent for recordings, voices, and collaborators"},
+    {"id":"davinci-resolve","name":"DaVinci Resolve","category":"make","access":"open","official_url":"https://www.blackmagicdesign.com/products/davinciresolve","first_receipt":"A finished cut plus timeline screenshot","watch":"The editor, not the engine, makes the final claim"},
+    {"id":"openai-api","name":"OpenAI API","category":"connect","access":"metered","official_url":"https://developers.openai.com/api/docs/quickstart","first_receipt":"A redacted request, response, and error case","watch":"Keys stay server-side and out of Git"},
+    {"id":"anthropic-api","name":"Anthropic API","category":"connect","access":"metered","official_url":"https://docs.anthropic.com/en/api/getting-started","first_receipt":"A provider comparison with one failing test","watch":"Do not log secrets or sensitive prompts"},
+    {"id":"google-ai-studio","name":"Google AI Studio","category":"connect","access":"start-free","official_url":"https://aistudio.google.com/","first_receipt":"A prompt, structured response, and safety note","watch":"Quota, billing, region, and data settings"},
+    {"id":"mcp","name":"Model Context Protocol","category":"connect","access":"open","official_url":"https://modelcontextprotocol.io/docs/getting-started/intro","first_receipt":"A tool inventory and explicit approval boundary","watch":"Only connect servers and tools you trust"},
+    {"id":"postman","name":"Postman","category":"connect","access":"start-free","official_url":"https://learning.postman.com/docs/getting-started/first-steps/sending-the-first-request/","first_receipt":"A saved request with success and error examples","watch":"Environment variables and shared collections"},
+    {"id":"pipedream","name":"Pipedream","category":"connect","access":"start-free","official_url":"https://pipedream.com/docs/workflows/quickstart","first_receipt":"A test webhook and an execution log","watch":"Connected-account permissions and live triggers"},
+    {"id":"zapier-ai","name":"Zapier AI","category":"connect","access":"start-free","official_url":"https://zapier.com/ai","first_receipt":"A disabled workflow map plus test record","watch":"Do not turn it on before consent and limits"},
+    {"id":"supabase","name":"Supabase","category":"connect","access":"start-free","official_url":"https://supabase.com/docs","first_receipt":"A schema, access rule, and seeded safe record","watch":"Row-level access and exposed browser keys"},
+    {"id":"github","name":"GitHub","category":"ship","access":"start-free","official_url":"https://docs.github.com/en/get-started","first_receipt":"A clean repository with README and release tag","watch":"Secrets, private data, and unclear licenses"},
+    {"id":"github-student-pack","name":"GitHub Student Developer Pack","category":"ship","access":"student","official_url":"https://education.github.com/pack","first_receipt":"A budget sheet with expiration dates","watch":"Offers and eligibility change; recent graduates may not qualify"},
+    {"id":"cloudflare-pages","name":"Cloudflare Pages","category":"ship","access":"start-free","official_url":"https://developers.cloudflare.com/pages/","first_receipt":"A deployment URL, source commit, and rollback path","watch":"Confirm the canonical route, not only preview"},
+    {"id":"vercel","name":"Vercel","category":"ship","access":"start-free","official_url":"https://vercel.com/docs/getting-started-with-vercel","first_receipt":"A preview, production URL, and commit match","watch":"Plan limits and production environment variables"},
+    {"id":"stripe-checkout","name":"Stripe Checkout","category":"ship","access":"metered","official_url":"https://docs.stripe.com/checkout/quickstart","first_receipt":"A test payment event and idempotent fulfillment note","watch":"No live charge is needed for a portfolio proof"},
+    {"id":"twilio","name":"Twilio","category":"ship","access":"metered","official_url":"https://www.twilio.com/docs/usage/trials","first_receipt":"A test message plus consent and failure logs","watch":"Consent, quiet hours, carrier rules, and spend caps"},
+    {"id":"resend","name":"Resend","category":"ship","access":"start-free","official_url":"https://resend.com/docs/send-with-nodejs","first_receipt":"A self-sent test with delivery event","watch":"Consent, sender identity, and production domains"},
+    {"id":"posthog","name":"PostHog","category":"ship","access":"start-free","official_url":"https://posthog.com/","first_receipt":"An event definition and privacy-safe test event","watch":"Do not collect more user data than the decision needs"}
+  ],
+  "campus_assignment": {
+    "duration_days": 5,
+    "days": [
+      {"day":"Monday","move":"Notice","output":"One-page problem brief"},
+      {"day":"Tuesday","move":"Make","output":"One working path"},
+      {"day":"Wednesday","move":"Connect","output":"One contract and test"},
+      {"day":"Thursday","move":"Observe","output":"One uncoached observer note"},
+      {"day":"Friday","move":"Prove","output":"Public-safe URL and 60-second tour"}
+    ],
+    "portfolio_packet": ["live URL", "README", "60-second tour", "before/after", "failure note", "next test"]
+  },
+  "corrections": "mailto:mh@pointcast.xyz?subject=AI%20Service%20Desk%20correction"
+}

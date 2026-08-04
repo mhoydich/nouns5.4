@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AI Service Desk</title>
+  <desc id="desc">Industry Next field kit for students and recent graduates. Do not collect tools. Choose a receipt.</desc>
+  <rect width="1200" height="630" fill="#7ee6ff"/>
+  <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200" stroke="#101010" stroke-opacity=".09" stroke-width="2"/>
+  <rect x="65" y="54" width="1070" height="522" fill="#f5f0e6" stroke="#101010" stroke-width="8"/>
+  <rect x="89" y="78" width="1022" height="60" fill="#101010"/>
+  <text x="113" y="116" fill="#f5f0e6" font-family="Courier New, monospace" font-size="23" font-weight="900" letter-spacing="2">INDUSTRY NEXT / EARLY CAREER / FIELD KIT 003</text>
+  <text x="96" y="247" fill="#101010" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="900" letter-spacing="-7">AI SERVICE</text>
+  <text x="96" y="352" fill="#101010" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="900" letter-spacing="-7">DESK</text>
+  <rect x="91" y="386" width="765" height="82" fill="#eaff38" stroke="#101010" stroke-width="5" transform="rotate(-1 91 386)"/>
+  <text x="119" y="441" fill="#101010" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="900" letter-spacing="-1">PICK A RECEIPT. THEN PICK THE TOOLS.</text>
+  <circle cx="993" cy="339" r="121" fill="#ff67b5" stroke="#101010" stroke-width="8"/>
+  <circle cx="993" cy="339" r="78" fill="#7ee6ff" stroke="#101010" stroke-width="5" stroke-dasharray="12 8"/>
+  <text x="948" y="330" fill="#101010" font-family="Courier New, monospace" font-size="27" font-weight="900">36</text>
+  <text x="919" y="364" fill="#101010" font-family="Courier New, monospace" font-size="17" font-weight="900">OFFICIAL</text>
+  <text x="935" y="386" fill="#101010" font-family="Courier New, monospace" font-size="17" font-weight="900">DOORS</text>
+  <text x="96" y="526" fill="#101010" font-family="Courier New, monospace" font-size="19" font-weight="900">STUDENTS + RECENT GRADUATES / OFFICIAL LINKS / ZERO AFFILIATE LINKS</text>
+</svg>

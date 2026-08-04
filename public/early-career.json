@@ -8,6 +8,17 @@
   "principle": "Read the whole deal. Make one useful thing. Leave proof someone else can inspect.",
   "resources": [
     {
+      "id": "ai-service-desk-036",
+      "title": "AI Service Desk — Pick a Receipt",
+      "kind": "official-link directory, local stack builder, and five-day campus assignment",
+      "url": "https://www.industrynext.xyz/early-career/ai-field-kit/",
+      "machine_readable": "https://www.industrynext.xyz/ai-field-kit.json",
+      "output": "A four-service mission stack and a public-safe portfolio receipt",
+      "service_count": 36,
+      "affiliate_compensation": false,
+      "transmits_or_stores_inputs": false
+    },
+    {
       "id": "ai-for-industry-010",
       "title": "AI for Industry — 10 Receipts for Recent Graduates",
       "kind": "ten-part field series and device-local workbench",
