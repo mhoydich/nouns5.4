@@ -28,6 +28,7 @@
     "verify:early-career": "node ./scripts/verify-early-career.mjs",
     "verify:ai-for-industry": "node ./scripts/verify-ai-for-industry.mjs",
     "verify:ai-field-kit": "node ./scripts/verify-ai-field-kit.mjs",
+    "verify:agent-futures": "node ./scripts/verify-agent-futures.mjs",
     "verify:top-coder": "node ./scripts/verify-top-coder.mjs",
     "verify:market-launch-001": "node ./scripts/verify-market-launch-001.mjs",
     "market:intake": "node ./scripts/market-intake.mjs",

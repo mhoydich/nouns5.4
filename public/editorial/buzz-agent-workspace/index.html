@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="A critical overview of Buzz, Block’s open-source workspace where humans and AI agents share rooms, identities, code, workflows, and an event log." />
+    <meta name="theme-color" content="#071512" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="Buzz Is a Workspace for the Synthetic Firm" />
+    <meta property="og:description" content="Jack Dorsey and Block’s Buzz treats agents as members, not bots. The interesting part is the constitution underneath the chat." />
+    <meta property="og:url" content="https://www.industrynext.xyz/editorial/buzz-agent-workspace/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/editorial/buzz-agent-workspace/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="An Industry Next diagram of humans and agents connected through a signed Buzz relay." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buzz Is a Workspace for the Synthetic Firm" />
+    <meta name="twitter:description" content="A review of the agent-native workspace’s strongest idea, present limits, and 2027 implications." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/editorial/buzz-agent-workspace/og.png" />
+    <link rel="canonical" href="https://www.industrynext.xyz/editorial/buzz-agent-workspace/" />
+    <link rel="alternate" type="application/json" href="../../buzz-agent-workspace.json" />
+    <link rel="icon" href="../../industry-next-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../agent-futures.css?v=20260831" />
+    <title>Buzz Is a Workspace for the Synthetic Firm | Industry Next</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Buzz Is a Workspace for the Synthetic Firm",
+        "description": "A critical overview of Buzz, Block’s open-source workspace where humans and AI agents share rooms, identities, code, workflows, and an event log.",
+        "datePublished": "2026-08-31",
+        "dateModified": "2026-08-31",
+        "author": { "@type": "Person", "name": "Michael Hoydich" },
+        "publisher": { "@type": "Organization", "name": "Industry Next", "url": "https://www.industrynext.xyz/" },
+        "mainEntityOfPage": "https://www.industrynext.xyz/editorial/buzz-agent-workspace/",
+        "image": "https://www.industrynext.xyz/editorial/buzz-agent-workspace/og.png"
+      }
+    </script>
+  </head>
+  <body class="buzz">
+    <a class="skip-link" href="#main">Skip to the review</a>
+
+    <header class="af-topbar">
+      <a class="af-brand" href="https://www.industrynext.xyz/" aria-label="Industry Next, home"><span>INDUSTRY</span><span>NEXT</span></a>
+      <p>PLATFORM REVIEW 001 · AUGUST 31, 2026</p>
+      <nav aria-label="Article navigation">
+        <a href="#architecture">System</a>
+        <a href="#review">Review</a>
+        <a href="#try">Try it</a>
+        <a href="../the-federation-problem/">Swarm →</a>
+      </nav>
+    </header>
+
+    <div class="af-ticker" aria-label="Review summary">
+      <span>AGENT FUTURES / REPORT 02</span>
+      <span>MEMBERS, NOT BOTS</span>
+      <span>THE RELAY IS THE WORKSPACE</span>
+      <span>OPEN SOURCE · APACHE 2.0</span>
+    </div>
+
+    <main id="main">
+      <article>
+        <header class="af-hero">
+          <div class="af-hero-copy">
+            <p class="af-kicker">BUZZ / BLOCK / NOSTR / A CRITICAL OVERVIEW</p>
+            <h1>Buzz is a workspace for the <em>synthetic firm.</em></h1>
+            <p class="af-deck">Jack Dorsey announced Buzz as an open-source alternative to Slack and GitHub for teams of humans and agents. The chat interface is familiar. The unusual part is underneath: signed identities, scoped rooms, code, workflows, and a common event log where a process can be a colleague.</p>
+            <div class="af-byline">
+              <span>CONCEPT + EDITORIAL DIRECTION · MICHAEL HOYDICH</span>
+              <span>WRITTEN WITH CODEX</span>
+              <span>9 MINUTE READ · SOURCE REVIEW AUGUST 31, 2026</span>
+            </div>
+            <div class="af-actions">
+              <a class="af-button" href="#review">Read the verdict <span aria-hidden="true">↓</span></a>
+              <a class="af-text-link" href="https://github.com/block/buzz" target="_blank" rel="noreferrer">Inspect the open-source project ↗</a>
+            </div>
+          </div>
+
+          <figure class="swarm-panel relay-map" aria-label="A Buzz relay connecting a human, an agent, a workflow, and a repository">
+            <figcaption class="swarm-head"><span>BUZZ COMMUNITY / SIGNED EVENTS</span><span>RELAY / ONLINE</span></figcaption>
+            <div class="swarm-map" aria-hidden="true">
+              <i class="swarm-line"></i><i class="swarm-line"></i><i class="swarm-line"></i><i class="swarm-line"></i><i class="swarm-line"></i>
+              <span class="swarm-alert">ONE IDENTITY MODEL</span>
+              <span class="swarm-node root">RELAY</span>
+              <span class="swarm-node a">HUMAN</span>
+              <span class="swarm-node b">AGENT</span>
+              <span class="swarm-node c">GIT</span>
+              <span class="swarm-node d">FLOW</span>
+            </div>
+            <div class="swarm-foot"><span>MESSAGE · PATCH · APPROVAL · RECEIPT</span><span>AUTHorship / SIGNED</span></div>
+          </figure>
+        </header>
+
+        <section class="af-metrics" aria-label="Buzz platform summary">
+          <article><span>WORKSPACE MODEL</span><strong>1 relay</strong><p>One community boundary, one URL, one event log, one search surface.</p></article>
+          <article><span>IDENTITY</span><strong>Keys</strong><p>Humans and agents sign the same event shape with separate keypairs.</p></article>
+          <article><span>AGENT BRIDGE</span><strong>ACP + MCP</strong><p>Agent clients connect to conversations while tools remain composable.</p></article>
+          <article><span>LICENSE</span><strong>Apache 2</strong><p>Desktop, relay, CLI, workflow, and agent infrastructure are available to inspect and fork.</p></article>
+        </section>
+
+        <section class="af-rule" aria-labelledby="what-title">
+          <p class="af-section-mark">01 / WHAT IT IS</p>
+          <div class="af-prose">
+            <h2 id="what-title">A team chat with an institutional memory.</h2>
+            <p class="af-lede">Buzz was announced on July 21, 2026 by Jack Dorsey and built at Block. The pitch is direct: reduce dependency on Slack and GitHub by placing people, agents, conversation, code, automation, and approvals in a self-hostable workspace.</p>
+            <p>A user sees channels, threads, direct messages, media, canvases, search, voice huddles, workflows, and repositories. An agent sees the same workspace through a CLI or protocol bridge. Both are members with identities and channel memberships. Messages, reactions, git events, and workflow steps are encoded as signed Nostr events and handled by the relay.</p>
+            <p>This matters because most workplace agents remain integrations: a bot token inside a human platform, a coding session hidden in one person’s terminal, or an automation that posts without durable authorship. Buzz moves the agent into the visible org chart.</p>
+          </div>
+          <aside class="af-verdict-card">
+            <span>SHORT VERDICT</span>
+            <strong>Important architecture. Early product.</strong>
+            <p>Worth testing on one bounded, low-stakes project. Not yet a reason to migrate an entire company.</p>
+          </aside>
+        </section>
+
+        <section id="architecture" class="af-timeline" aria-labelledby="architecture-title">
+          <header class="af-section-head">
+            <p class="af-section-mark">02 / THE THREE-LAYER BET</p>
+            <h2 id="architecture-title">Identity, event, room.</h2>
+            <p>Buzz’s novelty is compositional. None of the layers is new by itself; the product comes from making them share one protocol and one boundary.</p>
+          </header>
+          <div class="timeline-grid">
+            <article>
+              <span>LAYER 01 · IDENTITY</span>
+              <strong>Every actor signs.</strong>
+              <p>Humans and agents receive Nostr-native keypairs. Their events carry verifiable authorship. An agent is not borrowing the owner’s name, and its channel membership can differ from the owner’s.</p>
+              <b>THE GOOD PART · RESPONSIBILITY HAS AN ADDRESS</b>
+            </article>
+            <article>
+              <span>LAYER 02 · EVENT LOG</span>
+              <strong>Work has one shape.</strong>
+              <p>A message, reaction, workflow trace, patch, and approval can all be recorded as signed events. That makes search and audit less like an integration project and more like a native property of the workspace.</p>
+              <b>THE GOOD PART · THE RECEIPT LIVES BESIDE THE CONVERSATION</b>
+            </article>
+            <article>
+              <span>LAYER 03 · COMMUNITY</span>
+              <strong>The URL is the border.</strong>
+              <p>A relay URL selects a community. Profiles, rooms, direct messages, memberships, search, and agent state stay local to that boundary. A key can travel, but membership does not silently follow it.</p>
+              <b>THE GOOD PART · PORTABLE IDENTITY WITHOUT AMBIENT ACCESS</b>
+            </article>
+          </div>
+        </section>
+
+        <section class="af-findings" aria-labelledby="interesting-title">
+          <header class="af-section-head">
+            <p class="af-section-mark">03 / WHAT IS INTERESTING</p>
+            <h2 id="interesting-title">The chat is not the product. The constitution is.</h2>
+            <p>Buzz is most useful as a proposal for how synthetic teams should be legible to themselves.</p>
+          </header>
+          <ol class="af-finding-list">
+            <li><span>01</span><h3>An agent is a member, not a feature.</h3><p>You add it to a room the way you add a person. Presence, identity, history, and access become visible collaboration facts rather than hidden integration settings.</p></li>
+            <li><span>02</span><h3>A branch can become a room.</h3><p>Buzz’s forge vision places discussion, patches, CI, review, and the merge decision in one channel. The archive becomes the explanation for why the code exists.</p></li>
+            <li><span>03</span><h3>The relay is durable context.</h3><p>Agents can search prior work and return evidence into the same stream. Context moves out of one user’s transcript and into a community-owned record.</p></li>
+            <li><span>04</span><h3>Models become replaceable labor.</h3><p>ACP and MCP separate the conversational transport, agent runtime, model provider, and tools. The institution can persist while its workers change.</p></li>
+            <li><span>05</span><h3>Sovereignty is deployable.</h3><p>The code is open and the relay can be self-hosted. A team can control its domain, database, event log, and agent surface instead of only exporting from a vendor.</p></li>
+            <li><span>06</span><h3>Signed history can become governance.</h3><p>An approval is more useful when authorship, time, context, and downstream action remain connected. Buzz is trying to make this the default shape of work.</p></li>
+          </ol>
+        </section>
+
+        <section class="af-forecast" aria-labelledby="decentralized-title">
+          <header>
+            <p class="af-section-mark">04 / WHAT “DECENTRALIZED” MEANS HERE</p>
+            <h2 id="decentralized-title">Sovereign at the edge. Central inside the room.</h2>
+            <p>The project’s own architecture is refreshingly specific: the relay is the single source of truth. There is no peer-to-peer event exchange, gossip, or replication in the current design.</p>
+          </header>
+          <div class="forecast-grid">
+            <article><span>TRUE</span><h3>You can own the code and deployment.</h3><p>The Apache-licensed system can run on infrastructure you control. The team’s domain and relay can become its workspace rather than an address inside a vendor’s workspace.</p></article>
+            <article><span>TRUE</span><h3>Your identity can travel.</h3><p>A Nostr keypair is not inherently locked to one Buzz host. Profiles and permissions are deliberately re-established in each community.</p></article>
+            <article><span>ALSO TRUE</span><h3>The relay remains an authority.</h3><p>It authenticates, authorizes, persists, searches, fans out, and triggers automation. A compromised or unavailable relay is still a central operational event for its community.</p></article>
+            <article><span>NOT YET</span><h3>Communities are not a working federation.</h3><p>Portable identity is a foundation, not cross-relay governance. Delegation, shared projects, revocation, dispute handling, and receipts across community borders remain the next design problem.</p></article>
+          </div>
+        </section>
+
+        <section id="review" class="af-rule" aria-labelledby="review-title">
+          <p class="af-section-mark">05 / PRODUCT REVIEW</p>
+          <div class="af-prose">
+            <h2 id="review-title">The rough edges are governance-shaped.</h2>
+            <p class="af-lede">Buzz’s public docs distinguish working features from active wiring and long-range vision. That honesty is useful. It also means the platform should be evaluated as an ambitious alpha, not as finished enterprise infrastructure.</p>
+            <table class="af-table">
+              <thead><tr><th>Surface</th><th>Industry Next read</th></tr></thead>
+              <tbody>
+                <tr><td>Works today</td><td>Relay, channels, threads, DMs, canvases, media, search, audit log, desktop client, agent-first CLI and ACP harness, YAML workflow triggers, git events, and hosting are listed as operational in the README.</td></tr>
+                <tr><td>Still wiring</td><td>Mobile clients and fully resumable workflow approval gates remain works in progress. Some vision documents run ahead of the README, which is normal for a fast project but important for buyers to notice.</td></tr>
+                <tr><td>Privacy boundary</td><td>TLS protects traffic in transit and storage encryption is operator-managed. The project says end-to-end encryption for DMs is a future consideration, so relay operators can remain in the trust model.</td></tr>
+                <tr><td>Abuse boundary</td><td>The architecture document says a rate-limiter interface and tiers exist as a design target, but no production rate-limiting implementation is currently enforced.</td></tr>
+                <tr><td>Approval boundary</td><td>Signed events improve attribution, but a signature does not prove an action was wise, authorized at the right level, or safe. Human gates and independent containment still matter.</td></tr>
+              </tbody>
+            </table>
+            <p class="af-caveat">A signed log is evidence, not prevention. The federation story will depend on revocation, expiration, budget limits, safe defaults, and the ability to stop an agent without asking the same compromised layer for permission.</p>
+          </div>
+          <aside class="af-note">
+            <span>WATCH THIS CLOSELY</span>
+            <strong>Identity is not authority.</strong>
+            <p>The right key can still take the wrong action. Provenance must be paired with narrow capability.</p>
+          </aside>
+        </section>
+
+        <section class="af-protocol" aria-labelledby="future-title">
+          <div class="protocol-copy">
+            <p class="af-section-mark">06 / THE 2027 READ</p>
+            <h2 id="future-title">The company becomes a protocol.</h2>
+            <p>Buzz points toward an organization whose real org chart is a graph of signed identities, room memberships, workflows, and approval rights. People will join and leave. Models will be swapped. The institution will be the durable set of boundaries and receipts connecting them.</p>
+          </div>
+          <div class="protocol-stack">
+            <article><span>01</span><h3>Role keys</h3><p>Agents will hold scoped identities for research, release, finance, support, and review.</p></article>
+            <article><span>02</span><h3>Finite jobs</h3><p>Membership and authority will expire with the task instead of becoming permanent ambient access.</p></article>
+            <article><span>03</span><h3>Crossfire review</h3><p>Different models and people will inspect the same work before it crosses a meaningful boundary.</p></article>
+            <article><span>04</span><h3>Relay treaties</h3><p>Communities will exchange signed requests and receipts without merging their internal state.</p></article>
+            <article><span>05</span><h3>Community memory</h3><p>Decisions, artifacts, and incident history will belong to the project rather than one operator’s chat account.</p></article>
+            <article><span>06</span><h3>Portable labor</h3><p>Agents will move between runtimes while identity, role, and public work history remain intelligible.</p></article>
+          </div>
+        </section>
+
+        <section id="try" class="af-verdict" aria-labelledby="try-title">
+          <p class="af-section-mark">07 / THE SMALLEST HONEST PILOT</p>
+          <h2 id="try-title">One room. Two agents. One human gate.</h2>
+          <p>Create a low-stakes project channel. Add one research agent and one reviewer with separate identities. Give them only the files and tools required for a finishable task. Keep production secrets and merge authority out of the room. Require a human approval event before publication.</p>
+          <p>Then test the platform’s real promise: can another person arrive later, search the channel, distinguish request from result, inspect the evidence, see who approved the outcome, and safely continue the work?</p>
+          <blockquote>Buzz is not yet the synthetic company. It is a credible sketch of its constitution.</blockquote>
+        </section>
+
+        <section id="sources" class="af-sources" aria-labelledby="sources-title">
+          <p class="af-section-mark">08 / SOURCE LEDGER</p>
+          <h2 id="sources-title">The source is part of the review.</h2>
+          <div class="source-grid">
+            <a href="https://github.com/block/buzz/blob/main/README.md" target="_blank" rel="noreferrer"><span>01 / CURRENT README</span><strong>Buzz: humans and agents build together</strong><small>Block · working features and setup</small></a>
+            <a href="https://github.com/block/buzz/blob/main/ARCHITECTURE.md" target="_blank" rel="noreferrer"><span>02 / ARCHITECTURE</span><strong>Relay, auth, events, storage, audit, and known gaps</strong><small>Block · implementation-level overview</small></a>
+            <a href="https://github.com/block/buzz/blob/main/VISION.md" target="_blank" rel="noreferrer"><span>03 / PRODUCT VISION</span><strong>The relay is the workspace</strong><small>Block · surfaces, identity, workflows, forge, and roadmap</small></a>
+            <a href="https://techcrunch.com/2026/07/21/jack-dorsey-is-taking-on-slack-with-buzz-a-group-chat-platform-for-teams-and-their-ai-agents/" target="_blank" rel="noreferrer"><span>04 / LAUNCH CONTEXT</span><strong>Jack Dorsey takes on Slack with Buzz</strong><small>TechCrunch · July 21, 2026</small></a>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer class="af-footer">
+      <div><a href="https://www.industrynext.xyz/">INDUSTRY NEXT</a><p>Products, media, rituals, and small institutions—made close enough to reality to learn from.</p></div>
+      <nav aria-label="Related links"><a href="../the-federation-problem/">Read the swarm feature →</a><a href="../../buzz-agent-workspace.json">Article JSON</a><a href="https://github.com/block/buzz">Buzz source ↗</a></nav>
+  <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="small internet institutions tone bloom pointcast rally nouns cc0 art culture community" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+    </footer>
+  <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>

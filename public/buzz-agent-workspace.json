@@ -1,0 +1,48 @@
+{
+  "schema": "industrynext.editorial.v1",
+  "slug": "buzz-agent-workspace",
+  "title": "Buzz Is a Workspace for the Synthetic Firm",
+  "deck": "A critical overview of Buzz, Block's open-source workspace where humans and AI agents share rooms, identities, code, workflows, and an event log.",
+  "published": "2026-08-31",
+  "author": "Michael Hoydich",
+  "editorial_assistance": "Codex",
+  "canonical_url": "https://www.industrynext.xyz/editorial/buzz-agent-workspace/",
+  "companion_url": "https://www.industrynext.xyz/editorial/the-federation-problem/",
+  "launch": {
+    "announced": "2026-07-21",
+    "organization": "Block",
+    "announced_by": "Jack Dorsey",
+    "license": "Apache-2.0"
+  },
+  "core_bet": [
+    "Humans and agents are first-class members with separate signed identities.",
+    "Messages, reactions, workflow actions, approvals, and git events share one event model.",
+    "A relay URL selects a community and its local access boundary.",
+    "Agent runtimes, models, and tools compose through ACP, MCP, and CLI surfaces.",
+    "Teams can self-host the open-source workspace and control their deployment."
+  ],
+  "review": {
+    "verdict": "Important architecture, early product.",
+    "recommended_use": "One bounded, low-stakes project with separate agent identities and a human approval gate.",
+    "not_recommended_yet": "An all-company migration or unsupervised access to production systems and secrets.",
+    "current_watch_items": [
+      "Mobile clients are still in active development.",
+      "Workflow approval gates are not fully resumable in the current vision status.",
+      "End-to-end encryption for direct messages is a future consideration.",
+      "The architecture document says production rate limiting is not currently enforced.",
+      "The relay remains the single source of truth within a community."
+    ]
+  },
+  "industry_next_2027_inferences": [
+    "The org chart becomes a graph of signed identities, memberships, workflows, and approval rights.",
+    "Models become replaceable workers while the institution's memory persists.",
+    "Portable identity will require cross-relay delegation, revocation, and dispute protocols.",
+    "Provenance must be paired with finite capability, budget, and independent containment."
+  ],
+  "sources": [
+    { "name": "Buzz README", "url": "https://github.com/block/buzz/blob/main/README.md" },
+    { "name": "Buzz Architecture", "url": "https://github.com/block/buzz/blob/main/ARCHITECTURE.md" },
+    { "name": "Buzz Vision", "url": "https://github.com/block/buzz/blob/main/VISION.md" },
+    { "name": "TechCrunch launch report", "url": "https://techcrunch.com/2026/07/21/jack-dorsey-is-taking-on-slack-with-buzz-a-group-chat-platform-for-teams-and-their-ai-agents/" }
+  ]
+}

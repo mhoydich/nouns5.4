@@ -157,18 +157,19 @@ The coordinator owns:
 - `/api/jam-room-stream` server-sent room snapshots
 - `/api/jam-rooms` open-stage discovery and daily spotlight room ranking
 
-## GitHub Pages Fallback
+## GitHub Pages Static Mirror
 
-The repository still includes a GitHub Pages workflow and the deployed artifact still contains the custom-domain file:
+The repository includes a GitHub Pages workflow for static editorial releases:
 
 `https://mhoydich.github.io/nouns5.4/`
 
-`www.industrynext.xyz`
+The workflow stages `public/`, replaces the mirror home with `github-pages-index.html`, removes
+`CNAME`, and deploys the artifact with `.nojekyll`. This keeps the canonical
+`www.industrynext.xyz` deployment on Cloudflare Pages, where the Noun, market, mint, and jam
+functions continue to work, while GitHub Pages provides a no-function static reading surface.
 
-That setup remains blocked by the GitHub account billing lock on Actions. If GitHub billing is cleared later, the old DNS target for that path would be:
-
-- `CNAME` host `www` -> `mhoydich.github.io`
-- `URL Redirect Record` host `@` -> `https://www.industrynext.xyz/` unmasked
+Do not point the custom domain at GitHub Pages without first replacing or deliberately retiring
+the Cloudflare Pages Functions used by the full site.
 
 ## Asset sync
 
