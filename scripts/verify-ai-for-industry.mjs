@@ -111,7 +111,7 @@ assert.match(earlyCareerHtml, /href="\/early-career\/ai-for-industry\/"/);
 assert.equal((earlyCareerHtml.match(/class="resource-card/g) || []).length, 8);
 assert.equal(earlyCareer.resources.length, 8);
 assert.ok(earlyCareer.resources.some((resource) => resource.id === "ai-for-industry-010"));
-assert.match(home, /10-PART AI SERIES/);
+assert.match(home, /10-PART FIELD SERIES/);
 assert.match(home, /href="\/early-career\/ai-for-industry\/"/);
 assert.match(sitemap, /industrynext\.xyz\/early-career\/ai-for-industry\//);
 assert.match(sitemap, /industrynext\.xyz\/ai-for-industry\.json/);

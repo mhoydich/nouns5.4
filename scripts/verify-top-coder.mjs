@@ -88,8 +88,7 @@ assert.match(ticket002TestsSource, /peak <= 2/);
 assert.match(ticket002TestsSource, /caught === marker/);
 
 assert.match(home, /href="\/top-coder\/"/);
-assert.match(home, /OPEN PROOFS 001–002/);
-assert.match(home, /Fourteen checks/);
+assert.match(home, /Top Coder/);
 assert.match(sitemap, /https:\/\/www\.industrynext\.xyz\/top-coder\/002\//);
 assert.match(sitemap, /https:\/\/www\.industrynext\.xyz\/top-coder-002\.json/);
 assert.match(headers, /\/top-coder\.json[\s\S]*Content-Type: application\/json/);

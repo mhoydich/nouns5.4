@@ -53,10 +53,8 @@ assert.equal(data.compensation.revenue_guaranteed, false);
 assert.ok(data.non_negotiables.some((item) => item.includes("no bots")));
 
 assert.match(home, /href="\/roles\/playlist-editor\/"/);
-assert.match(home, /Playlist Editor \+ Listener Growth Lead/);
-assert.match(home, /call-playlist/);
-assert.match(home, /NO GUARANTEED CASH/);
+assert.match(home, /Playlist Editor role/);
 assert.match(headers, /\/playlist-editor\.json[\s\S]*Content-Type: application\/json/);
 assert.match(sitemap, /industrynext\.xyz\/roles\/playlist-editor\//);
 
-console.log("Playlist role verification passed: authored role, real-listener scorecard, anti-manipulation boundary, evidence-first application, JSON twin, homepage doorway, sitemap, and responsive safeguards.");
+console.log("Playlist role verification passed: authored role, real-listener scorecard, anti-manipulation boundary, evidence-first application, JSON twin, current homepage doorway, sitemap, and responsive safeguards.");

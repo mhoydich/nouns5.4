@@ -1,7 +1,7 @@
 {
   "name": "Industry Next",
   "short_name": "IndustryNext",
-  "description": "Playable media, public experiments, working AI services, and small internet institutions from Industry Next.",
+  "description": "A public development studio for playable media, local systems, useful work, and more enjoyable ways to contribute.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -69,11 +69,10 @@ assert.ok(data.board.some((item) => item.id === "industry-next-task-desk"));
 assert.ok(data.board.some((item) => item.id === "industry-next-work-market"));
 
 assert.match(home, /href="\/product\/"/);
-assert.match(home, /OPERATE/);
 assert.match(home, /Product Desk/);
 assert.match(home, /Task Desk/);
-assert.match(home, /A public studio[\s\S]*needs named leads/);
-assert.match(home, /Open jobs, their first bounded tasks/);
+assert.match(home, /Put the scope, owner, terms, and proof on the same page/);
+assert.match(home, /Public work markets, product decisions, client systems/);
 assert.match(services, /href="\/product\/"/);
 assert.match(next, /href="\/product\/"/);
 assert.match(taskDesk, /href="\/product\/"/);

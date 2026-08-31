@@ -1,0 +1,35 @@
+{
+  "id": "industry-next-ai-working-sessions-2026",
+  "name": "AI Working Sessions",
+  "status": "booking",
+  "url": "https://www.industrynext.xyz/help/",
+  "contact": "mh@pointcast.xyz",
+  "promise": "Bring one stuck piece of work and leave with one working receipt.",
+  "offers": [
+    {
+      "name": "AI Working Session",
+      "price_usd": 350,
+      "duration": "75 minutes plus preparation",
+      "payment": "invoiced after fit and timing are accepted",
+      "outputs": ["one working setup, decision, workflow, or action plan", "seven-day email follow-up"]
+    },
+    {
+      "name": "Build Day",
+      "price_usd": 2500,
+      "duration": "one focused day",
+      "outputs": ["one bounded automation or prototype", "source and handoff", "one tune-up within 14 days"]
+    },
+    {
+      "name": "Starter Kit",
+      "price_usd": 50000,
+      "duration": "five weeks",
+      "url": "https://www.industrynext.xyz/services/"
+    }
+  ],
+  "privacy": {
+    "form_storage": "none",
+    "submission": "the page prepares an email in the visitor's own mail application",
+    "do_not_submit": ["passwords", "private client material", "medical information", "regulated records", "other secrets"]
+  },
+  "updated": "2026-08-31"
+}

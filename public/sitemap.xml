@@ -11,6 +11,30 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.industrynext.xyz/help/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.industrynext.xyz/help.json</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.industrynext.xyz/experts/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.industrynext.xyz/experts.json</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.industrynext.xyz/hardware/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>

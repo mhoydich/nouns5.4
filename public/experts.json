@@ -1,0 +1,31 @@
+{
+  "id": "industry-next-expert-network-2026",
+  "name": "Industry Next Expert Network",
+  "status": "forming",
+  "url": "https://www.industrynext.xyz/experts/",
+  "contact": "mh@pointcast.xyz",
+  "client_offer": {
+    "name": "Expert Test Pack",
+    "starting_price_usd": 12500,
+    "duration": "two weeks",
+    "typical_volume": "30 to 50 expert cases, adjusted for complexity",
+    "outputs": ["scope and rubric", "paid expert calibration", "expert cases", "dual review and adjudication", "failure map and handoff"]
+  },
+  "founding_fields": ["media and creative systems", "commerce and operations", "AI product experience"],
+  "expert_terms": ["no membership fee", "no guaranteed placement", "paid calibration", "written project compensation", "no account sharing", "no assessment assistance"],
+  "outside_platform_boundary": "Industry Next does not claim partnership with external talent or human-data platforms and cannot guarantee placement through them.",
+  "v2": {
+    "name": "Agent Bench",
+    "status": "founding pilot concept",
+    "starting_hypothesis_usd_per_month": 1500,
+    "roles": ["Research Runner", "Communications Helper", "Operations Assistant"],
+    "promise": "Industry Next configures and supervises a bounded agent role behind one simple desk.",
+    "approval_required": ["representational messages", "purchases", "deletions", "credential changes", "other consequential actions"]
+  },
+  "privacy": {
+    "form_storage": "none",
+    "submission": "the page prepares an email in the visitor's own mail application",
+    "do_not_submit": ["confidential datasets", "credentials", "personal information", "unreleased model outputs", "regulated records"]
+  },
+  "updated": "2026-08-31"
+}

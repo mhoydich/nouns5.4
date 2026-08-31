@@ -12,6 +12,7 @@
     "verify:drum-jam": "node ./scripts/verify-drum-jam.mjs",
     "verify:permission-lab": "node ./scripts/verify-permission-lab.mjs",
     "verify:services": "node ./scripts/verify-services.mjs",
+    "verify:ai-work": "node ./scripts/verify-ai-work.mjs",
     "verify:hardware": "node ./scripts/verify-hardware.mjs",
     "verify:sky-is-local": "node ./scripts/verify-sky-is-local.mjs",
     "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",

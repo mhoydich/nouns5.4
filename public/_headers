@@ -43,6 +43,26 @@
 /services.json
   Content-Type: application/json; charset=utf-8
 
+/help/*
+  Cache-Control: public, max-age=300
+
+/help.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
+/experts/*
+  Cache-Control: public, max-age=300
+
+/experts.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
+/ai-work.css
+  Cache-Control: public, max-age=300
+
+/ai-work.js
+  Cache-Control: public, max-age=300
+
 /hardware/*
   Cache-Control: public, max-age=300
 
