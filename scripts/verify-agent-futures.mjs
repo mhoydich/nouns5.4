@@ -31,6 +31,8 @@ assert.doesNotMatch(buzz, /(?:href|src)="\/(?!\/)/, "Buzz feature must remain po
 
 assert.match(css, /@media \(max-width: 680px\)/);
 assert.match(css, /prefers-reduced-motion/);
+assert.match(css, /\.af-hero-copy,[\s\S]*min-width: 0;/, "grid and flex children must be allowed to shrink on mobile");
+assert.match(css, /\.af-kicker, \.af-section-mark, \.af-label[\s\S]*overflow-wrap: anywhere;/, "editorial labels must wrap inside narrow viewports");
 assert.match(home, /\/editorial\/the-federation-problem\//);
 assert.match(home, /\/editorial\/buzz-agent-workspace\//);
 assert.match(mirror, /\.\/editorial\/the-federation-problem\//);

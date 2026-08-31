@@ -120,12 +120,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: clamp(60px, 8vw, 120px) 36px clamp(70px, 8vw, 120px) var(--page);
 }
 .af-kicker, .af-section-mark, .af-label {
+  max-width: 100%;
   margin: 0;
   font: 500 .58rem/1.45 var(--mono);
   letter-spacing: .11em;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 .af-kicker { width: max-content; padding: 7px 10px; border: 1px solid var(--white); background: var(--pink); color: var(--ink); }
+
+.af-hero-copy,
+.af-rule,
+.af-rule > *,
+.af-section-head,
+.af-section-head > *,
+.af-forecast > header,
+.af-forecast > header > *,
+.af-protocol,
+.af-protocol > *,
+.af-footer,
+.af-footer > * { min-width: 0; }
 .af-hero h1 {
   max-width: 10ch;
   margin: 27px 0 34px;
@@ -379,6 +393,7 @@ body.buzz .swarm-panel { background: #0a211d; box-shadow: 13px 15px 0 var(--acid
   .af-ticker span:nth-child(n+3) { display: none; }
   .af-hero { min-height: auto; }
   .af-hero-copy { padding-top: 62px; padding-bottom: 55px; }
+  .af-kicker { width: fit-content; }
   .af-hero h1 { max-width: 100%; font-size: clamp(3.4rem, 15vw, 5.4rem); overflow-wrap: anywhere; }
   .af-actions { align-items: flex-start; flex-direction: column; }
   .swarm-panel { width: calc(100% - 48px); margin-bottom: 64px; box-shadow: 8px 9px 0 var(--cyan), 15px 17px 0 var(--pink); }
