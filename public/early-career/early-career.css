@@ -118,7 +118,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .resource-card { position: relative; display: flex; flex-direction: column; min-height: 390px; padding: 25px; overflow: hidden; border: var(--line); box-shadow: var(--shadow); text-decoration: none; transition: transform .16s ease, box-shadow .16s ease; }
 .resource-card:hover, .resource-card:focus-visible { transform: translate(4px, 4px); box-shadow: 4px 4px 0 var(--ink); }
 .resource-card::after { content: ""; position: absolute; width: 130px; height: 130px; border: 18px solid rgba(17,17,17,.12); border-radius: 50%; right: -61px; top: -62px; }
-.resource-ai-desk, .resource-ai-series { grid-column: span 12; min-height: 430px; }
+.resource-toolchain, .resource-ai-desk, .resource-ai-series { grid-column: span 12; min-height: 430px; }
+.resource-toolchain { background: var(--violet); }
 .resource-ai-desk { color: var(--ink); background: var(--blue); }
 .resource-ai-series { background: var(--acid); }
 .resource-feature, .resource-jobs { grid-column: span 6; }
@@ -129,9 +130,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .resource-card > p:not(.resource-type) { max-width: 580px; margin: 18px 0 24px; font-size: 16px; font-weight: 650; line-height: 1.42; }
 .resource-card > strong { margin-top: auto; font-size: 11px; letter-spacing: .06em; text-decoration: underline; text-underline-offset: 5px; }
 .resource-feature { background: var(--pink); }
+.resource-toolchain::before { content: "17"; position: absolute; right: 34px; bottom: -35px; color: var(--acid); font-size: clamp(150px, 23vw, 340px); font-weight: 950; letter-spacing: -.12em; line-height: .72; opacity: .86; pointer-events: none; }
 .resource-ai-series::before { content: "10"; position: absolute; right: 34px; bottom: -35px; color: var(--orange); font-size: clamp(150px, 23vw, 340px); font-weight: 950; letter-spacing: -.12em; line-height: .72; opacity: .88; pointer-events: none; }
 .resource-ai-desk::before { content: "36"; position: absolute; right: 34px; bottom: -35px; color: var(--pink); font-size: clamp(150px, 23vw, 340px); font-weight: 950; letter-spacing: -.14em; line-height: .72; opacity: .86; pointer-events: none; }
-.resource-ai-desk > *, .resource-ai-series > * { position: relative; z-index: 1; }
+.resource-toolchain > *, .resource-ai-desk > *, .resource-ai-series > * { position: relative; z-index: 1; }
 .resource-offer { background: var(--blue); }
 .resource-proof { background: var(--acid); }
 .resource-days { background: var(--orange); }

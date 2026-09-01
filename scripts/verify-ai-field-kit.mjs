@@ -102,8 +102,8 @@ for (const service of data.services) assert.ok(html.includes(`href="${service.of
 
 assert.match(earlyCareerHtml, /AI SERVICE DESK \/ 36 OFFICIAL DOORS/);
 assert.match(earlyCareerHtml, /href="\/early-career\/ai-field-kit\/"/);
-assert.equal((earlyCareerHtml.match(/class="resource-card/g) || []).length, 8);
-assert.equal(earlyCareer.resources.length, 8);
+assert.equal((earlyCareerHtml.match(/class="resource-card/g) || []).length, 9);
+assert.equal(earlyCareer.resources.length, 9);
 assert.ok(earlyCareer.resources.some((resource) => resource.id === "ai-service-desk-036"));
 assert.match(seriesHtml, /href="\/early-career\/ai-field-kit\/"/);
 assert.match(home, /href="\/early-career\/ai-field-kit\/"/);

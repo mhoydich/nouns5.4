@@ -105,11 +105,11 @@ assert.equal(data.tool_boundaries.live_message_required, false);
 assert.equal(data.tool_boundaries.production_credentials_required, false);
 assert.ok(data.official_sources.every((source) => source.startsWith("https://")));
 
-assert.match(earlyCareerHtml, /Eight useful doors/);
+assert.match(earlyCareerHtml, /Nine useful doors/);
 assert.match(earlyCareerHtml, /AI FOR INDUSTRY \/ 10 PARTS/);
 assert.match(earlyCareerHtml, /href="\/early-career\/ai-for-industry\/"/);
-assert.equal((earlyCareerHtml.match(/class="resource-card/g) || []).length, 8);
-assert.equal(earlyCareer.resources.length, 8);
+assert.equal((earlyCareerHtml.match(/class="resource-card/g) || []).length, 9);
+assert.equal(earlyCareer.resources.length, 9);
 assert.ok(earlyCareer.resources.some((resource) => resource.id === "ai-for-industry-010"));
 assert.match(home, /10-PART FIELD SERIES/);
 assert.match(home, /href="\/early-career\/ai-for-industry\/"/);

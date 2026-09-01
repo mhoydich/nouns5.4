@@ -8,6 +8,18 @@
   "principle": "Read the whole deal. Make one useful thing. Leave proof someone else can inspect.",
   "resources": [
     {
+      "id": "ai-tools-mcp-atlas-017",
+      "title": "AI + MCP Toolchain Atlas",
+      "kind": "practical shortlist, permission-aware stack builder, and official setup desk",
+      "url": "https://www.industrynext.xyz/ai-tools-mcp/",
+      "machine_readable": "https://www.industrynext.xyz/ai-tools-mcp.json",
+      "output": "A two-tool, three-MCP stack with a permission posture, first prompt, and verification gate",
+      "ai_tool_count": 10,
+      "mcp_server_count": 7,
+      "affiliate_compensation": false,
+      "transmits_or_stores_inputs": false
+    },
+    {
       "id": "ai-service-desk-036",
       "title": "AI Service Desk — Pick a Receipt",
       "kind": "official-link directory, local stack builder, and five-day campus assignment",

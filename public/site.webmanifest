@@ -51,6 +51,12 @@
       "url": "/early-career/ai-field-kit/"
     },
     {
+      "name": "AI + MCP Toolchain Atlas",
+      "short_name": "Toolchain",
+      "description": "Build a small, permission-aware stack from practical AI tools and useful MCP servers.",
+      "url": "/ai-tools-mcp/"
+    },
+    {
       "name": "Tumblr Talent Relay",
       "short_name": "Relay",
       "description": "Turn a strange digital skill into a visible talent signal.",

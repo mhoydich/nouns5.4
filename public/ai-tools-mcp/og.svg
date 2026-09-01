@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Industry Next AI and MCP Toolchain Atlas</title>
+  <desc id="desc">A violet industrial patch panel connecting AI tools to MCP context, permission gates, and inspectable proof.</desc>
+  <rect width="1200" height="630" fill="#8f74ff"/>
+  <g opacity=".14" stroke="#10110f" stroke-width="2">
+    <path d="M0 78H1200M0 158H1200M0 238H1200M0 318H1200M0 398H1200M0 478H1200M0 558H1200"/>
+    <path d="M80 0V630M160 0V630M240 0V630M320 0V630M400 0V630M480 0V630M560 0V630M640 0V630M720 0V630M800 0V630M880 0V630M960 0V630M1040 0V630M1120 0V630"/>
+  </g>
+  <rect x="58" y="51" width="1084" height="528" fill="#f4f0e7" stroke="#10110f" stroke-width="8"/>
+  <rect x="58" y="51" width="1084" height="58" fill="#b7ff5a" stroke="#10110f" stroke-width="8"/>
+  <text x="86" y="88" font-family="Courier New, monospace" font-size="20" font-weight="900" fill="#10110f">INDUSTRY NEXT / TOOLCHAIN ATLAS / BENCH 004</text>
+  <text x="83" y="208" font-family="Helvetica Neue, Arial, sans-serif" font-size="78" font-weight="950" letter-spacing="-5" fill="#10110f">AI + MCP</text>
+  <text x="83" y="281" font-family="Helvetica Neue, Arial, sans-serif" font-size="78" font-weight="950" letter-spacing="-5" fill="#10110f">TOOLCHAIN ATLAS</text>
+  <text x="87" y="331" font-family="Courier New, monospace" font-size="19" font-weight="900" fill="#10110f">CHOOSE THE WORK. WIRE THE TOOLS. VERIFY THE CONNECTION.</text>
+  <g transform="translate(82 393)">
+    <rect width="292" height="106" fill="#b7ff5a" stroke="#10110f" stroke-width="5"/>
+    <circle cx="42" cy="53" r="20" fill="#10110f"/>
+    <circle cx="42" cy="53" r="10" fill="#b7ff5a"/>
+    <text x="78" y="48" font-family="Helvetica Neue, Arial, sans-serif" font-size="27" font-weight="950" fill="#10110f">10 AI TOOLS</text>
+    <text x="78" y="76" font-family="Courier New, monospace" font-size="14" font-weight="900" fill="#10110f">THINK · CODE · MAKE</text>
+  </g>
+  <g transform="translate(397 393)">
+    <rect width="292" height="106" fill="#ff64b0" stroke="#10110f" stroke-width="5"/>
+    <circle cx="42" cy="53" r="20" fill="#10110f"/>
+    <circle cx="42" cy="53" r="10" fill="#ff64b0"/>
+    <text x="78" y="48" font-family="Helvetica Neue, Arial, sans-serif" font-size="27" font-weight="950" fill="#10110f">7 MCPs</text>
+    <text x="78" y="76" font-family="Courier New, monospace" font-size="14" font-weight="900" fill="#10110f">CONTEXT · ACTION</text>
+  </g>
+  <g transform="translate(712 393)">
+    <rect width="408" height="106" fill="#71dbff" stroke="#10110f" stroke-width="5"/>
+    <circle cx="42" cy="53" r="20" fill="#10110f"/>
+    <circle cx="42" cy="53" r="10" fill="#71dbff"/>
+    <text x="78" y="48" font-family="Helvetica Neue, Arial, sans-serif" font-size="27" font-weight="950" fill="#10110f">PERMISSION GATE</text>
+    <text x="78" y="76" font-family="Courier New, monospace" font-size="14" font-weight="900" fill="#10110f">READ · ASK · WRITE</text>
+  </g>
+  <path d="M124 446C186 345 432 356 439 446" fill="none" stroke="#10110f" stroke-width="9" stroke-linecap="round"/>
+  <path d="M441 446C535 333 788 337 754 446" fill="none" stroke="#10110f" stroke-width="9" stroke-linecap="round"/>
+  <rect x="82" y="530" width="1038" height="24" fill="#10110f"/>
+  <text x="84" y="567" font-family="Courier New, monospace" font-size="15" font-weight="900" fill="#10110f">OFFICIAL PUBLISHER DOORS · NO AFFILIATE LINKS · LAST CHECKED 2026-08-31</text>
+</svg>

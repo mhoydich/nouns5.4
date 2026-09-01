@@ -1,0 +1,220 @@
+{
+  "schema": "industrynext.ai-tools-mcp-atlas/v1",
+  "id": "industrynext/toolchain-atlas-004",
+  "title": "AI + MCP Toolchain Atlas",
+  "canonical": "https://www.industrynext.xyz/ai-tools-mcp/",
+  "published": "2026-08-31",
+  "last_reviewed": "2026-08-31",
+  "summary": "A practical, non-affiliate shortlist and local stack builder for selecting AI work surfaces, MCP bridges, permission posture, and verification evidence.",
+  "editorial_policy": {
+    "top_definition": "A compact shortlist selected for practical coverage and useful workflows, not a universal ranking.",
+    "affiliate_compensation": false,
+    "transmits_or_stores_builder_selections": false,
+    "pricing_claims_included": false,
+    "default_permission_posture": "Project-scoped configuration, least privilege, read-only first, and human approval before writes.",
+    "warning": "Plans, availability, models, prices, data terms, transports, and server tools change. Confirm current terms and permissions with the official publisher before connecting accounts, spending money, or sharing sensitive material."
+  },
+  "definitions": {
+    "ai_tool": "A work surface used to think, code, research, design, or make an artifact.",
+    "mcp_server": "A permissioned bridge that can expose external context or actions to an MCP-capable host.",
+    "receipt": "Inspectable evidence such as a source trail, diff, test, screenshot, log, or public URL."
+  },
+  "ai_tools": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "category": "think",
+      "role": "General workbench",
+      "use_when": "The work changes shape as you learn.",
+      "receipt": "Sources, assumptions, and the decision.",
+      "official_url": "https://chatgpt.com/"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "category": "think",
+      "role": "Document workbench",
+      "use_when": "The source packet is the work.",
+      "receipt": "A claim-to-source table.",
+      "official_url": "https://claude.ai/"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "category": "think",
+      "role": "Google workbench",
+      "use_when": "The approved workflow is already Google-shaped.",
+      "receipt": "An export outside the chat.",
+      "official_url": "https://gemini.google.com/"
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "category": "think",
+      "role": "Source-set workbench",
+      "use_when": "The boundary is a known source set.",
+      "receipt": "The source collection and cited notes.",
+      "official_url": "https://notebook.google/"
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "category": "think",
+      "role": "Web scout",
+      "use_when": "You need the current source landscape.",
+      "receipt": "Opened primary links, not citation count.",
+      "official_url": "https://www.perplexity.ai/"
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "category": "code",
+      "role": "Repository agent",
+      "use_when": "The artifact lives in a real codebase.",
+      "receipt": "A small diff and exact test output.",
+      "official_url": "https://developers.openai.com/codex/"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "category": "code",
+      "role": "Terminal agent",
+      "use_when": "You want an agent in the shell loop.",
+      "receipt": "The plan, diff, and verification transcript.",
+      "official_url": "https://code.claude.com/docs/en/overview"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "code",
+      "role": "Editor agent",
+      "use_when": "The editor is your control surface.",
+      "receipt": "A reviewed commit, not pasted code.",
+      "official_url": "https://cursor.com/"
+    },
+    {
+      "id": "figma-make",
+      "name": "Figma Make",
+      "category": "make",
+      "role": "Interface prototype",
+      "use_when": "The unknown is interaction and hierarchy.",
+      "receipt": "Prototype, observer notes, and handoff.",
+      "official_url": "https://www.figma.com/make/"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "category": "make",
+      "role": "Moving image",
+      "use_when": "The deliverable needs motion.",
+      "receipt": "A take sheet with keep and reject reasons.",
+      "official_url": "https://runway.com/"
+    }
+  ],
+  "mcp_servers": [
+    {
+      "id": "openai-docs",
+      "name": "OpenAI Docs",
+      "transport": "streamable HTTP",
+      "access": "read-only public documentation",
+      "use": "Search and read official OpenAI developer documentation in the agent context.",
+      "first_test": "Find one current API field and return the exact official source page.",
+      "boundary": "Documentation-only; it does not call the OpenAI API on the user's behalf.",
+      "official_url": "https://learn.chatgpt.com/learn/docs-mcp",
+      "codex_setup": "codex mcp add openaiDeveloperDocs --url https://developers.openai.com/mcp"
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "transport": "local stdio process",
+      "access": "documentation retrieval",
+      "use": "Bring current library and framework documentation into a coding session.",
+      "first_test": "Resolve one package and retrieve the current method signature.",
+      "boundary": "Inspect the package and source before running it locally.",
+      "official_url": "https://github.com/upstash/context7",
+      "codex_setup": "codex mcp add context7 -- npx -y @upstash/context7-mcp"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "transport": "local or remote; see publisher guide",
+      "access": "account and file scope; tools vary",
+      "use": "Expose structured design context and supported Figma actions.",
+      "first_test": "Read one named frame and summarize its components.",
+      "boundary": "Start with one file and inspect every offered tool.",
+      "official_url": "https://developers.figma.com/docs/figma-mcp-server/"
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "transport": "local stdio process",
+      "access": "browser control",
+      "use": "Inspect and operate a browser to test interaction, layout, errors, and responsive behavior.",
+      "first_test": "Open a local page, read the title, and take a screenshot.",
+      "boundary": "Use a test profile; browser actions can change external state.",
+      "official_url": "https://github.com/microsoft/playwright-mcp"
+    },
+    {
+      "id": "chrome-devtools",
+      "name": "Chrome DevTools",
+      "transport": "local stdio process",
+      "access": "browser and debugging control",
+      "use": "Inspect a live browser's DOM, console, network, and performance state.",
+      "first_test": "Read console errors from a local or staging route.",
+      "boundary": "Avoid personal profiles and authenticated production tabs.",
+      "official_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "transport": "see publisher guide",
+      "access": "account and organization data",
+      "use": "Bring issue and error context into a debugging session.",
+      "first_test": "Read one test-project issue without changing its state.",
+      "boundary": "Scope the organization and project; treat traces as sensitive.",
+      "official_url": "https://docs.sentry.io/product/sentry-mcp/"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "transport": "local stdio or supported host setup",
+      "access": "account; read and write toolsets",
+      "use": "Work with repositories, issues, pull requests, actions, and security data.",
+      "first_test": "Use read-only mode to summarize one issue and linked pull request.",
+      "boundary": "Enable only needed toolsets; writes require explicit approval.",
+      "official_url": "https://github.com/github/github-mcp-server"
+    }
+  ],
+  "stack_builder": {
+    "selection_location": "browser only",
+    "share_encoding": "URL fragment containing only outcome and posture",
+    "outcomes": [
+      { "id": "site", "name": "Ship a useful website", "ai_tools": ["codex", "cursor"], "mcp_servers": ["github", "playwright", "sentry"] },
+      { "id": "brief", "name": "Produce a technical brief", "ai_tools": ["chatgpt", "notebooklm"], "mcp_servers": ["openai-docs", "context7", "github"] },
+      { "id": "design", "name": "Build from a design", "ai_tools": ["figma-make", "codex"], "mcp_servers": ["figma", "github", "playwright"] },
+      { "id": "bug", "name": "Fix a production bug", "ai_tools": ["codex", "claude-code"], "mcp_servers": ["sentry", "github", "chrome-devtools"] },
+      { "id": "review", "name": "Review a repository", "ai_tools": ["claude", "codex"], "mcp_servers": ["github", "context7", "playwright"] },
+      { "id": "api", "name": "Prototype an AI API", "ai_tools": ["chatgpt", "codex"], "mcp_servers": ["openai-docs", "context7", "sentry"] }
+    ],
+    "postures": [
+      { "id": "public", "name": "Public material and test data" },
+      { "id": "team", "name": "Private team material" },
+      { "id": "production", "name": "Production systems" }
+    ]
+  },
+  "permission_gate": [
+    "Name the receipt.",
+    "Verify the publisher.",
+    "Inventory every offered tool.",
+    "Reduce the scope.",
+    "Run a harmless read-only test.",
+    "Keep a human approval and stop rule for consequential actions."
+  ],
+  "primary_sources": [
+    "https://developers.openai.com/codex/mcp/",
+    "https://learn.chatgpt.com/learn/docs-mcp",
+    "https://modelcontextprotocol.io/",
+    "https://registry.modelcontextprotocol.io/",
+    "https://github.com/github/github-mcp-server"
+  ]
+}

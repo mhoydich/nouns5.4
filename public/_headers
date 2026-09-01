@@ -6,6 +6,13 @@
 /app.js
   Cache-Control: public, max-age=300
 
+/ai-tools-mcp/*
+  Cache-Control: public, max-age=300
+
+/ai-tools-mcp.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /early-career/ai-field-kit/*
   Cache-Control: public, max-age=300
 

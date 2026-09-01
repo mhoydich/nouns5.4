@@ -30,7 +30,8 @@ const [html, css, script, data, og, market, marketData, home, internRead, header
 
 assert.match(html, /STARTING LINE \/ FIELD DESK 001 \/ INTERNS \+ RECENT GRADUATES/);
 assert.match(html, /You do not need[\s\S]*a perfect plan[\s\S]*You need a first receipt/);
-assert.match(html, /Eight useful doors/);
+assert.match(html, /Nine useful doors/);
+assert.match(html, /href="\/ai-tools-mcp\/"/);
 assert.match(html, /AI SERVICE DESK \/ 36 OFFICIAL DOORS/);
 assert.match(html, /href="\/early-career\/ai-field-kit\/"/);
 assert.match(html, /AI FOR INDUSTRY \/ 10 PARTS/);
@@ -58,7 +59,7 @@ assert.match(html, /studentaid\.gov\/loan-simulator/);
 assert.match(html, /irs\.gov/);
 assert.match(html, /investor\.gov/);
 assert.match(html, /data-placement="footer"/);
-assert.equal((html.match(/class="resource-card/g) || []).length, 8);
+assert.equal((html.match(/class="resource-card/g) || []).length, 9);
 assert.equal((html.match(/class="job-card/g) || []).length, 4);
 
 assert.match(css, /\.resource-grid/);
@@ -78,7 +79,8 @@ assert.match(og, /STARTING LINE/);
 
 assert.equal(data.schema, "industrynext.early-career/v1");
 assert.equal(data.canonical, "https://www.industrynext.xyz/early-career/");
-assert.equal(data.resources.length, 8);
+assert.equal(data.resources.length, 9);
+assert.ok(data.resources.some((resource) => resource.id === "ai-tools-mcp-atlas-017"));
 assert.equal(data.resources.find((resource) => resource.id === "ai-service-desk-036").affiliate_compensation, false);
 assert.equal(data.resources.find((resource) => resource.id === "ai-for-industry-010").transmits_worksheet_inputs, false);
 assert.equal(data.resources.find((resource) => resource.id === "first-receipt").transmits_or_stores_inputs, false);
@@ -106,4 +108,4 @@ assert.match(sitemap, /industrynext\.xyz\/early-career\.json/);
 assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === "/early-career/"));
 assert.equal(pkg.scripts["verify:early-career"], "node ./scripts/verify-early-career.mjs");
 
-console.log("Starting Line verification passed: eight resource doors including the AI Service Desk and AI for Industry, private first-receipt tool, 30/60/90 map, official sources, and four Work Market roles with explicit support boundaries.");
+console.log("Starting Line verification passed: nine resource doors including the AI + MCP Atlas, AI Service Desk, and AI for Industry, private first-receipt tool, 30/60/90 map, official sources, and four Work Market roles with explicit support boundaries.");
