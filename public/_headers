@@ -13,6 +13,13 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/the-wild/*
+  Cache-Control: public, max-age=300
+
+/the-wild.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /early-career/ai-field-kit/*
   Cache-Control: public, max-age=300
 
