@@ -1,0 +1,184 @@
+{
+  "id": "hoydich-general-store-001",
+  "name": "Hoydich General Store",
+  "brand": "Hoydich Industries",
+  "operator": "Industry Next",
+  "campaign": "Agents Are Very Next",
+  "url": "https://www.industrynext.xyz/agents/",
+  "updated": "2026-09-11",
+  "contact": "mh@pointcast.xyz",
+  "position": "An agent-services counter at Industry Next. Illustrated packages are campaign concepts, not physical products.",
+  "offers": [
+    {
+      "id": "working-session",
+      "name": "AI Working Session",
+      "status": "available",
+      "price_usd": 350,
+      "duration": "75 minutes plus preparation",
+      "url": "https://www.industrynext.xyz/help/",
+      "outputs": [
+        "one working setup, workflow, decision, or action plan",
+        "seven-day email follow-up"
+      ],
+      "booking": "fit, scope, timing, and payment confirmed before booking"
+    },
+    {
+      "id": "build-day",
+      "name": "Build Day",
+      "status": "available",
+      "price_usd": 2500,
+      "duration": "one focused day",
+      "url": "https://www.industrynext.xyz/help/",
+      "outputs": [
+        "one bounded automation or prototype",
+        "source, instructions, and handoff",
+        "one tune-up within 14 days"
+      ],
+      "booking": "final scope confirmed in writing"
+    },
+    {
+      "id": "supervised-agent-pilot",
+      "name": "A supervised agent role",
+      "status": "proposed-pilot",
+      "url": "https://www.industrynext.xyz/experts/#agent-bench",
+      "terms": "capacity, access, human review, tool costs, and scope agreed before pilot starts",
+      "autonomous_service_guaranteed": false
+    }
+  ],
+  "gallery": [
+    {
+      "id": "agent-balm",
+      "name": "Agent Balm",
+      "tagline": "Relief for repetitive work.",
+      "category": "relief",
+      "service_offer": "working-session",
+      "package_status": "proposed-job-package",
+      "description": "Bring a stuck task. Leave with a useful setup, workflow, or decision.",
+      "image": "/agents/images/agent-balm.webp",
+      "full_image": "/agents/images/agent-balm.jpg"
+    },
+    {
+      "id": "canned-capability",
+      "name": "Canned Capability",
+      "tagline": "A whole department. Neatly packed.",
+      "category": "ongoing",
+      "service_offer": "supervised-agent-pilot",
+      "package_status": "proposed-job-package",
+      "description": "A bounded question and agreed documents become a source-linked brief and editable checklist. You review the facts.",
+      "image": "/agents/images/canned-capability.webp",
+      "full_image": "/agents/images/canned-capability.jpg"
+    },
+    {
+      "id": "agent-washing-powder",
+      "name": "Agent Washing Powder",
+      "tagline": "For stubborn admin.",
+      "category": "relief",
+      "service_offer": "build-day",
+      "package_status": "proposed-job-package",
+      "description": "A sample export becomes a cleaned copy, duplicate candidates, and missing fields. You approve ambiguous merges.",
+      "image": "/agents/images/agent-washing-powder.webp",
+      "full_image": "/agents/images/agent-washing-powder.jpg"
+    },
+    {
+      "id": "agent-batteries",
+      "name": "Agent Batteries",
+      "tagline": "You call it a day. They keep going.",
+      "category": "ongoing",
+      "service_offer": "supervised-agent-pilot",
+      "package_status": "proposed-job-package",
+      "description": "An agreed watchlist and schedule become an evidence-linked change brief. Approve a sample before recurring work.",
+      "image": "/agents/images/agent-batteries.webp",
+      "full_image": "/agents/images/agent-batteries.jpg"
+    },
+    {
+      "id": "agent-seeds",
+      "name": "Agent Seeds",
+      "tagline": "What are you thinking of starting?",
+      "category": "start",
+      "service_offer": "build-day",
+      "package_status": "proposed-job-package",
+      "description": "One idea, an intended user, and an example become a prototype of a single interaction to try.",
+      "image": "/agents/images/agent-seeds.webp",
+      "full_image": "/agents/images/agent-seeds.jpg"
+    },
+    {
+      "id": "automatic-oil",
+      "name": "Automatic Oil",
+      "tagline": "Loosens stubborn workflows.",
+      "category": "relief",
+      "service_offer": "build-day",
+      "package_status": "proposed-job-package",
+      "description": "One repeated two-tool handoff becomes a tested connection with a visible success or error record. Approve the mapping first.",
+      "image": "/agents/images/automatic-oil.webp",
+      "full_image": "/agents/images/automatic-oil.jpg"
+    },
+    {
+      "id": "agent-matches",
+      "name": "Agent Matches",
+      "tagline": "Strike up something useful.",
+      "category": "start",
+      "service_offer": "working-session",
+      "package_status": "proposed-job-package",
+      "description": "Bring a question and a sample task to a $350 session. Leave with a scoped next step and a useful setup or decision.",
+      "image": "/agents/images/agent-matches.webp",
+      "full_image": "/agents/images/agent-matches.jpg"
+    },
+    {
+      "id": "busywork-repellent",
+      "name": "Busywork Repellent",
+      "tagline": "Keeps the busy off.",
+      "category": "relief",
+      "service_offer": "working-session",
+      "package_status": "proposed-job-package",
+      "description": "A sample queue and agreed categories become a prioritized list with response drafts. People approve outgoing messages.",
+      "image": "/agents/images/busywork-repellent.webp",
+      "full_image": "/agents/images/busywork-repellent.jpg"
+    }
+  ],
+  "shwa": {
+    "status": "work-in-progress",
+    "updated": "2026-09-11",
+    "verified": "First hosted task produced files that were downloaded and independently checked.",
+    "built": "Email bridge deployed to turn an owner message into cloud work and prepare a same-thread reply.",
+    "next": "First verified complete email-to-result test.",
+    "outbound": "Human review required",
+    "payment_tools_connected": false
+  },
+  "research": {
+    "checked": "2026-09-11",
+    "note": "Proposed packages informed by documented tools, not claims of completed client work. Package ideas and review steps are our interpretation.",
+    "sources": [
+      {
+        "title": "Code execution for files and reports",
+        "publisher": "Anthropic",
+        "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool"
+      },
+      {
+        "title": "Building effective agents",
+        "publisher": "Anthropic",
+        "url": "https://www.anthropic.com/engineering/building-effective-agents"
+      },
+      {
+        "title": "Scheduled tasks",
+        "publisher": "Cloudflare",
+        "url": "https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/"
+      },
+      {
+        "title": "How tool use works",
+        "publisher": "Anthropic",
+        "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works"
+      },
+      {
+        "title": "Claude Code overview",
+        "publisher": "Anthropic",
+        "url": "https://code.claude.com/docs/en/overview"
+      }
+    ]
+  },
+  "intake": {
+    "submission": "prepares an email for the visitor to review and send; no server submission",
+    "storage": "none",
+    "recipient": "mh@pointcast.xyz",
+    "creates_booking": false
+  }
+}
