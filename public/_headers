@@ -204,6 +204,11 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
 
+/api/agent-requests
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+
 /data/*
   Cache-Control: public, max-age=3600
 

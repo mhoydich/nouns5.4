@@ -7,7 +7,7 @@
   "url": "https://www.industrynext.xyz/agents/",
   "updated": "2026-09-11",
   "contact": "mh@pointcast.xyz",
-  "position": "An agent-services counter at Industry Next. Illustrated packages are campaign concepts, not physical products.",
+  "position": "An agent-services counter at Industry Next. Start with one repetitive job and a working session. A Little Lift is a proposed supervised pilot, scoped before it begins.",
   "offers": [
     {
       "id": "working-session",
@@ -37,12 +37,25 @@
       "booking": "final scope confirmed in writing"
     },
     {
-      "id": "supervised-agent-pilot",
-      "name": "A supervised agent role",
+      "id": "pilot-discussion",
+      "name": "A Little Lift",
       "status": "proposed-pilot",
-      "url": "https://www.industrynext.xyz/experts/#agent-bench",
-      "terms": "capacity, access, human review, tool costs, and scope agreed before pilot starts",
-      "autonomous_service_guaranteed": false
+      "url": "https://www.industrynext.xyz/agents/#a-little-lift",
+      "terms": "Proposed supervised pilot scoped in the existing $350 working session. Selected examples, useful output, reviewer, capacity, and pilot terms are agreed before work begins.",
+      "autonomous_service_guaranteed": false,
+      "example_handoff": "After scope agreement, the customer chooses, redacts, and forwards selected examples.",
+      "customer_owned": [
+        "identity",
+        "sending",
+        "money"
+      ],
+      "outputs": [
+        "a brief tied to selected sources",
+        "suggested actions and drafts for human review",
+        "uncertainties needing human judgment"
+      ],
+      "image": "/agents/images/a-little-lift.webp",
+      "full_image": "/agents/images/a-little-lift.jpg"
     }
   ],
   "gallery": [
@@ -62,7 +75,7 @@
       "name": "Canned Capability",
       "tagline": "A whole department. Neatly packed.",
       "category": "ongoing",
-      "service_offer": "supervised-agent-pilot",
+      "service_offer": "pilot-discussion",
       "package_status": "proposed-job-package",
       "description": "A bounded question and agreed documents become a source-linked brief and editable checklist. You review the facts.",
       "image": "/agents/images/canned-capability.webp",
@@ -84,7 +97,7 @@
       "name": "Agent Batteries",
       "tagline": "You call it a day. They keep going.",
       "category": "ongoing",
-      "service_offer": "supervised-agent-pilot",
+      "service_offer": "pilot-discussion",
       "package_status": "proposed-job-package",
       "description": "An agreed watchlist and schedule become an evidence-linked change brief. Approve a sample before recurring work.",
       "image": "/agents/images/agent-batteries.webp",
@@ -176,9 +189,71 @@
     ]
   },
   "intake": {
-    "submission": "prepares an email for the visitor to review and send; no server submission",
-    "storage": "none",
+    "submission": "private request submitted to /api/agent-requests",
+    "api": "/api/agent-requests",
+    "request_id": "generated in browser and reused for retries until input changes",
+    "storage": "private for 90 days",
+    "retention_days": 90,
+    "browser_persistent_storage": false,
+    "attachments": false,
+    "mailbox_connection": false,
+    "consent": "store the request privately for 90 days and contact the requester about scope",
+    "delete_earlier": "email mh@pointcast.xyz with the request reference",
     "recipient": "mh@pointcast.xyz",
-    "creates_booking": false
+    "creates_booking": false,
+    "takes_payment": false,
+    "acknowledgment": "show received only after the server returns a stored receipt; email status is shown separately",
+    "fields": [
+      "name",
+      "email",
+      "task",
+      "tools",
+      "success",
+      "offer",
+      "privacyConsent"
+    ],
+    "automated_email_notifications": false,
+    "review_mode": "manual private request desk"
+  },
+  "lead": {
+    "name": "Hello, Free Time",
+    "image": "/agents/images/hello-free-time.webp",
+    "full_image": "/agents/images/hello-free-time.jpg",
+    "cta": "Show us your repetitive job",
+    "entry_offer": "working-session"
+  },
+  "sample": {
+    "status": "fictional illustration, not a real customer or result",
+    "url": "https://www.industrynext.xyz/agents/#sample",
+    "sources": [
+      {
+        "id": "F-01",
+        "sender": "Mara",
+        "subject": "A quick call",
+        "text": "I can do a ten-minute call Tuesday at 2pm or Thursday at 11am. Which works for you?",
+        "action": "Ask for the time zone before choosing a slot.",
+        "draft": "Hi Mara, thanks for offering Tuesday at 2pm or Thursday at 11am. Which time zone are those in?",
+        "human_check": "The source gives two times but no time zone. Nothing is booked."
+      },
+      {
+        "id": "F-02",
+        "sender": "Ellis",
+        "subject": "Label correction",
+        "text": "Please change the label text from “12 oz” to “10 oz.” Please confirm before anything goes to print.",
+        "action": "Send the requested wording change to the print owner for review before confirming it.",
+        "draft": "Thanks, Ellis. You’ve requested a change from “12 oz” to “10 oz.” I’ll check it with the print owner before confirming."
+      },
+      {
+        "id": "F-03",
+        "sender": "Jo",
+        "subject": "Delivery window",
+        "text": "Delivery is now set for Friday, 10am–noon, at your studio. No reply needed unless the timing has changed.",
+        "action": "Keep the delivery window for reference. Jo only needs a reply if the timing has changed.",
+        "draft": "Thanks for the update about Friday’s 10am–noon delivery.",
+        "draft_status": "optional acknowledgment; no reply needed"
+      }
+    ],
+    "messages_sent": false,
+    "calendar_checked": false
   }
 }
