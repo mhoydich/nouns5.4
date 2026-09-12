@@ -1,0 +1,93 @@
+{
+  "id": "industrynext-case-study-001",
+  "type": "case_study",
+  "series": "Case Study",
+  "number": "001",
+  "title": "The Yield Engine",
+  "subtitle": "A case study of Axon, the engine behind AppLovin Ads",
+  "url": "https://www.industrynext.xyz/editorial/axon-yield-engine/",
+  "published": "2026-09-12",
+  "sources_checked": "2026-09-11",
+  "publisher": "Industry Next",
+  "author": "Michael Hoydich",
+  "written_with": "Claude Fable 5.1",
+  "illustrations": "Generated with Codex (GPT image model), risograph style, fictional",
+  "subject": {
+    "engine": "Axon",
+    "storefront": "AppLovin Ads",
+    "owner": "AppLovin",
+    "rebrand_date": "2026-06-22",
+    "buying_models": ["return_on_ad_spend", "cost_per_purchaser", "cost_per_lead"]
+  },
+  "thesis": "Yield is prediction times feedstock. The engine is rented; the feedstock is yours.",
+  "public_figures": [
+    { "label": "Daily active users on the network", "value": "1B+", "source": "AppLovin blog, 2026-06-22" },
+    { "label": "Q2 2026 revenue", "value": "$1.92B, +53% YoY", "source": "AppLovin Q2 2026 results, 2026-08-05" },
+    { "label": "Net revenue per install", "value": "+58% with installs -2%", "source": "AppLovin Q2 2026 call" },
+    { "label": "Consumer-vertical advertiser spend", "value": "record, 28% above Q4 2025 peak", "source": "AppLovin Q2 2026 call" },
+    { "label": "Sequential growth Q2 2026", "value": "4%, model improvement lighter than normal", "source": "Q2 2026 call transcript" },
+    { "label": "Axon 2.0 release", "value": "2023", "source": "AdExchanger, February 2024" }
+  ],
+  "yield_mechanisms": [
+    "Prediction replaces targeting",
+    "The deep-funnel purchase signal is the fuel",
+    "The three-screen ad unit is a funnel: video, interactive end card, product carousel",
+    "The engine is paid for prediction quality, not impression volume",
+    "Creative is the feedstock and it decays weekly"
+  ],
+  "scale_ladder": [
+    "Owned and mediated game inventory, targeted contextually",
+    "Pixel, conversions API and Shopify app for honest purchase values",
+    "Self-serve gates removed on 2026-06-22",
+    "Generators for end cards and video",
+    "Three buying contracts as the whole interface"
+  ],
+  "doubts": [
+    "Dashboard is click-only and conservative; third-party attribution is generous; geo holdouts can show no lift",
+    "Benchmark mean (1.7x Meta efficiency) and median (0.9x) disagree",
+    "Model improvement is not on a schedule; Q2 2026 grew 4% sequentially"
+  ],
+  "field_note": {
+    "brand": "Good Feels",
+    "category": "hemp-derived THC seltzers and gummies, restricted, 21+, limited ship states",
+    "window": "2026-05-29 to 2026-09-11",
+    "timeline": [
+      { "date": "2026-05-29", "event": "Axon account opened; $5,000 credit offered for $5,000 spent in 60 days" },
+      { "date": "2026-06-25", "event": "AppLovin launch playbook session; constant creative is the rule" },
+      { "date": "2026-07-16", "event": "First $5,000 spent; credit unlocked" },
+      { "date": "2026-08-15", "event": "Creative supply about five re-cut videos a week; team debates creative agency vs channel manager" },
+      { "date": "2026-08-21", "event": "Ten 9:16 boards generated in an evening; ten-ad handoff set with legal bar and human preflight" },
+      { "date": "2026-09", "event": "Month-to-month specialist engaged with spend ceiling, margin-true return threshold, dashboard as system of record" }
+    ],
+    "ledger_rounded": {
+      "click_through": "above 4%",
+      "cost_per_click": "around one dollar",
+      "day7_return_july": "above 1x",
+      "trailing_30d_return_september": "below 1x as fresh creative thinned",
+      "share_of_paid_media": "about three quarters",
+      "blended_mer_all_channels": "about 3x"
+    },
+    "dollars_published": false,
+    "incrementality_claimed": false
+  },
+  "checklist": [
+    "Yield = prediction x feedstock; budget against the second",
+    "Wire pixel plus server-side events with one dedupe id per paid order before the first dollar",
+    "Build a weekly creative supply chain: boards, cuts, captions, legal bar; five to seven concepts a week",
+    "Leave the account alone for seven days; scale 30-40% every two or three days after",
+    "Pick the system of record and a margin-true return threshold in writing",
+    "Run a geo holdout at the intended spend level",
+    "If restricted, design creative for review"
+  ],
+  "sources": [
+    "https://www.applovin.com/en/blog/applovin-ads-now-open",
+    "https://finance.yahoo.com/markets/stocks/articles/applovin-corp-app-q2-2026-010639084.html",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-applovin-slips-on-q2-revenue-miss-shares-fall-16-in-q2-2026-93CH-4839615",
+    "https://www.adexchanger.com/ai/a-tiny-peek-inside-the-black-box-algorithm-driving-applovins-business/",
+    "https://jetfuel.agency/applovin-ads-the-tactical-guide-for-d2c-brands-axon-ads-manager-2026/",
+    "https://commonthreadco.com/blogs/coachs-corner/applovin-axon-self-serve-ecommerce-june-2026",
+    "https://ppc.land/applovins-1-84b-q1-beats-guidance-as-axon-platform-opens-to-all-in-june/",
+    "https://www.axoninsiders.com/articles/inside-axon-applovins-machine-learning-model-for-predictive-ad-performance"
+  ],
+  "boundary": "No incrementality claim for Good Feels, no spend or revenue published, no agency endorsed. Figures marked reported are unverified by Industry Next."
+}

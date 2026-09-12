@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Case Study 001: how AppLovin's Axon engine builds yield for products and scale, and what a small regulated beverage brand learned feeding it for one summer." />
+    <meta name="theme-color" content="#edff45" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="The Yield Engine — a case study of Axon" />
+    <meta property="og:description" content="Axon turns attention inside mobile games into purchases for products it has never heard of. Here is how the yield gets built, what it costs to feed, and what one summer on it taught us." />
+    <meta property="og:url" content="https://www.industrynext.xyz/editorial/axon-yield-engine/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/editorial/axon-yield-engine/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A risograph illustration of a turbine wearing pixel noggles, taking in phone screens and pouring out products into a crate marked ROAS." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Yield Engine — a case study of Axon" />
+    <meta name="twitter:description" content="How AppLovin's Axon builds yield for products and scale, and what it costs to feed it." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/editorial/axon-yield-engine/og.jpg" />
+    <link rel="canonical" href="https://www.industrynext.xyz/editorial/axon-yield-engine/" />
+    <link rel="alternate" type="application/json" href="../../axon-yield-engine.json" title="The Yield Engine — machine-readable record" />
+    <link rel="icon" href="../../industry-next-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=20260912a" />
+    <title>The Yield Engine | Industry Next</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "The Yield Engine — a case study of Axon",
+        "description": "How AppLovin's Axon engine builds yield for products and scale, and what a small regulated beverage brand learned feeding it for one summer.",
+        "datePublished": "2026-09-12",
+        "dateModified": "2026-09-12",
+        "author": { "@type": "Person", "name": "Michael Hoydich" },
+        "publisher": { "@type": "Organization", "name": "Industry Next", "url": "https://www.industrynext.xyz/" },
+        "mainEntityOfPage": "https://www.industrynext.xyz/editorial/axon-yield-engine/",
+        "image": "https://www.industrynext.xyz/editorial/axon-yield-engine/og.jpg",
+        "about": { "@type": "SoftwareApplication", "name": "Axon (AppLovin Ads)", "applicationCategory": "Advertising platform" }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the case study</a>
+
+    <header class="ye-topbar">
+      <a class="ye-brand" href="https://www.industrynext.xyz/" aria-label="Industry Next, home"><span>INDUSTRY</span><span>NEXT</span></a>
+      <p>CASE STUDY 001 · SEPTEMBER 12, 2026</p>
+      <nav aria-label="Case study navigation">
+        <a href="#case">The case</a>
+        <a href="#yield">Yield</a>
+        <a href="#scale">Scale</a>
+        <a href="#doubt">Doubt</a>
+        <a href="#field">Field note</a>
+        <a href="#change">Checklist</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </header>
+
+    <div class="ye-tape" aria-label="Case study summary">
+      <span>AXON / APPLOVIN ADS</span>
+      <span>YIELD IS PREDICTION × FEEDSTOCK</span>
+      <span>THE ENGINE IS RENTED · THE FEEDSTOCK IS YOURS</span>
+      <span>ONE SUMMER OF RECEIPTS</span>
+    </div>
+
+    <main id="main">
+      <article>
+        <header class="ye-hero">
+          <div class="ye-hero-copy">
+            <p class="ye-kicker">HOW AN AD ENGINE BUILDS YIELD FOR PRODUCTS AND SCALE</p>
+            <h1>The yield <em>engine.</em></h1>
+            <p class="ye-deck">Axon is a machine that turns attention inside mobile games into purchases for products it has never heard of. It does not ask who you are. It predicts what you will do next and bids on the moment. Here is how that yield gets built, what it costs to feed, and what a small regulated beverage brand learned running it for one summer.</p>
+            <div class="ye-byline">
+              <span>CONCEPT + EDITORIAL DIRECTION · MICHAEL HOYDICH</span>
+              <span>WRITTEN WITH CLAUDE FABLE 5.1</span>
+              <span>ILLUSTRATIONS GENERATED WITH CODEX</span>
+              <span>11 MINUTE READ · SOURCES CHECKED SEPTEMBER 11, 2026</span>
+            </div>
+            <div class="ye-actions">
+              <a class="ye-button" href="#change">Jump to the yield checklist <span aria-hidden="true">↓</span></a>
+              <a class="ye-text-link" href="#field">Read the field note first ↓</a>
+            </div>
+          </div>
+          <figure class="ye-hero-art">
+            <img src="hero.jpg" width="1536" height="1024" alt="Risograph illustration: a huge friendly turbine wearing pixel noggles takes in a river of small phone screens and pours out cans and boxes into a wooden crate marked ROAS." fetchpriority="high" />
+            <figcaption><span>FIG. 01</span><span>THE ENGINE, AS WE IMAGINE IT</span></figcaption>
+          </figure>
+        </header>
+
+        <section class="ye-metrics" aria-label="Scale of the engine">
+          <article><span>DAILY ACTIVE USERS ON THE NETWORK</span><strong>1B+</strong><p>People inside mobile games the engine can bid on, per AppLovin at the June 2026 opening.</p></article>
+          <article><span>Q2 2026 REVENUE</span><strong>$1.92B</strong><p>Up 53% year over year. Adjusted EBITDA of $1.61B at an 84% margin.</p></article>
+          <article><span>NET REVENUE PER INSTALL</span><strong>+58%</strong><p>While install volume fell 2%. The engine earns on prediction quality, not volume.</p></article>
+          <article><span>SELF-SERVE OPENED</span><strong>JUN 22</strong><p>Any business can sign up. The revenue and spend gates that guarded the door are gone.</p></article>
+        </section>
+
+        <section id="case" class="ye-rule" aria-labelledby="case-title">
+          <p class="ye-section-mark">01 / THE CASE</p>
+          <div class="ye-prose">
+            <h2 id="case-title">A black box that buys moments, not people.</h2>
+            <p class="ye-lede">Axon is AppLovin's machine-learning decisioning engine. It sits inside the company's mediation layer and its own portfolio of games, and it evaluates ad impressions in real time: which ad to show, to which device, at what price. Since June 22, 2026 the storefront is called AppLovin Ads. The engine underneath is still Axon.</p>
+            <p>Axon 2.0 shipped in 2023 and the company has never explained its architecture. Asked for details in 2024, the CEO offered one sentence: it is “just better,” built for more scale and efficiency. Performance marketers stopped asking, because the results kept showing up in earnings.</p>
+            <p>What makes it a case worth studying is the business model it enables. Advertisers pick one of three buying contracts: a return on ad spend, a cost per purchaser, or a cost per lead. Everything else, including audiences, placements, bids and pacing, is the machine's job. You bring a signal and a supply of creative. It brings a billion daily players and a prediction.</p>
+          </div>
+          <aside class="ye-note">
+            <span>NAMES, FOR THE RECORD</span>
+            <strong>Axon is the engine. AppLovin Ads is the door.</strong>
+            <p>The Good Feels account in this study was opened as an “Axon ad account” in June. The dashboard now says AppLovin Ads. Same machine.</p>
+          </aside>
+        </section>
+
+        <section id="yield" class="ye-yield" aria-labelledby="yield-title">
+          <header class="ye-section-head">
+            <p class="ye-section-mark">02 / HOW YIELD IS BUILT</p>
+            <h2 id="yield-title">Five mechanisms, one flywheel.</h2>
+            <p>Yield here means dollars of product sold per dollar of media bought. Axon builds it out of prediction on one side and your feedstock on the other. Remove either and the flywheel stops.</p>
+          </header>
+          <div class="ye-yield-grid">
+            <figure class="ye-figure ye-figure-wheel">
+              <img src="flywheel.jpg" width="1024" height="1024" alt="Risograph diagram of a hand-cranked flywheel with four stations: data punch-cards, a crystal ball wearing noggles for prediction, a crate of products for return, and a firehose of coins for spend." loading="lazy" />
+              <figcaption><span>FIG. 02</span><span>DATA → PREDICT → RETURN → SPEND → DATA</span></figcaption>
+            </figure>
+            <ol class="ye-mechanisms">
+              <li><span>01</span><h3>Prediction replaces targeting.</h3><p>There are no interest graphs or uploaded audiences for e-commerce acquisition. The model reads contextual and behavioral signals across the network and hunts for devices that look like your buyers. Reported throughput is on the order of millions of auctions per second.</p></li>
+              <li><span>02</span><h3>The deep-funnel signal is the fuel.</h3><p>Purchases with real order values, sent through the pixel and a server-side conversions call with a shared dedupe id, are what the model learns from. Advertisers who fire “purchase” before payment, or with the value set to one, are feeding the engine sand.</p></li>
+              <li><span>03</span><h3>The ad unit is a funnel, not a banner.</h3><p>A vertical video, then an interactive end card, then a product carousel. Practitioner guides attribute roughly half of click-through to the end card and a median 25% day-zero return lift to the carousel. The creative is the landing page.</p></li>
+              <li><span>04</span><h3>The engine is paid for prediction, not volume.</h3><p>AppLovin's own numbers make the point: install volume down 2%, net revenue per install up 58% in the same quarter. Yield compounds when predictions improve; it does not need more impressions to grow.</p></li>
+              <li><span>05</span><h3>Creative is the feedstock, and it decays.</h3><p>The machine tires of a concept. Operators report needing five to seven new concepts a week, thirty-plus videos and ten-plus end cards at full scale, all captioned because playback is muted. Lift a Meta ad over unchanged and it underperforms on both platforms.</p></li>
+            </ol>
+          </div>
+          <figure class="ye-figure ye-figure-wide">
+            <img src="unit.jpg" width="1536" height="1024" alt="Risograph triptych of three phone screens: a vertical video of a can pouring, an interactive end card with a spin wheel, and a product carousel of three cans." loading="lazy" />
+            <figcaption><span>FIG. 03</span><span>VIDEO · END CARD · CAROUSEL — THE THREE-SCREEN UNIT</span></figcaption>
+          </figure>
+        </section>
+
+        <section id="scale" class="ye-scale" aria-labelledby="scale-title">
+          <header class="ye-section-head">
+            <p class="ye-section-mark">03 / HOW SCALE IS BUILT</p>
+            <h2 id="scale-title">Open the door, automate the feedstock, sell three contracts.</h2>
+            <p>Yield for one advertiser is a model problem. Scale for the platform is a product problem. AppLovin's 2026 moves read like a ladder.</p>
+          </header>
+          <div class="ye-ladder">
+            <article><span>RUNG 01 · SUPPLY</span><strong>Owned and mediated game inventory.</strong><p>More than a billion daily players, reached through mediation and first-party studios, targeted contextually rather than by device identifier. The supply was built for gaming advertisers over a decade and is now rented to everyone.</p></article>
+            <article><span>RUNG 02 · SIGNAL</span><strong>Pixel, conversions API, Shopify app.</strong><p>A GA4-style pixel, a server-side event endpoint keyed on a dedupe id, and a Shopify app that fires on paid orders. The point is to get honest purchase values into the model in the first week.</p></article>
+            <article><span>RUNG 03 · DEMAND</span><strong>Gates removed.</strong><p>A referral-only self-serve beta opened in October 2025. On June 22, 2026 the revenue and daily-spend requirements were dropped and any business could sign up. Consumer-vertical spend hit a record 28% above the prior holiday peak in a seasonally slow quarter.</p></article>
+            <article><span>RUNG 04 · FEEDSTOCK</span><strong>Generators for the parts humans are slow at.</strong><p>An interactive end-card generator went to all accounts in early 2026. A video generator was in final testing by the May call. The CEO's own caveat: “We're not at the point where we can get a high-quality 30-60 second video out of the box.”</p></article>
+            <article><span>RUNG 05 · CONTRACT</span><strong>Three ways to buy.</strong><p>Return on ad spend, cost per purchaser, or cost per lead. The buying model is the whole interface. Everything a media buyer used to tune is hidden behind it.</p></article>
+            <article class="ye-ladder-quote"><span>THE THESIS IN ONE LINE</span><blockquote>“Advertisers haven't reached their maximum amount of spend for the return they're getting.”</blockquote><p>Adam Foroughi, Q2 2026 earnings call. Translation: the ceiling on scale is the advertiser's feedstock, not the engine's reach.</p></article>
+          </div>
+          <figure class="ye-figure ye-figure-wide">
+            <img src="treadmill.jpg" width="1536" height="1024" alt="Risograph illustration of a factory conveyor belt carrying dozens of small vertical video cards while pixel-noggle robots caption and trim them and feed them into a hungry machine." loading="lazy" />
+            <figcaption><span>FIG. 04</span><span>THE CREATIVE SUPPLY CHAIN, WEEKLY</span></figcaption>
+          </figure>
+        </section>
+
+        <section id="doubt" class="ye-doubt" aria-labelledby="doubt-title">
+          <header class="ye-section-head">
+            <p class="ye-section-mark">04 / THE DOUBT</p>
+            <h2 id="doubt-title">Whose number is it?</h2>
+            <p>A yield engine that grades its own homework deserves a second grader. Three things kept us honest.</p>
+          </header>
+          <div class="ye-doubt-grid">
+            <article><span>MEASUREMENT</span><h3>The dashboard is click-only and conservative. Third-party tools are generous. Holdouts are brutal.</h3><p>One published beverage case showed 1.25x on the AppLovin dashboard, 4.77x in a third-party attribution tool, and no measurable lift in a geo holdout. All three numbers were “true.” Only one of them was money.</p></article>
+            <article><span>DISTRIBUTION</span><h3>Mean and median disagree.</h3><p>A measurement vendor's benchmark put Axon at 1.7x Meta's efficiency on average and 0.9x at the median. A few accounts win enormously; the typical account is roughly even. Which one are you?</p></article>
+            <article><span>TEMPO</span><h3>The model does not improve on schedule.</h3><p>Q2 2026 grew only 4% sequentially and management said model improvement was “lighter than normal.” The stock fell 16% on the day. The engine is a research program with a revenue line attached.</p></article>
+          </div>
+        </section>
+
+        <section id="field" class="ye-field" aria-labelledby="field-title">
+          <div class="ye-field-copy">
+            <p class="ye-section-mark">05 / FIELD NOTE · GOOD FEELS, MAY–SEPTEMBER 2026</p>
+            <h2 id="field-title">A seltzer brand feeds the machine.</h2>
+            <p class="ye-lede">Good Feels makes hemp-derived THC seltzers and gummies in Medway, Massachusetts. It is a restricted category with liquid-weight margins, an age gate, and a short list of states it can ship to. In other words, the hardest kind of feedstock. The team opened an Axon account at the end of May and spent the summer learning what the engine actually wants.</p>
+            <ol class="ye-timeline">
+              <li><span>MAY 29</span><strong>Account opens with a $5,000 credit on offer</strong><p>Spend five thousand in sixty days and the credit lands. The founder's first question on the thread: “It requires videos. Do you have examples of successful videos? Do you know where these run?”</p></li>
+              <li><span>JUNE 25</span><strong>The launch playbook</strong><p>AppLovin's CEO session reiterated the one rule: constant creative. The growth manager's note back to the team: people see eight to ten ads before converting, so a single ad's return understates the channel.</p></li>
+              <li><span>JULY 16</span><strong>Credit unlocked</strong><p>First five thousand spent. The channel was now the largest paid line on the brand's media ledger, roughly three of every four paid dollars by late summer.</p></li>
+              <li><span>AUGUST 15</span><strong>The feedstock runs thin</strong><p>One editor produced about five re-cut videos a week. Managing the account had taken over the growth manager's calendar. A co-founder asked the right question: “If AppLovin is doing all of the optimizations and we just have to feed it creative, shouldn't we be looking at creative agencies instead?”</p></li>
+              <li><span>AUGUST 21</span><strong>A Friday experiment</strong><p>Ten 9:16 boards, each built around one grown-up moment and one real can — FRIDAY, PATIO, TAKEOUT, DINNER, VINYL, POUR, VARIETY, DOSE, SELTZER, GOOD FEELS — generated in an evening with an image model, then rebuilt as a ten-ad handoff set with the legal bar in every frame and a preflight list for the humans.</p></li>
+              <li><span>SEPTEMBER</span><strong>A specialist, on a leash</strong><p>The controller negotiated a month-to-month manager with a written spend ceiling, a margin-true return threshold, and the AppLovin dashboard as the single system of record. The ask was not more optimization. It was more feedstock: interactives, end cards, and someone whose week is the channel.</p></li>
+            </ol>
+          </div>
+          <div class="ye-field-side">
+            <figure class="ye-figure ye-figure-tall">
+              <img src="fieldnote.jpg" width="1024" height="1536" alt="Risograph illustration of a hand holding a phone; a paused puzzle game gives way to an interstitial of a glowing seltzer can over a patio table at dusk with a vinyl record and two glasses." loading="lazy" />
+              <figcaption><span>FIG. 05</span><span>ADULT INTERMISSION, INSIDE A PUZZLE GAME</span></figcaption>
+            </figure>
+            <div class="ye-ledger" aria-label="Good Feels field ledger, rounded">
+              <p class="ye-ledger-head"><span>FIELD LEDGER</span><span>APPLOVIN DASHBOARD · ROUNDED</span></p>
+              <dl>
+                <div><dt>Click-through</dt><dd>Above 4%, higher than both case studies the agency pitched with</dd></div>
+                <div><dt>Cost per click</dt><dd>Around a dollar</dd></div>
+                <div><dt>Day-7 return, July</dt><dd>Above 1x</dd></div>
+                <div><dt>Trailing 30-day return, September</dt><dd>Below 1x as fresh creative thinned</dd></div>
+                <div><dt>Share of paid media</dt><dd>~¾ of paid spend</dd></div>
+                <div><dt>Blended MER, all channels</dt><dd>~3x</dd></div>
+              </dl>
+              <p class="ye-ledger-note">Yield tracked the feedstock, not the budget. When new concepts stopped arriving weekly, the return on the same spend fell. That is the whole case study in one row.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="change" class="ye-change" aria-labelledby="change-title">
+          <header class="ye-section-head">
+            <p class="ye-section-mark">06 / THE CHANGE · A YIELD CHECKLIST FOR PRODUCT TEAMS</p>
+            <h2 id="change-title">Rent the engine. Own the feedstock.</h2>
+            <p>Seven rules we would hand to any product team about to open an account. None of them are about bidding.</p>
+          </header>
+          <ol class="ye-checklist">
+            <li><span>01</span><h3>Yield = prediction × feedstock.</h3><p>You cannot improve the first factor. Budget your people and your money against the second.</p></li>
+            <li><span>02</span><h3>Wire the signal before the first dollar.</h3><p>Pixel plus server-side events, one dedupe id per order, fired on paid orders, with currency and real values. Test with a real purchase.</p></li>
+            <li><span>03</span><h3>Build a supply chain, not a campaign.</h3><p>Boards from an image model, cuts from a video generator, captions and claims from a human, a legal bar in every frame. Five to seven concepts a week is the price of admission.</p></li>
+            <li><span>04</span><h3>Leave it alone for seven days.</h3><p>Edits reset learning. Batch changes. Scale 30 to 40% every two or three days once the learning window closes.</p></li>
+            <li><span>05</span><h3>Pick the system of record and the margin-true threshold in writing.</h3><p>A supplement brand can scale at 1.3x. A seltzer with liquid-weight shipping cannot. Know your own number before an agency shows you theirs.</p></li>
+            <li><span>06</span><h3>Run a holdout at the spend you intend to run.</h3><p>Fourteen to twenty-one days, treatment and control states. Results move with budget, so test at the real level.</p></li>
+            <li><span>07</span><h3>If you are restricted, design for review.</h3><p>Age gate, disclaimer, state list, and no mascots. Build concepts around what will be approved rather than appealing what will not.</p></li>
+          </ol>
+        </section>
+
+        <section class="ye-verdict" aria-labelledby="verdict-title">
+          <p class="ye-section-mark">07 / THE INDUSTRY NEXT READ</p>
+          <h2 id="verdict-title">The scarce input is not audience. It is throughput and honesty.</h2>
+          <p>Every previous ad platform sold access to people: an audience, an interest graph, a keyword. Axon sells access to a prediction, and predictions are only as good as what you feed them. That inverts the job of a product team. You are no longer buying reach. You are running a small factory that turns your product into thirty captioned stories a week and a clean purchase signal, and renting a machine to place them.</p>
+          <p>The yield is real. AppLovin's earnings say so, and one summer of a hard category says so in miniature. But the yield is rented, and it is rented by the week. The moment the feedstock thins, the engine keeps spending and the return goes home. Scale, for the platform, came from opening the door and automating the parts of feedstock that humans are slow at. Scale, for the advertiser, will come from the same place.</p>
+          <blockquote>Axon does not need to know your product. It needs you to keep describing it, thirty ways a week, and to tell it the truth about who bought.</blockquote>
+        </section>
+
+        <section id="sources" class="ye-sources" aria-labelledby="sources-title">
+          <p class="ye-section-mark">08 / SOURCE LEDGER</p>
+          <h2 id="sources-title">Public numbers first. Our receipts second.</h2>
+          <div class="ye-source-grid">
+            <a href="https://www.applovin.com/en/blog/applovin-ads-now-open" target="_blank" rel="noreferrer"><span>01 / PRIMARY</span><strong>AppLovin Ads is now open to all advertisers</strong><small>AppLovin blog · June 22, 2026 · 1B+ daily active users, three buying models, self-serve opening</small></a>
+            <a href="https://finance.yahoo.com/markets/stocks/articles/applovin-corp-app-q2-2026-010639084.html" target="_blank" rel="noreferrer"><span>02 / EARNINGS</span><strong>AppLovin Q2 2026 earnings call highlights</strong><small>Yahoo Finance · August 5, 2026 · $1.92B revenue, +58% net revenue per install, consumer-vertical record, CEO quotes</small></a>
+            <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-applovin-slips-on-q2-revenue-miss-shares-fall-16-in-q2-2026-93CH-4839615" target="_blank" rel="noreferrer"><span>03 / TRANSCRIPT</span><strong>Q2 2026 call: revenue miss, shares fall 16%</strong><small>Investing.com · 4% sequential growth, lighter model improvement, Q3 guidance</small></a>
+            <a href="https://www.adexchanger.com/ai/a-tiny-peek-inside-the-black-box-algorithm-driving-applovins-business/" target="_blank" rel="noreferrer"><span>04 / HISTORY</span><strong>A (tiny) peek inside the black-box algorithm</strong><small>AdExchanger · February 2024 · Axon 2.0 in 2023, “it's just better”</small></a>
+            <a href="https://jetfuel.agency/applovin-ads-the-tactical-guide-for-d2c-brands-axon-ads-manager-2026/" target="_blank" rel="noreferrer"><span>05 / PRACTICE</span><strong>AppLovin Ads: the tactical D2C guide</strong><small>Jetfuel Agency · 2026 · three-screen unit, creative cadence, learning phase, the beverage measurement discrepancy, benchmark mean vs median</small></a>
+            <a href="https://commonthreadco.com/blogs/coachs-corner/applovin-axon-self-serve-ecommerce-june-2026" target="_blank" rel="noreferrer"><span>06 / PRACTICE</span><strong>Axon goes self-serve: what e-commerce brands need</strong><small>Common Thread Collective · 2026 · contextual targeting, generators, category fit</small></a>
+            <a href="https://ppc.land/applovins-1-84b-q1-beats-guidance-as-axon-platform-opens-to-all-in-june/" target="_blank" rel="noreferrer"><span>07 / TIMELINE</span><strong>Q1 2026 beats guidance as Axon opens to all in June</strong><small>PPC Land · May 2026 · October 2025 referral beta, June opening</small></a>
+            <a href="https://www.axoninsiders.com/articles/inside-axon-applovins-machine-learning-model-for-predictive-ad-performance" target="_blank" rel="noreferrer"><span>08 / REPORTED</span><strong>Inside Axon's predictive model</strong><small>Axon Insiders · auctions-per-second and revenue-per-install claims, treated as reported rather than verified</small></a>
+            <a href="https://www.industrynext.xyz/services/"><span>09 / OUR RECEIPTS</span><strong>Good Feels field ledger, May–September 2026</strong><small>Industry Next · account threads, the ten-ad handoff set, and the brand's media dashboard · figures rounded, dollars withheld</small></a>
+          </div>
+          <p class="ye-boundary"><strong>Boundary.</strong> This case study does not claim incrementality for Good Feels, does not publish the brand's spend or revenue, and does not endorse any agency. Public figures are attributed; anything marked reported is unverified by us. Restricted-category compliance is a legal matter, not a creative detail.</p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="ye-footer">
+      <div><a href="https://www.industrynext.xyz/">INDUSTRY NEXT</a><p>Products, media, rituals, and small institutions—made close enough to reality to learn from.</p></div>
+      <nav aria-label="Related links"><a href="../the-federation-problem/">Read Field Note 003 →</a><a href="../../axon-yield-engine.json">Case study JSON</a><a href="https://www.industrynext.xyz/services/">Bring a consequential question</a><a href="mailto:mh@pointcast.xyz">mh@pointcast.xyz</a></nav>
+      <p class="ye-footer-note">CASE STUDY 001 / PUBLIC NUMBERS ATTRIBUTED / FIELD FIGURES ROUNDED / ILLUSTRATIONS ARE RISOGRAPH FICTIONS</p>
+      <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="advertising yield axon applovin creative supply chain good feels seltzer case study" data-campaign="PC-NETWORK-EL-SEGUNDO-2026"></div>
+    </footer>
+    <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>

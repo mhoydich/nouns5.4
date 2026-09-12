@@ -32,6 +32,7 @@
     "verify:ai-tools-mcp": "node ./scripts/verify-ai-tools-mcp.mjs",
     "verify:agent-futures": "node ./scripts/verify-agent-futures.mjs",
     "verify:the-wild": "node ./scripts/verify-the-wild.mjs",
+    "verify:axon-yield-engine": "node ./scripts/verify-axon-yield-engine.mjs",
     "verify:top-coder": "node ./scripts/verify-top-coder.mjs",
     "verify:market-launch-001": "node ./scripts/verify-market-launch-001.mjs",
     "market:intake": "node ./scripts/market-intake.mjs",
