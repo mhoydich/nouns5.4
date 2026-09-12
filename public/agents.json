@@ -151,11 +151,13 @@
   "shwa": {
     "status": "work-in-progress",
     "updated": "2026-09-11",
-    "verified": "First hosted task produced files that were downloaded and independently checked.",
+    "verified": "The first hosted task produced files that were downloaded and independently checked. A supervised test using fictional email content and a follow-up correction produced reply drafts that were independently checked.",
     "built": "Email bridge deployed to turn an owner message into cloud work and prepare a same-thread reply.",
-    "next": "First verified complete email-to-result test.",
-    "outbound": "Human review required",
-    "payment_tools_connected": false
+    "next": "Verify outbound delivery and unattended reliability, including while the owner's computer is asleep.",
+    "outbound": "Drafts require human review; delivery remains unverified.",
+    "payment_tools_connected": false,
+    "outbound_delivery_verified": false,
+    "unattended_reliability_verified": false
   },
   "research": {
     "checked": "2026-09-11",
