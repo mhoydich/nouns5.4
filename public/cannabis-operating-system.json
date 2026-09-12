@@ -1,0 +1,89 @@
+{
+  "id": "industrynext-thesis-001",
+  "type": "thesis",
+  "series": "Thesis",
+  "number": "001",
+  "title": "Cannabis as an Operating System",
+  "subtitle": "Five layers for cannabis in Southern California: strands, quality, accessibility, network, lifestyle",
+  "url": "https://www.industrynext.xyz/editorial/cannabis-operating-system/",
+  "published": "2026-09-12",
+  "sources_checked": "2026-09-11",
+  "publisher": "Industry Next",
+  "author": "Michael Hoydich",
+  "author_location": "El Segundo, California",
+  "written_with": "Claude Fable 5.1",
+  "illustrations": "Generated with Krea 2 (medium), risograph style, fictional",
+  "thesis": "A product is a thing you sell. An operating system is a thing other people run on. Nobody buys an operating system; they buy the afternoon it makes possible.",
+  "vocabulary": {
+    "strand": "The effect a person is trying to schedule (rest, recovery, focus, company, ceremony). A dozen cultivars can serve one strand; one cultivar cannot promise any of them.",
+    "fork": "The unlicensed market, which carries an estimated 60% of California consumption."
+  },
+  "layers": [
+    { "order": 1, "name": "Strands", "role": "kernel", "summary": "Effect first: rest, recovery, focus, company, ceremony. Chemotype and dose before cultivar name." },
+    { "order": 2, "name": "Quality", "role": "drivers", "summary": "Test result, honest label, true milligrams, harvest date, nothing that should not be there." },
+    { "order": 3, "name": "Accessibility", "role": "interface", "summary": "Low dose, beverage formats, a fair price, plain language, a counter within a walk, a legal channel in towns that say no." },
+    { "order": 4, "name": "Network", "role": "protocols", "summary": "Open handshakes between farmers, kitchens, labs, drivers, shops, budtenders, registries and collectives. Interoperability over vertical integration." },
+    { "order": 5, "name": "Lifestyle", "role": "applications", "summary": "The only layer a person touches on purpose: a Friday, a patio, a pickleball morning, a vinyl side, a walk to the water." }
+  ],
+  "stack": [
+    "Layer 00 hardware: the plant and the place",
+    "Layer 01 kernel: strands",
+    "Layer 02 drivers: quality",
+    "Layer 03 interface: accessibility",
+    "Layer 04 protocols: network",
+    "Layer 05 applications: lifestyle"
+  ],
+  "public_figures": [
+    { "label": "Licensed share of California cannabis consumption", "value": "40%", "source": "Department of Cannabis Control estimate via cann.dev, August 2026" },
+    { "label": "Tax revenue since 2018", "value": "$8.4B ($4.5B excise, $3.4B sales)", "source": "Office of the Governor, 2026-09-02" },
+    { "label": "Q2 2026 excise and sales tax remitted", "value": "$261.7M", "source": "Office of the Governor, 2026-09-02" },
+    { "label": "Federal hemp definition effective date", "value": "2026-12-11 for most products after H.R. 6500 delay; 2026-11-12 for synthetic cannabinoids", "source": "Hemp Law Group" },
+    { "label": "Federal hemp limits", "value": "0.3% total THC by dry weight; 0.4 mg total THC per finished container", "source": "Hemp Law Group; Regulatory Oversight" },
+    { "label": "State-licensed medical cannabis federal schedule", "value": "Schedule III since April 2026", "source": "Federal Register, 2026-04-28" },
+    { "label": "Adult-use rescheduling status", "value": "Hearing closed 2026-07-15; DEA brief argued for Schedule III; recommendation pending", "source": "DEA.gov" },
+    { "label": "Combined tax at a licensed California register", "value": "roughly 27% to 38% including local levies", "source": "Tax Foundation, 2026" }
+  ],
+  "doubts": [
+    "The federal kernel is being rewritten while it runs: medical Schedule III, adult-use pending, hemp definition flips in December",
+    "Sixty percent of users run the unlicensed fork, and the fork is cheaper and more available",
+    "A place can refuse to install it: most California jurisdictions do not license retail"
+  ],
+  "field_note": {
+    "place": "El Segundo, California",
+    "window": "2026-09",
+    "observations": [
+      "Southern California already has the lifestyle applications installed, running on the beach and the weather",
+      "Licensed retail in most of the South Bay is a drive, not a walk",
+      "Hemp beverage by mail closed in California in 2024 and closes federally on 2026-12-11",
+      "Quality is the only thing a five-milligram seltzer actually sells",
+      "The interesting network experiments are open registries and small treasuries that hold no plant-touching assets",
+      "Neighbors ask for strands (sleep, a sore shoulder, a dinner), never for cultivars"
+    ],
+    "dollars_published": false
+  },
+  "checklist": [
+    "Name the strand on the front; cultivar on the back",
+    "Ship the number that is in the can: test every lot, print milligrams, date it",
+    "Design the first dose for a first-timer",
+    "Price against the fork, not the shelf",
+    "Join a network with a handshake: open registries, countersigned receipts, a test result as the login",
+    "Sell the afternoon, and mean it",
+    "Read the kernel changelog every month: Schedule III, the hemp definition, the local ballot"
+  ],
+  "sources": [
+    "https://www.gov.ca.gov/2026/09/02/californias-legal-cannabis-market-generates-8-4-billion-for-californians-as-state-cracks-down-on-illicit-operators/",
+    "https://www.cann.dev/california-cannabis-retail-august-2026/",
+    "https://www.federalregister.gov/documents/2026/04/28/2026-08177/schedules-of-controlled-substances-rescheduling-of-marijuana",
+    "https://www.dea.gov/marijuana-rescheduling-regulatory-actions",
+    "https://www.hemplawgroup.com/news/federal-hemp-ban-2026-where-things-stand",
+    "https://www.regulatoryoversight.com/2025/12/congress-narrows-federal-definition-of-hemp-effectively-banning-most-intoxicating-hemp-products/",
+    "https://taxfoundation.org/data/all/state/recreational-marijuana-taxes/",
+    "https://calmatters.org/politics/2022/06/california-cannabis-battle-local/",
+    "https://www.industrynext.xyz/editorial/axon-yield-engine/"
+  ],
+  "keywords": ["cannabis", "operating system", "strands", "quality", "accessibility", "network", "lifestyle", "Southern California", "El Segundo", "Michael Hoydich"],
+  "related": {
+    "case_study_001": "https://www.industrynext.xyz/editorial/axon-yield-engine/",
+    "services": "https://www.industrynext.xyz/services/"
+  }
+}
