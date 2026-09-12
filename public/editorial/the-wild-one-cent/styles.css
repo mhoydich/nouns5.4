@@ -213,5 +213,5 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 40px; }
 }
 
 /* case study 002 additions */
-.ye-hero h1 { font-size: clamp(44px, 6.4vw, 88px); overflow-wrap: anywhere; }
+.ye-hero h1 { font-size: clamp(40px, 5.2vw, 76px); overflow-wrap: normal; }
 .ye-figure-wide .ye-img-portrait { width: auto; max-height: 720px; margin: 0 auto; }
