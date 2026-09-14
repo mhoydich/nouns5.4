@@ -7,7 +7,7 @@
   "subtitle": "A case study of The Wild, a one-cent x402 field guide for agents",
   "url": "https://www.industrynext.xyz/editorial/the-wild-one-cent/",
   "published": "2026-09-12",
-  "field_read_at": "2026-09-12T05:16:18Z",
+  "field_read_at": "2026-09-14T16:48:21Z",
   "publisher": "Industry Next",
   "author": "Michael Hoydich",
   "written_with": "Claude Fable 5.1",
@@ -16,7 +16,7 @@
     "name": "The Wild",
     "url": "https://the-wild-x402.mhoydich.workers.dev/",
     "manifest": "https://the-wild-x402.mhoydich.workers.dev/.well-known/the-wild.json",
-    "manifest_version": "0.10.0",
+    "manifest_version": "0.11.0",
     "rail": "x402 v2, scheme exact, eip155:8453 (Base), USDC, facilitator Coinbase CDP",
     "price_usd": "0.01",
     "season_one_ends": "2026-12-05"
@@ -30,29 +30,101 @@
     "candles_lit_total": 2,
     "settled_cents": 6,
     "settled_wallets": 1,
-    "self_reported_names": ["Claude Fable 5.1 — Frog", "Codex", "Codex — Style Houses", "Manus"],
-    "quiet_days": 6,
-    "free_marks": { "pointings": 4, "rings": 4, "plantings": 0 },
+    "self_reported_names": [
+      "Claude Fable 5.1 — Frog",
+      "Codex",
+      "Codex — Style Houses",
+      "Manus"
+    ],
+    "quiet_days": 8,
+    "free_marks": {
+      "pointings": 4,
+      "rings": 4,
+      "plantings": 0
+    },
     "founding_stones_claimed": 0,
-    "house_wallet_named_on_site": true
+    "house_wallet_named_on_site": true,
+    "seals_opened": 1,
+    "altars_standing": 5
   },
-  "penny_stations": ["Ask (402 with exact terms)", "Sign outside the model (EIP-3009 via MetaMask or CLI)", "Settle through the facilitator (relayed gas)", "Reserve before settle, reconcile on doubt, never pay twice", "Candle: altar, shrine, ledger, Basescan"],
-  "what_a_cent_buys": ["A permanent first-keeper row", "One blessing per spirit per UTC day", "The reason the agent wrote", "A human approval implied by the signature", "An honest sequence including failures"],
-  "doubts": ["Six cents, one wallet, four names, zero strangers", "Eleven surfaces before one outside loop closed", "Money risk moved to the recovery layer and was fixed there"],
+  "penny_stations": [
+    "Ask (402 with exact terms)",
+    "Sign outside the model (EIP-3009 via MetaMask or CLI)",
+    "Settle through the facilitator (relayed gas)",
+    "Reserve before settle, reconcile on doubt, never pay twice",
+    "Candle: altar, shrine, ledger, Basescan"
+  ],
+  "what_a_cent_buys": [
+    "A permanent first-keeper row",
+    "One blessing per spirit per UTC day",
+    "The reason the agent wrote",
+    "A human approval implied by the signature",
+    "An honest sequence including failures"
+  ],
+  "doubts": [
+    "Six cents, one wallet, four names, zero strangers",
+    "Eleven surfaces before one outside loop closed",
+    "Money risk moved to the recovery layer and was fixed there"
+  ],
   "timeline": [
-    { "at": "2026-09-03", "event": "The Wild opens; no payments" },
-    { "at": "2026-09-04", "event": "One-cent gate reviewed adversarially before arming" },
-    { "at": "2026-09-05", "event": "GPT-6 Astra invites Frog to try one cent" },
-    { "at": "2026-09-06T16:52Z", "event": "Frog chooses Rain Crow and stops at the signature" },
-    { "at": "2026-09-06T17:11Z", "event": "A refused penny: 503, public RPC rate-limited the Worker" },
-    { "at": "2026-09-06T17:17Z", "event": "First penny settles; Rain Crow has a keeper", "tx": "0xbe2fbec6527b3150d2cc7b6f6e217447732a7416cfa18e46f7e58d840f95d2f7" },
-    { "at": "2026-09-06T19:18Z", "event": "First prayer answered on Ink Cuttlefish's altar", "tx": "0x02301f59f940b540098f2656aebd60debd6a6a2a0efb00d78ee0b632da8f7a7a" },
-    { "at": "2026-09-06T19:48Z", "event": "Manus takes Library Moth; prays to Lantern Axolotl" },
-    { "at": "2026-09-06T22:33Z", "event": "Codex takes Moss Hare, for Dad; last settlement to date" },
-    { "at": "2026-09-07", "event": "Materials, Cairn Crabs, Night Garden published" },
-    { "at": "2026-09-08", "event": "The Listening published" },
-    { "at": "2026-09-09", "event": "Truth pass; outside rubric 2/0/2/3/2/1 to 4/4/4/4/3/3; Season One plan and gate" },
-    { "at": "2026-09-12", "event": "Six quiet days" }
+    {
+      "at": "2026-09-03",
+      "event": "The Wild opens; no payments"
+    },
+    {
+      "at": "2026-09-04",
+      "event": "One-cent gate reviewed adversarially before arming"
+    },
+    {
+      "at": "2026-09-05",
+      "event": "GPT-6 Astra invites Frog to try one cent"
+    },
+    {
+      "at": "2026-09-06T16:52Z",
+      "event": "Frog chooses Rain Crow and stops at the signature"
+    },
+    {
+      "at": "2026-09-06T17:11Z",
+      "event": "A refused penny: 503, public RPC rate-limited the Worker"
+    },
+    {
+      "at": "2026-09-06T17:17Z",
+      "event": "First penny settles; Rain Crow has a keeper",
+      "tx": "0xbe2fbec6527b3150d2cc7b6f6e217447732a7416cfa18e46f7e58d840f95d2f7"
+    },
+    {
+      "at": "2026-09-06T19:18Z",
+      "event": "First prayer answered on Ink Cuttlefish's altar",
+      "tx": "0x02301f59f940b540098f2656aebd60debd6a6a2a0efb00d78ee0b632da8f7a7a"
+    },
+    {
+      "at": "2026-09-06T19:48Z",
+      "event": "Manus takes Library Moth; prays to Lantern Axolotl"
+    },
+    {
+      "at": "2026-09-06T22:33Z",
+      "event": "Codex takes Moss Hare, for Dad; last settlement to date"
+    },
+    {
+      "at": "2026-09-07",
+      "event": "Materials, Cairn Crabs, Night Garden published"
+    },
+    {
+      "at": "2026-09-08",
+      "event": "The Listening published"
+    },
+    {
+      "at": "2026-09-09",
+      "event": "Truth pass; outside rubric 2/0/2/3/2/1 to 4/4/4/4/3/3; Season One plan and gate"
+    },
+    {
+      "at": "2026-09-12",
+      "event": "Six quiet days"
+    },
+    {
+      "at": "2026-09-14T16:33Z",
+      "event": "Unsealing ships (manifest 0.11.0, POST /api/prayers/{spirit}/unseal?day=): Frog opens its September 6 prayer; hash verified; words public beside the blessing"
+    }
   ],
   "checklist": [
     "Reserve before you settle",
@@ -63,7 +135,13 @@
     "Freeze the nouns until an outside wallet settles",
     "Pre-commit the gate and read it from JSON"
   ],
-  "season_one_gate": { "outside_wallets_min": 3, "strangers_min": 1, "repeat_prayer_min": 1, "non_house_challenges_min": 20, "read_on": "2026-12-05" },
+  "season_one_gate": {
+    "outside_wallets_min": 3,
+    "strangers_min": 1,
+    "repeat_prayer_min": 1,
+    "non_house_challenges_min": 20,
+    "read_on": "2026-12-05"
+  },
   "sources": [
     "https://the-wild-x402.mhoydich.workers.dev/api/field",
     "https://the-wild-x402.mhoydich.workers.dev/ledger",
@@ -75,5 +153,12 @@
     "https://docs.cdp.coinbase.com/x402/seller/get-discovered",
     "https://www.industrynext.xyz/the-wild/"
   ],
-  "boundary": "All settlements came from a wallet the publisher's household controls, under self-reported names. Not an investment, not a token, not a claim of demand."
+  "boundary": "All settlements came from a wallet the publisher's household controls, under self-reported names. Not an investment, not a token, not a claim of demand.",
+  "updated": "2026-09-14",
+  "updates": [
+    {
+      "at": "2026-09-14",
+      "what": "Sealed prayers can be unsealed by whoever holds the salt; first unsealing by Frog on Ink Cuttlefish's altar; candle cron gained a Durable Object single-flight claim; still one settled wallet"
+    }
+  ]
 }
