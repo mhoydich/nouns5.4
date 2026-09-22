@@ -23,7 +23,12 @@ for (const file of files) {
   assert.match(html, /data-pointcast-network/);
   assert.match(html, /data-publisher="industrynext"/);
   assert.match(html, /data-placement="footer"/);
-  assert.match(html, /data-campaign="PC-NOUNS-EVERYBODY-2026"/);
+  if (file === resolve(publicDir, "index.html")) {
+    const mount = html.match(/<div\b[^>]*data-pointcast-network[^>]*>/)?.[0] || "";
+    assert.doesNotMatch(mount, /\bdata-campaign=/, "homepage uses shared publisher campaign preferences");
+  } else {
+    assert.match(html, /data-campaign="PC-NOUNS-EVERYBODY-2026"/);
+  }
   assert.match(html, /https:\/\/pointcast\.xyz\/open-ad-network\.js/);
   assert.doesNotMatch(html, /<body\b[^>]*>\s*<div data-pointcast-network/);
   assert.ok(
