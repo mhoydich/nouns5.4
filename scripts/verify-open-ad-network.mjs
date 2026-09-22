@@ -23,7 +23,7 @@ for (const file of files) {
   assert.match(html, /data-pointcast-network/);
   assert.match(html, /data-publisher="industrynext"/);
   assert.match(html, /data-placement="footer"/);
-  assert.match(html, /data-campaign="PC-NETWORK-EL-SEGUNDO-2026"/);
+  assert.match(html, /data-campaign="PC-NOUNS-EVERYBODY-2026"/);
   assert.match(html, /https:\/\/pointcast\.xyz\/open-ad-network\.js/);
   assert.doesNotMatch(html, /<body\b[^>]*>\s*<div data-pointcast-network/);
   assert.ok(
