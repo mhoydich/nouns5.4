@@ -41,7 +41,7 @@ await build({
 });
 
 const networkMarker = "data-pointcast-network";
-const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"footer\" data-context=\"small internet institutions tone bloom pointcast rally nouns cc0 art culture community\" data-campaign=\"PC-NETWORK-EL-SEGUNDO-2026\"></div>";
+const networkMountElement = "  <div data-pointcast-network data-publisher=\"industrynext\" data-placement=\"footer\" data-context=\"small internet institutions tone bloom pointcast rally nouns cc0 art culture community\" data-campaign=\"PC-NOUNS-EVERYBODY-2026\"></div>";
 const networkScriptElement = "  <script async src=\"https://pointcast.xyz/open-ad-network.js\"></script>";
 const networkMountPattern = /^[ \t]*<div\s+[^>]*\bdata-pointcast-network\b[^>]*><\/div>[ \t]*\r?\n?/m;
 const networkScriptPattern = /^[ \t]*<script\s+async\s+src="https:\/\/pointcast\.xyz\/open-ad-network\.js"><\/script>[ \t]*\r?\n?/m;
