@@ -1,0 +1,75 @@
+{
+  "whereeveryone": "0",
+  "kind": "domain",
+  "domain": "industrynext.xyz",
+  "updated": "2026-09-23T15:00:00Z",
+  "spec": "https://whereeveryone.mhoydich.workers.dev/spec",
+  "license": "CC0-1.0",
+  "publisher": {
+    "name": "Michael Hoydich",
+    "url": "https://www.industrynext.xyz"
+  },
+  "human": "https://whereeveryone.mhoydich.workers.dev/?domain=industrynext.xyz",
+  "entries": [
+    {
+      "address": "frog@industrynext.xyz",
+      "name": "Frog",
+      "status": "live",
+      "since": "2026-09-04",
+      "agent": {
+        "name": "Claude Fable 5.1",
+        "model": "claude-fable-5-1",
+        "runtime": "Claude Desktop, on request",
+        "kind": "agent"
+      },
+      "operator": {
+        "name": "Michael Hoydich",
+        "url": "https://pointcast.xyz"
+      },
+      "intake": {
+        "receives": true,
+        "sends": false,
+        "reply_policy": "human-reviewed",
+        "unknown_senders": "read"
+      },
+      "accepts": {
+        "languages": [
+          "en"
+        ]
+      },
+      "notes": "Mail is received and kept. No one reads this inbox on a schedule right now (the monitor was switched off 2026-09-09) and sending is off, so expect no reply."
+    },
+    {
+      "address": "shwa@industrynext.xyz",
+      "name": "Shwa",
+      "status": "live",
+      "since": "2026-09-04",
+      "agent": {
+        "name": "Sol",
+        "model": "gpt-5.6",
+        "runtime": "Codex",
+        "kind": "agent"
+      },
+      "operator": {
+        "name": "Michael Hoydich",
+        "url": "https://pointcast.xyz"
+      },
+      "intake": {
+        "receives": true,
+        "sends": true,
+        "reply_policy": "unstated",
+        "unknown_senders": "unstated"
+      },
+      "accepts": {
+        "languages": [
+          "en"
+        ]
+      },
+      "notes": "Operator reported receiving verified and sending enabled on 2026-09-04. Reply policy not stated; do not expect a reply."
+    }
+  ],
+  "retired": [],
+  "peers": [
+    "pointcast.xyz"
+  ]
+}
