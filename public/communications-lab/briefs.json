@@ -1,0 +1,438 @@
+{
+  "name": "Industry Next Communications Lab",
+  "tagline": "Make the signal useful.",
+  "updatedAt": "2026-10-02",
+  "intro": "An independent communications lab for Mike, agents and future interns. Explore how people, places and intelligent systems can communicate more clearly in 2026 and 2027.",
+  "status": "proposed_educational_programme",
+  "applicationsOpen": false,
+  "opportunities": [],
+  "work": [],
+  "independence": "Inspired by the interdisciplinary spirit of Bell Labs. This is an original, independent programme with no affiliation with or endorsement by Nokia Bell Labs, AT&T or their affiliates.",
+  "boundaries": [
+    "Pay, hours, eligibility, supervisor, location, agreements and legal review must be resolved before recruitment or work begins. Budgets are illustrative materials estimates in USD, exclude labor, tax and shipping, and are not spending authorization.",
+    "Use synthetic or licensed public fixtures first. A human supervisor must approve any participant involvement, consent, collection and data lifecycle.",
+    "Agents may draft, code, propose tests and document evidence. They cannot supervise interns, approve their own work or infer authority to send messages, buy materials or publish.",
+    "PointCast publication is the programme’s intended context. Physical venues, partners and installations need separate confirmation; no external venue partnership is claimed.",
+    "Credit every contributor with permission. Publish measured results and limitations only after human review; preserve a record of corrections."
+  ],
+  "roles": [
+    {
+      "name": "Mike",
+      "title": "Scope + release authority",
+      "description": "Proposed sponsor and scope owner; confirms supervisor, budget, partnerships and release authority before launch."
+    },
+    {
+      "name": "Agents",
+      "title": "Research + build assistance",
+      "description": "Assist with research, synthetic data, code, tests and documentation; cannot replace human supervision, consent or approval."
+    },
+    {
+      "name": "Future interns",
+      "title": "Supervised explorations",
+      "description": "Proposed supervised researchers; scope, pay and working terms must be settled before any work begins."
+    }
+  ],
+  "cadence": [
+    {
+      "label": "Before launch",
+      "description": "Before launch: confirm pay, hours, supervisor, eligibility, location and legal terms."
+    },
+    {
+      "label": "One week",
+      "description": "One-week experiment: question, baseline, small build, repeated test, evidence review."
+    },
+    {
+      "label": "Four weeks",
+      "description": "Four-week stretch: refine, independently reproduce, document and seek release approval."
+    },
+    {
+      "label": "Human review",
+      "description": "Review permissions, measurements, unknowns and contributor credit before any external pilot or publication."
+    }
+  ],
+  "seasons": [
+    {
+      "label": "2026 / First proofs",
+      "description": "2026 proposal: choose one or two low-risk pilots, finalize scope and prepare safe fixtures."
+    },
+    {
+      "label": "2027 / Repeat + connect",
+      "description": "2027 proposal: revisit successful pilots with mentors; publish only verified results and limitations."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nokia Bell Labs history",
+      "url": "https://www.nokia.com/bell-labs/about/history/",
+      "note": "Historical context for the transistor and information theory; accessed 2 October 2026."
+    },
+    {
+      "title": "Nokia Bell Labs research areas",
+      "url": "https://www.nokia.com/bell-labs/research/",
+      "note": "Context for cross-disciplinary research. The principles and identity in this kit are original proposals, not Bell Labs policies."
+    }
+  ],
+  "projects": [
+    {
+      "id": "CL-01",
+      "title": "Local messages that survive a disconnect",
+      "question": "Can two local devices reconcile messages without losing a confirmed note?",
+      "oneWeek": "Build a two-client prototype with synthetic messages. Disconnect one client, create conflicting edits, reconnect and log 20 trials.",
+      "fourWeek": "Add explicit conflict choices, export and a reproducible three-device test.",
+      "skills": "JavaScript, storage, test design",
+      "materialsBudget": "$0–50; existing laptops; optional local router",
+      "safety": "Use invented messages. Keep the demo on a trusted local network; no identity claims or production encryption claims.",
+      "deliverable": "Runnable demo, event log, conflict policy and two-page findings",
+      "successMeasure": "Zero lost confirmed messages in the 20 scripted trials; all conflicts visible",
+      "approvalBoundary": "Mentor reviews storage and threat model. Mike approves any external pilot; agents propose tests and never read personal messages.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "local-messages",
+      "lane": "Local first",
+      "week": "Build a two-client prototype with synthetic messages. Disconnect one client, create conflicting edits, reconnect and log 20 trials.",
+      "stretch": "Add explicit conflict choices, export and a reproducible three-device test.",
+      "materials": [
+        "$0–50; existing laptops; optional local router",
+        "Skills to practise: JavaScript, storage, test design"
+      ],
+      "privacy": "Use invented messages. Keep the demo on a trusted local network; no identity claims or production encryption claims.",
+      "success": "Zero lost confirmed messages in the 20 scripted trials; all conflicts visible",
+      "review": "Mentor reviews storage and threat model. Mike approves any external pilot; agents propose tests and never read personal messages.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/local-messages/"
+    },
+    {
+      "id": "CL-02",
+      "title": "Community radio listening desk",
+      "question": "How can a listening guide make a lawful public broadcast easier to discover?",
+      "oneWeek": "Compare three layouts using licensed sample audio or lawful public streams; record completion time for 10 scripted lookup tasks.",
+      "fourWeek": "Build an accessible schedule browser with provenance and a small editorial workflow.",
+      "skills": "Audio basics, interaction design, accessibility",
+      "materialsBudget": "$0–80; headphones; optional receive-only equipment",
+      "safety": "No RF transmission, private-signal interception or rebroadcast. Check stream permissions before embedding or recording.",
+      "deliverable": "Receive-only listening prototype and source-permissions ledger",
+      "successMeasure": "At least 9 of 10 lookup tasks completed; every audio source has a documented permission basis",
+      "approvalBoundary": "Mentor approves sources and equipment. Human review is required before public audio or any recording of people.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "listening-desk",
+      "lane": "Receive only",
+      "week": "Compare three layouts using licensed sample audio or lawful public streams; record completion time for 10 scripted lookup tasks.",
+      "stretch": "Build an accessible schedule browser with provenance and a small editorial workflow.",
+      "materials": [
+        "$0–80; headphones; optional receive-only equipment",
+        "Skills to practise: Audio basics, interaction design, accessibility"
+      ],
+      "privacy": "No RF transmission, private-signal interception or rebroadcast. Check stream permissions before embedding or recording.",
+      "success": "At least 9 of 10 lookup tasks completed; every audio source has a documented permission basis",
+      "review": "Mentor approves sources and equipment. Human review is required before public audio or any recording of people.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/listening-desk/"
+    },
+    {
+      "id": "CL-03",
+      "title": "A quiet ambient status display",
+      "question": "Can a glanceable display convey useful status without becoming surveillance?",
+      "oneWeek": "Prototype three paper or browser states for shared equipment availability using synthetic events; test label comprehension internally.",
+      "fourWeek": "Add an optional low-voltage e-paper display and user-controlled quiet hours.",
+      "skills": "Visual design, basic electronics, prototyping",
+      "materialsBudget": "$0–120; paper or optional USB-powered display",
+      "safety": "No cameras, microphones, people tracking or mains wiring. Use status and text as well as color.",
+      "deliverable": "State vocabulary, browser prototype and installation sketch",
+      "successMeasure": "Four of five consenting adult testers identify each state within five seconds",
+      "approvalBoundary": "Mentor approves any hardware and placement. Mike approves public installation; agents cannot infer people’s presence.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "ambient-status",
+      "lane": "Ambient systems",
+      "week": "Prototype three paper or browser states for shared equipment availability using synthetic events; test label comprehension internally.",
+      "stretch": "Add an optional low-voltage e-paper display and user-controlled quiet hours.",
+      "materials": [
+        "$0–120; paper or optional USB-powered display",
+        "Skills to practise: Visual design, basic electronics, prototyping"
+      ],
+      "privacy": "No cameras, microphones, people tracking or mains wiring. Use status and text as well as color.",
+      "success": "Four of five consenting adult testers identify each state within five seconds",
+      "review": "Mentor approves any hardware and placement. Mike approves public installation; agents cannot infer people’s presence.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/ambient-status/"
+    },
+    {
+      "id": "CL-04",
+      "title": "Accessible message repair",
+      "question": "Which error message best helps a person recover from a failed send?",
+      "oneWeek": "Create keyboard-first send/error/retry flows with screen-reader labels. Run 12 scripted keyboard and announcement checks.",
+      "fourWeek": "Co-design revisions with consenting adult participants under an approved accessibility test plan.",
+      "skills": "HTML, CSS, accessibility testing, plain language",
+      "materialsBudget": "$0–40; existing laptop; free assistive technology",
+      "safety": "Do not infer disability or collect medical data. Participation is optional; record only necessary anonymous observations.",
+      "deliverable": "Accessible prototype and keyboard/screen-reader test sheet",
+      "successMeasure": "All 12 checks pass; failures remain understandable without color or sound",
+      "approvalBoundary": "Mentor signs off test design and consent. Human approval precedes participant recruitment and recording.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "accessible-recovery",
+      "lane": "Accessibility",
+      "week": "Create keyboard-first send/error/retry flows with screen-reader labels. Run 12 scripted keyboard and announcement checks.",
+      "stretch": "Co-design revisions with consenting adult participants under an approved accessibility test plan.",
+      "materials": [
+        "$0–40; existing laptop; free assistive technology",
+        "Skills to practise: HTML, CSS, accessibility testing, plain language"
+      ],
+      "privacy": "Do not infer disability or collect medical data. Participation is optional; record only necessary anonymous observations.",
+      "success": "All 12 checks pass; failures remain understandable without color or sound",
+      "review": "Mentor signs off test design and consent. Human approval precedes participant recruitment and recording.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/accessible-recovery/"
+    },
+    {
+      "id": "CL-05",
+      "title": "An agent handoff you can inspect",
+      "question": "What must a handoff contain so another agent can continue without inventing authority?",
+      "oneWeek": "Define a handoff schema: task, evidence, permissions, unknowns and stop condition. Compare it against free text on 20 synthetic tasks.",
+      "fourWeek": "Add validation, replay traces and a human approval checkpoint for external actions.",
+      "skills": "JSON, evaluation design, prompt engineering",
+      "materialsBudget": "$0–60; optional capped model API usage",
+      "safety": "Use synthetic tasks and redact secrets. No autonomous sending, purchases or permission escalation.",
+      "deliverable": "Schema, validation tests and scored evaluation set",
+      "successMeasure": "Every blocked action stays blocked; at least 18 of 20 handoffs preserve the stated next step",
+      "approvalBoundary": "Mentor reviews rubric and API cap. Humans approve consequential actions; agents can draft and test within the sandbox.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "agent-handoffs",
+      "lane": "Agent handoffs",
+      "week": "Define a handoff schema: task, evidence, permissions, unknowns and stop condition. Compare it against free text on 20 synthetic tasks.",
+      "stretch": "Add validation, replay traces and a human approval checkpoint for external actions.",
+      "materials": [
+        "$0–60; optional capped model API usage",
+        "Skills to practise: JSON, evaluation design, prompt engineering"
+      ],
+      "privacy": "Use synthetic tasks and redact secrets. No autonomous sending, purchases or permission escalation.",
+      "success": "Every blocked action stays blocked; at least 18 of 20 handoffs preserve the stated next step",
+      "review": "Mentor reviews rubric and API cap. Humans approve consequential actions; agents can draft and test within the sandbox.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/agent-handoffs/"
+    },
+    {
+      "id": "CL-06",
+      "title": "Offline field notes that come home",
+      "question": "How can notes remain usable offline and merge predictably later?",
+      "oneWeek": "Build a local notebook with timestamps and export. Run 15 airplane-mode/edit/reconnect scenarios using invented field observations.",
+      "fourWeek": "Add conflict comparison and a portable archive with attachment checksums.",
+      "skills": "Web storage, file formats, UX testing",
+      "materialsBudget": "$0–40; existing laptop or phone",
+      "safety": "No real location trails, private field observations or participant identifiers. Test deletion and explain local-device exposure.",
+      "deliverable": "Offline demo, export specimen and recovery instructions",
+      "successMeasure": "All 15 scenarios preserve original text; a second machine opens the export",
+      "approvalBoundary": "Mentor reviews data lifecycle and merge rules. Any real field study requires human approval and a data plan.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "offline-field-notes",
+      "lane": "Offline notes",
+      "week": "Build a local notebook with timestamps and export. Run 15 airplane-mode/edit/reconnect scenarios using invented field observations.",
+      "stretch": "Add conflict comparison and a portable archive with attachment checksums.",
+      "materials": [
+        "$0–40; existing laptop or phone",
+        "Skills to practise: Web storage, file formats, UX testing"
+      ],
+      "privacy": "No real location trails, private field observations or participant identifiers. Test deletion and explain local-device exposure.",
+      "success": "All 15 scenarios preserve original text; a second machine opens the export",
+      "review": "Mentor reviews data lifecycle and merge rules. Any real field study requires human approval and a data plan.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/offline-field-notes/"
+    },
+    {
+      "id": "CL-07",
+      "title": "Public data with visible uncertainty",
+      "question": "Can a small dashboard explain stale or missing public sensor readings honestly?",
+      "oneWeek": "Choose one appropriately licensed public dataset; cache a snapshot and prototype current, stale, missing and suspect states.",
+      "fourWeek": "Compare two aggregation methods and publish reproducible transformations with attribution.",
+      "skills": "Data cleaning, chart design, basic statistics",
+      "materialsBudget": "$0–30; public dataset; existing laptop",
+      "safety": "Use public non-personal data only. No location inference about people and no emergency, health or safety guidance.",
+      "deliverable": "Dashboard prototype, license record and transformation notebook",
+      "successMeasure": "Every chart shows unit, source and timestamp; all four failure states are visibly distinct",
+      "approvalBoundary": "Mentor approves dataset and uncertainty language. Mike approves publication; agents may summarize but cannot certify accuracy.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "public-data",
+      "lane": "Public data",
+      "week": "Choose one appropriately licensed public dataset; cache a snapshot and prototype current, stale, missing and suspect states.",
+      "stretch": "Compare two aggregation methods and publish reproducible transformations with attribution.",
+      "materials": [
+        "$0–30; public dataset; existing laptop",
+        "Skills to practise: Data cleaning, chart design, basic statistics"
+      ],
+      "privacy": "Use public non-personal data only. No location inference about people and no emergency, health or safety guidance.",
+      "success": "Every chart shows unit, source and timestamp; all four failure states are visibly distinct",
+      "review": "Mentor approves dataset and uncertainty language. Mike approves publication; agents may summarize but cannot certify accuracy.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/public-data/"
+    },
+    {
+      "id": "CL-08",
+      "title": "Translation with a visible review step",
+      "question": "Where do short community notices lose meaning during translation?",
+      "oneWeek": "Write 20 invented notices; compare draft translations with qualified human review for names, dates, instructions and ambiguity.",
+      "fourWeek": "Add a glossary, side-by-side editor and disagreement log for two reviewed languages.",
+      "skills": "Language skills, content design, evaluation",
+      "materialsBudget": "$0–40 materials; human review must be separately budgeted",
+      "safety": "No sensitive notices, medical/legal advice or real personal data. Do not label machine output as human-verified.",
+      "deliverable": "Reviewable prototype, glossary and error taxonomy",
+      "successMeasure": "All names, dates and instructions match after human review; uncertainty remains visible",
+      "approvalBoundary": "A qualified human reviewer is required for each language. Mike approves any public translation; agents only draft.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "reviewed-translation",
+      "lane": "Translation",
+      "week": "Write 20 invented notices; compare draft translations with qualified human review for names, dates, instructions and ambiguity.",
+      "stretch": "Add a glossary, side-by-side editor and disagreement log for two reviewed languages.",
+      "materials": [
+        "$0–40 materials; human review must be separately budgeted",
+        "Skills to practise: Language skills, content design, evaluation"
+      ],
+      "privacy": "No sensitive notices, medical/legal advice or real personal data. Do not label machine output as human-verified.",
+      "success": "All names, dates and instructions match after human review; uncertainty remains visible",
+      "review": "A qualified human reviewer is required for each language. Mike approves any public translation; agents only draft.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/reviewed-translation/"
+    },
+    {
+      "id": "CL-09",
+      "title": "A small archive you can reopen",
+      "question": "What is the simplest durable record of a research experiment?",
+      "oneWeek": "Package one synthetic experiment as README, open-format data, assets and checksums. Ask a second person to follow it on a clean folder.",
+      "fourWeek": "Add versioned manifests, consent/license fields and a migration checklist.",
+      "skills": "Documentation, file organization, basic scripting",
+      "materialsBudget": "$0–30; existing storage",
+      "safety": "No proprietary work, participant identities or unlicensed media. State retention and deletion limits before real archiving.",
+      "deliverable": "Portable archive, manifest schema and recovery report",
+      "successMeasure": "A second person locates evidence and reproduces the sample result without author help",
+      "approvalBoundary": "Mentor approves licensing and retention. Human approval is required before archiving real personal or third-party records.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "portable-archive",
+      "lane": "Archives",
+      "week": "Package one synthetic experiment as README, open-format data, assets and checksums. Ask a second person to follow it on a clean folder.",
+      "stretch": "Add versioned manifests, consent/license fields and a migration checklist.",
+      "materials": [
+        "$0–30; existing storage",
+        "Skills to practise: Documentation, file organization, basic scripting"
+      ],
+      "privacy": "No proprietary work, participant identities or unlicensed media. State retention and deletion limits before real archiving.",
+      "success": "A second person locates evidence and reproduces the sample result without author help",
+      "review": "Mentor approves licensing and retention. Human approval is required before archiving real personal or third-party records.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/portable-archive/"
+    },
+    {
+      "id": "CL-10",
+      "title": "Useful interfaces on a thin connection",
+      "question": "Which content is truly necessary when a connection is slow or unreliable?",
+      "oneWeek": "Create a text-first notice page; simulate 400 kbps and 400 ms latency with cache disabled. Compare against a heavier baseline.",
+      "fourWeek": "Add offline fallback, resilient form-free navigation and a documented asset budget.",
+      "skills": "Frontend performance, HTML, accessibility",
+      "materialsBudget": "$0–40; browser dev tools; existing laptop",
+      "safety": "Use synthetic content and local network simulation. No covert analytics or live user profiling.",
+      "deliverable": "Working prototype, trace captures and byte-budget report",
+      "successMeasure": "Core text usable within five seconds in 9 of 10 controlled runs; no broken keyboard navigation",
+      "approvalBoundary": "Mentor validates measurement setup. Mike approves deployment and any analytics; agents may run synthetic checks only.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "thin-connection",
+      "lane": "Low bandwidth",
+      "week": "Create a text-first notice page; simulate 400 kbps and 400 ms latency with cache disabled. Compare against a heavier baseline.",
+      "stretch": "Add offline fallback, resilient form-free navigation and a documented asset budget.",
+      "materials": [
+        "$0–40; browser dev tools; existing laptop",
+        "Skills to practise: Frontend performance, HTML, accessibility"
+      ],
+      "privacy": "Use synthetic content and local network simulation. No covert analytics or live user profiling.",
+      "success": "Core text usable within five seconds in 9 of 10 controlled runs; no broken keyboard navigation",
+      "review": "Mentor validates measurement setup. Mike approves deployment and any analytics; agents may run synthetic checks only.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/thin-connection/"
+    },
+    {
+      "id": "CL-11",
+      "title": "PointCast community bulletin",
+      "question": "Can a shared bulletin make a small place easier to navigate without gathering personal data?",
+      "oneWeek": "Mock a PointCast-area bulletin with five invented notices, expiry dates and clear source labels. Run 10 find-and-verify tasks.",
+      "fourWeek": "Build moderation, expiry and correction views; explore a print companion and local cache.",
+      "skills": "Service design, frontend, content governance",
+      "materialsBudget": "$0–70; printing or optional display mockup",
+      "safety": "Prototype on PointCast with invented notices. Physical venues, partners and installations remain unconfirmed. No real names, addresses, contact forms or live submissions.",
+      "deliverable": "Bulletin prototype, moderation checklist and print sheet",
+      "successMeasure": "At least 9 of 10 tasks find the right notice; every notice shows source and expiry",
+      "approvalBoundary": "Mike confirms the place, partners and permissions before any installation. Human moderation approves every real public notice.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "pointcast-bulletin",
+      "lane": "PointCast bulletin",
+      "week": "Mock a PointCast-area bulletin with five invented notices, expiry dates and clear source labels. Run 10 find-and-verify tasks.",
+      "stretch": "Build moderation, expiry and correction views; explore a print companion and local cache.",
+      "materials": [
+        "$0–70; printing or optional display mockup",
+        "Skills to practise: Service design, frontend, content governance"
+      ],
+      "privacy": "Prototype on PointCast with invented notices. Physical venues, partners and installations remain unconfirmed. No real names, addresses, contact forms or live submissions.",
+      "success": "At least 9 of 10 tasks find the right notice; every notice shows source and expiry",
+      "review": "Mike confirms the place, partners and permissions before any installation. Human moderation approves every real public notice.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/pointcast-bulletin/"
+    },
+    {
+      "id": "CL-12",
+      "title": "The reproducibility relay",
+      "question": "Can a new teammate repeat a result from the record alone?",
+      "oneWeek": "Take another project’s synthetic dataset and instructions. Re-run three key tests independently and document discrepancies.",
+      "fourWeek": "Build a reusable evidence checklist, comparison report and release gate across four projects.",
+      "skills": "QA, documentation, skeptical reasoning",
+      "materialsBudget": "$0–40; existing laptop",
+      "safety": "Only use approved synthetic/public data. Do not copy secrets into logs or let agents mark their own work independently verified.",
+      "deliverable": "Independent replication note, annotated checklist and corrected instructions",
+      "successMeasure": "Three tests reproduce within declared tolerance or yield an explicit, actionable failure report",
+      "approvalBoundary": "A human mentor defines tolerances and reviews discrepancies. Mike decides release; agents help execute but do not approve themselves.",
+      "status": "Project exploration • not an employment offer",
+      "cohorts": [
+        "2026",
+        "2027"
+      ],
+      "slug": "reproducibility-relay",
+      "lane": "Reproducibility",
+      "week": "Take another project’s synthetic dataset and instructions. Re-run three key tests independently and document discrepancies.",
+      "stretch": "Build a reusable evidence checklist, comparison report and release gate across four projects.",
+      "materials": [
+        "$0–40; existing laptop",
+        "Skills to practise: QA, documentation, skeptical reasoning"
+      ],
+      "privacy": "Only use approved synthetic/public data. Do not copy secrets into logs or let agents mark their own work independently verified.",
+      "success": "Three tests reproduce within declared tolerance or yield an explicit, actionable failure report",
+      "review": "A human mentor defines tolerances and reviews discrepancies. Mike decides release; agents help execute but do not approve themselves.",
+      "url": "https://www.industrynext.xyz/communications-lab/projects/reproducibility-relay/"
+    }
+  ],
+  "url": "https://www.industrynext.xyz/communications-lab/"
+}
