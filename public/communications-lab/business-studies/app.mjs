@@ -61,7 +61,7 @@ function update() {
   $('unit-cost').textContent = valid ? money(base.unitCost, 2) : '—';
   $('monthly-result').textContent = valid ? money(base.monthlyRemainder) : 'Check inputs';
   $('monthly-result').classList.toggle('negative', valid && base.monthlyRemainder !== null && base.monthlyRemainder < 0);
-  $('break-even').textContent = !valid ? '—' : base.monthlyRemainder === null ? 'Unknown' : base.unitContribution <= 0 ? 'No finite value' : count(base.breakEvenPeriod);
+  $('break-even').textContent = !valid ? '—' : base.monthlyRemainder === null ? 'Unknown' : base.breakEvenStatus === 'no_finite_positive_volume' ? 'No finite value' : count(base.breakEvenPeriod);
   $('break-even-label').textContent = current.breakEvenLabel;
   $('unit-label').textContent = `Contribution / ${current.shortUnit}`;
   $('sales-result').textContent = valid ? money(base.monthlySales) : '—';

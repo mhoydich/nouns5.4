@@ -45,6 +45,8 @@ test('zero volume and zero or negative contribution cannot invent profitable bre
   assert.ok(markdown(worksheet('cafe',{...defaults('cafe'),variableRate:100},{})).includes('No finite positive-volume break-even'));
   r=calculate('cafe',defaults('cafe'),{unitCost:100,price:-50});assert.ok(r.unitContribution<0);assert.equal(r.breakEvenPeriod,null);
   r=calculate('cafe',{...defaults('cafe'),fixed:0});assert.equal(r.breakEvenPeriod,0);assert.ok(!Object.is(r.breakEvenPeriod,-0));
+  r=calculate('cafe',{...defaults('cafe'),fixed:0,variableRate:100});assert.equal(r.monthlyRemainder,0);assert.equal(r.breakEvenPeriod,0);assert.equal(r.breakEvenStatus,'every_volume');
+  assert.ok(markdown(worksheet('cafe',{...defaults('cafe'),fixed:0,variableRate:100},{})).includes('Every volume (threshold 0)'));
 });
 test('missing assumptions remain unknown and invalid numbers block export', () => {
   const incomplete=calculate('cafe',{...defaults('cafe'),fixed:''});assert.equal(incomplete.monthlyRemainder,null);assert.ok(incomplete.valid);

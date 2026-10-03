@@ -6,7 +6,7 @@ This instrument turns hypothetical inputs into an inspectable worksheet. Five di
 
 The agreed café defaults produce $3,932 monthly remainder before exclusions, and 150 whole transactions/day break-even. Other coffee channels show illustrative unit contribution, while volume/fixed costs start unknown. An explicitly labeled button can load an invented operating scale. The licensed-retail lens starts with all numerical inputs unknown; it imports no coffee costs and models no license eligibility, tax mechanics or payment access.
 
-The sensitivity rows and combined scenario scale price, volume, listed variable cost per unit, and fixed budget. Price-only stress holds the listed cost bundle constant. Fee contracts, product mix and capacity tiers require separate analysis. Zero/negative contribution has no finite positive-volume break-even. Numbers are rounded for display; Markdown/JSON exports retain precision, assumptions, unknowns, source context and limits.
+The sensitivity rows and combined scenario scale price, volume, listed variable cost per unit, and fixed budget. Price-only stress holds the listed cost bundle constant. Fee contracts, product mix and capacity tiers require separate analysis. Zero/negative contribution has no finite positive-volume break-even, except zero contribution with a zero fixed budget, when every volume breaks even (threshold zero). Numbers are rounded for display; Markdown/JSON exports retain precision, assumptions, unknowns, source context and limits.
 
 ## Evidence and provenance
 

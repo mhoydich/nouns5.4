@@ -83,7 +83,11 @@ export function calculate(id, input, changes = {}) {
   result.scenarioFixed = v.fixed * (1 + shock.fixed / 100);
   result.monthlyRemainder = result.monthlyContribution - result.scenarioFixed;
   result.breakEvenStatus = result.unitContribution > 0 ? 'finite' : 'no_finite_positive_volume';
-  if (result.unitContribution > 0) {
+  if (result.scenarioFixed === 0 && result.unitContribution === 0) {
+    result.breakEvenStatus = 'every_volume';
+    result.breakEvenMonthly = 0;
+    result.breakEvenPeriod = 0;
+  } else if (result.unitContribution > 0) {
     // Subtract only a tiny floating-point tolerance before whole-unit rounding.
     result.breakEvenMonthly = Math.max(0, Math.ceil(result.scenarioFixed / result.unitContribution - 1e-10));
     result.breakEvenPeriod = Math.max(0, Math.ceil(result.scenarioFixed / (result.unitContribution * v.periods) - 1e-10));
@@ -127,7 +131,7 @@ export function worksheet(id, values, changes, notes = {}) {
 
 const md = (value) => String(value).replace(/[\\`*_{}\[\]()#+.!<>|]/g, '\\$&');
 const number = (value) => value === null || value === undefined ? 'Unknown' : String(value);
-const breakEven = (result, key) => result.breakEvenStatus === 'no_finite_positive_volume' ? 'No finite positive-volume break-even' : number(result[key]);
+const breakEven = (result, key) => result.breakEvenStatus === 'every_volume' ? 'Every volume (threshold 0)' : result.breakEvenStatus === 'no_finite_positive_volume' ? 'No finite positive-volume break-even' : number(result[key]);
 export function markdown(document) {
   return [
     `# ${md(document.title)}`,
