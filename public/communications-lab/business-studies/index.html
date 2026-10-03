@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Business Studies · University of El Segundo × Industry Next</title>
+  <meta name="description" content="A local business study desk: compare coffee channels and a licensed-retail lens, inspect hypothetical assumptions, and keep a source-backed worksheet."/>
+  <meta name="theme-color" content="#1747D1"/>
+  <meta name="robots" content="noindex"/>
+  <link rel="stylesheet" href="./study.css"/>
+  <link rel="alternate" type="application/json" href="./source-ledger.json" title="Dated official source ledger"/>
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#study-desk">Skip to the study desk</a>
+  <div class="page">
+    <header class="topbar">
+      <a class="wordmark" href="../">INDUSTRY<br/>NEXT <span>Communications Lab</span></a>
+      <p>UNIVERSITY OF EL SEGUNDO<br/><span>Business studies / first edition</span></p>
+      <span class="draft-badge">DRAFT FOR REVIEW</span>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">The town is a classroom.</p>
+          <h1 id="hero-title">One counter.<br/><em>Many models.</em></h1>
+          <p class="lede">Turn an observation into a business question. Compare coffee channels and a licensed-retail lens, change the assumptions, and leave with a study you can inspect.</p>
+          <a class="primary-link" href="#study-desk">Make a study worksheet <span aria-hidden="true">↘</span></a>
+          <p class="hero-note">Independent local study. No tuition or degrees.</p>
+        </div>
+        <figure class="study-art">
+          <svg viewBox="0 0 600 440" role="img" aria-labelledby="art-title art-desc">
+            <title id="art-title">The study machine</title><desc id="art-desc">An original geometric diagram: observations move through a model, a stress test, and a keepable record.</desc>
+            <rect width="600" height="440" fill="#1747D1"/>
+            <g fill="none" stroke="#F4F0E5" stroke-width="2"><circle cx="111" cy="109" r="69"/><circle cx="111" cy="109" r="42"/><path d="M180 109H340V57H520M340 109V188H520"/><path d="M83 242V354H258M258 354H514"/></g>
+            <circle cx="111" cy="109" r="17" fill="#E65B2A"/>
+            <g fill="#F4F0E5"><rect x="379" y="34" width="52" height="46"/><rect x="442" y="34" width="52" height="46"/><rect x="505" y="34" width="52" height="46"/></g>
+            <g fill="#E65B2A"><rect x="379" y="157" width="52" height="62"/><rect x="442" y="141" width="52" height="78"/><rect x="505" y="122" width="52" height="97"/></g>
+            <g transform="translate(224 204) rotate(-7)"><path d="M0 0H142V165L128 154L113 165L99 154L85 165L71 154L57 165L43 154L29 165L15 154L0 165Z" fill="#F4F0E5"/><g stroke="#171B22" stroke-width="3"><path d="M20 30H121M20 55H90M20 90H121M20 111H121M20 132H77"/></g><circle cx="112" cy="56" r="12" fill="#E65B2A"/></g>
+            <g fill="#F4F0E5"><circle cx="83" cy="242" r="18"/><circle cx="443" cy="354" r="18"/><circle cx="514" cy="354" r="18"/></g>
+            <g fill="#F4F0E5" font-family="Arial,sans-serif" font-size="13" letter-spacing="2"><text x="40" y="28">OBSERVE</text><text x="383" y="107">MODEL</text><text x="381" y="252">STRESS</text><text x="405" y="408">KEEP A RECORD</text></g>
+          </svg>
+          <figcaption>Observe → model → stress → keep.<br/>Original code-native artwork / Industry Next × UES</figcaption>
+        </figure>
+      </section>
+      <aside class="edition-note"><strong>Teaching assumptions, visible evidence.</strong><p>Numeric models are invented exercises. Official source signals are dated context; none reports a shop’s revenue, demand, costs, stock or margins.</p></aside>
+
+      <section class="section" id="study-desk" aria-labelledby="desk-title">
+        <div class="section-heading"><div><p class="eyebrow">01 / The operating desk</p><h2 id="desk-title">Choose the unit.<br/>Then question it.</h2></div><p>A transaction, a bag, a delivered pound and a shipment are different units. Keep the definition attached to the number.</p></div>
+        <div class="interactive-only">
+          <fieldset class="model-picker"><legend>Choose a business model</legend>
+            <label><input type="radio" name="study-model" value="cafe" checked/><span><b>01</b>Neighborhood café</span></label>
+            <label><input type="radio" name="study-model" value="roastery"/><span><b>02</b>Direct roaster</span></label>
+            <label><input type="radio" name="study-model" value="wholesale"/><span><b>03</b>Wholesale roaster</span></label>
+            <label><input type="radio" name="study-model" value="subscription"/><span><b>04</b>Subscription</span></label>
+            <label><input type="radio" name="study-model" value="licensed-retail"/><span><b>05</b>Licensed retail lens</span></label>
+          </fieldset>
+          <div class="model-intro"><div><p class="eyebrow">Selected model</p><h3 id="model-name">Neighborhood café</h3><p class="unit-definition" id="model-unit"></p></div><p id="model-lesson"></p></div>
+          <div class="desk-grid">
+            <div class="assumption-panel"><div id="assumption-fields"></div><p class="small" id="scale-help"></p><div class="inline-actions"><button type="button" class="secondary" id="sample-scale" hidden>Try an invented operating scale</button><button type="button" class="quiet" id="reset-model">Reset this model</button></div><p id="validation" role="status" class="validation"></p></div>
+            <aside class="result-panel" aria-labelledby="result-title"><p class="eyebrow">The hypothesis / USD</p><h3 id="result-title">Show the workings.</h3><div class="result-main"><span>Monthly remainder <small>before exclusions</small></span><strong id="monthly-result"></strong></div><div class="metrics"><div><span id="unit-label">Contribution / transaction</span><strong id="unit-result"></strong></div><div><span>Listed cost / unit</span><strong id="unit-cost"></strong></div><div><span>Monthly net sales</span><strong id="sales-result"></strong></div><div><span id="break-even-label">Whole transactions / day at break-even</span><strong id="break-even"></strong></div></div><details class="workings" open><summary>Per-unit cost breakdown</summary><dl id="cost-breakdown"></dl></details><p class="small">Money displays rounded; downloads retain precision. Unknown scale stays unknown. A negative result is shown with a minus sign.</p></aside>
+          </div>
+          <details class="method"><summary>Formula, capacity and exclusions</summary><p id="model-formula"></p><p id="model-exclusions"></p><p>Break-even is the fixed budget divided by positive unit contribution, rounded up to whole units. Daily or subscriber break-even also divides by operating days or shipment cycles. Zero or negative contribution has no finite positive-volume break-even, except that zero contribution with a zero fixed budget breaks even at every volume (threshold 0).</p><p>The schedule is assumed fixed. Recalculate labor and equipment when demand crosses a capacity tier. Nothing here estimates a named business’s profit.</p></details>
+        </div>
+        <div class="static-example"><h3>A café example you can inspect</h3><p>An invented $7 ticket × 180 daily transactions × 26 days creates $32,760 in monthly net sales. A 30% variable-cost share leaves $4.90 contribution per transaction. After an invented $19,000 fixed labor and occupancy budget, the monthly remainder is <strong>$3,932</strong>, before exclusions. Whole-transaction break-even is <strong>150/day</strong>.</p><p>JavaScript enables model selection, sensitivities and downloads. The sources, method and questions below remain readable without it.</p></div>
+      </section>
+
+      <section class="section interactive-only" aria-labelledby="stress-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / The stress test</p><h2 id="stress-title">Move a number.<br/>Keep the limits.</h2></div><p>Change one assumption or combine several. A scenario is a question to investigate, rather than a prediction.</p></div>
+        <div class="stress-grid"><fieldset><legend>Your combined scenario</legend><div class="field-grid" id="stress-fields"></div><button type="button" class="quiet" id="reset-stress">Reset changes to zero</button></fieldset><div class="table-wrap"><table><caption>Same selected model, different assumptions</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Contribution / unit</th><th scope="col">Monthly remainder</th></tr></thead><tbody id="sensitivity-body"></tbody></table></div></div>
+        <p class="small">The cost change scales the complete listed cost per unit. Price-only changes hold that base cost constant. Actual payment contracts, physical input mix, staffing tiers and tax treatment need separate analysis.</p>
+      </section>
+
+      <section class="section worksheet-section interactive-only" aria-labelledby="worksheet-title">
+        <div class="section-heading"><div><p class="eyebrow">03 / Something to keep</p><h2 id="worksheet-title">Leave with<br/>a better question.</h2></div><p>Your worksheet carries its unit, assumptions, results, scenarios, sources and unknowns. No account is required.</p></div>
+        <div class="worksheet-grid"><div><label for="study-question">Study question</label><textarea id="study-question" rows="3" maxlength="1500"></textarea><label for="evidence-notes">Public evidence + remaining unknowns</label><textarea id="evidence-notes" rows="4" maxlength="3000" placeholder="A dated menu can show an assortment. It cannot establish stock, sales or margin."></textarea><p class="small">Use public observations. Avoid personal details or private business data. Notes stay on this page until you reload; downloads are created in your browser.</p><div class="download-actions"><button type="button" class="primary" id="download-markdown">Download worksheet .md <span aria-hidden="true">↓</span></button><button type="button" class="secondary" id="download-json">Download data .json <span aria-hidden="true">↓</span></button></div><p id="export-status" role="status" class="small"></p></div><aside class="study-prompts"><p class="eyebrow">Evidence before confidence</p><h3>What would you<br/>need to know?</h3><ul id="evidence-list"></ul><h4>Discuss it</h4><ol id="question-list"></ol></aside></div>
+        <details class="worksheet-inspector"><summary>Inspect the complete worksheet before downloading</summary><pre id="worksheet-preview" tabindex="0" aria-label="Plain-text worksheet preview"></pre></details>
+      </section>
+
+      <section class="section" aria-labelledby="context-title"><div class="section-heading"><div><p class="eyebrow">04 / A dated view of the world</p><h2 id="context-title">Context is evidence.<br/>It is not a forecast.</h2></div><p>Six official signals, observed October 3, 2026. Their reporting periods and geographies differ. Keep those differences visible.</p></div><div class="source-grid"><article class="source-card"><p class="eyebrow">official published statistic</p><h3>U.S. retail coffee prices</h3><p class="source-value">+6.1% year over year</p><p class="source-period">August 2025 to August 2026<br/>U.S. city average</p><p>The national coffee CPI-U category increased 6.1% over twelve months. Its August month-to-month change was −0.9% before seasonal adjustment.</p><details><summary>What this cannot tell us</summary><p>It is not a café menu-price index, wholesale bean quote, dollar price per pound, local demand measure or shop margin.</p></details><a href="https://www.bls.gov/news.release/cpi.t02.htm">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article>
+<article class="source-card"><p class="eyebrow">official published statistic</p><h3>Los Angeles food service price backdrop</h3><p class="source-value">+2.4% year over year</p><p class="source-period">August 2025 to August 2026<br/>Los Angeles–Long Beach–Anaheim; Los Angeles and Orange counties</p><p>The area&#x27;s food-away-from-home CPI-U increased 2.4% over twelve months and was unchanged from July to August.</p><details><summary>What this cannot tell us</summary><p>The metro index is broader than coffee, is not seasonally adjusted, and has a smaller sample than the national CPI. It does not measure an El Segundo café or compare price levels between cities.</p></details><a href="https://www.bls.gov/regions/west/news-release/consumerpriceindex_losangeles.htm">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article>
+<article class="source-card"><p class="eyebrow">official published rule</p><h3>California general wage floor</h3><p class="source-value">$16.90/hour</p><p class="source-period">Effective January 1, 2026<br/>California</p><p>California&#x27;s general minimum wage is $16.90 per hour for employers outside a higher industry or local wage requirement.</p><details><summary>What this cannot tell us</summary><p>Some localities and industries have higher requirements. Do not apply this general floor to every café or chain; verify the workplace and applicable rules. The calculator’s $19,000 fixed budget is an invented teaching assumption, not a statutory wage or reported shop payroll.</p></details><a href="https://www.dir.ca.gov/dlse/FAQ_MinimumWage.htm">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article>
+<article class="source-card"><p class="eyebrow">official published estimate</p><h3>El Segundo resident context</h3><p class="source-value">16,379 residents</p><p class="source-period">July 1, 2025 estimate (V2025); income period 2020–2024<br/>El Segundo city, California</p><p>Census estimates 16,379 city residents on July 1, 2025. The 2020–2024 median household income is $150,737 in 2024 dollars.</p><details><summary>What this cannot tell us</summary><p>City residents are not the population of the 25-mile atlas. Household income is not individual purchasing power; neither figure counts café customers, commuters, airport visitors or daytime workers. Five-year income estimates are historical averages.</p></details><a href="https://www.census.gov/quickfacts/fact/table/elsegundocitycalifornia/PST045224">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article>
+<article class="source-card"><p class="eyebrow">official forecast</p><h3>Global supply outlook</h3><p class="source-value">189.7m / 179.7m bags</p><p class="source-period">USDA July 2026 forecast for 2026/27<br/>World</p><p>USDA forecasts 2026/27 world coffee production at 189.7 million bags and consumption at 179.7 million bags; each bag is 60 kilograms.</p><details><summary>What this cannot tell us</summary><p>Forecasts can change. Marketing-year calendars vary by country. Production minus consumption is not a shop profit, delivered inventory forecast or complete stocks/trade accounting. Do not splice these figures with ICO coffee-year balances without explaining their different periods and methods.</p></details><a href="https://apps.fas.usda.gov/psdonline/circulars/coffee.pdf">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article>
+<article class="source-card"><p class="eyebrow">official published market indicator</p><h3>Global green-coffee price signal</h3><p class="source-value">287.29 US cents/lb</p><p class="source-period">August 2026 monthly average<br/>ICO international composite</p><p>ICO&#x27;s composite green-coffee indicator averaged 287.29 US cents per pound in August, compared with 287.26 in July.</p><details><summary>What this cannot tell us</summary><p>The composite is not the invoice price of a specialty lot or roasted bag. Differentials, quality, contracts, currency, freight, yield loss and timing affect a roaster&#x27;s actual cost.</p></details><a href="https://www.ico.org/documents/cy2025-26/cmr-0826-e.pdf">Read the official source ↗</a><span class="source-date">Observed 2026-10-03</span></article></div><p class="small"><a href="./source-ledger.json">Keep the official source ledger .json ↓</a> · First edition; a bounded source set, not a local business census.</p></section>
+
+      <section class="section case-section" aria-labelledby="case-title"><p class="eyebrow">05 / The shared case-study desk</p><h2 id="case-title">Coffee + regulated retail.<br/>Same town, different questions.</h2><div class="case-grid"><article><span class="pending">PointCast draft / publication pending</span><h3>Coffee field atlas</h3><p>A planned 25-mile café and roaster study: dated public assortments, source-supported brewing details, accessible map and list, and careful geographic boundaries.</p></article><article><span class="pending">Separate PointCast draft / publication pending</span><h3>Dispensary field atlas</h3><p>The separately researched case uses its own license and product sources. Compare catchment, sourcing, freshness, staffing and inventory risk without transferring coffee assumptions.</p></article></div><p class="small">The University of El Segundo business desk and both atlases remain drafts. Public links will be added after their publication is verified.</p><div class="comparison-questions"><h3>Three questions for a shared seminar</h3><ol><li>What does a 25-mile geometric radius miss about a real trade area?</li><li>Which cost and revenue definitions must change before comparing channels?</li><li>What new evidence would change the decision even if the arithmetic stayed the same?</li></ol></div></section>
+    </main>
+    <footer><div><strong>Industry Next × University of El Segundo</strong><p>An independent place-based study instrument.<br/>Applications remain closed. No accreditation, merchant affiliation or endorsement is claimed.</p></div><nav aria-label="Study resources"><a href="../">Communications Lab ↗</a><a href="./source-ledger.json">Source ledger ↓</a><a href="https://github.com/mhoydich/nouns5.4">Industry Next source ↗</a></nav><p class="eyebrow">Draft / edition 2026-10-03.1<br/>Original code-native art / no third-party imagery</p></footer>
+  </div>
+</body>
+</html>
