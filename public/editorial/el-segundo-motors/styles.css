@@ -4,6 +4,7 @@
 :root { --acid: #ece6a7; --cyan: #a4b5df; --pink: #dbaa8d; }
 a { text-underline-offset: .2em; }
 a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 5px; }
+.sl-paper a:focus-visible, .sl-pilot a:focus-visible { outline-color: var(--ink); }
 main:focus { outline: none; }
 section[id] { scroll-margin-top: 90px; }
 .sl-hero { padding: clamp(50px, 7vw, 110px) var(--page) 60px; max-width: 1500px; margin: auto; }
@@ -50,5 +51,5 @@ section[id] { scroll-margin-top: 90px; }
 .sl-art-poster { max-width: 700px; }
 .af-footer [data-pointcast-network] { grid-column: 1 / -1; }
 @media (max-width: 900px) { .sl-section { grid-template-columns: 1fr; gap: 25px; } .sl-prose, .sl-gates { grid-column: 1; } .sl-tides { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 620px) { .af-topbar { position: static; } .af-topbar nav { flex-wrap: wrap; } .af-topbar nav a { min-height: 44px; flex: 1; justify-content: center; } .sl-hero { padding-top: 40px; } .sl-tides, .sl-metrics, .sl-lessons { grid-template-columns: 1fr; } .sl-tides > div, .sl-metrics > div { padding: 22px; } .sl-tides dd, .sl-metrics dd { margin-top: 16px; } .sl-tides dd strong { margin-bottom: 12px; } .sl-prose h2 { overflow-wrap: anywhere; } .sl-hero h1 { font-size: clamp(2.4rem, 10vw, 3.8rem); } }
+@media (max-width: 620px) { .af-topbar { position: static; } .af-topbar nav { flex-wrap: wrap; } .af-topbar nav a { min-height: 44px; flex: 1; justify-content: center; } .af-ticker { flex-wrap: wrap; white-space: normal; gap: 6px 20px; } .af-ticker span { display: block !important; } .sl-hero { padding-top: 40px; } .sl-tides, .sl-metrics, .sl-lessons { grid-template-columns: 1fr; } .sl-tides > div, .sl-metrics > div { padding: 22px; } .sl-tides dd, .sl-metrics dd { margin-top: 16px; } .sl-tides dd strong { margin-bottom: 12px; } .sl-prose h2 { overflow-wrap: anywhere; } .sl-hero h1 { font-size: clamp(2.4rem, 10vw, 3.8rem); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .af-button:hover, .af-button:focus-visible { transform: none; } }
