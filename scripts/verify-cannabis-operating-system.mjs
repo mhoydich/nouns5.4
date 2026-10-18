@@ -4,7 +4,6 @@ import { readFile, stat } from "node:fs/promises";
 const dir = "public/editorial/cannabis-operating-system";
 const page = await readFile(`${dir}/index.html`, "utf8");
 const css = await readFile(`${dir}/styles.css`, "utf8");
-const home = await readFile("public/index.html", "utf8");
 const sitemap = await readFile("public/sitemap.xml", "utf8");
 const record = JSON.parse(await readFile("public/cannabis-operating-system.json", "utf8"));
 
@@ -29,8 +28,8 @@ assert.match(css, /\.os-hero/);
 assert.match(css, /@media \(max-width: 620px\)/);
 assert.match(css, /prefers-reduced-motion/);
 assert.doesNotMatch(css, /\.ye-/);
-assert.match(home, /\/editorial\/cannabis-operating-system\//);
-assert.match(home, /\/editorial\/axon-yield-engine\//, "the case study should stay on the shelf");
+assert.match(page, /href="https:\/\/www\.industrynext\.xyz\/"/, "the archived thesis retains its home link");
+assert.match(page, /href="\.\.\/axon-yield-engine\/"/, "the archived thesis retains its related case study");
 assert.match(sitemap, /\/editorial\/cannabis-operating-system\//);
 assert.match(sitemap, /\/cannabis-operating-system\.json/);
 
