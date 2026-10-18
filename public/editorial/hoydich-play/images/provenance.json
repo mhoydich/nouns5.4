@@ -1,0 +1,37 @@
+{
+  "published": "2026-10-18",
+  "researchAsOf": "2026-10-17",
+  "provenance": "Commissioned by Michael Hoydich; concept development with Codex. Commercial product/brand clearance has not been established.",
+  "images": [
+    {
+      "file": "01-signalsaurs-moodboard.webp",
+      "source": "https://pointcast.xyz/hoydich-play/previews/01-signalsaurs-moodboard.webp",
+      "sha256": "a76b016fc599e6cebdb7d95568e896a7892234d8132fb7dc03ce11a2608fae87",
+      "status": "AI-generated concept visualization; not a working product or production sample"
+    },
+    {
+      "file": "02-packaging-concept.webp",
+      "source": "https://pointcast.xyz/hoydich-play/previews/02-packaging-concept.webp",
+      "sha256": "8d61f53a16d18f6c0bb8765b1fd4d0327c7ab0484c1cdb9c04eabaaaede47cf2",
+      "status": "AI-generated concept visualization; not a working product or production sample"
+    },
+    {
+      "file": "04-after-hours-moodboard.webp",
+      "source": "https://pointcast.xyz/hoydich-play/previews/04-after-hours-moodboard.webp",
+      "sha256": "bc8a6887e9c85f7c8757d41f398a9c4fe675eda35ac7430a1c832eaa18c7602e",
+      "status": "AI-generated concept visualization; not a working product or production sample"
+    },
+    {
+      "file": "05-family-social-ad.webp",
+      "source": "https://pointcast.xyz/hoydich-play/previews/05-family-social-ad.webp",
+      "sha256": "f58dec97b7fdd08a5044bfd93ceca13f1775ebb821d2416bb4b16672c597c7ea",
+      "status": "AI-generated concept visualization; not a working product or production sample"
+    },
+    {
+      "file": "06-collector-social-ad.webp",
+      "source": "https://pointcast.xyz/hoydich-play/previews/06-collector-social-ad.webp",
+      "sha256": "963eea5d22f6046b011c9820129233757e92647b9db33f023b1fb26146f20fb0",
+      "status": "AI-generated concept visualization; not a working product or production sample"
+    }
+  ]
+}

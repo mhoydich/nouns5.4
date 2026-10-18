@@ -1,0 +1,122 @@
+{
+  "title": "Hoydich Play: One Creature, a Company to Build",
+  "canonical": "https://www.industrynext.xyz/editorial/hoydich-play/",
+  "datePublished": "2026-10-18",
+  "researchDate": "2026-10-17",
+  "status": "Concept and research edition; no toy or app available",
+  "brandArchitecture": [
+    "Hoydich Enterprises",
+    "Hoydich Play (proposed toy division)",
+    "SIGNALSAURS (proposed first property)",
+    "ROOK / REX-01 (hero concept)"
+  ],
+  "productProposal": {
+    "audiences": [
+      "families with children 8–12, subject to professional age grading",
+      "adult collectors"
+    ],
+    "mechanics": "Stationary tabletop toy, two expressive motor axes; no walking",
+    "core": "Authored offline play, four AA cells, no onboard microphone or camera",
+    "AI": "Optional adult mission planner under investigation; not implemented or legally classified"
+  },
+  "planningEstimates": {
+    "msrpHypothesisUSD": 199,
+    "landedCostUSD": 48.998,
+    "landedCostQuantityBasis": 5000,
+    "fundingTargetUSD": 1396758.9702,
+    "note": "Scenario assumptions, not quotations, an offer, a revenue forecast or a fundraising request"
+  },
+  "archive": "https://pointcast.xyz/hoydich-play/",
+  "completePackage": "https://pointcast.xyz/hoydich-play/Hoydich-Play-Complete-Package.zip",
+  "files": [
+    {
+      "label": "Creative notes, campaign copy and prompts",
+      "url": "https://pointcast.xyz/hoydich-play/files/Creative-Production-Notes.txt",
+      "kind": "TXT"
+    },
+    {
+      "label": "Brand book / 20 pages",
+      "url": "https://pointcast.xyz/hoydich-play/files/Hoydich-Play-Brand-Book.pdf",
+      "kind": "PDF"
+    },
+    {
+      "label": "Editable cost and launch model",
+      "url": "https://pointcast.xyz/hoydich-play/files/Hoydich-Play-Cost-and-Launch-Model.xlsx",
+      "kind": "XLSX"
+    },
+    {
+      "label": "Research and go-to-market / 36 pages",
+      "url": "https://pointcast.xyz/hoydich-play/files/Hoydich-Play-Research-and-Go-to-Market.pdf",
+      "kind": "PDF"
+    },
+    {
+      "label": "Publication note / October 18, 2026",
+      "url": "https://pointcast.xyz/hoydich-play/files/PUBLICATION-NOTE.txt",
+      "kind": "TXT"
+    },
+    {
+      "label": "47-source research register",
+      "url": "https://pointcast.xyz/hoydich-play/files/Research-Source-Register.csv",
+      "kind": "CSV"
+    },
+    {
+      "label": "Start here / package guide",
+      "url": "https://pointcast.xyz/hoydich-play/files/START-HERE.txt",
+      "kind": "TXT"
+    },
+    {
+      "label": "Editable brand-guide content",
+      "url": "https://pointcast.xyz/hoydich-play/files/brand-assets/brand-guide-content.json",
+      "kind": "JSON"
+    },
+    {
+      "label": "Hoydich Play wordmark / editable SVG",
+      "url": "https://pointcast.xyz/hoydich-play/files/brand-assets/hoydich-play-wordmark.svg",
+      "kind": "SVG"
+    },
+    {
+      "label": "Signal stripes / editable SVG",
+      "url": "https://pointcast.xyz/hoydich-play/files/brand-assets/signal-stripes.svg",
+      "kind": "SVG"
+    },
+    {
+      "label": "SIGNALSAURS wordmark / editable SVG",
+      "url": "https://pointcast.xyz/hoydich-play/files/brand-assets/signalsaurs-wordmark.svg",
+      "kind": "SVG"
+    },
+    {
+      "label": "Editable strategy content",
+      "url": "https://pointcast.xyz/hoydich-play/files/brand-assets/strategy-content.json",
+      "kind": "JSON"
+    },
+    {
+      "label": "Daylight mood board / original PNG",
+      "url": "https://pointcast.xyz/hoydich-play/files/visuals/01-signalsaurs-moodboard.png",
+      "kind": "PNG"
+    },
+    {
+      "label": "Packaging concept / original PNG",
+      "url": "https://pointcast.xyz/hoydich-play/files/visuals/02-packaging-concept.png",
+      "kind": "PNG"
+    },
+    {
+      "label": "After Hours mood board / original PNG",
+      "url": "https://pointcast.xyz/hoydich-play/files/visuals/04-after-hours-moodboard.png",
+      "kind": "PNG"
+    },
+    {
+      "label": "Family advertisement / original PNG",
+      "url": "https://pointcast.xyz/hoydich-play/files/visuals/05-family-social-ad.png",
+      "kind": "PNG"
+    },
+    {
+      "label": "Collector advertisement / original PNG",
+      "url": "https://pointcast.xyz/hoydich-play/files/visuals/06-collector-social-ad.png",
+      "kind": "PNG"
+    }
+  ],
+  "credits": {
+    "conceptAndEditorialDirection": "Michael Hoydich",
+    "researchWritingDevelopment": "Codex"
+  }
+}
