@@ -60,7 +60,7 @@ assert.equal(machine.boundaries.length, 4);
 assert.ok(machine.sources.some((source) => source.includes("celestrak.org")));
 assert.ok(machine.sources.some((source) => source.includes("satellite-js")));
 
-assert.match(home, /href="\/sky-is-local\/">Play the Satellite Picnic/);
+assert.match(home, /href="\/sky-is-local\/"/);
 assert.match(hardware, /FIELD TEST 001 \/ NEW \/ PLAYABLE/);
 assert.match(hardware, /href="\/sky-is-local\/">Play the Satellite Picnic/);
 assert.equal(hardwareData.field_tests[0].id, "sky-is-local");

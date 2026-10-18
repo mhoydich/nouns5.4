@@ -25,7 +25,7 @@ assert.equal(record.canonicalApp, canonical);
 assert.match(record.agentPath.paymentStatusAtPublication, /not active on 2026-09-04/);
 assert.equal(record.liveStatusSource, `${canonical}.well-known/the-wild.json`);
 assert.equal(record.agentPath.futurePayment, "exactly $0.01 USDC on Base per action; explicit buyer signature only");
-assert.match(home, /LIVE TEST 03 \/ AGENT RITUAL/);
+assert.match(page, /FIELD FILE \/ LIVE TEST 03/);
 assert.match(home, /href="\/the-wild\/"/);
 assert.match(mirror, /href="\.\/the-wild\/"/);
 assert.match(mirror, /LIVE TEST 03 \/ AGENT RITUAL/);
