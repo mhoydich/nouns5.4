@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "source": {
+    "repository": "https://github.com/nounsDAO/nouns-monorepo",
+    "commit": "2213eea1c15f331f786784c2621d53bdecf907e2",
+    "asset_sha256": "a03f22b7838b35fdf0332617c9b8e2b032eb26cf1632afbefb200fec64c4bc20",
+    "artwork": "Original Nouns artwork; public domain / CC0 per official documentation"
+  },
+  "series": "nouns-money",
+  "seed_algorithm": "sha256-series-v1 (local trait selection; not an on-chain Noun ID)",
+  "transparent": true,
+  "size": 640,
+  "jobs": 4,
+  "elapsed_seconds": 0.006,
+  "items": [
+    {
+      "id": "noun-0001",
+      "seed": {
+        "background": 0,
+        "body": 14,
+        "accessory": 70,
+        "head": 89,
+        "glasses": 15
+      },
+      "traits": {
+        "background": "d5d7e1",
+        "body": "body-green",
+        "accessory": "accessory-none",
+        "head": "head-frog",
+        "glasses": "glasses-square-red"
+      },
+      "svg": "noun-0001.svg",
+      "png": "noun-0001.png",
+      "svg_sha256": "1b8b71f2166e38eeaa9b232c9e2529f462bbd4753d1c45ab20c27b63de58a5aa",
+      "png_sha256": "30460e65984e7a9382184960ec54542ea736f5e76177f4dd5c59fb4e55a316b3"
+    }
+  ]
+}
