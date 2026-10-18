@@ -1,0 +1,100 @@
+{
+  "schema": "industrynext.editorial.v1",
+  "slug": "el-segundo-motors",
+  "field_note": "004",
+  "title": "El Segundo Motors: a weekend case study in AI as the coordination layer",
+  "published": "2026-10-18",
+  "author": "Michael Hoydich",
+  "status": "concept; targets, not promises",
+  "canonical_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/",
+  "microsite_url": "https://claude.ai/artifact/M1btVPbW2yMK5tsqHqQE9Y",
+  "pointcast_url": "https://pointcast.xyz/el-segundo-motors/",
+  "process_attribution": "Michael Hoydich’s account; model names, workflow and spend are not independently verified.",
+  "model_guild": {
+    "orchestrator": "Claude Opus 5.5",
+    "threads": [
+      "Claude Sonnet 5.5",
+      "Claude Haiku 5.5",
+      "Claude Fable 5.1"
+    ],
+    "images": "ChatGPT image generation",
+    "implementation": "Codex"
+  },
+  "reported_claude_spend": {
+    "amount_usd": 67,
+    "approximate": true,
+    "basis": "Michael’s estimate at list prices; not an audited bill or the cost of a transport service"
+  },
+  "tides": [
+    {
+      "name": "High Tide",
+      "cars": "6–8",
+      "use": "Beach Saturdays and game days"
+    },
+    {
+      "name": "Half Tide",
+      "cars": "3–4",
+      "use": "Weekday peaks to Metro rail"
+    },
+    {
+      "name": "Low Tide",
+      "cars": "2",
+      "use": "Middays and evenings"
+    },
+    {
+      "name": "Slack Tide",
+      "cars": "1",
+      "use": "On call at night"
+    }
+  ],
+  "car_types": [
+    "Pilot",
+    "Open",
+    "Quiver",
+    "Level",
+    "Galley",
+    "Hold",
+    "Bandstand",
+    "Tender",
+    "Seminar",
+    "Hush"
+  ],
+  "proposed_operating_rules": [
+    "No towed riders: every car drives, brakes and steers itself",
+    "Coupling only at hubs",
+    "AI proposes; a human dispatcher approves"
+  ],
+  "business_thesis": {
+    "offer": "Sell service hours",
+    "prospective_customers": [
+      "LAX hotels",
+      "aerospace campuses",
+      "event organizers"
+    ],
+    "status": "Prospective uses; no customer or partner commitments claimed"
+  },
+  "phase_0": {
+    "name": "Saturday Tide",
+    "season_target": "summer 2027",
+    "leased_low_speed_shuttles": 4,
+    "operation": "Radio-linked virtual train",
+    "route_target": "Smoky Hollow via Main Street and Grand Avenue to the beach",
+    "saturdays_target": 10,
+    "budget_target_usd": [
+      145000,
+      260000
+    ],
+    "contingency_percent": 20,
+    "proposed_demand_gates": [
+      "At least 12 boardings per vehicle-hour",
+      "Peak loads above 85% on 6 of 10 Saturdays",
+      "30% of riders report they would otherwise have driven"
+    ],
+    "decision": "Build couplers only if demand supports moving forward; otherwise revise or stop the custom-vehicle track",
+    "status": "Proposal only; no expenditure, vehicle, route permission or date is authorized or booked"
+  },
+  "credits": "Michael Hoydich with Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, ChatGPT image generation and Codex",
+  "disclaimer": "Concept. Not affiliated with the City of El Segundo, LA Metro or any agency.",
+  "services_url": "https://www.industrynext.xyz/services/",
+  "contact": "mh@pointcast.xyz"
+}
