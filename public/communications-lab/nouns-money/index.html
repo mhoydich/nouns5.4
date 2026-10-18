@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4ecd8">
+  <meta name="description" content="Take a collectible Nouns art-note from paper study to production plan. An interactive edition desk with transparent, editable cost assumptions.">
+  <title>The production desk — Nouns Money Workshop · IndustryNext</title>
+  <link rel="canonical" href="https://www.industrynext.xyz/communications-lab/nouns-money/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The production desk — Nouns Money Workshop · IndustryNext">
+  <meta property="og:description" content="An interactive edition desk for collectible Nouns art-notes, with transparent, editable production-cost assumptions.">
+  <meta property="og:url" content="https://www.industrynext.xyz/communications-lab/nouns-money/">
+  <link rel="stylesheet" href="./desk.css">
+  <script type="module" src="./desk.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#desk">Skip to the production desk</a>
+  <header class="masthead wrap">
+    <a class="brand" href="https://www.industrynext.xyz/" aria-label="IndustryNext home"><span class="brand-mark" aria-hidden="true">iN</span> INDUSTRYNEXT</a>
+    <span class="mast-label">SMALL OBJECTS, CONSIDERED FULLY.</span>
+    <a class="text-link" href="https://pointcast.xyz/nouns-money/">Nouns Money collection ↗</a>
+  </header>
+  <main>
+    <section class="intro wrap" aria-labelledby="title">
+      <div class="intro-main"><p class="eyebrow"><span class="dot"></span> NOUNS MONEY WORKSHOP <span class="slash">/</span> 02 — PRODUCTION</p>
+      <h1 id="title">Good art.<br>A considered edition.</h1></div>
+      <div class="intro-aside"><p>Paper, people, a place on the shelf.<br>Turn one collectible art-note into a small production plan you can actually understand.</p><div class="edition-label"><span>THE PRODUCTION DESK</span><span>STUDY Nº 001</span></div></div>
+    </section>
+
+    <section id="desk" class="desk wrap" aria-label="Interactive production desk">
+      <div class="desk-top"><span><span class="small-square"></span> UNTITLED POSSIBILITIES / ONE EDITION AT A TIME</span><div class="desk-actions"><button type="button" id="reset">Reset study</button><button type="button" id="save-study">Save study</button><button type="button" id="download-top">Export brief <span aria-hidden="true">↓</span></button></div></div>
+      <div class="workspace">
+        <div class="specimen-column">
+          <div class="specimen" data-packaging="sleeve">
+            <div class="specimen-meta"><span>01 / OBJECT STUDY</span><span id="note-dimensions">180 × 70 MM</span></div>
+            <div class="paper-scene">
+              <div class="specimen-shadow" aria-hidden="true"></div>
+              <div class="story-card" aria-hidden="true"><span>NOUNS MONEY</span><b>A little art.<br>A longer story.</b><span>FIELD COLLECTION / 001</span></div>
+              <img class="note-art" src="./assets/garden-note.svg" alt="Garden study: an engraved-style green collectible art-note with an original pixel Nouns frog, red glasses and botanical linework." width="900" height="350">
+              <span class="measure" aria-hidden="true"><i></i> 180 mm <i></i></span>
+            </div>
+            <div class="specimen-bottom"><span>ORIGINAL NOUNS ART · CC0</span><span>COLLECTIBLE ART / SPECIMEN</span></div>
+          </div>
+          <div class="specimen-caption"><div><p class="eyebrow">THE SAMPLE EDITION</p><h2 id="edition-name">Garden study</h2><p id="object-summary">Warm uncoated · Numbered by hand · Glassine + story card</p></div><span class="edition-seal" aria-hidden="true">N°<br><b>001</b></span></div>
+          <div class="material-strip" aria-label="Selected production choices"><span><i class="swatch paper-swatch"></i><b id="material-tag">Warm uncoated</b></span><span><i class="swatch ink-swatch"></i>Forest &amp; vermilion</span><span><i class="swatch cut-swatch"></i>Hand-finished study</span></div>
+          <div class="design-handoff"><div><button type="button" id="import-design">Import a Workshop design ↗</button><button type="button" id="export-design" hidden>Export design JSON ↓</button></div><span id="design-identity">Garden specimen / local seed</span></div><p class="object-note">An original composition around authentic Nouns pixels. Import a shared Workshop JSON design to plan its production here. The engraving is a visual treatment; this sample does not specify an engraving print process.</p>
+        </div>
+
+        <div class="control-column">
+          <div class="tabs" role="tablist" aria-label="Production stages">
+            <button id="tab-material" role="tab" aria-selected="true" aria-controls="panel-material" tabindex="0"><span>01</span> Material</button>
+            <button id="tab-edition" role="tab" aria-selected="false" aria-controls="panel-edition" tabindex="-1"><span>02</span> Edition</button>
+            <button id="tab-economics" role="tab" aria-selected="false" aria-controls="panel-economics" tabindex="-1"><span>03</span> Economics</button>
+            <button id="tab-release" role="tab" aria-selected="false" aria-controls="panel-release" tabindex="-1"><span>04</span> Release</button>
+          </div>
+
+          <div id="panel-material" role="tabpanel" aria-labelledby="tab-material" class="panel">
+            <div class="panel-heading"><span class="eyebrow">START WITH THE THING</span><h2>Make it worth keeping.</h2><p>Give the note a tactile identity, then put a cost beside each choice.</p></div>
+            <label class="title-field">Production study name<input id="editionTitle" type="text" value="Garden study" maxlength="80" autocomplete="off"></label>
+            <div class="production-line"><span class="line-index">A</span><label>Paper<select id="paper"><option>Warm uncoated</option><option>Cotton rag study</option><option>Recycled cream</option></select></label><label class="money-input">USD / copy<div><span>$</span><input id="paperCost" aria-label="Paper cost per printed copy in USD" type="number" min="0" max="10000" step="0.01" value="0.60" inputmode="decimal" aria-describedby="error-paperCost"></div><small id="error-paperCost" class="field-error"></small></label></div>
+            <div class="production-line"><span class="line-index">B</span><div><span class="control-label">Printing</span><strong class="static-choice">Two-colour study</strong><small class="field-hint">A visual brief for your printer.</small></div><label class="money-input">USD / copy<div><span>$</span><input id="printCost" aria-label="Printing cost per printed copy in USD" type="number" min="0" max="10000" step="0.01" value="1.40" inputmode="decimal" aria-describedby="error-printCost"></div><small id="error-printCost" class="field-error"></small></label></div>
+            <div class="production-line"><span class="line-index">C</span><label>Finishing<select id="finishing"><option>Numbered by hand</option><option>Blind deboss study</option><option>Clean trimmed edge</option></select></label><label class="money-input">USD / copy<div><span>$</span><input id="finishCost" aria-label="Finishing cost per printed copy in USD" type="number" min="0" max="10000" step="0.01" value="0.45" inputmode="decimal" aria-describedby="error-finishCost"></div><small id="error-finishCost" class="field-error"></small></label></div>
+            <div class="production-line"><span class="line-index">D</span><label>Packaging<select id="packaging"><option>Glassine + story card</option><option>Simple paper band</option><option>Flat archival sleeve</option></select></label><label class="money-input">USD / copy<div><span>$</span><input id="packagingCost" aria-label="Packaging cost per printed copy in USD" type="number" min="0" max="10000" step="0.01" value="0.75" inputmode="decimal" aria-describedby="error-packagingCost"></div><small id="error-packagingCost" class="field-error"></small></label></div>
+            <p class="assumption-note">Every amount is an editable example, not a printer quote. Changing a material description keeps your cost assumption.</p>
+            <button class="next-step" type="button" data-next="edition">Plan the edition <span>02 →</span></button>
+          </div>
+
+          <div id="panel-edition" role="tabpanel" aria-labelledby="tab-edition" class="panel" hidden>
+            <div class="panel-heading"><span class="eyebrow">SMALL IS A REAL STRATEGY</span><h2>Choose a useful scale.</h2><p>Keep a proof. Keep an archive copy. Decide how much work the edition should be.</p></div>
+            <div class="run-buttons" aria-label="Print run presets"><button type="button" data-run="10" aria-pressed="false"><b>10</b><span>First proof run</span></button><button type="button" data-run="25" aria-pressed="true"><b>25</b><span>Small edition</span></button><button type="button" data-run="100" aria-pressed="false"><b>100</b><span>Shelf collection</span></button></div>
+            <div class="input-grid"><label>Total printed<input id="run" type="number" min="0" max="10000" step="1" value="25" inputmode="numeric" aria-describedby="error-run"><small id="error-run" class="field-error"></small></label><label>Proofs + archive copies<input id="retained" type="number" min="0" max="10000" step="1" value="2" inputmode="numeric" aria-describedby="error-retained"><small id="error-retained" class="field-error"></small></label></div>
+            <div class="run-visual" id="run-visual" aria-hidden="true"></div><p class="run-caption" id="run-caption"></p>
+            <div class="section-label">ONE-TIME WORK / USD</div><div class="input-grid thirds"><label>Print setup<input id="setupCost" type="number" min="0" max="1000000" step="0.01" value="65" inputmode="decimal" aria-describedby="error-setupCost"><small id="error-setupCost" class="field-error"></small></label><label>Physical proof<input id="proofCost" type="number" min="0" max="1000000" step="0.01" value="35" inputmode="decimal" aria-describedby="error-proofCost"><small id="error-proofCost" class="field-error"></small></label><label>Studio labour<input id="laborCost" type="number" min="0" max="1000000" step="0.01" value="45" inputmode="decimal" aria-describedby="error-laborCost"><small id="error-laborCost" class="field-error"></small></label></div>
+            <label class="inline-field">Contingency on all production costs <div><input id="contingency" type="number" min="0" max="100" step="0.01" value="10" aria-describedby="error-contingency"><span>%</span></div><small id="error-contingency" class="field-error"></small></label>
+            <button class="next-step" type="button" data-next="economics">Look at the economics <span>03 →</span></button>
+          </div>
+
+          <div id="panel-economics" role="tabpanel" aria-labelledby="tab-economics" class="panel" hidden>
+            <div class="panel-heading"><span class="eyebrow">MAKE THE ASSUMPTIONS VISIBLE</span><h2>A price with a reason.</h2><p>Explore a studio shelf, a shop counter, or a gallery. These are distribution concepts, not active offers.</p></div>
+            <label>Collection context<select id="channel"><option value="Studio direct">Studio direct</option><option value="Shared shop counter">Shared shop counter</option><option value="Gallery collection">Gallery collection</option></select></label>
+            <p class="field-hint">Set the channel deduction below; choosing a context keeps your rate.</p><div class="input-grid economics-inputs"><label>Proposed price / USD<input id="price" type="number" min="0" max="1000000" step="0.01" value="18" inputmode="decimal" aria-describedby="error-price"><small id="error-price" class="field-error"></small></label><label>Channel deduction / %<input id="channelCut" type="number" min="0" max="100" step="0.01" value="0" inputmode="decimal" aria-describedby="error-channelCut"><small id="error-channelCut" class="field-error"></small></label></div>
+            <label class="sell-label" for="sellThrough">Assumed sell-through <strong><output id="sellThrough-value">100</output>%</strong></label><input id="sellThrough" type="range" min="0" max="100" step="1" value="100"><small class="field-hint">Whole copies, rounded down. No sales have taken place.</small>
+            <div class="receipt"><div><span>Planned retail revenue</span><b id="gross">—</b></div><div><span>Channel deductions</span><b id="deductions">—</b></div><div><span>Net receipts</span><b id="receipts">—</b></div><div><span>Entire edition cost</span><b id="receipt-cost">—</b></div><div class="receipt-total"><span>Modeled surplus / loss</span><b id="surplus">—</b></div></div>
+            <div class="recovery"><div><span class="eyebrow">CASH BREAK-EVEN</span><strong id="break-even">—</strong></div><p id="recovery-copy"></p></div>
+            <button class="next-step" type="button" data-next="release">Prepare the release <span>04 →</span></button>
+          </div>
+
+          <div id="panel-release" role="tabpanel" aria-labelledby="tab-release" class="panel" hidden>
+            <div class="panel-heading"><span class="eyebrow">FROM SCENARIO TO SPECIFICATION</span><h2>The last careful mile.</h2><p>Use this as a working checklist. Checking an item records your note here; it does not verify production or publish anything.</p></div>
+            <div class="checklist"><label><input type="checkbox" data-check="proof"><span><strong>Inspect a physical proof</strong><small>Actual size, legibility, paper, trim and colour.</small></span></label><label><input type="checkbox" data-check="quote"><span><strong>Replace estimates with a quote</strong><small>Confirm stock, process, setup, finishing and delivery.</small></span></label><label><input type="checkbox" data-check="rights"><span><strong>Keep the art record with the edition</strong><small>Original seed, asset version, CC0 source and your composition.</small></span></label><label><input type="checkbox" data-check="pack"><span><strong>Pack and photograph one complete piece</strong><small>Protect edges. Show the object at its actual scale.</small></span></label><label><input type="checkbox" data-check="story"><span><strong>Write an honest collection card</strong><small>What it is, how it was made, and what the edition includes.</small></span></label></div>
+            <p class="check-progress" id="check-progress">0 of 5 marked in this study.</p>
+            <button type="button" id="download" class="primary-button">Export production brief <span>↓</span></button>
+            <div class="secondary-actions"><button type="button" id="print">Print brief</button><button type="button" id="import">Import desk brief</button><input type="file" id="import-file" accept=".json,application/json" hidden></div>
+            <p class="assumption-note">A local working file, with assumptions, calculations and any imported Workshop design. Collectible art only; no currency, redemption or financial claim. Nothing is ordered or sold here.</p>
+          </div>
+          <p id="status" class="status" role="status" aria-live="polite"></p><p class="storage-note">Save study keeps one version in this browser only. Clearing browser data removes it.</p>
+        </div>
+      </div>
+      <div class="totals" aria-live="polite" aria-atomic="true"><div><span class="eyebrow">EDITION OUTLAY</span><strong id="total-cost">—</strong><small id="cost-detail">All production paid upfront</small></div><div><span class="eyebrow">COST / AVAILABLE COPY</span><strong id="unit-cost">—</strong><small id="unit-detail">After proofs + archive</small></div><div><span class="eyebrow">MODELED EDITION MARGIN</span><strong id="margin">—</strong><small>Surplus ÷ net receipts</small></div><button type="button" data-next="economics" class="total-cta">Follow the numbers <span>↗</span></button></div>
+      <noscript><p class="no-script">This desk needs JavaScript for calculations and stage controls. All amounts shown in the fields are illustrative, not calculated results.</p></noscript>
+    </section>
+
+    <section class="comparison wrap" aria-labelledby="comparison-title"><div class="section-intro"><div><p class="eyebrow">SAME OBJECT. THREE SCALES.</p><h2 id="comparison-title">The shape of a small run.</h2></div><p>Same unit rates, fixed work and channel assumptions. No volume discount is invented.</p></div><div class="comparison-cards" id="comparison-cards"></div><p class="fine-print">Assumes the entire run is funded upfront. Taxes, shipping, equipment, storage and unentered overhead are excluded. Add them to your cost assumptions before making a real production decision.</p></section>
+
+    <section class="business wrap" aria-labelledby="business-title"><div class="business-intro"><p class="eyebrow">THE BUSINESS OF A SMALL OBJECT</p><h2 id="business-title">A collection begins<br>with a clear promise.</h2><p>One beautiful object. A legible story. A production plan sized to the people who might care.</p></div><div class="business-copy"><article><span>01</span><div><h3>Sell the object, tell the truth.</h3><p>A collectible note is a piece of art. Its story lives in the image, material and care of making. Edition numbers describe the proposed run; they do not promise scarcity, resale value or returns.</p></div></article><article><span>02</span><div><h3>A shelf is part of the design.</h3><p>A studio collection can explain the process. A retail counter needs a clear card and protective packaging. A gallery can add context, with its share visible in the model. Choose the setting before finalising the economics.</p></div></article><article><span>03</span><div><h3>Recover the run, then learn.</h3><p>A lower unit cost can hide a larger commitment. Compare total outlay, available copies and the sales needed to recover the full run. Keep the first edition small enough to improve after handling a real proof.</p></div></article></div></section>
+
+    <section class="method wrap"><details><summary>How the model works <span>+</span></summary><div class="method-content"><p>All amounts are illustrative USD assumptions. Fixed work is setup + physical proof + studio labour. Variable cost is printed copies × (paper + printing + finishing + packaging). Contingency applies to their sum. Proofs and archive copies come out of the run and cannot exceed it.</p><p>Available copies = printed − retained. Planned sales = floor(available × sell-through). Channel deductions round to the nearest cent for each sold copy. Net receipts = planned sales × (price − deduction per sale). Surplus = net receipts − the entire edition cost. Edition margin = surplus ÷ net receipts; it is undefined when net receipts are zero.</p><p>Cash break-even = ceiling(entire edition cost ÷ net receipt per sale). This is recovery of an upfront edition, so unsold and retained copies are already paid for. A zero print run still includes any fixed costs entered. Zero edition cost needs zero sales to recover; positive cost with zero net receipt cannot be recovered. A recovery count above available copies is outside the run.</p><p>Material and channel labels describe a concept. They do not automatically replace your rate assumptions. The projection has no volume discounts, actual printer quotes, customer data, orders or payment flow.</p></div></details><details><summary>Original artwork &amp; provenance <span>+</span></summary><div class="method-content"><p>The frog uses original Nouns geometry from the official <a href="https://github.com/nounsDAO/nouns-monorepo/tree/2213eea1c15f331f786784c2621d53bdecf907e2">Nouns monorepo snapshot</a>. Nouns artwork is <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 / public domain</a>. The surrounding note design is a new composition. No official affiliation is implied.</p><p>Default Garden study seed: background 0 / body 14 / accessory 70 / head 89 / glasses 15. This is a reproducible trait combination, not a minted Noun ID or proof of ownership. <a href="./assets/manifest.json">Portrait manifest</a> · <a href="./assets/provenance.json">Source record</a> · <a href="./assets/LICENSE.txt">Upstream code licence</a>.</p><p>The note is a screen specimen. Arrange bleed, colour separations, stock, trim and a physical proof with your printer before production. The SVG preserves the canonical portrait rectangles.</p></div></details></section>
+    <section id="print-brief" class="print-brief" aria-label="Printable production brief"></section>
+  </main>
+  <footer class="footer wrap"><div class="footer-title">NOUNS MONEY<br><span>WORKSHOP</span></div><p>Design an object. Understand its production.<br>Keep the assumptions in the open.</p><div><a href="https://www.industrynext.xyz/communications-lab/">IndustryNext Communications Lab ↗</a><a href="https://pointcast.xyz/nouns-money/gallery/">Explore the existing Nouns Money gallery ↗</a><a href="https://pointcast.xyz/nouns-money/workshop/">PointCast Design Workshop ↗</a><a href="https://pointcast.xyz/ues/currency-lab/">UES Currency Lab ↗</a><small>Independent collectible-art study · Local browser state</small></div></footer>
+</body>
+</html>

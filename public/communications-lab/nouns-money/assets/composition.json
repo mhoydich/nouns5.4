@@ -1,0 +1,13 @@
+{
+  "title": "Garden study",
+  "dimensions": {
+    "width": 180,
+    "height": 70,
+    "unit": "mm"
+  },
+  "purpose": "screen specimen; not press-ready artwork",
+  "portrait": "noun-0001.svg",
+  "portrait_sha256": "1b8b71f2166e38eeaa9b232c9e2529f462bbd4753d1c45ab20c27b63de58a5aa",
+  "composition_sha256": "07aa90c4dd7fd073b9d110b7b2964b965b2c0758e272c18d1da4f7200008015b",
+  "original_geometry_preserved": true
+}
