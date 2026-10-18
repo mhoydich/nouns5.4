@@ -40,7 +40,7 @@ for (const file of files) {
 }
 
 const home = await readFile(resolve(publicDir, "index.html"), "utf8");
-const footerStart = home.indexOf('<footer class="site-footer">');
+const footerStart = home.search(/<footer\b[^>]*>/);
 const footerEnd = home.indexOf("</footer>", footerStart);
 const homeMount = home.indexOf("data-pointcast-network");
 assert.ok(footerStart !== -1 && homeMount > footerStart && homeMount < footerEnd, "homepage ad must live inside the site footer");

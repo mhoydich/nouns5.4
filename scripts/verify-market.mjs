@@ -165,7 +165,7 @@ assert.ok(data.opportunities.filter((item) => item.kind === "job").every((job) =
 assert.ok(data.opportunities.every((item) => item.organization_id === "industry-next"));
 
 for (const doorway of [home, desk, product, services, role, tagPage]) assert.match(doorway, /href="\/market\/"/);
-assert.match(home, /Bounded tasks, starter proofs, operating scopes/);
+assert.match(html, /bounded task, the organization standing behind it, and the reward rail funding it/);
 assert.match(home, /Work Market/);
 assert.match(headers, /\/market\.json[\s\S]*Content-Type: application\/json/);
 assert.match(sitemap, /industrynext\.xyz\/market\//);
