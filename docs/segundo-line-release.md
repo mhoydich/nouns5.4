@@ -1,40 +1,36 @@
 # Segundo Line — Field Note 004 review draft
 
-Status: incomplete draft for Michael's review. Do not merge or publish to production.
+Status: image-complete draft for Michael's review. Do not merge or publish to production.
 
-Repository: `mhoydich/nouns5.4`; isolated branch `codex/segundo-line-field-note-20261018`, based on `ba12d0040e24da0163b22ecc860d875fd854b482` (Nouns Money merge).
+Repository: `mhoydich/nouns5.4`; isolated branch `codex/segundo-line-field-note-20261018`. Latest published main `513e38a` (homepage PR #8 and Hoydich Play PR #9) was merged cleanly into this branch; its homepage and unrelated work are preserved unchanged.
 
 ## Scope
 
 - New Field Note 004 at `/editorial/el-segundo-motors/`, using the existing numbered Field Note shell, a page-scoped stylesheet, Services intake CTA, and article metadata.
 - JSON twin at `/el-segundo-motors.json` and both sitemap entries.
-- Homepage, mirror homepage, existing articles, shared styles, dependencies and application code unchanged.
+- Four supplied original illustrations, WebP viewing copies, original JPEG full-size links, descriptive alt text, intrinsic dimensions, captions and hero social metadata.
+- Homepage, mirror homepage, existing articles, shared styles, dependencies and application code unchanged relative to published main.
 - Michael's reported model guild and approximately $67 Claude list-price estimate are attributed to his account. Transport capabilities, summer 2027, $145k–$260k, business customers and pilot gates are proposals, not results or commitments.
 - The supplied public microsite was inspected as source content. It supplies the route detail, 20% contingency, and demand gates: at least 12 boardings/vehicle-hour, peak loads above 85% on 6 of 10 Saturdays, and 30% reporting they would otherwise have driven.
 
-## Required originals: unresolved
+## Original images: verified
 
-The Library search identified these metadata candidates from October 17, 2026. None is yet a visually verified local original. The hero has a related variant that must be compared before final selection.
+Michael directly attached the four originals on October 18 at 20:10 UTC and explicitly authorized adding them to both previews while retaining the publication hold. They were materialized on this consuming Mac with the current Library resolved-reference transfer helper and visually inspected. This resolves the earlier Library candidate/download blocker; the earlier metadata candidates are superseded by these supplied originals.
 
-| Role | Library candidate | Library ID | Underlying file ID |
+| Role | Original | Dimensions | Resolved Library ID |
 | --- | --- | --- | --- |
-| Hero | Butterfly blue seaside people mover.png | `libfile_e92b505b2dd88191bdc60ae4003bb15a` | `file_000000005d948230b93135d6970ba2da` |
-| Hero comparison | Sunset pod train with unbranded surfboards.png | `libfile_a3476e28e488819198e0b726f5bae673` | `file_00000000699081f882af62eab7774f87` |
-| Car types | Ten modular electric road pods.png | `libfile_9c8b082a168c81919e34860413c1695d` | `file_00000000a3c881fdbf2026be28228898` |
-| Tide | The Tide: Coastal Transit Through Time.png | `libfile_84ca4f372be48191ad259e572da491da` | `file_000000008a9881fd951c7df7ad0ee95d` |
-| Coupling | Sunset Pods Beneath the Elevated Metro.png | `libfile_a9c546800f8c8191b491f8e88796950e` | `file_00000000277081f6a1944a244f213d58` |
+| Six-pod beach-road hero | `line-hero.jpg` | 1456 × 818 | `libfile_ee714426165081918cfe3b58f5084937` |
+| Ten-car types plate | `line-cars.jpg` | 1409 × 770 | `libfile_fd0fb7c610148191a23027c6ce7e2731` |
+| The Tide poster | `line-tide.jpg` | 942 × 1209 | `libfile_83f55c504b8481919a8b42774ac3263f` |
+| Metro coupling scene | `line-station.jpg` | 1455 × 818 | `libfile_f2ac164fe0ec8191b93277343db2657a` |
 
-The mandated current Library bundled download helper was invoked on the consuming Mac with a local destination. It failed with `Library prepare_materialize is not available`; a single retry after new capability evidence returned the same result. No bytes were materialized. This is a capability blocker, not a policy denial.
-
-Do not substitute generated artwork, guessed storage URLs, public microsite extractions or a remote sandbox path. Complete the approved Library retrieval, inspect actual files, select the matching four, insert them with dimensions/alt text/captions, then rerun validation on the final commit. Current HTML deliberately contains no broken image references or substitute art; social metadata is text-only until the real hero is available.
+All assets are in `public/editorial/el-segundo-motors/images/`. `image-provenance.json` records original and WebP SHA-256 hashes, dimensions, byte sizes, source IDs and optimization. The original JPEGs are byte-for-byte copies; the WebPs retain the full original frame and dimensions at quality 90. Nothing was cropped, redrawn, relabeled or replaced. The plate and poster have descriptive prose and full-size links so their text remains available on small displays.
 
 ## Validation and release boundary
 
-- `npm ci --ignore-scripts` and `npm run build` pass; no dependency changes. npm reports 18 existing dependency advisories (6 low, 5 moderate, 7 high).
-- `npm run verify:agent-futures` and `npm run verify:services` pass.
-- `npm run verify:open-ad-network` fails on the pre-existing Communications Lab page: the verifier requires an ad mount, while the build deliberately excludes that educational section. Both files and Communications Lab are unchanged in this branch.
-- `git diff --check` passes. Homepage and mirror homepage are byte-unchanged from the base.
-- Independent source review requested; its focus-contrast finding is corrected with dark focus outlines on light sections.
-- Browser checks cover desktop, mobile, skip link, section navigation, link focus, article JSON and Services intake target. Preview verification and any remaining findings belong in the draft PR record.
+- Locked dependencies are unchanged. npm reports 18 existing dependency advisories (6 low, 5 moderate, 7 high).
+- The image-complete source passes the build, Agent Futures editorial verifier, Services verifier, homepage verifier, and diff whitespace check. All eight original/WebP hashes, byte sizes and dimensions match the provenance manifest; local references, full-size links, alt text and JSON agree. Independent review and desktop/mobile/keyboard results for the exact published preview commit are recorded in draft PR #7.
+- `verify:open-ad-network` has a pre-existing failure on Communications Lab: the verifier requires an ad mount, while the build deliberately excludes that educational section. The verifier and lab are unchanged relative to main.
+- Light-section links use dark focus outlines; image-caption links retain contrasting light outlines on their dark backgrounds.
 
-Only a non-production branch preview is authorized. The IndustryNext homepage redesign has separate homepage-only publication approval; that approval does not cover this Field Note. Reconcile fresh main and coordinate the release before any future approved publication. Do not merge or deploy production without Michael's review.
+Only a non-production branch preview is authorized. Previously approved homepage publication does not authorize release of this Field Note. Reconcile fresh main and coordinate the release before any future approved publication. Do not merge or deploy production without Michael's review.

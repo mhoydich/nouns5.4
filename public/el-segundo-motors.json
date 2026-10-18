@@ -96,5 +96,48 @@
   "credits": "Michael Hoydich with Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, Claude Fable 5.1, ChatGPT image generation and Codex",
   "disclaimer": "Concept. Not affiliated with the City of El Segundo, LA Metro or any agency.",
   "services_url": "https://www.industrynext.xyz/services/",
-  "contact": "mh@pointcast.xyz"
+  "contact": "mh@pointcast.xyz",
+  "image_provenance_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/image-provenance.json",
+  "images": [
+    {
+      "role": "hero",
+      "alt": "Six coupled blue-and-cream Segundo Line pods carry riders, surfboards, bikes and a coffee counter along a palm-lined beach road at sunset.",
+      "width": 1456,
+      "height": 818,
+      "credit": "ChatGPT image generation",
+      "status": "Concept illustration",
+      "url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-hero.webp",
+      "original_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-hero.jpg"
+    },
+    {
+      "role": "car-types",
+      "alt": "The Segundo Line car-type plate: Pilot, Open, Quiver, Level, Galley, Hold, Bandstand, Tender, Seminar and Hush, shown in two labeled rows.",
+      "width": 1409,
+      "height": 770,
+      "credit": "ChatGPT image generation",
+      "status": "Concept illustration",
+      "url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-cars.webp",
+      "original_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-cars.jpg"
+    },
+    {
+      "role": "tide",
+      "alt": "The Tide concept poster shows one pod at 6 AM, four cars at 8 AM, eight cars on Saturday at 11 AM, and one on-call pod at 11 PM.",
+      "width": 942,
+      "height": 1209,
+      "credit": "ChatGPT image generation",
+      "status": "Concept illustration",
+      "url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-tide.webp",
+      "original_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-tide.jpg"
+    },
+    {
+      "role": "metro-coupling",
+      "alt": "Two Segundo Line pods meet at an illuminated coupling beneath an elevated Metro train at dusk, beside riders with bikes, a wheelchair and a stroller.",
+      "width": 1455,
+      "height": 818,
+      "credit": "ChatGPT image generation",
+      "status": "Concept illustration",
+      "url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-station.webp",
+      "original_url": "https://www.industrynext.xyz/editorial/el-segundo-motors/images/line-station.jpg"
+    }
+  ]
 }
