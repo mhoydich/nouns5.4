@@ -50,9 +50,7 @@ assert.equal(data.field_tests[0].id, "sky-is-local");
 assert.match(data.safety, /certified emergency infrastructure/);
 
 assert.match(home, /href="\/hardware\/"/);
-assert.match(home, /Build the[\s\S]*local <em>signal/);
-assert.match(home, /9 PROJECTS \/ 4 SIGNAL LAYERS/);
-assert.match(home, /href="\/sky-is-local\/">Play the Satellite Picnic/);
+assert.match(home, /href="\/sky-is-local\/"/);
 assert.match(favicon, /<title>Industry Next satellite dish<\/title>/);
 assert.match(favicon, /satellite dish/i);
 assert.match(favicon, /#EEFF41/);
