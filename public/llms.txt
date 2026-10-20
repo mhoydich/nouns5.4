@@ -1,0 +1,35 @@
+# Industry Next
+
+> Industry Next is an independent AI and creative studio in El Segundo, California, run by Michael Hoydich: useful tools, playable worlds, considered objects.
+
+Descriptions below are taken from each page's own meta description. Canonical site: https://www.industrynext.xyz/
+
+## Studio and services
+
+- [Home](https://www.industrynext.xyz/): the studio's front page.
+- [Services](https://www.industrynext.xyz/services/): working AI products, media formats, commerce systems, cultural tools, and organizational workflows.
+- [AI Working Sessions](https://www.industrynext.xyz/help/): fixed-fee working sessions and build days for one stuck piece of work.
+- [Expert Network](https://www.industrynext.xyz/experts/): small expert pods that create evaluations, rubrics, edge cases, and human judgment for AI organizations.
+- [Hello, Free Time](https://www.industrynext.xyz/agents/): show the studio one repetitive job; includes a proposed pilot.
+- [Product Desk](https://www.industrynext.xyz/product/): product-manager charter, work board, and decision rights.
+- [Work Market](https://www.industrynext.xyz/market/): public jobs and bounded tasks with explicit token or credit reward terms.
+- [Starting Line](https://www.industrynext.xyz/early-career/): resources, field guides, first tasks, and open roles for interns and recent graduates.
+
+## Projects and reading
+
+- [About Nouns](https://www.industrynext.xyz/about/): a short thesis on Nouns, CC0, and what becomes possible when permission is the starting point.
+- [What's Next](https://www.industrynext.xyz/next/): field map and open builds.
+- [The Sky Is Local](https://www.industrynext.xyz/sky-is-local/): live orbital pass predictions over El Segundo and a receive-only browser instrument.
+- [Build the Local Signal](https://www.industrynext.xyz/hardware/): field guide to open mesh communication, neighborhood media, radio, and satellite listening.
+- [The Wild](https://www.industrynext.xyz/the-wild/): a small x402 experiment in agent stewardship and visible one-cent rituals.
+- [Top Coder](https://www.industrynext.xyz/top-coder/): browser challenge desk for repairing small systems and collecting proof receipts.
+- [The Desk](https://www.industrynext.xyz/desk/): task assignment, repeatable rituals, and clean handoffs.
+- [Communications Lab](https://www.industrynext.xyz/communications-lab/): an independent communications lab for Mike, agents and future interns.
+- [Drum Nouns Jam](https://www.industrynext.xyz/jam/): a mobile-first collaborative drum clicker with Nouns-inspired avatars and Tezos collectible minting.
+- [Made](https://www.industrynext.xyz/made/): public works and remix lineages from Open Studio 002.
+
+## Machine-readable
+
+- [Sitemap](https://www.industrynext.xyz/sitemap.xml): all indexable pages and JSON files.
+- [agents.json](https://www.industrynext.xyz/agents.json): JSON manifest for the Hello, Free Time agent-services counter.
+- [services.json](https://www.industrynext.xyz/services.json), [help.json](https://www.industrynext.xyz/help.json), [experts.json](https://www.industrynext.xyz/experts.json), [market.json](https://www.industrynext.xyz/market.json): JSON companions to the pages above.
