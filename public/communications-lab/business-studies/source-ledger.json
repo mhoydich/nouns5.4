@@ -1,0 +1,105 @@
+{
+  "version": "2026-10-03.1",
+  "observed_on": "2026-10-03",
+  "scope": "Six official indicators covering El Segundo, the Los Angeles metropolitan area, California, U.S. retail coffee prices, and the global green-coffee market. This is a bounded source-backed teaching edition, not a local business census or shop revenue database.",
+  "facts": [
+    {
+      "id": "us-retail-coffee-price",
+      "title": "U.S. retail coffee prices",
+      "display_value": "+6.1% year over year",
+      "unit": "percent change",
+      "geography": "U.S. city average",
+      "period": "August 2025 to August 2026",
+      "kind": "official published statistic",
+      "source_id": "bls-us-coffee-202608",
+      "summary": "The national coffee CPI-U category increased 6.1% over twelve months. Its August month-to-month change was −0.9% before seasonal adjustment.",
+      "limitations": "It is not a café menu-price index, wholesale bean quote, dollar price per pound, local demand measure or shop margin.",
+      "url": "https://www.bls.gov/news.release/cpi.t02.htm",
+      "observed_on": "2026-10-03"
+    },
+    {
+      "id": "la-food-away-price",
+      "title": "Los Angeles food service price backdrop",
+      "display_value": "+2.4% year over year",
+      "unit": "percent change",
+      "geography": "Los Angeles–Long Beach–Anaheim; Los Angeles and Orange counties",
+      "period": "August 2025 to August 2026",
+      "kind": "official published statistic",
+      "source_id": "bls-la-cpi-202608",
+      "summary": "The area's food-away-from-home CPI-U increased 2.4% over twelve months and was unchanged from July to August.",
+      "limitations": "The metro index is broader than coffee, is not seasonally adjusted, and has a smaller sample than the national CPI. It does not measure an El Segundo café or compare price levels between cities.",
+      "url": "https://www.bls.gov/regions/west/news-release/consumerpriceindex_losangeles.htm",
+      "observed_on": "2026-10-03"
+    },
+    {
+      "id": "california-general-wage-floor",
+      "title": "California general wage floor",
+      "display_value": "$16.90/hour",
+      "unit": "USD per hour",
+      "geography": "California",
+      "period": "Effective January 1, 2026",
+      "kind": "official published rule",
+      "source_id": "ca-dir-minimum-wage-2026",
+      "summary": "California's general minimum wage is $16.90 per hour for employers outside a higher industry or local wage requirement.",
+      "limitations": "Some localities and industries have higher requirements. Do not apply this general floor to every café or chain; verify the workplace and applicable rules. The calculator’s $19,000 fixed budget is an invented teaching assumption, not a statutory wage or reported shop payroll.",
+      "url": "https://www.dir.ca.gov/dlse/FAQ_MinimumWage.htm",
+      "observed_on": "2026-10-03"
+    },
+    {
+      "id": "el-segundo-resident-context",
+      "title": "El Segundo resident context",
+      "display_value": "16,379 residents",
+      "unit": "estimated residents",
+      "geography": "El Segundo city, California",
+      "period": "July 1, 2025 estimate (V2025); income period 2020–2024",
+      "kind": "official published estimate",
+      "source_id": "census-el-segundo-quickfacts",
+      "summary": "Census estimates 16,379 city residents on July 1, 2025. The 2020–2024 median household income is $150,737 in 2024 dollars.",
+      "limitations": "City residents are not the population of the 25-mile atlas. Household income is not individual purchasing power; neither figure counts café customers, commuters, airport visitors or daytime workers. Five-year income estimates are historical averages.",
+      "url": "https://www.census.gov/quickfacts/fact/table/elsegundocitycalifornia/PST045224",
+      "observed_on": "2026-10-03"
+    },
+    {
+      "id": "global-coffee-forecast",
+      "title": "Global supply outlook",
+      "display_value": "189.7m / 179.7m bags",
+      "unit": "million 60-kilogram bags",
+      "geography": "World",
+      "period": "USDA July 2026 forecast for 2026/27",
+      "kind": "official forecast",
+      "source_id": "usda-coffee-july-2026",
+      "summary": "USDA forecasts 2026/27 world coffee production at 189.7 million bags and consumption at 179.7 million bags; each bag is 60 kilograms.",
+      "limitations": "Forecasts can change. Marketing-year calendars vary by country. Production minus consumption is not a shop profit, delivered inventory forecast or complete stocks/trade accounting. Do not splice these figures with ICO coffee-year balances without explaining their different periods and methods.",
+      "url": "https://apps.fas.usda.gov/psdonline/circulars/coffee.pdf",
+      "observed_on": "2026-10-03"
+    },
+    {
+      "id": "green-coffee-indicator",
+      "title": "Global green-coffee price signal",
+      "display_value": "287.29 US cents/lb",
+      "unit": "US cents per pound",
+      "geography": "ICO international composite",
+      "period": "August 2026 monthly average",
+      "kind": "official published market indicator",
+      "source_id": "ico-cmr-202608",
+      "summary": "ICO's composite green-coffee indicator averaged 287.29 US cents per pound in August, compared with 287.26 in July.",
+      "limitations": "The composite is not the invoice price of a specialty lot or roasted bag. Differentials, quality, contracts, currency, freight, yield loss and timing affect a roaster's actual cost.",
+      "url": "https://www.ico.org/documents/cy2025-26/cmr-0826-e.pdf",
+      "observed_on": "2026-10-03"
+    }
+  ],
+  "methodology": {
+    "collection": "Read official BLS, Census, California DIR, USDA FAS and ICO pages or reports directly. Search results alone were not treated as evidence. Merchant-specific cases must be grounded in the separate café/roaster source research.",
+    "date_handling": "Observation date is October 3, 2026. Release dates, effective dates and statistical periods are independent fields. Unknown publication days remain null.",
+    "geography": "Resident figures describe city limits; LA CPI describes a two-county metro area; state wage rules depend on workplace jurisdiction; national/global indicators do not resolve individual shops.",
+    "model_handling": "All business-model numbers are hypothetical. Models deliberately omit actual merchant revenues and private financial data.",
+    "limitations": [
+      "This is not an exhaustive census of cafés, roasters or market conditions.",
+      "No shop's stock, sales, revenue, employment or customer retention has been inferred.",
+      "Public assortment and opening-hour pages can become stale and require merchant rechecking.",
+      "Data from different agencies have different definitions and periods; forecasts cannot be compared as realized sales.",
+      "A sensitivity exercise illustrates a mechanism and cannot forecast a specific shop's outcome."
+    ],
+    "attribution": "Use direct source links adjacent to each statistic. Paraphrase factual statements; no third-party artwork is included in this research file."
+  }
+}
