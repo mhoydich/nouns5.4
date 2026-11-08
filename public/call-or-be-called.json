@@ -16,7 +16,7 @@
     { "id": "r05", "level": 5, "name": "Many Doors, One Clerk", "direction": "both", "core": "One brain across phone, web voice, chat, SMS, WhatsApp, a QR on the package and a read-only MCP door for agents." },
     { "id": "r06", "level": 6, "name": "The Regulated Kitchen", "direction": "both", "core": "Rules in tools, approved answer bank, recording notice, health and legal questions to trained humans, counsel review." },
     { "id": "r07", "level": 7, "name": "Be Called, Properly", "direction": "outbound", "core": "Written consent, DNC scrub, local calling hours, business ID first, automated opt-out, honor stop words within ten business days." },
-    { "id": "r08", "level": "bonus", "name": "The Call You Hope to Get", "direction": "outbound", "core": "Opt-in members, one short question, published free-entry rules, never ask for money, reveal the reward where people can trust it." }
+    { "id": "r08", "level": "bonus", "name": "The Call You Hope to Get", "direction": "outbound", "core": "Opt-in members, one short question, the call itself is the reward, no prizes, points or giveaways, never ask for money." }
   ],
   "rules_checked": [
     { "rule": "AI-generated voices are artificial voices under the TCPA", "source": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf" },
