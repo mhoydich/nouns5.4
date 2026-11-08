@@ -20,6 +20,13 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
 
+/recipes/*
+  Cache-Control: public, max-age=300
+
+/call-or-be-called.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+
 /the-wild/*
   Cache-Control: public, max-age=300
 

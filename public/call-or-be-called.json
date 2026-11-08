@@ -1,0 +1,29 @@
+{
+  "schema": "industrynext.ai-recipes/v1",
+  "id": "industrynext/ai-recipes-001",
+  "title": "AI Recipes 001: Call or Be Called",
+  "canonical": "https://www.industrynext.xyz/recipes/call-or-be-called/",
+  "published": "2026-11-08",
+  "last_reviewed": "2026-11-08",
+  "summary": "Eight practical build recipes for AI phone and voice agents: inbound helplines, latency, barge-in, warm hand-off, multi-channel doors, regulated industries, consented outbound calls, and the call people hope to get.",
+  "contact": "mh@pointcast.xyz",
+  "boundary": "Build recipes, not legal advice. Vendor features and rules change; every line was read on the publisher's page on 2026-11-08, with federal regulations read on Cornell LII's copy.",
+  "recipes": [
+    { "id": "r01", "level": 1, "name": "The Product Line", "direction": "inbound", "core": "Match what the caller is holding with a catalog lookup tool, confirm it aloud, answer only from approved text, hand off the rest." },
+    { "id": "r02", "level": 2, "name": "The Speed Run", "direction": "both", "core": "Budget latency per step and stream everything. Twilio's starting baseline is about 1,115 ms median mouth to ear, 1,400 ms at the limit." },
+    { "id": "r03", "level": 3, "name": "Let Them Cut In", "direction": "both", "core": "Semantic turn detection, barge-in on by default, flush audio and trim history to what the caller heard, patient turns for numbers." },
+    { "id": "r04", "level": 4, "name": "The Warm Hand-off", "direction": "inbound", "core": "Brief the human privately, connect, leave; return to the caller if no one answers; count a transfer only when a human answered." },
+    { "id": "r05", "level": 5, "name": "Many Doors, One Clerk", "direction": "both", "core": "One brain across phone, web voice, chat, SMS, WhatsApp, a QR on the package and a read-only MCP door for agents." },
+    { "id": "r06", "level": 6, "name": "The Regulated Kitchen", "direction": "both", "core": "Rules in tools, approved answer bank, recording notice, health and legal questions to trained humans, counsel review." },
+    { "id": "r07", "level": 7, "name": "Be Called, Properly", "direction": "outbound", "core": "Written consent, DNC scrub, local calling hours, business ID first, automated opt-out, honor stop words within ten business days." },
+    { "id": "r08", "level": "bonus", "name": "The Call You Hope to Get", "direction": "outbound", "core": "Opt-in members, one short question, the call itself is the reward, no prizes, points or giveaways, never ask for money." }
+  ],
+  "rules_checked": [
+    { "rule": "AI-generated voices are artificial voices under the TCPA", "source": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf" },
+    { "rule": "Consent, identification, calling hours, opt-out", "source": "https://www.law.cornell.edu/cfr/text/47/64.1200" },
+    { "rule": "Massachusetts telephone solicitation: 8 a.m. to 8 p.m., state no-call list, recorded-message sales calls barred", "source": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXII/Chapter159C/Section3" },
+    { "rule": "Massachusetts all-party recording consent", "source": "https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleI/Chapter272/Section99" },
+    { "rule": "Massachusetts cannabis advertising: 85% audience 21+, no therapeutic claims, no marketing gifts, discounts, points or loyalty programs", "source": "https://www.law.cornell.edu/regulations/massachusetts/935-CMR-500-105" },
+    { "rule": "Telemarketing prize promotions: disclose odds, no purchase necessary, free entry method", "source": "https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule" }
+  ]
+}
