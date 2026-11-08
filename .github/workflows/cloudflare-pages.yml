@@ -1,0 +1,86 @@
+name: Deploy Industry Next to Cloudflare Pages
+
+# www.industrynext.xyz is served by the Cloudflare Pages project
+# industrynext-nouns. Until now that only updated when someone ran
+# `npm run cf:deploy` on the Mac. This runs the same deploy on every push
+# to main, so a merge goes live from the cloud.
+#
+# It needs one repository secret, CLOUDFLARE_API_TOKEN, with the
+# "Cloudflare Pages: Edit" permission. Without it the build still runs and
+# the job ends with a warning instead of deploying. CLOUDFLARE_ACCOUNT_ID is
+# optional: wrangler finds the account when the token covers just one.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-main
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check the build output
+        run: |
+          test -f public/index.html || { echo "::error::public/index.html is missing"; exit 1; }
+          count=$(find public -type f | wc -l)
+          echo "public has $count files"
+          [ "$count" -ge 100 ] || { echo "::error::public has only $count files"; exit 1; }
+
+      - name: Token present?
+        id: token
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Not deployed: add the CLOUDFLARE_API_TOKEN repository secret (Cloudflare Pages: Edit) to deploy from the cloud."
+            echo "Not deployed: CLOUDFLARE_API_TOKEN is not set." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Still the tip of main?
+        id: tip
+        if: steps.token.outputs.ok == 'true'
+        run: |
+          tip=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$tip" = "$GITHUB_SHA" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "main moved on to $tip; the newer run deploys it." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Deploy
+        if: steps.token.outputs.ok == 'true' && steps.tip.outputs.ok == 'true'
+        run: npx wrangler pages deploy public --project-name industrynext-nouns --branch main --commit-hash "$GITHUB_SHA" --commit-message "$(git log -1 --format=%s | head -c 300)"
+
+      - name: Smoke test
+        if: steps.token.outputs.ok == 'true' && steps.tip.outputs.ok == 'true'
+        run: |
+          sleep 20
+          for path in / /services/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://www.industrynext.xyz$path")
+            echo "$path -> $code"
+            [ "$code" = "200" ] || { echo "::error::$path returned $code after deploy"; exit 1; }
+          done

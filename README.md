@@ -85,6 +85,10 @@ Official docs used for this setup:
 - `https://developers.cloudflare.com/pages/configuration/build-configuration/`
 - `https://developers.cloudflare.com/pages/configuration/custom-domains/`
 
+## Cloud deploy
+
+Every push to `main` now runs `.github/workflows/cloudflare-pages.yml`, which builds and runs the same `wrangler pages deploy` as `npm run cf:deploy`, then checks `/` and `/services/` on www.industrynext.xyz. It needs the repository secret `CLOUDFLARE_API_TOKEN` (Cloudflare Pages: Edit); until that exists it builds and stops with a warning. `npm run cf:deploy` from a laptop still works as a fallback. The jam-room worker (`npm run cf:rooms:deploy`) is not part of this and still deploys by hand.
+
 ## Wrangler CLI Option
 
 This repo now includes a Wrangler config for Cloudflare Pages:
