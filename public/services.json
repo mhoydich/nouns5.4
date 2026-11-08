@@ -10,7 +10,8 @@
       "people affected",
       "what should be working in 90 days",
       "budget range"
-    ]
+    ],
+    "start_url": "https://www.industrynext.xyz/start/"
   },
   "positioning": "A senior build studio for working AI products, media formats, commerce systems, cultural tools, and organizational workflows.",
   "starter_kit": {
@@ -93,5 +94,17 @@
     "name human review points",
     "leave source, owners, and a team that can run the next cycle",
     "do not train on private client material by default"
+  ],
+  "entry_offers": [
+    {
+      "name": "AI Working Session",
+      "price_usd": 350,
+      "url": "https://www.industrynext.xyz/help/"
+    },
+    {
+      "name": "Build Day",
+      "price_usd": 2500,
+      "url": "https://www.industrynext.xyz/help/"
+    }
   ]
 }
