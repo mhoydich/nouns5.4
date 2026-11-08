@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="AI Recipes 001 from Industry Next: eight practical build recipes for AI phone and voice agents, from the inbound product helpline to the call people hope to get. Vendor features and US calling rules checked November 8, 2026."
+    />
+    <meta name="theme-color" content="#1d2b53" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="AI Recipes 001: Call or Be Called" />
+    <meta
+      property="og:description"
+      content="Eight build recipes for AI phone and voice agents. Ingredients, steps, and the rules that keep the line clean."
+    />
+    <meta property="og:url" content="https://www.industrynext.xyz/recipes/call-or-be-called/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/api/noun?background=0&amp;body=12&amp;accessory=41&amp;head=164&amp;glasses=7" />
+    <meta property="og:image:alt" content="A pixel Noun answering the Industry Next help line." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Recipes 001: Call or Be Called" />
+    <meta name="twitter:description" content="Eight build recipes for AI phone and voice agents, checked against vendor docs and US calling rules." />
+    <link rel="canonical" href="https://www.industrynext.xyz/recipes/call-or-be-called/" />
+    <link rel="alternate" type="application/json" href="/call-or-be-called.json" title="AI Recipes 001, machine-readable" />
+    <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>AI Recipes 001: Call or Be Called | Industry Next</title>
+    <link rel="stylesheet" href="./styles.css?v=20261108a" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "AI Recipes 001: Call or Be Called",
+        "description": "Eight practical build recipes for AI phone and voice agents.",
+        "url": "https://www.industrynext.xyz/recipes/call-or-be-called/",
+        "datePublished": "2026-11-08",
+        "dateModified": "2026-11-08",
+        "publisher": { "@type": "Organization", "name": "Industry Next", "url": "https://www.industrynext.xyz/", "email": "mh@pointcast.xyz" },
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "The Product Line", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r01" },
+          { "@type": "HowToStep", "position": 2, "name": "The Speed Run", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r02" },
+          { "@type": "HowToStep", "position": 3, "name": "Let Them Cut In", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r03" },
+          { "@type": "HowToStep", "position": 4, "name": "The Warm Hand-off", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r04" },
+          { "@type": "HowToStep", "position": 5, "name": "Many Doors, One Clerk", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r05" },
+          { "@type": "HowToStep", "position": 6, "name": "The Regulated Kitchen", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r06" },
+          { "@type": "HowToStep", "position": 7, "name": "Be Called, Properly", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r07" },
+          { "@type": "HowToStep", "position": 8, "name": "The Call You Hope to Get", "url": "https://www.industrynext.xyz/recipes/call-or-be-called/#r08" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the recipes</a>
+
+    <header class="cart-head">
+      <a href="https://www.industrynext.xyz/" aria-label="Industry Next, home">INDUSTRY NEXT ▪ AI RECIPES</a>
+      <nav aria-label="Primary">
+        <a href="/help/">AI Help</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-tools-mcp/">Tool Atlas</a>
+        <a href="mailto:mh@pointcast.xyz">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="boot" aria-labelledby="title">
+        <p class="boot-lines" aria-hidden="true">
+          INDUSTRY NEXT CORP. TRAINING SYSTEM v1.0<br />
+          MEMORY CHECK .......... <span class="ok">OK</span><br />
+          DIAL TONE ............. <span class="ok">OK</span><br />
+          COMPLIANCE CHIP ....... <span class="ok">OK</span><br />
+          LOADING CARTRIDGE 001 ..
+        </p>
+        <div class="hero-row">
+          <div>
+            <h1 id="title">AI Recipes 001<br /><em>Call or be called.</em></h1>
+            <p class="deck">
+              Eight practical recipes for AI phone and voice agents. Each one lists its ingredients, its steps,
+              and the thing that goes wrong. The stack facts and calling rules were checked on the vendors' and
+              regulators' own pages on November 8, 2026.
+            </p>
+            <a class="press-start" href="#menu"><span class="blink">▶</span> PRESS START</a>
+          </div>
+          <svg class="phone-sprite ring" viewBox="0 0 21 21" role="img" aria-label="A pixel telephone, ringing" shape-rendering="crispEdges">
+            <rect x="3" y="3" width="15" height="3" fill="#ff5a4e" />
+            <rect x="1" y="5" width="4" height="3" fill="#ff5a4e" />
+            <rect x="16" y="5" width="4" height="3" fill="#ff5a4e" />
+            <rect x="6" y="7" width="9" height="2" fill="#ff5a4e" />
+            <rect x="4" y="9" width="13" height="9" fill="#ff5a4e" />
+            <rect x="6" y="11" width="2" height="2" fill="#f4f0e4" />
+            <rect x="10" y="11" width="2" height="2" fill="#f4f0e4" />
+            <rect x="14" y="11" width="1" height="2" fill="#f4f0e4" />
+            <rect x="6" y="14" width="2" height="2" fill="#f4f0e4" />
+            <rect x="10" y="14" width="2" height="2" fill="#f4f0e4" />
+            <rect x="14" y="14" width="1" height="2" fill="#f4f0e4" />
+            <rect x="0" y="1" width="2" height="1" fill="#ffd23f" />
+            <rect x="19" y="1" width="2" height="1" fill="#ffd23f" />
+            <rect x="1" y="0" width="1" height="1" fill="#ffd23f" />
+            <rect x="19" y="0" width="1" height="1" fill="#ffd23f" />
+          </svg>
+        </div>
+      </section>
+
+      <section aria-labelledby="memo-title">
+        <p class="mark">00 / INTERNAL MEMO</p>
+        <h2 id="memo-title">Why the phone, why now.</h2>
+        <div class="memo px">
+          <dl>
+            <dt>TO</dt><dd>Anyone who answers customers</dd>
+            <dt>FROM</dt><dd>Industry Next, Department of Recipes</dd>
+            <dt>RE</dt><dd>Call, or be called</dd>
+          </dl>
+          <p>
+            Real-time voice models now pick up a phone number directly. OpenAI's Realtime API takes SIP calls,
+            Twilio relays speech as text to your app, and open frameworks like Pipecat and LiveKit run the whole
+            loop on your own servers. A product helpline that knows which bottle the caller is holding is a
+            weekend build. Doing it well is the job.
+          </p>
+          <p>
+            Two directions matter. <strong>Inbound</strong>: someone calls and the line answers like your best
+            employee. <strong>Outbound</strong>: the line calls them, which the law treats very differently.
+            And one format is worth stealing from game shows: the call people hope to get.
+          </p>
+        </div>
+      </section>
+
+      <section id="menu" aria-labelledby="menu-title">
+        <p class="mark">01 / SELECT A RECIPE</p>
+        <h2 id="menu-title">Main menu.</h2>
+        <ol class="menu">
+          <li><a class="px" href="#r01"><b>LEVEL 1</b>The Product Line</a></li>
+          <li><a class="px" href="#r02"><b>LEVEL 2</b>The Speed Run</a></li>
+          <li><a class="px" href="#r03"><b>LEVEL 3</b>Let Them Cut In</a></li>
+          <li><a class="px" href="#r04"><b>LEVEL 4</b>The Warm Hand-off</a></li>
+          <li><a class="px" href="#r05"><b>LEVEL 5</b>Many Doors, One Clerk</a></li>
+          <li><a class="px" href="#r06"><b>LEVEL 6</b>The Regulated Kitchen</a></li>
+          <li><a class="px" href="#r07"><b>LEVEL 7</b>Be Called, Properly</a></li>
+          <li><a class="px" href="#r08"><b>BONUS STAGE</b>The Call You Hope to Get</a></li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="stack-title">
+        <p class="mark">02 / THE PANTRY</p>
+        <h2 id="stack-title">What's on the shelf, November 2026.</h2>
+        <div class="stack-wrap px">
+          <table class="stack">
+            <thead>
+              <tr><th scope="col">Ingredient</th><th scope="col">What it does</th><th scope="col">Phone in</th><th scope="col">Hand to a human</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>OpenAI Realtime</b></td><td>Speech-to-speech model (gpt-realtime-2.1 and 2.1-mini) over WebRTC, WebSocket or SIP. Can call MCP tools itself.</td><td>Native SIP</td><td>SIP refer to a number</td></tr>
+              <tr><td><b>Twilio ConversationRelay</b></td><td>Twilio runs speech-to-text and text-to-speech; your app trades text over a WebSocket.</td><td>Twilio numbers</td><td>End with handoff data to Flex or Studio</td></tr>
+              <tr><td><b>Twilio Media Streams</b></td><td>Raw call audio both ways (8 kHz mu-law) for your own pipeline.</td><td>Twilio numbers</td><td>Your code</td></tr>
+              <tr><td><b>ElevenLabs Agents</b></td><td>Hosted agent with voices, tools, RAG, web widget and WhatsApp.</td><td>Twilio or SIP trunk</td><td>Transfer to number with a whisper</td></tr>
+              <tr><td><b>Vapi</b></td><td>Hosted agent platform; tools and MCP fetched at call start.</td><td>Free numbers inbound only; import for outbound</td><td>Warm modes on Twilio calls</td></tr>
+              <tr><td><b>Retell</b></td><td>Prompt or flow agents with testing, A/B and QA built in.</td><td>Retell numbers or SIP</td><td>Cold or warm, phone calls only</td></tr>
+              <tr><td><b>Pipecat</b></td><td>Open source (BSD) voice pipeline in Python. Moving to an independent foundation as Deepgram acquires Daily.</td><td>Twilio, Telnyx, Plivo</td><td>Your code</td></tr>
+              <tr><td><b>LiveKit Agents</b></td><td>Open source agents on LiveKit's media network, with a turn detector model.</td><td>LiveKit numbers or SIP</td><td>Warm transfer with a private briefing</td></tr>
+              <tr><td><b>Deepgram Voice Agent</b></td><td>Speech, model and voice on one WebSocket.</td><td>Twilio or Plivo</td><td>Function call</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="recipes-title">
+        <p class="mark">03 / THE RECIPES</p>
+        <h2 id="recipes-title">Eight levels. Save your game often.</h2>
+
+        <article class="recipe px" id="r01" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=1&amp;body=3&amp;accessory=12&amp;head=88&amp;glasses=1" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 1 / INBOUND / DIFFICULTY ★★☆☆☆</p><h3>The Product Line</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>One phone number (Twilio, LiveKit, Retell or a SIP trunk)</li>
+                <li>One real-time voice engine from the pantry</li>
+                <li>Your product catalog as a tool: names, nicknames, what's printed on the label</li>
+                <li>A short system prompt with the brand's voice and its limits</li>
+                <li>A transcript log and a human on call</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Answer with who you are and that the caller is speaking with an AI.</li>
+                <li>Ask what they're holding. Match it with a catalog lookup tool, not the model's memory.</li>
+                <li>Confirm the match out loud before answering anything about it.</li>
+                <li>Answer only from the catalog and an approved FAQ. Anything else goes to a human.</li>
+                <li>End with a one-line recap and log the call.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>People say "the green one" and "that gummy from Tuesday". Put nicknames and label text in the catalog, and when two products match, ask.</p>
+          <div class="recipe-foot"><span>Serves: one brand, all day</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r02" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=0&amp;body=20&amp;accessory=77&amp;head=12&amp;glasses=4" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 2 / LATENCY / DIFFICULTY ★★★☆☆</p><h3>The Speed Run</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>A latency budget for each step, written down</li>
+                <li>Streaming everywhere: speech-to-text, model tokens, voice</li>
+                <li>A region close to your callers and your phone carrier</li>
+                <li>A stopwatch: measure mouth to ear, not server time</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Start from Twilio's published baseline: about 1.1 seconds median mouth to ear for a cascaded agent, 1.4 at the limit. Twilio calls these starting points, not best in class.</li>
+                <li>Split it: roughly 350 ms to hear, 375 ms to the model's first word, 100 ms to the voice's first sound.</li>
+                <li>Stream text tokens to the voice as soon as they exist.</li>
+                <li>Keep answers short. The fastest sentence is the one you didn't say.</li>
+                <li>Record real calls and time them every week.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>Vendor speed claims are marketing until you time your own calls on your own carrier.</p>
+          <div class="recipe-foot"><span>Serves: every recipe below</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r03" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=1&amp;body=7&amp;accessory=103&amp;head=201&amp;glasses=9" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 3 / TURN-TAKING / DIFFICULTY ★★★☆☆</p><h3>Let Them Cut In</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>Turn detection that listens for meaning, not only silence (OpenAI semantic VAD, LiveKit's turn detector, Deepgram Flux)</li>
+                <li>Barge-in: stop talking the moment the caller does</li>
+                <li>A backchannel filter so "uh-huh" isn't an interruption</li>
+                <li>A patient mode for numbers, addresses and emails</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Turn on interruptions by default.</li>
+                <li>When the caller cuts in, flush queued audio (Media Streams sends <code>clear</code>).</li>
+                <li>Trim the agent's memory to what the caller actually heard. ConversationRelay reports it on every interrupt.</li>
+                <li>Switch to patient turns while collecting a phone number or an order ID.</li>
+                <li>Make the required disclosures uninterruptible, and nothing else.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>If the model thinks it finished a sentence the caller never heard, it will refer back to it. Trim the history.</p>
+          <div class="recipe-foot"><span>Serves: anyone who talks fast</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r04" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=0&amp;body=25&amp;accessory=56&amp;head=140&amp;glasses=12" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 4 / HUMANS / DIFFICULTY ★★☆☆☆</p><h3>The Warm Hand-off</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>A short list of triggers: asks for a person, angry, legal or medical question, a refund</li>
+                <li>A transfer tool (SIP refer, LiveKit warm transfer, Vapi or ElevenLabs transfer)</li>
+                <li>A three-line summary for the human before they pick up</li>
+                <li>A fallback for nobody answering</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Tell the caller you're getting a person, and why.</li>
+                <li>Brief the human privately first: who, what product, what was already said.</li>
+                <li>Connect, then leave the call.</li>
+                <li>If no one picks up, come back, say so and offer a callback.</li>
+                <li>Count a transfer as done only when a human answered.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>Vapi's "forwarded" status means a transfer started, not that anyone answered. Warm modes differ by carrier, and Retell transfers work on phone calls only.</p>
+          <div class="recipe-foot"><span>Serves: the hard calls</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r05" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=1&amp;body=15&amp;accessory=120&amp;head=55&amp;glasses=16" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 5 / MULTI-CHANNEL / DIFFICULTY ★★★★☆</p><h3>Many Doors, One Clerk</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>One agent brain, one catalog tool, one log</li>
+                <li>Doors: phone, web voice (WebRTC), chat, SMS, WhatsApp</li>
+                <li>A QR code on the package that opens the web voice page</li>
+                <li>An MCP server so other people's AI agents can ask too</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Build the brain once. OpenAI's same model serves browser, server and phone.</li>
+                <li>Put the QR on the label: it's a phone call with no phone network.</li>
+                <li>Offer the same catalog lookup as an MCP tool, read-only, for agent visitors.</li>
+                <li>Keep one conversation ID across doors so a text can continue a call.</li>
+                <li>Check each door's own rules before you open it.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>WhatsApp business-initiated calls aren't available from US or Canadian business numbers; callers can still ring you. Some carriers and platforms ban whole product categories on SMS.</p>
+          <div class="recipe-foot"><span>Serves: every channel, one memory</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r06" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=0&amp;body=9&amp;accessory=30&amp;head=230&amp;glasses=2" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 6 / COMPLIANCE / DIFFICULTY ★★★★☆</p><h3>The Regulated Kitchen</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>The industry's rulebook, cited section by section</li>
+                <li>An approved answer bank: what the line may say, word for word</li>
+                <li>A refusal list: health claims, dosing advice, anything for minors</li>
+                <li>An age and identity step where the rules ask for one</li>
+                <li>Recording notice and a retention policy</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Write the rules into tools, not only the prompt: the catalog returns approved text, and the model reads it.</li>
+                <li>Announce recording at the top of every call. Massachusetts and California require every party's consent.</li>
+                <li>Route health, legal and adverse-event questions to a trained human, and log them.</li>
+                <li>Test with hostile callers before launch and review transcripts weekly.</li>
+                <li>Have counsel read the answer bank once, then again when the rules change.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>Example: Massachusetts cannabis rules (935 CMR 500.105(4)) bar advertising on electronic channels unless 85% of the audience is 21 or older, ban therapeutic claims without evidence, and prohibit marketing gifts, giveaways, discounts, points and loyalty programs. Twilio bans cannabis and CBD messages on US SMS regardless of state law.</p>
+          <div class="recipe-foot"><span>Serves: cannabis, health, finance, alcohol</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r07" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=1&amp;body=28&amp;accessory=88&amp;head=99&amp;glasses=5" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">LEVEL 7 / OUTBOUND / DIFFICULTY ★★★★★</p><h3>Be Called, Properly</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>Prior express written consent, signed, naming the number</li>
+                <li>A Do Not Call scrub: national list and any state list</li>
+                <li>A calling window in the callee's local time</li>
+                <li>An opening line with the business name and a callback number</li>
+                <li>An automated opt-out that works by voice or key press</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Collect consent first, on its own form, not as a condition of buying anything.</li>
+                <li>Treat an AI voice as an artificial voice. The FCC ruled in February 2024 that it is one.</li>
+                <li>Say who is calling at the start. For sales calls, offer the opt-out within two seconds of that.</li>
+                <li>Call between 8 a.m. and 9 p.m. local time federally, and 8 a.m. to 8 p.m. into Massachusetts.</li>
+                <li>Honor "stop", "cancel", "unsubscribe" and the rest within ten business days, and keep the record.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>Massachusetts also bars unsolicited sales calls made by recorded message device, so an AI sales call into the state without consent is a bad idea. The FCC changed its opt-out ("revoke all") rule in fall 2026; check the current text before launch.</p>
+          <div class="recipe-foot"><span>Serves: reminders, follow-ups, members</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+
+        <article class="recipe px" id="r08" data-recipe>
+          <div class="recipe-top">
+            <img src="/api/noun?background=0&amp;body=2&amp;accessory=7&amp;head=177&amp;glasses=19" alt="" width="76" height="76" loading="lazy" />
+            <div><p class="level">BONUS STAGE / FORMAT / DIFFICULTY ★★★★★</p><h3>The Call You Hope to Get</h3></div>
+          </div>
+          <div class="recipe-body">
+            <div>
+              <h4>INGREDIENTS</h4>
+              <ul>
+                <li>A format people already love: Cash Cab's surprise quiz, the radio's "caller number nine"</li>
+                <li>A members list that opted in to be called, in writing</li>
+                <li>One question, under a minute, that a fan can answer</li>
+                <li>Published rules: how winners are picked, the odds, the free way to enter</li>
+                <li>A reward the rules allow in your industry</li>
+              </ul>
+            </div>
+            <div>
+              <h4>STEPS</h4>
+              <ol>
+                <li>Let members opt in to "the call", and let them leave just as easily.</li>
+                <li>Call in a window they chose. Open with the brand name, the AI, and "this is the call."</li>
+                <li>Ask the one question. Right or wrong, make it fun.</li>
+                <li>Never ask for money, a card number or a fee. Say so out loud.</li>
+                <li>Reveal the prize in the app or in person, where people can trust it.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="watch"><strong>WATCH OUT</strong>A "you won" phone call is both a prize promotion and an artificial-voice call, and people are trained to distrust it: Publishers Clearing House says it never tells major winners by phone. Real sweepstakes are free. In a regulated industry the prize may be off the table, so the call itself has to be the reward.</p>
+          <div class="recipe-foot"><span>Serves: fans</span><button class="copy-btn" type="button" data-copy>▶ COPY RECIPE</button></div>
+        </article>
+      </section>
+
+      <section aria-labelledby="policy-title">
+        <p class="mark">04 / OFFICE POLICY</p>
+        <h2 id="policy-title">Six rules taped to the break room fridge.</h2>
+        <ul class="rules">
+          <li class="px"><b>SAY WHO YOU ARE</b>Business name first, and that it's an AI.</li>
+          <li class="px"><b>SAY IT'S RECORDED</b>All-party consent states include Massachusetts and California.</li>
+          <li class="px"><b>ASK BEFORE CALLING</b>AI voices need consent; sales calls need it in writing.</li>
+          <li class="px"><b>KEEP THE HOURS</b>8 a.m. to 9 p.m. federally. 8 to 8 into Massachusetts.</li>
+          <li class="px"><b>STOP MEANS STOP</b>Honor opt-outs by any reasonable means, fast.</li>
+          <li class="px"><b>NO MONEY ON A PRIZE CALL</b>If there's a charge, it's a scam. The FTC says so.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="eotm-title">
+        <p class="mark">05 / EMPLOYEES OF THE MONTH</p>
+        <h2 id="eotm-title">The night shift.</h2>
+        <div class="eotm">
+          <figure class="px"><img src="/api/noun?background=1&amp;body=3&amp;accessory=12&amp;head=88&amp;glasses=1" alt="Pixel Noun receptionist" width="120" height="120" loading="lazy" /><figcaption><b>RECEPTIONIST</b>Knows every label by heart.</figcaption></figure>
+          <figure class="px"><img src="/api/noun?background=0&amp;body=25&amp;accessory=56&amp;head=140&amp;glasses=12" alt="Pixel Noun transfer desk" width="120" height="120" loading="lazy" /><figcaption><b>TRANSFER DESK</b>Never drops a warm call.</figcaption></figure>
+          <figure class="px"><img src="/api/noun?background=1&amp;body=9&amp;accessory=30&amp;head=230&amp;glasses=2" alt="Pixel Noun compliance clerk" width="120" height="120" loading="lazy" /><figcaption><b>COMPLIANCE CLERK</b>Reads the rules so you don't guess.</figcaption></figure>
+          <figure class="px"><img src="/api/noun?background=0&amp;body=2&amp;accessory=7&amp;head=177&amp;glasses=19" alt="Pixel Noun game show host" width="120" height="120" loading="lazy" /><figcaption><b>GAME SHOW HOST</b>Only calls people who asked.</figcaption></figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="hire-title">
+        <p class="mark">06 / CONTINUE?</p>
+        <div class="hire px">
+          <div>
+            <h2 id="hire-title">Want one of these cooked for your line?</h2>
+            <p>Industry Next builds and pilots voice lines with the people who run them. Bring the product list and the rulebook.</p>
+          </div>
+          <a class="press-start" href="mailto:mh@pointcast.xyz?subject=AI%20Recipes%20001">▶ mh@pointcast.xyz</a>
+        </div>
+      </section>
+
+      <section id="sources" aria-labelledby="sources-title">
+        <p class="mark">07 / SOURCE LEDGER</p>
+        <h2 id="sources-title">Read on the publisher's own page, November 8, 2026.</h2>
+        <ul class="sources">
+          <li><a href="https://developers.openai.com/api/docs/guides/realtime-sip" target="_blank" rel="noreferrer">OpenAI: Realtime API with SIP</a></li>
+          <li><a href="https://developers.openai.com/api/docs/guides/realtime" target="_blank" rel="noreferrer">OpenAI: Realtime API transports</a></li>
+          <li><a href="https://developers.openai.com/api/docs/guides/realtime-vad" target="_blank" rel="noreferrer">OpenAI: voice activity detection</a></li>
+          <li><a href="https://developers.openai.com/api/docs/guides/realtime-mcp" target="_blank" rel="noreferrer">OpenAI: Realtime and MCP</a></li>
+          <li><a href="https://www.twilio.com/docs/voice/twiml/connect/conversationrelay" target="_blank" rel="noreferrer">Twilio: ConversationRelay</a></li>
+          <li><a href="https://www.twilio.com/docs/voice/conversationrelay/websocket-messages" target="_blank" rel="noreferrer">Twilio: ConversationRelay messages</a></li>
+          <li><a href="https://www.twilio.com/docs/voice/media-streams" target="_blank" rel="noreferrer">Twilio: Media Streams</a></li>
+          <li><a href="https://www.twilio.com/en-us/blog/developers/best-practices/guide-core-latency-ai-voice-agents" target="_blank" rel="noreferrer">Twilio: core latency guide for AI voice agents</a></li>
+          <li><a href="https://elevenlabs.io/docs/eleven-agents/overview" target="_blank" rel="noreferrer">ElevenLabs: Agents overview</a></li>
+          <li><a href="https://elevenlabs.io/docs/eleven-agents/customization/conversation-flow" target="_blank" rel="noreferrer">ElevenLabs: conversation flow</a></li>
+          <li><a href="https://docs.vapi.ai/tools/transfer-call/warm-transfer" target="_blank" rel="noreferrer">Vapi: warm transfer</a></li>
+          <li><a href="https://docs.vapi.ai/quickstart/phone" target="_blank" rel="noreferrer">Vapi: phone quickstart</a></li>
+          <li><a href="https://docs.retellai.com/build/transfer-call" target="_blank" rel="noreferrer">Retell: transfer call</a></li>
+          <li><a href="https://docs.pipecat.ai/pipecat/learn/overview" target="_blank" rel="noreferrer">Pipecat: overview</a></li>
+          <li><a href="https://deepgram.com/blog/daily-pipecat-deepgram" target="_blank" rel="noreferrer">Deepgram: Daily and Pipecat</a></li>
+          <li><a href="https://docs.livekit.io/telephony/features/transfers/warm" target="_blank" rel="noreferrer">LiveKit: warm transfer</a></li>
+          <li><a href="https://docs.livekit.io/agents/logic/turns" target="_blank" rel="noreferrer">LiveKit: turns and interruptions</a></li>
+          <li><a href="https://developers.deepgram.com/docs/voice-agent-architecture" target="_blank" rel="noreferrer">Deepgram: Voice Agent API</a></li>
+          <li><a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/calling" target="_blank" rel="noreferrer">Meta: WhatsApp Business Calling API</a></li>
+          <li><a href="https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf" target="_blank" rel="noreferrer">FCC 24-17: AI voices are artificial under the TCPA</a></li>
+          <li><a href="https://www.law.cornell.edu/cfr/text/47/64.1200" target="_blank" rel="noreferrer">47 CFR 64.1200: consent, ID, hours, opt-out (LII copy)</a></li>
+          <li><a href="https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXXII/Chapter159C/Section3" target="_blank" rel="noreferrer">Mass. G.L. c.159C §3: telephone solicitation</a></li>
+          <li><a href="https://malegislature.gov/Laws/GeneralLaws/PartIV/TitleI/Chapter272/Section99" target="_blank" rel="noreferrer">Mass. G.L. c.272 §99: recording consent</a></li>
+          <li><a href="https://www.law.cornell.edu/regulations/massachusetts/935-CMR-500-105" target="_blank" rel="noreferrer">935 CMR 500.105: cannabis advertising (LII copy)</a></li>
+          <li><a href="https://support.twilio.com/hc/en-us/articles/360045004974-Forbidden-Message-Categories-for-SMS-and-MMS-in-the-US-and-Canada" target="_blank" rel="noreferrer">Twilio: forbidden SMS categories</a></li>
+          <li><a href="https://www.discovery.com/shows/cash-cab-2017" target="_blank" rel="noreferrer">Discovery: Cash Cab</a></li>
+          <li><a href="https://www.law.cornell.edu/cfr/text/47/73.1216" target="_blank" rel="noreferrer">47 CFR 73.1216: broadcast contests (LII copy)</a></li>
+          <li><a href="https://www.ftc.gov/business-guidance/resources/complying-telemarketing-sales-rule" target="_blank" rel="noreferrer">FTC: complying with the Telemarketing Sales Rule</a></li>
+          <li><a href="https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams" target="_blank" rel="noreferrer">FTC: fake prize and sweepstakes scams</a></li>
+          <li><a href="https://blog.pch.com/2013/04/05/5-ways-to-know-if-its-a-publishers-clearing-house-scam/" target="_blank" rel="noreferrer">PCH: how winners are notified (2013)</a></li>
+        </ul>
+        <p class="boundary">
+          <strong>Boundary.</strong> These are build recipes, not legal advice. Vendor features, model names and prices
+          change; each line was read on the publisher's page on November 8, 2026, and federal regulations were read on
+          Cornell LII's copy where the official site refused our reader. California's all-party recording rule (Penal
+          Code 632) was read on a third-party copy for the same reason. Have counsel read your
+          answer bank and your outbound plan before launch.
+        </p>
+      </section>
+    </main>
+
+    <footer class="cart-foot">
+      <div class="inner">
+        <div><a href="https://www.industrynext.xyz/">INDUSTRY NEXT</a> ▪ Products, media, rituals, and small institutions, made close enough to reality to learn from.</div>
+        <nav aria-label="Related links">
+          <a href="/call-or-be-called.json">Recipes JSON</a>
+          <a href="/ai-tools-mcp/">AI + MCP Tool Atlas</a>
+          <a href="/services/">Services</a>
+          <a href="mailto:mh@pointcast.xyz">mh@pointcast.xyz</a>
+        </nav>
+        <p class="fine">AI RECIPES 001 / CHECKED 2026-11-08 / NOUNS ARE CC0 / NO QUARTERS REQUIRED</p>
+        <div data-pointcast-network data-publisher="industrynext" data-placement="footer" data-context="ai recipes voice agents phone helpline realtime telephony compliance tcpa" data-campaign="PC-NOUNS-EVERYBODY-2026"></div>
+      </div>
+    </footer>
+    <script src="./copy.js?v=20261108a" defer></script>
+    <script async src="https://pointcast.xyz/open-ad-network.js"></script>
+  </body>
+</html>
