@@ -31,6 +31,8 @@
     "verify:ai-field-kit": "node ./scripts/verify-ai-field-kit.mjs",
     "verify:ai-tools-mcp": "node ./scripts/verify-ai-tools-mcp.mjs",
     "verify:ai-recipes-voice": "node ./scripts/verify-ai-recipes-voice.mjs",
+    "verify:industrynext-overhaul": "node ./scripts/verify-industrynext-overhaul.mjs",
+    "art:8bit": "node ./scripts/build-8bit-art.mjs",
     "verify:agent-futures": "node ./scripts/verify-agent-futures.mjs",
     "verify:the-wild": "node ./scripts/verify-the-wild.mjs",
     "verify:axon-yield-engine": "node ./scripts/verify-axon-yield-engine.mjs",

@@ -242,3 +242,15 @@
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=300
   Access-Control-Allow-Origin: *
+
+/start/*
+  Cache-Control: public, max-age=300
+
+/recipes/
+  Cache-Control: public, max-age=300
+
+/art/8bit/*
+  Cache-Control: public, max-age=86400
+
+/homepage/arcade.css
+  Cache-Control: public, max-age=300

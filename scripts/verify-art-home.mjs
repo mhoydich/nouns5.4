@@ -76,9 +76,11 @@ for (const { attrs } of tags) {
 }
 const hrefs = new Set(byTag("a").map(({ attrs }) => attrs.href));
 for (const href of [
+  "/start/", "/start/#session", "/start/#build-day", "/start/#starter-kit", "/start/#package",
+  "/recipes/", "/recipes/call-or-be-called/", "https://elsegundo.xyz/", "https://pointcast.xyz/",
   "/communications-lab/nouns-money/", "https://tonebloom.xyz/", "/agents/", "/sky-is-local/",
   "/editorial/tone-bloom-field-review/", "/editorial/the-wild-one-cent/", "/editorial/credit-card-games/",
-  "/agents/#request", "/services/#start", "/help/", "/make/", "/communications-lab/",
+  "/services/", "/help/", "/make/", "/communications-lab/",
 ]) assert.ok(hrefs.has(href), `featured work, reading, or established intake door: ${href}`);
 for (const id of ["alive", "ways-in", "fields"]) assert.ok(ids.includes(id), `legacy homepage fragment #${id} survives`);
 assert.doesNotMatch(home, /Good[\s-]*Feels|cannabis|The Segundo Line|segundo-line/i, "excluded and held projects are not promoted");
@@ -114,6 +116,14 @@ assert.equal(structured.url, `${origin}/`);
 assert.equal(structured.founder.name, "Michael Hoydich");
 const manifest = JSON.parse(await readFile(resolve(publicDir, "site.webmanifest"), "utf8"));
 assert.equal(manifest.icons[0].src, "/industry-next-icon.svg");
+
+// One way in: every primary call to action on the homepage goes to /start/.
+const ctaHrefs = [...home.matchAll(/<a\b[^>]*class="(?:btn|nav-cta)[^"]*"[^>]*href="([^"]+)"|<a\b[^>]*href="([^"]+)"[^>]*class="(?:btn|nav-cta)[^"]*"/g)].map((m) => m[1] || m[2]);
+assert.ok(ctaHrefs.length >= 6, "homepage has its calls to action");
+for (const href of ctaHrefs.filter((h) => !h.startsWith("/recipes/"))) assert.ok(href.startsWith("/start/"), `call to action goes to /start/: ${href}`);
+for (const price of ["$350", "$2,500", "$50K", "$25K"]) assert.ok(home.includes(price), `offer ladder shows ${price}`);
+assert.equal((home.match(/class="rung /g) || []).length, 4, "four rungs on the offer ladder");
+assert.ok(structured.hasOfferCatalog.itemListElement.length === 4, "structured data lists the four offers");
 
 // The directory and primary calls to action work without a homepage runtime.
 const details = home.match(/<details\b[^>]*>([\s\S]*?)<\/details>/g) || [];

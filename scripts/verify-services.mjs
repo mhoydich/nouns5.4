@@ -35,7 +35,8 @@ assert.equal(data.starter_kit.deliverables.length, 8);
 assert.equal(data.packages.length, 6);
 assert.ok(data.operating_principles.includes("do not train on private client material by default"));
 assert.match(home, /href="\/services\/"/);
-assert.match(home, /href="\/services\/#start"/);
+assert.match(home, /href="\/start\/"/);
+assert.match(html, /href="\/start\/#starter-kit"/);
 assert.match(sitemap, /industrynext\.xyz\/services\//);
 
 console.log("Services verification passed: fixed Starter Kit, eight deliverables, sector packages, contact path, machine-readable scope, homepage doorway, and responsive safeguards.");
