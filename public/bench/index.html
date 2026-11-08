@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>The Clean Bench | Industry Next</title>
+    <meta name="description" content="A one-minute pause before you build. Clear three things off the bench, name the one thing you will make, then begin. Nothing leaves your browser." />
+    <meta name="theme-color" content="#eeff41" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Industry Next" />
+    <meta property="og:title" content="The Clean Bench | Industry Next" />
+    <meta property="og:description" content="Clear the bench. Name the one thing. Begin with the smallest true step." />
+    <meta property="og:url" content="https://www.industrynext.xyz/bench/" />
+    <meta property="og:image" content="https://www.industrynext.xyz/bench/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A clean workbench drawn in flat shapes on acid yellow, with one cup and one tool set aside." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Clean Bench | Industry Next" />
+    <meta name="twitter:description" content="Clear the bench. Name the one thing. Begin with the smallest true step." />
+    <meta name="twitter:image" content="https://www.industrynext.xyz/bench/og.png" />
+    <link rel="canonical" href="https://www.industrynext.xyz/bench/" />
+    <link rel="icon" href="/industry-next-icon.svg" type="image/svg+xml" />
+    <style>
+      :root{--acid:#eeff41;--ink:#141414;--paper:#fbfbf4;--line:#d8d8c8;--muted:#5c5c52;--gold:#8a6a06}
+      @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f2f2ea;--paper:#151513;--line:#34342e;--muted:#a8a89a;--gold:#e0c45a}}
+      *{box-sizing:border-box}
+      body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Helvetica Neue",Arial,sans-serif}
+      a{color:inherit}
+      .head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;border-bottom:2px solid var(--ink)}
+      .mark{font-weight:900;letter-spacing:.04em;text-decoration:none;line-height:1}
+      .mark span{display:block}
+      .head nav{display:flex;flex-wrap:wrap;gap:14px;font-size:14px}
+      main{max-width:1040px;margin:0 auto;padding:28px 24px 56px}
+      .eyebrow{font:700 12px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+      h1{font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.03em;margin:0 0 14px}
+      .lead{font-size:19px;max-width:44ch;margin:0 0 26px}
+      .stage{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,1fr);gap:28px;align-items:start}
+      .scene{border:2px solid var(--ink);background:var(--acid)}
+      .scene svg{display:block;width:100%;height:auto}
+      .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 14px}
+      .chips li{border:1px solid var(--line);padding:5px 11px;font-size:13px;border-radius:999px}
+      .cue{border-left:4px solid var(--ink);padding:4px 0 4px 16px;min-height:118px}
+      .cue b{font:700 12px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
+      .cue p{font-size:20px;margin:8px 0 0}
+      .bar{height:6px;background:var(--line);margin:16px 0}
+      .bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .4s linear}
+      button{font:inherit;min-height:44px;padding:10px 18px;border:2px solid var(--ink);background:transparent;color:inherit;cursor:pointer}
+      button.primary{background:var(--ink);color:var(--paper)}
+      .act{margin-top:22px;border-top:2px solid var(--ink);padding-top:16px}
+      .act label{display:flex;gap:10px;align-items:center;min-height:40px}
+      .act input[type=checkbox]{width:22px;height:22px;accent-color:var(--ink)}
+      .act input[type=text]{width:100%;font:inherit;padding:10px;border:2px solid var(--ink);background:transparent;color:inherit}
+      .note{font-size:13px;color:var(--muted)}
+      details{margin-top:18px}
+      footer{border-top:2px solid var(--ink);padding:18px 24px;font-size:13px;color:var(--muted)}
+      :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+      @media (max-width:760px){.stage{grid-template-columns:1fr}.head{padding:14px 16px}main{padding:22px 16px 44px}}
+      @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+    </style>
+  </head>
+  <body>
+    <header class="head">
+      <a class="mark" href="/" aria-label="Industry Next, home"><span>INDUSTRY</span><span>NEXT</span></a>
+      <nav aria-label="Primary"><a href="/make/">Make</a><a href="/made/">Made</a><a href="/desk/">Desk</a><a href="/bench/" aria-current="page">Bench</a><a href="/market/">Market</a></nav>
+    </header>
+    <main>
+      <p class="eyebrow">A quiet place / before you build</p>
+      <h1>The Clean Bench</h1>
+      <p class="lead">A minute before a build session. Clear three things, name the one thing you will make, then begin. The proof is the clean close.</p>
+      <ul class="chips" aria-label="Signals"><li id="hour">Hour of the workday</li><li id="closes">Clean closes on this device: 0</li></ul>
+      <div class="stage">
+        <div class="scene">
+          <svg viewBox="0 0 600 400" role="img" aria-label="A drawing of a workbench seen from the front, with a cup, a stack of cards and a coiled cable that move off as you clear them">
+            <rect width="600" height="400" fill="#eeff41"/>
+            <rect x="40" y="250" width="520" height="26" fill="#141414"/><rect x="70" y="276" width="18" height="110" fill="#141414"/><rect x="512" y="276" width="18" height="110" fill="#141414"/>
+            <g id="it-cup"><rect x="110" y="200" width="44" height="50" fill="#fbfbf4" stroke="#141414" stroke-width="4"/><path d="M154 212 h14 v22 h-14" fill="none" stroke="#141414" stroke-width="4"/></g>
+            <g id="it-tabs"><rect x="230" y="214" width="90" height="36" fill="#fbfbf4" stroke="#141414" stroke-width="4"/><rect x="242" y="202" width="90" height="12" fill="#fbfbf4" stroke="#141414" stroke-width="4"/></g>
+            <g id="it-cable"><circle cx="420" cy="232" r="18" fill="none" stroke="#141414" stroke-width="5"/><circle cx="420" cy="232" r="8" fill="none" stroke="#141414" stroke-width="5"/></g>
+            <rect x="40" y="70" width="520" height="10" fill="#141414"/><rect id="shelf-1" x="90" y="40" width="30" height="30" fill="#141414" opacity="0"/><rect id="shelf-2" x="140" y="48" width="60" height="22" fill="#141414" opacity="0"/><rect id="shelf-3" x="220" y="44" width="26" height="26" fill="#141414" opacity="0"/>
+          </svg>
+        </div>
+        <div>
+          <div class="cue" id="cue" aria-live="polite"><b>Arrive</b><p>Look at the bench as it is. Tools, cups, open tabs. You do not have to fix any of it yet.</p></div>
+          <div class="bar" aria-hidden="true"><i></i></div>
+          <button class="primary" id="begin">Begin a minute</button>
+          <p class="note" id="status" role="status">Eyes open is welcome. Leave whenever you like.</p>
+          <div class="act">
+            <p class="eyebrow">Clear three things</p>
+            <label><input type="checkbox" data-item="cup" /> The cup goes back to the kitchen</label>
+            <label><input type="checkbox" data-item="tabs" /> The tabs you are not using get closed</label>
+            <label><input type="checkbox" data-item="cable" /> The loose cable gets coiled</label>
+            <p class="eyebrow" style="margin-top:14px"><label for="make" style="min-height:0">The one thing you will make today</label></p>
+            <input type="text" id="make" maxlength="140" placeholder="Just one" />
+            <p style="margin-top:14px"><button id="close">Close the bench clean</button></p>
+            <p class="note">Everything here stays in this browser. No account, no streaks, nothing sent.</p>
+          </div>
+        </div>
+      </div>
+      <details class="note"><summary>Read the whole minute</summary>
+        <p><b>Arrive.</b> Look at the bench as it is. Tools, cups, open tabs. You do not have to fix any of it yet.</p>
+        <p><b>Notice.</b> Pick up one thing in your mind and set it where it goes. Then another. The bench gets wider as you watch.</p>
+        <p><b>Stay.</b> Hold the one thing you mean to make today. Just that one. Let the rest wait on the shelf.</p>
+        <p><b>Return.</b> Lay your hands flat on the desk. Begin with the smallest true step. Leave the bench as clean as you found it.</p>
+      </details>
+      <p class="note">One of four quiet places across our sites. It borrows an idea from Japanese craft care, where a building is rebuilt on a cycle so the skill is kept by doing. Drawn in code; no photographs.</p>
+    </main>
+    <footer>Industry Next. <a href="/make/">Make something</a> · <a href="/desk/">The Desk</a></footer>
+    <script>
+      (function(){
+        var P=[["Arrive","Look at the bench as it is. Tools, cups, open tabs. You do not have to fix any of it yet."],["Notice","Pick up one thing in your mind and set it where it goes. Then another. The bench gets wider as you watch."],["Stay","Hold the one thing you mean to make today. Just that one. Let the rest wait on the shelf."],["Return","Lay your hands flat on the desk. Begin with the smallest true step. Leave the bench as clean as you found it."]];
+        function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+        var cue=document.getElementById('cue'),bar=document.querySelector('.bar i'),btn=document.getElementById('begin'),t=null,start=0;
+        function show(i){cue.querySelector('b').textContent=P[i][0];cue.querySelector('p').textContent=P[i][1]}
+        function tick(){var s=(Date.now()-start)/1000;bar.style.width=Math.min(100,s/60*100)+'%';show(Math.min(3,Math.floor(s/15)));if(s>=60){clearInterval(t);t=null;btn.textContent='Begin again';document.getElementById('status').textContent='The minute is done. Begin with the smallest true step.'}}
+        btn.addEventListener('click',function(){if(t){clearInterval(t);t=null;btn.textContent='Begin a minute';bar.style.width='0';show(0);return}start=Date.now();t=setInterval(tick,500);btn.textContent='End pause'});
+        var h=new Date().getHours();document.getElementById('hour').textContent=h<9?'Before the workday':h<12?'Morning build':h<14?'Midday':h<18?'Afternoon build':'After hours';
+        var items=JSON.parse(store('qp-in-items')||'{}');var map={cup:1,tabs:2,cable:3};
+        function paint(){Object.keys(map).forEach(function(k){var on=!!items[k];document.getElementById('it-'+k).setAttribute('opacity',on?'0':'1');document.getElementById('shelf-'+map[k]).setAttribute('opacity',on?'1':'0');document.querySelector('[data-item="'+k+'"]').checked=on})}
+        document.querySelectorAll('[data-item]').forEach(function(box){box.addEventListener('change',function(){items[box.dataset.item]=box.checked;store('qp-in-items',JSON.stringify(items));paint()})});paint();
+        var make=document.getElementById('make');make.value=store('qp-in-make')||'';make.addEventListener('input',function(){store('qp-in-make',make.value)});
+        function count(){document.getElementById('closes').textContent='Clean closes on this device: '+(+store('qp-in-closes')||0)}count();
+        document.getElementById('close').addEventListener('click',function(){store('qp-in-closes',String((+store('qp-in-closes')||0)+1));items={};store('qp-in-items','{}');make.value='';store('qp-in-make','');paint();count();document.getElementById('status').textContent='Closed clean. The bench is ready for next time.'});
+      })();
+    </script>
+  </body>
+</html>
