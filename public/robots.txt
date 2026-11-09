@@ -1,4 +1,37 @@
+# Industry Next welcomes search engines and AI crawlers.
+# Public pages and the JSON files listed in the sitemap are crawlable.
+
 User-agent: *
 Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Short orientation index for language models (optional):
+#   https://www.industrynext.xyz/llms.txt
 
 Sitemap: https://www.industrynext.xyz/sitemap.xml
