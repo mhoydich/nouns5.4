@@ -41,6 +41,7 @@
     "market:intake": "node ./scripts/market-intake.mjs",
     "agent:intake": "node ./scripts/agent-intake.mjs",
     "test:agent-requests": "node --test ./tests/agent-requests.test.mjs",
+    "test:open-counts": "node --test ./tests/open-counts.test.mjs",
     "start": "npm run build && wrangler pages dev public",
     "serve:static": "npm run build && node server.mjs",
     "sync:assets": "node ./scripts/sync-nouns-data.mjs",
