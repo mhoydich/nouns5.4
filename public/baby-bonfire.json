@@ -1,0 +1,167 @@
+{
+  "schema_version": "industrynext.venture.v1",
+  "id": "baby-bonfire",
+  "name": "Baby Bonfire",
+  "publisher": "Industry Next",
+  "canonical_url": "https://www.industrynext.xyz/hardware/baby-bonfire/",
+  "started": "2026-11-11",
+  "updated": "2026-11-11",
+  "status": "exploration",
+  "summary": "A line of small home objects that bring fire, water, air, earth, light and weather indoors without a screen.",
+  "boundary": "Nothing has been manufactured, burn-tested, certified or offered for sale. Every piece named is a design direction.",
+  "operating_model": {
+    "run_by": "Industry Next",
+    "product_manager": "AI product manager (Claude)",
+    "question": "How far can AI resources take a physical product toward market?",
+    "ai_does": [
+      "research",
+      "product brief",
+      "renders",
+      "interactive scenes",
+      "site and marketing drafts",
+      "maker shortlist",
+      "cost model"
+    ],
+    "people_do": [
+      "paying vendors",
+      "signing",
+      "insurance",
+      "hands-on burn testing",
+      "the final yes"
+    ]
+  },
+  "system": {
+    "piece": "Any object in the line. Works with nothing plugged in.",
+    "place": "A standard palm-size stone tile that every piece sits on. Carries a tap chip.",
+    "puck": "A swappable disc under the place that senses heat and light, and later air. No cameras or microphones.",
+    "scene": "The arrangement of pieces on places.",
+    "fire_is_the_switch": "A sensed flame is a condition met and the room responds: an air column draws, a lamp drops, a sound starts. Snuffing reverses it.",
+    "open_footprint": "The place footprint is meant to be published so other makers can build pieces. Stage five; no date."
+  },
+  "pieces": [
+    {
+      "element": "fire",
+      "items": [
+        "Baby Bonfire hearth (palm-size lidded ceramic pedestal, breath opening, fuel shaped like tiny pallets)",
+        "Standing candle",
+        "Timer candles",
+        "Tailgate edition (outdoor)"
+      ]
+    },
+    {
+      "element": "air",
+      "items": [
+        "Chimney (capture column with a clear-room light)",
+        "Ember Pipe (pocket scent piece)"
+      ]
+    },
+    {
+      "element": "water",
+      "items": [
+        "Welcome basin",
+        "Dousing bowl",
+        "Mist piece",
+        "Tide bowl"
+      ]
+    },
+    {
+      "element": "earth",
+      "items": [
+        "Tray",
+        "Sand piece",
+        "Stone piece"
+      ]
+    },
+    {
+      "element": "light, sound, weather",
+      "items": [
+        "Sunrise lamp",
+        "Bell",
+        "Fog dome",
+        "Wind chime",
+        "Rain roof"
+      ]
+    },
+    {
+      "element": "linked",
+      "items": [
+        "Paired hearths (light one, the other glows in another home)"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "n": 1,
+      "name": "Exploration",
+      "state": "now",
+      "work": "Interactive scenes and renders.",
+      "gate": "One object chosen as the wedge."
+    },
+    {
+      "n": 2,
+      "name": "Looks-like prototype",
+      "state": "not started",
+      "work": "Printed or thrown ceramic. Flameless.",
+      "gate": null
+    },
+    {
+      "n": 3,
+      "name": "Works-like prototype",
+      "state": "not started",
+      "work": "Heat, tip-over and ash-containment testing against the fire-safety bar for candle accessories.",
+      "gate": "Passes before any ember indoors."
+    },
+    {
+      "n": 4,
+      "name": "First small local run",
+      "state": "not started",
+      "work": "A short run made within about 25 miles of El Segundo.",
+      "gate": null
+    },
+    {
+      "n": 5,
+      "name": "Publish the place",
+      "state": "not started",
+      "work": "Release the place footprint so other makers can build pieces.",
+      "gate": null
+    }
+  ],
+  "rules": [
+    "fully contained for indoor use",
+    "no liquid fuel",
+    "no health or wellness claims",
+    "palo santo only as Bursera graveolens, naturally fallen and documented",
+    "white sage only farmed with proof, or not used",
+    "forms are not religious symbols",
+    "no team names or marks without a license",
+    "no cameras or microphones"
+  ],
+  "threads": [
+    {
+      "name": "Six interactive scenes",
+      "state": "in build",
+      "items": [
+        "Light the Hearth",
+        "The Shelf",
+        "Ritual Atlas",
+        "Paired Hearths",
+        "Weather in the House",
+        "The Cabinet of No Bounds"
+      ]
+    },
+    {
+      "name": "First product renders",
+      "state": "in progress"
+    },
+    {
+      "name": "Venture file",
+      "state": "drafted"
+    },
+    {
+      "name": "Safety and sourcing, first pass",
+      "state": "done",
+      "note": "A desk review, not testing."
+    }
+  ],
+  "contact": "mh@pointcast.xyz"
+}

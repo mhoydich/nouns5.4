@@ -14,6 +14,7 @@
     "verify:services": "node ./scripts/verify-services.mjs",
     "verify:ai-work": "node ./scripts/verify-ai-work.mjs",
     "verify:hardware": "node ./scripts/verify-hardware.mjs",
+    "verify:baby-bonfire": "node ./scripts/verify-baby-bonfire.mjs",
     "verify:sky-is-local": "node ./scripts/verify-sky-is-local.mjs",
     "verify:playlist-role": "node ./scripts/verify-playlist-role.mjs",
     "verify:desk": "node ./scripts/verify-desk.mjs",

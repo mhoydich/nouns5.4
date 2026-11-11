@@ -1,0 +1,103 @@
+/* Baby Bonfire venture file. Loads after /hardware/hardware.css and only adds what that sheet lacks. */
+
+.hearth-hero::after { content: "HEARTH"; }
+.hearth-hero h1 { font-size: clamp(4.4rem, 7.4vw, 8.8rem); }
+.hero-facts dt { white-space: nowrap; }
+
+.hearth-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 590px;
+  background: linear-gradient(170deg, #101010 0 62%, #2a2019 62% 100%);
+}
+.hearth-stage svg { display: block; width: 100%; min-height: 570px; }
+.tile-top { fill: var(--paper); stroke: var(--white); stroke-width: 4; stroke-linejoin: round; }
+.tile-side { fill: #b9b2a2; stroke: var(--white); stroke-width: 4; stroke-linejoin: round; }
+.puck { fill: var(--cyan); stroke: var(--white); stroke-width: 4; }
+.pedestal, .bowl { fill: var(--orange); stroke: var(--white); stroke-width: 4; stroke-linejoin: round; }
+.lid { fill: var(--pink); stroke: var(--white); stroke-width: 4; stroke-linejoin: round; }
+.knob { fill: var(--acid); stroke: var(--white); stroke-width: 4; }
+.breath { fill: var(--ink); stroke: var(--white); stroke-width: 4; }
+.flame { fill: var(--acid); }
+.heat { fill: none; stroke: var(--white); stroke-width: 4; stroke-dasharray: 8 9; stroke-linecap: square; }
+
+.venture-what { background: var(--paper); }
+.system-note { max-width: 760px; margin: 26px 0 0; font: 400 .72rem/1.65 var(--mono); }
+
+.piece-grid { margin-top: 48px; }
+.piece-grid .build-card { min-height: 0; }
+.piece-grid .build-card h3 { max-width: none; font-size: clamp(3.4rem, 5.6vw, 6.4rem); }
+.piece-list { display: grid; gap: 0; margin: auto 0 0; padding: 0; list-style: none; }
+.piece-list li { padding: 13px 0; border-top: 1px solid currentColor; font: 400 .7rem/1.55 var(--mono); }
+.piece-list strong { display: block; margin-bottom: 3px; font: 800 1.05rem/1.2 var(--sans); letter-spacing: -.03em; }
+.piece-list-wide { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); column-gap: 28px; }
+
+.stage-list { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 0; border-top: 1px solid var(--white); border-left: 1px solid var(--white); list-style: none; }
+.stage { display: flex; flex-direction: column; min-height: 400px; padding: 22px; border-right: 1px solid var(--white); border-bottom: 1px solid var(--white); }
+.stage span { font: 500 .55rem/1 var(--mono); letter-spacing: .08em; }
+.stage h3 { margin: auto 0 16px; font-size: clamp(1.7rem, 2.3vw, 2.6rem); line-height: .92; letter-spacing: -.06em; }
+.stage p { margin: 0 0 22px; font: 400 .68rem/1.55 var(--mono); }
+.stage b { padding-top: 12px; border-top: 1px solid currentColor; font: 500 .53rem/1.4 var(--mono); letter-spacing: .05em; }
+.stage.is-now { background: var(--acid); color: var(--ink); }
+
+.rule-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; padding: 0; border-top: var(--line); border-left: var(--line); list-style: none; }
+.rule-grid li { display: grid; grid-template-columns: 34px 1fr; gap: 6px 10px; align-content: start; min-height: 150px; padding: 20px; border-right: var(--line); border-bottom: var(--line); }
+.rule-grid span { grid-row: span 2; font: 500 .55rem/1.6 var(--mono); }
+.rule-grid strong { font-size: clamp(1.1rem, 1.5vw, 1.5rem); line-height: 1.05; letter-spacing: -.04em; }
+.rule-grid small { font: 400 .64rem/1.5 var(--mono); }
+
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 46px; }
+.who { padding: clamp(22px, 3vw, 36px); border: var(--line); box-shadow: 9px 10px 0 var(--ink); }
+.who-ai { background: var(--cyan); }
+.who-people { background: var(--orange); }
+.who span { font: 500 .55rem/1 var(--mono); letter-spacing: .08em; }
+.who h3 { margin: 18px 0 20px; font-size: clamp(2rem, 3.4vw, 3.6rem); line-height: .86; letter-spacing: -.07em; }
+.who ul { margin: 0; padding: 0; list-style: none; }
+.who li { padding: 10px 0; border-top: 1px solid var(--ink); font: 500 .74rem/1.4 var(--mono); }
+
+.thread-list { margin: 0; padding: 0; border-top: var(--line); list-style: none; }
+.thread-list li { display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: start; padding: 22px 4px; border-bottom: var(--line); }
+.thread-state { justify-self: start; padding: 7px 9px; border: var(--line); font: 500 .55rem/1 var(--mono); letter-spacing: .07em; white-space: nowrap; }
+.state-build { background: var(--pink); }
+.state-progress { background: var(--acid); }
+.state-drafted { background: var(--cyan); }
+.state-done { background: var(--ink); color: var(--white); }
+.thread-list strong { font-size: clamp(1.5rem, 2.4vw, 2.4rem); line-height: 1; letter-spacing: -.055em; }
+.thread-list p { max-width: 720px; margin: 8px 0 0; font: 400 .72rem/1.55 var(--mono); }
+
+.venture-contact { display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: center; margin-top: 56px; padding: clamp(22px, 3vw, 38px); border: var(--line); background: var(--acid); }
+.venture-contact h3 { max-width: 22ch; margin: 14px 0 12px; font-size: clamp(1.6rem, 2.6vw, 2.7rem); line-height: 1; letter-spacing: -.055em; }
+.venture-contact p:not(.section-index) { max-width: 560px; margin: 0; font: 400 .72rem/1.6 var(--mono); }
+.contact-note { grid-column: 1 / -1; font: 500 .52rem/1.4 var(--mono); letter-spacing: .07em; }
+
+@media (max-width: 1120px) {
+  .stage-list { grid-template-columns: repeat(2, 1fr); }
+  .stage { min-height: 300px; }
+  .rule-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .venture-contact { grid-template-columns: 1fr; }
+  .venture-contact .button { justify-self: start; }
+}
+
+@media (max-width: 700px) {
+  .hearth-hero h1 { font-size: clamp(3.6rem, 18vw, 5.6rem); }
+  .hearth-stage { min-height: 430px; }
+  .hearth-stage svg { min-height: 420px; }
+  .venture-what, .venture-rules, .venture-threads { padding-top: 72px; padding-bottom: 82px; }
+  .piece-grid .build-card { min-height: 0; }
+  .piece-grid .build-card h3 { font-size: clamp(3rem, 15vw, 4.8rem); }
+  .stage-list, .rule-grid, .who-grid { grid-template-columns: 1fr; }
+  .stage { min-height: 250px; }
+  .rule-grid li { min-height: 0; }
+  .thread-list li { grid-template-columns: 1fr; gap: 12px; }
+}
+
+@media (max-width: 360px) {
+  .hearth-hero h1 { font-size: 3.3rem; }
+}
+
+@media (prefers-contrast: more) {
+  .stage-list, .stage { border-color: var(--white); border-width: 2px; }
+}

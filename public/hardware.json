@@ -37,6 +37,16 @@
       "examples": ["TinyGS", "SatNOGS"]
     }
   ],
+  "ventures": [
+    {
+      "id": "baby-bonfire",
+      "name": "Baby Bonfire",
+      "url": "https://www.industrynext.xyz/hardware/baby-bonfire/",
+      "data": "https://www.industrynext.xyz/baby-bonfire.json",
+      "status": "exploration, started 2026-11-11",
+      "boundary": "A venture file, not part of the local signal field guide. Nothing is built, tested or for sale."
+    }
+  ],
   "field_tests": [
     {
       "id": "sky-is-local",

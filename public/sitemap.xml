@@ -354,4 +354,6 @@
   <url><loc>https://www.industrynext.xyz/recipes/call-or-be-called/</loc><lastmod>2026-11-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.industrynext.xyz/call-or-be-called.json</loc><lastmod>2026-11-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.industrynext.xyz/compute-hour/</loc><lastmod>2026-11-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.industrynext.xyz/hardware/baby-bonfire/</loc><lastmod>2026-11-11</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.industrynext.xyz/baby-bonfire.json</loc><lastmod>2026-11-11</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>
