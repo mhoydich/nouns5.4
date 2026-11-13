@@ -61,8 +61,8 @@ async function htmlFiles(directory) {
 }
 
 for (const htmlFile of await htmlFiles(publicDir)) {
-  // Educational lab pages do not load ad-network scripts or collect activity.
-  if (["communications-lab", "ai-thesis-atlas"].some(section => htmlFile.startsWith(resolve(publicDir, section) + "/"))) continue;
+  // Educational lab pages and the display-only shelf do not load ad-network scripts or collect activity.
+  if (["communications-lab", "ai-thesis-atlas", "shelf"].some(section => htmlFile.startsWith(resolve(publicDir, section) + "/"))) continue;
   const html = await readFile(htmlFile, "utf8");
   if (html.includes(networkMarker) && !networkMountPattern.test(html)) {
     throw new Error(`Cannot update open ad network mount in ${htmlFile}`);
